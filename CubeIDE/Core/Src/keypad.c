@@ -8,7 +8,9 @@
 #include "keypad.h"
 #include "main.h"
 
-volatile int current_row = 0;
+volatile uint32_t keypad_matrix[NUM_ROWS][NUM_COLS] = {0};
+
+static volatile int current_row = 0;
 
 // Callback: timer has reset
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
@@ -16,16 +18,13 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 	if (htim == &htim7) {
 		uint32_t column_data = (GPIOB->IDR >> 4) & 0b111;
 
-		if (current_row == 3 && (column_data & 0b001) != GPIO_PIN_RESET) { // (0,0) is pressed
-			HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
-		} else {
-			HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
-		}
-
-		if (current_row == 3 && (column_data & 0b100) != GPIO_PIN_RESET) { // (0,0) is pressed
-			HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
-		} else {
-			HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+		// update keypad_matrix (debouncing)
+		for (int i = 0; i < NUM_COLS; i++) {
+			if ((column_data & (1 << i)) != GPIO_PIN_RESET) { // That column is pressed
+				keypad_matrix[current_row][i]++;
+			} else {
+				keypad_matrix[current_row][i] = 0;
+			}
 		}
 
 		HAL_GPIO_WritePin(GPIOB, (uint16_t)0x000F, GPIO_PIN_RESET); // Set the output of all the rows to 0
