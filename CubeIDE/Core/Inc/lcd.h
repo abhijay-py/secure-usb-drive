@@ -10,8 +10,6 @@
 
 #include "stm32f4xx_hal_spi.h"
 
-uint8_t TX_Buffer [] = "A";
-
-void periodic_send();
+void periodic_send(SPI_HandleTypeDef *hspi1);
 
 #endif /* INC_LCD_H_ */

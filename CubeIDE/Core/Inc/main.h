@@ -42,6 +42,7 @@ extern "C" {
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
 extern TIM_HandleTypeDef htim7;
+extern SPI_HandleTypeDef hspi1;
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/
