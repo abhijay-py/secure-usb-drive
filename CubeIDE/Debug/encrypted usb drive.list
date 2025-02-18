@@ -522,8 +522,8 @@ int main(void)
  8000602:	2202      	movs	r2, #2
  8000604:	4805      	ldr	r0, [pc, #20]	@ (800061c <main+0x44>)
  8000606:	f001 feff 	bl	8002408 <HAL_UART_Transmit>
-	  HAL_Delay(10000);
- 800060a:	f242 7010 	movw	r0, #10000	@ 0x2710
+	  HAL_Delay(1000);
+ 800060a:	f44f 707a 	mov.w	r0, #1000	@ 0x3e8
  800060e:	f000 fb7d 	bl	8000d0c <HAL_Delay>
 	  HAL_UART_Transmit(&huart5, tx_buff, 2, 1000);
  8000612:	bf00      	nop
