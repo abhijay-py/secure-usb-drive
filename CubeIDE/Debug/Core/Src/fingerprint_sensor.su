@@ -1,0 +1,2 @@
+../Core/Src/fingerprint_sensor.c:13:13:send_command	48	static
+../Core/Src/fingerprint_sensor.c:50:6:get_img	16	static
