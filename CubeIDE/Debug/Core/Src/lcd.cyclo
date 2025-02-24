@@ -1,1 +1,6 @@
-../Core/Src/lcd.c:11:6:periodic_send	1
+../Core/Src/lcd.c:24:6:lcd_display_first_row	1
+../Core/Src/lcd.c:36:6:lcd_cursor_on	1
+../Core/Src/lcd.c:43:6:lcd_init	2
+../Core/Src/lcd.c:86:6:send_byte	2
+../Core/Src/lcd.c:91:6:send_string	1
+../Core/Src/lcd.c:99:6:periodic_send	1
