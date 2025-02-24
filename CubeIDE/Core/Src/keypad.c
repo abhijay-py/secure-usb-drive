@@ -34,5 +34,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 			current_row++;
 		}
 		HAL_GPIO_WritePin(GPIOB, (uint16_t)(1 << current_row), GPIO_PIN_SET); // Set the output of the current row to 1
+
 	}
 }
