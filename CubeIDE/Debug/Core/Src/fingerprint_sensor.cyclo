@@ -1,2 +1,11 @@
-../Core/Src/fingerprint_sensor.c:13:13:send_command	3
-../Core/Src/fingerprint_sensor.c:50:6:get_img	1
+../Core/Src/fingerprint_sensor.c:18:17:calculate_checksum	2
+../Core/Src/fingerprint_sensor.c:27:24:calculate_buff_size	1
+../Core/Src/fingerprint_sensor.c:36:13:generate_package	4
+../Core/Src/fingerprint_sensor.c:74:27:send_command	1
+../Core/Src/fingerprint_sensor.c:94:27:receive_acknowledgment	7
+../Core/Src/fingerprint_sensor.c:144:27:send_and_receive_command	2
+../Core/Src/fingerprint_sensor.c:161:20:get_img	1
+../Core/Src/fingerprint_sensor.c:172:20:gen_char	1
+../Core/Src/fingerprint_sensor.c:184:20:search	1
+../Core/Src/fingerprint_sensor.c:207:20:reg_model	1
+../Core/Src/fingerprint_sensor.c:218:20:store	1

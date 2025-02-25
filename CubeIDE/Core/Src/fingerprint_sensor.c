@@ -8,17 +8,11 @@
 #include "fingerprint_sensor.h"
 #include "main.h"
 
-#define MAX_TX_SIZE 17 // TODO: Change later
-#define MAX_RX_SIZE 17 // TODO: Change later
+#define MAX_TX_SIZE 17 // Search command is 17 bytes
+#define MAX_RX_SIZE 16 // Search acknowledgment is 16 bytes
 
 const uint8_t COMMAND_PID = 0x01;
 const uint8_t ACKNOWLEDGE_PID = 0x07;
-
-typedef enum {
-	FINGERPRINT_OK,
-	FINGERPRINT_HAL_ERROR,
-	FINGERPRINT_RX_ERROR
-}; Fingerprint_Status;
 
 // Calculates the checksum that is sent at the end of the UART packet
 static uint16_t calculate_checksum(const uint8_t buff[], const uint16_t buff_size) {
@@ -106,6 +100,9 @@ static Fingerprint_Status receive_acknowledgment(
 	uint16_t rx_buff_size = calculate_buff_size(rx_data_length);
 	const HAL_StatusTypeDef rx_result
 		= HAL_UART_Receive(&huart5, rx_buff, rx_buff_size, 1000);
+	if (rx_result != HAL_OK) {
+		return FINGERPRINT_HAL_ERROR;
+	}
 
 	// Generate the expected result
 	uint8_t exp_rx_buff[MAX_RX_SIZE];
@@ -139,47 +136,56 @@ static Fingerprint_Status receive_acknowledgment(
 // Sends a command to the fingerprint sensor with
 // address = 0xFFFFFFFF, package identifier = 0x01, and package contents = tx_data.
 // Then receives an acknowledgment packet from the
-// fingerprint sensor with address and sets rx_data = package contents.
+// fingerprint sensor and sets rx_data = package contents.
 // tx_data_length corresponds to the length of tx_data, not the package length.
-// rx_data_length corresponds to the expected length of rx_data, not the expected package length.
+// rx_data_length corresponds to the expected length of rx_data,
+// not the expected package length.
 // Returns FINGERPRINT_OK or the type of error
 static Fingerprint_Status send_and_receive_command(
 	const uint8_t tx_data[],
 	const uint16_t tx_data_length,
 	uint8_t rx_data[],
-	const uint8_t rx_data_length
+	const uint16_t rx_data_length
 ) {
-	if (send_command(tx_data, tx_data_length) != HAL_OK) {
-		return FINGERPRINT_HAL_ERROR;
+	Fingerprint_Status tx_result = send_command(tx_data, tx_data_length);
+	if (tx_result != FINGERPRINT_OK) {
+		return tx_result;
 	}
 
-	if (rx_result != HAL_OK) {
-		return FINGERPRINT_HAL_ERROR;
-	}
-
-
-
-
-	for (int i = 0; i < rx_data_length; i++) {
-		rx_data[i] = rx_buff[i + 9];
-	}
+	return receive_acknowledgment(rx_data, rx_data_length);
 }
 
-// Sends the GetImg command in the datasheet
-void get_img() {
-	const uint8_t data[] = {0x01};
-	send_and_receive_command(data, 1);
+// Sends the GetImg command in the datasheet.
+// Then receives the acknowledgment and sets confirmation_code accordingly.
+// Returns FINGERPRINT_OK or the type of error
+Fingerprint_Status get_img(uint8_t* confirmation_code) {
+	const uint8_t tx_data[] = {0x01};
+	uint8_t rx_data[1];
+	Fingerprint_Status result = send_and_receive_command(tx_data, 1, rx_data, 1);
+	*confirmation_code = rx_data[0];
+	return result;
 }
 
-// Sends the GenChar command in the datasheet
-void gen_char(const uint8_t buffer_id) {
-	const uint8_t data[] = {0x02, buffer_id};
-	send_and_receive_command(data, 2);
+// Sends the GenChar command in the datasheet.
+// Then receives the acknowledgment and sets confirmation_code accordingly.
+// Returns FINGERPRINT_OK or the type of error
+Fingerprint_Status gen_char(const uint8_t buffer_id, uint8_t* confirmation_code) {
+	const uint8_t tx_data[] = {0x02, buffer_id};
+	uint8_t rx_data[1];
+	Fingerprint_Status result = send_and_receive_command(tx_data, 2, rx_data, 1);
+	*confirmation_code = rx_data[0];
+	return result;
 }
 
-// Sends the Search command in the datasheet
-void search(const uint8_t buffer_id, const uint16_t start_page, const uint16_t num_pages) {
-	const uint8_t data[] = {
+// Sends the Search command in the datasheet.
+// Then receives the acknowledgment and sets confirmation_code,
+// page_id, and match_score accordingly.
+// Returns FINGERPRINT_OK or the type of error
+Fingerprint_Status search(
+	const uint8_t buffer_id, const uint16_t start_page, const uint16_t num_pages,
+	uint8_t* confirmation_code, uint16_t* page_id, uint16_t* match_score
+) {
+	const uint8_t tx_data[] = {
 		0x04,
 		buffer_id,
 		(uint8_t)(start_page >> 8),
@@ -187,23 +193,41 @@ void search(const uint8_t buffer_id, const uint16_t start_page, const uint16_t n
 		(uint8_t)(num_pages >> 8),
 		(uint8_t)num_pages
 	};
-	send_and_receive_command(data, 6);
+	uint8_t rx_data[5];
+	Fingerprint_Status result = send_and_receive_command(tx_data, 6, rx_data, 5);
+	*confirmation_code = rx_data[0];
+	*page_id = ((uint16_t)rx_data[1] << 8) | (uint16_t)rx_data[2];
+	*match_score = ((uint16_t)rx_data[3] << 8) | (uint16_t)rx_data[4];
+	return result;
 }
 
-// Sends the RegModel command in the datasheet
-void reg_model() {
-	const uint8_t data[] = {0x05};
-	send_and_receive_command(data, 1);
+// Sends the reg_model command in the datasheet.
+// Then receives the acknowledgment and sets confirmation_code accordingly.
+// Returns FINGERPRINT_OK or the type of error
+Fingerprint_Status reg_model(uint8_t* confirmation_code) {
+	const uint8_t tx_data[] = {0x05};
+	uint8_t rx_data[1];
+	Fingerprint_Status result = send_and_receive_command(tx_data, 1, rx_data, 1);
+	*confirmation_code = rx_data[0];
+	return result;
 }
 
-// Sends the Store command in the datasheet
-void store(const uint8_t buffer_id, const uint16_t page_id) {
-	const uint8_t data[] = {
+// Sends the reg_model command in the datasheet.
+// Then receives the acknowledgment and sets confirmation_code accordingly.
+// Returns FINGERPRINT_OK or the type of error
+Fingerprint_Status store(
+	const uint8_t buffer_id, const uint16_t page_id,
+	uint8_t* confirmation_code
+) {
+	const uint8_t tx_data[] = {
 		0x06,
 		buffer_id,
 		(uint8_t)(page_id >> 8),
 		(uint8_t)page_id
 	};
-	send_and_receive_command(data, 4);
+	uint8_t rx_data[1];
+	Fingerprint_Status result = send_and_receive_command(tx_data, 4, rx_data, 1);
+	*confirmation_code = rx_data[0];
+	return result;
 }
 
