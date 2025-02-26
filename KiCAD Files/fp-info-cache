@@ -1,4 +1,4 @@
-24419608980816510
+24421349581253711
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -54984,6 +54984,13 @@ Crystal or Oscillator
 0
 4
 4
+CustomFootprints
+BM06BSRSSTBTLFSN
+BM06B-SRSS-TBT(LF)(SN)-3
+Connector
+0
+8
+8
 CustomFootprints
 SOIC127P1032X264-16N
 W25N01GVSFIG
