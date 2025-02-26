@@ -27,25 +27,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  0000400c  2**0
                   CONTENTS, READONLY
- 12 .debug_info   0000c4d2  00000000  00000000  0000403c  2**0
+ 12 .debug_info   0000c4cf  00000000  00000000  0000403c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 00001e22  00000000  00000000  0001050e  2**0
+ 13 .debug_abbrev 00001e0b  00000000  00000000  0001050b  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 00000c30  00000000  00000000  00012330  2**3
+ 14 .debug_aranges 00000c30  00000000  00000000  00012318  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_rnglists 00000965  00000000  00000000  00012f60  2**0
+ 15 .debug_rnglists 00000965  00000000  00000000  00012f48  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  000207e5  00000000  00000000  000138c5  2**0
+ 16 .debug_macro  000207e5  00000000  00000000  000138ad  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0000e2ad  00000000  00000000  000340aa  2**0
+ 17 .debug_line   0000e2a6  00000000  00000000  00034092  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    000c9e20  00000000  00000000  00042357  2**0
+ 18 .debug_str    000c9e20  00000000  00000000  00042338  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  0010c177  2**0
+ 19 .comment      00000043  00000000  00000000  0010c158  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  000032b0  00000000  00000000  0010c1bc  2**2
+ 20 .debug_frame  000032b0  00000000  00000000  0010c19c  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 0000006a  00000000  00000000  0010f46c  2**0
+ 21 .debug_line_str 0000006a  00000000  00000000  0010f44c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -470,7 +470,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 
 080005d8 <lcd_welcome>:
 		const uint8_t tx_buffer[] = {LCD_PREFIX, LCD_CURS_LOC_CMD, hex_location};
-
+		send_bytes(hspi2, tx_buffer, sizeof(tx_buffer));
 	}
 }
 
@@ -479,17 +479,13 @@ void lcd_welcome(SPI_HandleTypeDef *hspi2) {
  80005da:	b087      	sub	sp, #28
  80005dc:	af00      	add	r7, sp, #0
  80005de:	6078      	str	r0, [r7, #4]
-//	HAL_Delay(1000);
 	const uint8_t tx_buffer[] = {'w','e','l','c','o','m','e',' ',
  80005e0:	4b08      	ldr	r3, [pc, #32]	@ (8000604 <lcd_welcome+0x2c>)
  80005e2:	f107 0408 	add.w	r4, r7, #8
  80005e6:	cb0f      	ldmia	r3, {r0, r1, r2, r3}
  80005e8:	e884 000f 	stmia.w	r4, {r0, r1, r2, r3}
-//		HAL_SPI_Transmit(hspi2, tx_buffer + i, 1, 1000);
-//		while(hspi2 -> State != HAL_SPI_STATE_READY);
-//		HAL_Delay(100);
-//	}
-//	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_SET);
+								'2',' ',
+								'e','c','e','4','7','7'};
 	send_bytes(hspi2, tx_buffer, sizeof(tx_buffer));
  80005ec:	f107 0308 	add.w	r3, r7, #8
  80005f0:	2210      	movs	r2, #16
@@ -511,17 +507,11 @@ void lcd_clear(SPI_HandleTypeDef *hspi2) {
  800060a:	b084      	sub	sp, #16
  800060c:	af00      	add	r7, sp, #0
  800060e:	6078      	str	r0, [r7, #4]
-//	HAL_Delay(1000);
 	const uint8_t tx_buffer[] = {LCD_PREFIX, LCD_CLR_CMD};
  8000610:	23fe      	movs	r3, #254	@ 0xfe
  8000612:	733b      	strb	r3, [r7, #12]
  8000614:	2351      	movs	r3, #81	@ 0x51
  8000616:	737b      	strb	r3, [r7, #13]
-//
-////	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_RESET);
-//	HAL_SPI_Transmit(hspi2, tx_buffer + 1, 1, 1000);
-//	while(hspi2 -> State != HAL_SPI_STATE_READY);
-//	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_SET);
 	send_bytes(hspi2, tx_buffer, sizeof(tx_buffer));
  8000618:	f107 030c 	add.w	r3, r7, #12
  800061c:	2202      	movs	r2, #2
@@ -541,17 +531,11 @@ void lcd_on(SPI_HandleTypeDef *hspi2) {
  8000630:	b084      	sub	sp, #16
  8000632:	af00      	add	r7, sp, #0
  8000634:	6078      	str	r0, [r7, #4]
-//	HAL_Delay(1000);
 	const uint8_t tx_buffer[] = {LCD_PREFIX, LCD_ON_CMD};
  8000636:	23fe      	movs	r3, #254	@ 0xfe
  8000638:	733b      	strb	r3, [r7, #12]
  800063a:	2341      	movs	r3, #65	@ 0x41
  800063c:	737b      	strb	r3, [r7, #13]
-//
-////	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_RESET);
-//	HAL_SPI_Transmit(hspi2, tx_buffer + 1, 1, 1000);
-//	while(hspi2 -> State != HAL_SPI_STATE_READY);
-//	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_SET);
 	send_bytes(hspi2, tx_buffer, sizeof(tx_buffer));
  800063e:	f107 030c 	add.w	r3, r7, #12
  8000642:	2202      	movs	r2, #2
@@ -565,8 +549,8 @@ void lcd_on(SPI_HandleTypeDef *hspi2) {
  8000652:	bd80      	pop	{r7, pc}
 
 08000654 <send_bytes>:
-//	while(hspi2 -> State != HAL_SPI_STATE_READY);
-//	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_SET);
+void lcd_off(SPI_HandleTypeDef *hspi2) {
+	const uint8_t tx_buffer[] = {LCD_PREFIX, LCD_OFF_CMD};
 	send_bytes(hspi2, tx_buffer, sizeof(tx_buffer));
 }
 
@@ -689,6 +673,8 @@ int main(void)
   lcd_welcome(&hspi2);
  80006fc:	4804      	ldr	r0, [pc, #16]	@ (8000710 <main+0x4c>)
  80006fe:	f7ff ff6b 	bl	80005d8 <lcd_welcome>
+//  lcd_cursor_location(&hspi2, 0x40);
+//  lcd_welcome(&hspi2);
   while (1)
  8000702:	bf00      	nop
  8000704:	e7fd      	b.n	8000702 <main+0x3e>

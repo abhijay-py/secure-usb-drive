@@ -45,73 +45,29 @@ void lcd_cursor_location(SPI_HandleTypeDef *hspi2, const uint8_t hex_location) {
 	}
 	else {
 		const uint8_t tx_buffer[] = {LCD_PREFIX, LCD_CURS_LOC_CMD, hex_location};
-
+		send_bytes(hspi2, tx_buffer, sizeof(tx_buffer));
 	}
 }
 
 void lcd_welcome(SPI_HandleTypeDef *hspi2) {
-//	HAL_Delay(1000);
 	const uint8_t tx_buffer[] = {'w','e','l','c','o','m','e',' ',
 								'2',' ',
 								'e','c','e','4','7','7'};
-//	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_RESET);
-//	for (int i = 0; i < sizeof(tx_buffer); i++) {
-//		HAL_SPI_Transmit(hspi2, tx_buffer + i, 1, 1000);
-//		while(hspi2 -> State != HAL_SPI_STATE_READY);
-//		HAL_Delay(100);
-//	}
-//	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_SET);
 	send_bytes(hspi2, tx_buffer, sizeof(tx_buffer));
 }
 
 void lcd_clear(SPI_HandleTypeDef *hspi2) {
-//	HAL_Delay(1000);
 	const uint8_t tx_buffer[] = {LCD_PREFIX, LCD_CLR_CMD};
-
-//	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_RESET);
-//	HAL_SPI_Transmit(hspi2, tx_buffer, 1, 1000);
-//	while(hspi2 -> State != HAL_SPI_STATE_READY);
-//
-////	const uint8_t tx_buffer2[] = {LCD_CLR_CMD};
-//
-////	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_RESET);
-//	HAL_SPI_Transmit(hspi2, tx_buffer + 1, 1, 1000);
-//	while(hspi2 -> State != HAL_SPI_STATE_READY);
-//	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_SET);
 	send_bytes(hspi2, tx_buffer, sizeof(tx_buffer));
 }
 
 void lcd_on(SPI_HandleTypeDef *hspi2) {
-//	HAL_Delay(1000);
 	const uint8_t tx_buffer[] = {LCD_PREFIX, LCD_ON_CMD};
-
-//	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_RESET);
-//	HAL_SPI_Transmit(hspi2, tx_buffer, 1, 1000);
-//	while(hspi2 -> State != HAL_SPI_STATE_READY);
-//
-////	const uint8_t tx_buffer2[] = {LCD_CLR_CMD};
-//
-////	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_RESET);
-//	HAL_SPI_Transmit(hspi2, tx_buffer + 1, 1, 1000);
-//	while(hspi2 -> State != HAL_SPI_STATE_READY);
-//	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_SET);
 	send_bytes(hspi2, tx_buffer, sizeof(tx_buffer));
 }
 
 void lcd_off(SPI_HandleTypeDef *hspi2) {
-//	HAL_Delay(1000);
 	const uint8_t tx_buffer[] = {LCD_PREFIX, LCD_OFF_CMD};
-
-//	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_RESET);
-//	HAL_SPI_Transmit(hspi2, tx_buffer, 1, 1000);
-//	while(hspi2 -> State != HAL_SPI_STATE_READY);
-//
-////	const uint8_t tx_buffer2[] = {LCD_CLR_CMD};
-//
-////	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_RESET);
-//	HAL_SPI_Transmit(hspi2, tx_buffer + 1, 1, 1000);
-//	while(hspi2 -> State != HAL_SPI_STATE_READY);
-//	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_SET);
 	send_bytes(hspi2, tx_buffer, sizeof(tx_buffer));
 }
 
