@@ -1,4 +1,4 @@
-24421349581253711
+24423090291879207
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -55002,6 +55002,13 @@ CustomFootprints
 SOT230P700X180-4N
 AZ1117IH-3.3TRG1-
 Integrated Circuit
+0
+4
+4
+CustomFootprints
+custom
+6.20mm x 6.20mm x 5mm
+Switch
 0
 4
 4
