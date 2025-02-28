@@ -4121,7 +4121,7 @@
 	(footprint "CustomFootprints:SOIC127P1032X264-16N"
 		(layer "F.Cu")
 		(uuid "4b807590-350c-41f4-beaa-03871126a64a")
-		(at 86.73 70.485)
+		(at 88.9 68.58)
 		(descr "W25N01GVSFIG")
 		(tags "Integrated Circuit")
 		(property "Reference" "IC2"
@@ -5357,7 +5357,7 @@
 	(footprint "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "69d78846-eb36-4fce-8155-47a3808798a4")
-		(at 69.6175 93.98)
+		(at 69.6175 86.36)
 		(descr "Capacitor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf, https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
 		(tags "capacitor handsolder")
 		(property "Reference" "C6"
@@ -9615,7 +9615,7 @@
 	(footprint "CustomFootprints:SOT230P700X180-4N"
 		(layer "F.Cu")
 		(uuid "ab4c0e62-6782-4d89-b2d1-7202ee4a24b9")
-		(at 73.66 88.9)
+		(at 76.2 83.82)
 		(descr "AZ1117IH-3.3TRG1-")
 		(tags "Integrated Circuit")
 		(property "Reference" "IC5"
@@ -10483,7 +10483,7 @@
 	(footprint "CustomFootprints:SOIC127P1032X264-16N"
 		(layer "F.Cu")
 		(uuid "bec4a1b9-1976-4e30-b401-319884cb095b")
-		(at 73.66 73.66)
+		(at 76.2 71.12)
 		(descr "W25N01GVSFIG")
 		(tags "Integrated Circuit")
 		(property "Reference" "IC1"
@@ -12689,11 +12689,11 @@
 	(footprint "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "eba159e7-79d0-40da-9e12-60865d660d46")
-		(at 69.6175 83.82)
+		(at 69.6175 81.28)
 		(descr "Capacitor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf, https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
 		(tags "capacitor handsolder")
 		(property "Reference" "C2"
-			(at 0 -1.68 0)
+			(at -1.0375 2.54 0)
 			(layer "F.SilkS")
 			(uuid "7e6bbdef-d371-42a9-b5cc-78dcdda74e15")
 			(effects
