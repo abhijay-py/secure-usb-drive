@@ -2,7 +2,7 @@
 	(version 20231120)
 	(generator "eeschema")
 	(generator_version "8.0")
-	(uuid "db40a8b9-1a71-40ec-a1c5-9ed304e0fbdb")
+	(uuid "7a0cfb77-60d6-4847-a2a3-bb344b94b5cd")
 	(paper "A4")
 	(lib_symbols
 		(symbol "CustomSymbols:+3.3V"
@@ -6252,7 +6252,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R_US"
+		(property "Value" "220"
 			(at 203.073 56.769 90)
 			(effects
 				(font
@@ -10052,7 +10052,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R_US"
+		(property "Value" "220"
 			(at 203.073 27.559 90)
 			(effects
 				(font
@@ -10379,7 +10379,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R_US"
+		(property "Value" "10k"
 			(at 25.527 33.401 90)
 			(effects
 				(font
@@ -10848,7 +10848,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R_US"
+		(property "Value" "220"
 			(at 203.073 41.529 90)
 			(effects
 				(font
