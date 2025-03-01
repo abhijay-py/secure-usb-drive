@@ -2,7 +2,7 @@
 	(version 20231120)
 	(generator "eeschema")
 	(generator_version "8.0")
-	(uuid "a1988cf3-2a49-4812-9297-759522cef46f")
+	(uuid "0511d87f-cd22-49fc-a24e-e395e24cb6d8")
 	(paper "A4")
 	(lib_symbols
 		(symbol "CustomSymbols:+3.3V"
@@ -3625,10 +3625,6 @@
 		(at 40.64 41.91)
 		(uuid "d917b00b-af2e-4a4a-9316-266682fdd50d")
 	)
-	(no_connect
-		(at 40.64 54.61)
-		(uuid "f06b6367-fd4a-4940-bd0b-988135aef533")
-	)
 	(wire
 		(pts
 			(xy 78.74 106.68) (xy 76.2 106.68)
@@ -3981,6 +3977,16 @@
 	)
 	(wire
 		(pts
+			(xy 39.37 53.34) (xy 40.64 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7568244f-b65e-4a25-a9c9-ef0efc9fc928")
+	)
+	(wire
+		(pts
 			(xy 77.47 31.75) (xy 77.47 29.21)
 		)
 		(stroke
@@ -4251,16 +4257,6 @@
 	)
 	(wire
 		(pts
-			(xy 132.08 45.72) (xy 132.08 40.64)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d1643236-b494-444e-a488-e69184a50399")
-	)
-	(wire
-		(pts
 			(xy 76.2 80.01) (xy 78.74 80.01)
 		)
 		(stroke
@@ -4308,16 +4304,6 @@
 			(type default)
 		)
 		(uuid "da20d49d-ce8f-467a-976c-b84031234f06")
-	)
-	(wire
-		(pts
-			(xy 132.08 40.64) (xy 114.3 40.64)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "de977f1b-b042-4cc5-8953-39c7da9dfbc0")
 	)
 	(wire
 		(pts
@@ -4378,6 +4364,16 @@
 			(type default)
 		)
 		(uuid "f55f111f-6d59-4a9d-b22a-aecd78f971ee")
+	)
+	(wire
+		(pts
+			(xy 40.64 53.34) (xy 40.64 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f84fcb82-b911-471c-9193-8653fe42e7c2")
 	)
 	(wire
 		(pts
@@ -4575,6 +4571,29 @@
 		(uuid "011a9209-56e7-4855-85be-dbfe64d3a306")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 26.4062 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "PC0{slash}Touch Out"
+		(shape input)
+		(at 132.08 45.72 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 0 0 0 1)
+			)
+			(justify right)
+		)
+		(uuid "01e7213b-8340-4f5b-93d9-77348b2b47b8")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 114.3388 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5201,6 +5220,29 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "PC0{slash}Touch Out"
+		(shape input)
+		(at 39.37 53.34 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 0 0 0 1)
+			)
+			(justify right)
+		)
+		(uuid "52228fe5-4e90-40e1-95b9-81e85cb61efd")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 21.6288 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -6075,7 +6117,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "C"
+		(property "Value" "0.1u"
 			(at 255.27 87.6299 0)
 			(effects
 				(font
@@ -8063,72 +8105,6 @@
 			(project "477"
 				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a"
 					(reference "#FLG02")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "CustomSymbols:GND")
-		(at 114.3 40.64 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "6933769f-8f41-4ebc-86db-e8be290b6900")
-		(property "Reference" "#PWR056"
-			(at 114.3 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 114.3 45.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 114.3 40.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 114.3 40.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 114.3 40.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "93455710-3d10-47e9-911c-f71d7d9d9e12")
-		)
-		(instances
-			(project ""
-				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a"
-					(reference "#PWR056")
 					(unit 1)
 				)
 			)
