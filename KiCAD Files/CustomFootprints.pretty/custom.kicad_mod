@@ -273,4 +273,15 @@
 			(xyz 0 0 0)
 		)
 	)
+	(model "C:/Users/Jay62/Downloads/LIB_222AMVBAR/222AMVBAR/3D/222AMVBAR.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
 )

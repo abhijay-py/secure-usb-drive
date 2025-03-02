@@ -251,4 +251,15 @@
 			(xyz 0 0 0)
 		)
 	)
+	(model "C:/Users/Jay62/Downloads/LIB_AZ1117IH-3.3TRG1/AZ1117IH-3.3TRG1/3D/AZ1117IH-3.3TRG1.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
 )

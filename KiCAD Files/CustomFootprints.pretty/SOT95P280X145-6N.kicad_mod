@@ -6,7 +6,7 @@
 	(descr "SOT23-6L_1")
 	(tags "Integrated Circuit")
 	(property "Reference" "IC**"
-		(at 0 0 0)
+		(at 0 -2.54 0)
 		(layer "F.SilkS")
 		(uuid "40950183-9b0c-4ac2-a96c-d8f57d43ceaf")
 		(effects
@@ -253,6 +253,18 @@
 		(uuid "881efcb9-b0bd-4faf-884e-3a382b5a0dfd")
 	)
 	(model "USBLC6-2SC6.stp"
+		(hide yes)
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+	(model "C:/Users/Jay62/Downloads/LIB_USBLC6-2SC6/USBLC6-2SC6/3D/USBLC6-2SC6.stp"
 		(offset
 			(xyz 0 0 0)
 		)

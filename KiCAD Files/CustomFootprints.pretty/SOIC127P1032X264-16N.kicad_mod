@@ -313,6 +313,18 @@
 		(uuid "683ad23c-555c-45dc-82c9-01465cf42695")
 	)
 	(model "W25N01GVSFIG.stp"
+		(hide yes)
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+	(model "C:/Users/Jay62/Downloads/LIB_W25N01GVSFIG/W25N01GVSFIG/3D/W25N01GVSFIG.stp"
 		(offset
 			(xyz 0 0 0)
 		)

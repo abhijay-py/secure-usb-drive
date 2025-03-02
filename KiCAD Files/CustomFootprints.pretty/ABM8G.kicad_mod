@@ -152,8 +152,20 @@
 		(uuid "97067af4-d41a-42a0-aa5c-5d7296f012fa")
 	)
 	(model "ABM8G-48.000MHZ-18-D2Y-T.stp"
+		(hide yes)
 		(offset
 			(xyz 0 -0.07999999701 0.009999999626)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 0 0)
+		)
+	)
+	(model "C:/Users/Jay62/Downloads/LIB_ABM8G-48.000MHZ-18-D2Y-T/ABM8G-48.000MHZ-18-D2Y-T/3D/ABM8G-48.000MHZ-18-D2Y-T.stp"
+		(offset
+			(xyz 0 0 0)
 		)
 		(scale
 			(xyz 1 1 1)
