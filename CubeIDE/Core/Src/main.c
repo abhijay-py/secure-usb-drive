@@ -102,10 +102,6 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  uint8_t confirmation_code;
-	  get_img(&confirmation_code);
-//	  write_reg(4, 1, &confirmation_code);
-	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
