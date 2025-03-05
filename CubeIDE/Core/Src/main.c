@@ -115,6 +115,8 @@ int main(void)
 //  lcd_off(&hspi2);
   lcd_on(&hspi2);
   lcd_welcome(&hspi2);
+//  lcd_cursor_location(&hspi2, 0x40);
+//  lcd_welcome(&hspi2);
   while (1)
   {
 //	  lcd_clear(&hspi2);
