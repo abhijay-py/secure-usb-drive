@@ -1,0 +1,2 @@
+../Core/Src/flash.c:27:6:reset_ic	2
+../Core/Src/flash.c:50:6:flash_read_jedec_id	1

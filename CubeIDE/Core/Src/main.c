@@ -21,7 +21,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "keypad.h"
+#include "flash.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -70,7 +71,7 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-  char spi_buf[4352]; //Up to 4352 bytes, so we need to maximize spi buffer
+//  char spi_buf[4352]; //Up to 4352 bytes, so we need to maximize spi buffer
 
   /* USER CODE END 1 */
 
@@ -100,10 +101,14 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_RESET);
+  reset_ic(&hspi1, 0);
   while (1)
   {
     /* USER CODE END WHILE */
-
+	  flash_read_jedec_id(&hspi1, 0);
+	    	  HAL_Delay(2000);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -173,7 +178,7 @@ static void MX_SPI1_Init(void)
   hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi1.Init.NSS = SPI_NSS_SOFT;
-  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_32;
   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -208,7 +213,7 @@ static void MX_TIM7_Init(void)
   htim7.Instance = TIM7;
   htim7.Init.Prescaler = 7999;
   htim7.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim7.Init.Period = 1;
+  htim7.Init.Period = 4;
   htim7.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim7) != HAL_OK)
   {
@@ -246,6 +251,9 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOG_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2|GPIO_PIN_6, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
@@ -260,6 +268,13 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(USER_Btn_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PC2 PC6 */
+  GPIO_InitStruct.Pin = GPIO_PIN_2|GPIO_PIN_6;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /*Configure GPIO pin : PC3 */
   GPIO_InitStruct.Pin = GPIO_PIN_3;
@@ -333,35 +348,7 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-volatile int current_row = 0;
 
-// Callback: timer has reset
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
-	// Check which version of the time triggered this callback
-	if (htim == &htim7) {
-		uint32_t column_data = (GPIOB->IDR >> 4) & 0b111;
-
-		if (current_row == 3 && (column_data & 0b001) != GPIO_PIN_RESET) { // (0,0) is pressed
-			HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
-		} else {
-			HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
-		}
-
-		if (current_row == 3 && (column_data & 0b100) != GPIO_PIN_RESET) { // (0,0) is pressed
-			HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
-		} else {
-			HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
-		}
-
-		HAL_GPIO_WritePin(GPIOB, (uint16_t)0x000F, GPIO_PIN_RESET); // Set the output of all the rows to 0
-		if (current_row == 3) {
-			current_row = 0;
-		} else {
-			current_row++;
-		}
-		HAL_GPIO_WritePin(GPIOB, (uint16_t)(1 << current_row), GPIO_PIN_SET); // Set the output of the current row to 1
-	}
-}
 /* USER CODE END 4 */
 
 /**
