@@ -43,6 +43,7 @@ extern "C" {
 /* USER CODE BEGIN EC */
 extern TIM_HandleTypeDef htim7;
 extern SPI_HandleTypeDef hspi1;
+extern UART_HandleTypeDef huart5;
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/
