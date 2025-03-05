@@ -12,7 +12,7 @@
 
 // Calculates the checksum that is sent as the 7th byte of the UART packet
 static uint16_t calculate_checksum(const uint8_t buff[]) {
-	return buff[2] ^ buff[3] ^ buff[4] ^ buff[5] ^ buff[6];
+	return buff[1] ^ buff[2] ^ buff[3] ^ buff[4] ^ buff[5];
 }
 
 // Generates an 8 byte package and stores it inside buff (see page 3 of the datasheet).
@@ -42,7 +42,6 @@ static Fingerprint_Status send_command(
 	generate_package(tx_buff, cmd, p1, p2, p3);
 
 	// Transmit tx_buff
-	const uint16_t tx_buff_size = calculate_buff_size(tx_data_length);
 	const HAL_StatusTypeDef tx_result
 		= HAL_UART_Transmit(&huart5, tx_buff, PACKET_SIZE, 1000);
 	return tx_result != HAL_OK ? FINGERPRINT_HAL_ERROR : FINGERPRINT_OK;
@@ -52,13 +51,14 @@ static Fingerprint_Status send_command(
 // stores the return values into the q1, q2, and q3 return parameters.
 // Returns FINGERPRINT_OK or the type of error
 static Fingerprint_Status receive_acknowledgment(
+	const uint32_t rx_timeout,
 	const uint8_t cmd,
 	uint8_t* q1, uint8_t* q2, uint8_t* q3
 ) {
 	// Receive UART data and put it in rx_buff
 	uint8_t rx_buff[PACKET_SIZE];
 	const HAL_StatusTypeDef rx_result
-		= HAL_UART_Receive(&huart5, rx_buff, PACKET_SIZE, 1000);
+		= HAL_UART_Receive(&huart5, rx_buff, PACKET_SIZE, rx_timeout);
 	if (rx_result != HAL_OK) {
 		return FINGERPRINT_HAL_ERROR;
 	}
@@ -104,6 +104,7 @@ static Fingerprint_Status receive_acknowledgment(
 // fingerprint sensor and sets q1, q2, and q3 accordingly.
 // Returns FINGERPRINT_OK or the type of error
 static Fingerprint_Status send_and_receive_command(
+	const uint32_t rx_timeout,
 	const uint8_t cmd,
 	const uint8_t p1, const uint8_t p2, const uint8_t p3,
 	uint8_t* q1, uint8_t* q2, uint8_t* q3
@@ -113,13 +114,14 @@ static Fingerprint_Status send_and_receive_command(
 		return tx_result;
 	}
 
-	return receive_acknowledgment(cmd, q1, q2, q3);
+	return receive_acknowledgment(rx_timeout, cmd, q1, q2, q3);
 }
 
 // Sends the delete specified user (2.4) command in the datasheet.
 // ack_type is called q3 in the datasheet.
 Fingerprint_Status delete_specified_user(uint16_t user_id, uint8_t* ack_type) {
 	return send_and_receive_command(
+		1000,
 		0x04,
 		(uint8_t)(user_id >> 8), (uint8_t)user_id, 0,
 		NULL, NULL, ack_type
@@ -130,6 +132,7 @@ Fingerprint_Status delete_specified_user(uint16_t user_id, uint8_t* ack_type) {
 // ack_type is called q3 in the datasheet.
 Fingerprint_Status compare_1_1(uint16_t user_id, uint8_t* ack_type) {
 	return send_and_receive_command(
+		20000,
 		0x0B,
 		(uint8_t)(user_id >> 8), (uint8_t)user_id, 0,
 		NULL, NULL, ack_type
@@ -149,8 +152,21 @@ Fingerprint_Status add_fingerprint(
 		return FINGERPRINT_INVALID_PARAM;
 	}
 	return send_and_receive_command(
+		20000,
 		press_num,
 		(uint8_t)(user_id >> 8), (uint8_t)user_id, user_privilege,
+		NULL, NULL, ack_type
+	);
+}
+
+// Sends the set fingerprint capture timeout value (2.25)
+// command in the datasheet. It doesn't read the timeout value.
+// ack_type is called q3 in the datasheet.
+Fingerprint_Status set_timeout(uint8_t timeout_value, uint8_t* ack_type) {
+	return send_and_receive_command(
+		1000,
+		0x2E,
+		0, timeout_value, 0,
 		NULL, NULL, ack_type
 	);
 }
