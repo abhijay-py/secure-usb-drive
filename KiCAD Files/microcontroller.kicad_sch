@@ -5161,7 +5161,7 @@
 			)
 		)
 	)
-	(global_label "PC2{slash}WP1"
+	(global_label "PC2{slash}HOLD2"
 		(shape input)
 		(at 40.64 59.69 180)
 		(fields_autoplaced yes)
@@ -5174,7 +5174,7 @@
 		)
 		(uuid "1e85a525-018b-47c1-bca5-c600ef77091a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 28.6439 59.69 0)
+			(at 26.4062 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5230,7 +5230,7 @@
 			)
 		)
 	)
-	(global_label "PA0{slash}CS1"
+	(global_label "PA0{slash}WP4"
 		(shape input)
 		(at 77.47 29.21 0)
 		(fields_autoplaced yes)
@@ -5243,7 +5243,7 @@
 		)
 		(uuid "23bfa62e-eec5-48ad-ad39-8974598e75a0")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 89.0428 29.21 0)
+			(at 89.2847 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5253,7 +5253,7 @@
 			)
 		)
 	)
-	(global_label "PC5{slash}WP4"
+	(global_label "PC5{slash}WP3"
 		(shape input)
 		(at 40.64 67.31 180)
 		(fields_autoplaced yes)
@@ -5460,7 +5460,7 @@
 			)
 		)
 	)
-	(global_label "PA3{slash}CS4"
+	(global_label "PA3{slash}CS3"
 		(shape input)
 		(at 77.47 40.64 0)
 		(fields_autoplaced yes)
@@ -5529,7 +5529,7 @@
 			)
 		)
 	)
-	(global_label "PC7{slash}HOLD2"
+	(global_label "PC7{slash}WP1"
 		(shape input)
 		(at 40.64 72.39 180)
 		(fields_autoplaced yes)
@@ -5542,7 +5542,7 @@
 		)
 		(uuid "35894e40-2848-41eb-8b93-881a468d7b53")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 26.4062 72.39 0)
+			(at 28.6439 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5575,7 +5575,7 @@
 			)
 		)
 	)
-	(global_label "PC10{slash}HOLD4"
+	(global_label "PC10{slash}CS2"
 		(shape input)
 		(at 40.64 77.47 180)
 		(fields_autoplaced yes)
@@ -5588,7 +5588,7 @@
 		)
 		(uuid "385516cd-4f1d-40f0-9e91-8cb6963eef48")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 25.1967 77.47 0)
+			(at 27.6763 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5598,7 +5598,7 @@
 			)
 		)
 	)
-	(global_label "PC4{slash}WP3"
+	(global_label "PC4{slash}HOLD3"
 		(shape input)
 		(at 40.64 64.77 180)
 		(fields_autoplaced yes)
@@ -5611,7 +5611,7 @@
 		)
 		(uuid "3975e276-fc2a-4ade-b7d8-99f309327244")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 28.6439 64.77 0)
+			(at 26.4062 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5966,7 +5966,7 @@
 			)
 		)
 	)
-	(global_label "PA1{slash}CS2"
+	(global_label "PA1{slash}CS4"
 		(shape input)
 		(at 77.47 33.02 0)
 		(fields_autoplaced yes)
@@ -6357,7 +6357,7 @@
 			)
 		)
 	)
-	(global_label "PC9{slash}HOLD3"
+	(global_label "PC9{slash}CS1"
 		(shape input)
 		(at 40.64 74.93 180)
 		(fields_autoplaced yes)
@@ -6370,7 +6370,7 @@
 		)
 		(uuid "b0db0f2e-da07-4fef-8530-14a4d5c494b0")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 26.4062 74.93 0)
+			(at 28.8858 74.93 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6725,7 +6725,7 @@
 			)
 		)
 	)
-	(global_label "PA2{slash}CS3"
+	(global_label "PA2{slash}HOLD4"
 		(shape input)
 		(at 77.47 36.83 0)
 		(fields_autoplaced yes)
@@ -6738,7 +6738,7 @@
 		)
 		(uuid "df647c47-5909-417e-b87d-91063b351c3b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 89.0428 36.83 0)
+			(at 91.5224 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11817,72 +11817,6 @@
 			(project "477"
 				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a"
 					(reference "#PWR022")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "CustomSymbols:+3.3V")
-		(at -48.26 10.16 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "cec61e4c-815c-4fe3-beed-040d3b69681b")
-		(property "Reference" "#PWR051"
-			(at -48.26 13.97 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3.3V"
-			(at -48.26 5.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at -48.26 10.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at -48.26 10.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at -48.26 10.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "7710713c-b834-4e50-be93-f2ee09248c34")
-		)
-		(instances
-			(project ""
-				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a"
-					(reference "#PWR051")
 					(unit 1)
 				)
 			)
