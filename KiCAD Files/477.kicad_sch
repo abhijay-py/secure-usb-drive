@@ -4059,7 +4059,7 @@
 			)
 		)
 	)
-	(global_label "PA11{slash}USB-"
+	(global_label "USB-"
 		(shape input)
 		(at 138.43 62.23 180)
 		(fields_autoplaced yes)
@@ -4072,7 +4072,7 @@
 		)
 		(uuid "33d13ec9-e0af-4ebe-9708-6f6d8d22ea50")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 123.9543 62.23 0)
+			(at 130.0624 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4772,7 +4772,7 @@
 			)
 		)
 	)
-	(global_label "PA12{slash}USB+"
+	(global_label "USB+"
 		(shape input)
 		(at 139.7 57.15 180)
 		(fields_autoplaced yes)
@@ -4785,7 +4785,7 @@
 		)
 		(uuid "e0ae977e-1135-4581-a3b6-0b396c6597b7")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 125.2243 57.15 0)
+			(at 131.3324 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
