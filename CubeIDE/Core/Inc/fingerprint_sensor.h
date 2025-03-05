@@ -27,5 +27,9 @@ Fingerprint_Status store(
 	const uint8_t buffer_id, const uint16_t page_id,
 	uint8_t* confirmation_code
 );
+Fingerprint_Status write_reg(
+	const uint8_t register_number, const uint8_t contents,
+	uint8_t* confirmation_code
+);
 
 #endif /* INC_FINGERPRINT_SENSOR_H_ */

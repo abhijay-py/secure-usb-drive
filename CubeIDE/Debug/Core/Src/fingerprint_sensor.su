@@ -9,3 +9,4 @@
 ../Core/Src/fingerprint_sensor.c:184:20:search	40	static
 ../Core/Src/fingerprint_sensor.c:207:20:reg_model	24	static
 ../Core/Src/fingerprint_sensor.c:218:20:store	32	static
+../Core/Src/fingerprint_sensor.c:237:20:write_reg	24	static

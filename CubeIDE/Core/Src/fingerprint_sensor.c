@@ -82,7 +82,7 @@ static Fingerprint_Status send_command(
 	// Transmit tx_buff
 	const uint16_t tx_buff_size = calculate_buff_size(tx_data_length);
 	const HAL_StatusTypeDef tx_result
-		= HAL_UART_Transmit_IT(&huart5, tx_buff, tx_buff_size);
+		= HAL_UART_Transmit(&huart5, tx_buff, tx_buff_size, 1000);
 	return tx_result != HAL_OK ? FINGERPRINT_HAL_ERROR : FINGERPRINT_OK;
 }
 
@@ -201,7 +201,7 @@ Fingerprint_Status search(
 	return result;
 }
 
-// Sends the reg_model command in the datasheet.
+// Sends the RegModel command in the datasheet.
 // Then receives the acknowledgment and sets confirmation_code accordingly.
 // Returns FINGERPRINT_OK or the type of error
 Fingerprint_Status reg_model(uint8_t* confirmation_code) {
@@ -212,7 +212,7 @@ Fingerprint_Status reg_model(uint8_t* confirmation_code) {
 	return result;
 }
 
-// Sends the reg_model command in the datasheet.
+// Sends the Store command in the datasheet.
 // Then receives the acknowledgment and sets confirmation_code accordingly.
 // Returns FINGERPRINT_OK or the type of error
 Fingerprint_Status store(
@@ -227,6 +227,24 @@ Fingerprint_Status store(
 	};
 	uint8_t rx_data[1];
 	Fingerprint_Status result = send_and_receive_command(tx_data, 4, rx_data, 1);
+	*confirmation_code = rx_data[0];
+	return result;
+}
+
+// Sends the WriteReg command in the datasheet.
+// Then receives the acknowledgment and sets confirmation_code accordingly.
+// Returns FINGERPRINT_OK or the type of error
+Fingerprint_Status write_reg(
+	const uint8_t register_number, const uint8_t contents,
+	uint8_t* confirmation_code
+) {
+	const uint8_t tx_data[] = {
+		0x0E,
+		register_number,
+		contents
+	};
+	uint8_t rx_data[1];
+	Fingerprint_Status result = send_and_receive_command(tx_data, 3, rx_data, 1);
 	*confirmation_code = rx_data[0];
 	return result;
 }
