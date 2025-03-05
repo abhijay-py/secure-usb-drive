@@ -655,7 +655,6 @@ int main(void)
  80006f2:	2140      	movs	r1, #64	@ 0x40
  80006f4:	480a      	ldr	r0, [pc, #40]	@ (8000720 <main+0x58>)
  80006f6:	f000 fe57 	bl	80013a8 <HAL_GPIO_WritePin>
-
   reset_ic(&hspi1, 0);
  80006fa:	2100      	movs	r1, #0
  80006fc:	4809      	ldr	r0, [pc, #36]	@ (8000724 <main+0x5c>)

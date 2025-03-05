@@ -55,12 +55,12 @@ void flash_read_jedec_id(SPI_HandleTypeDef *hspi1, int flash_chip_num) {
 	uint8_t buffer[8];
 //	switch (flash_chip_num) {
 //		case 0:
-			HAL_SPI_Transmit(hspi1, &FLASH_READ_JEDEC_ID, 1, 1000);
+	HAL_SPI_Transmit(hspi1, &FLASH_READ_JEDEC_ID, 1, 1000);
 //			while(hspi1 -> State != HAL_SPI_STATE_READY);
-			HAL_SPI_TransmitReceive(hspi1, buffer, buffer, 8, 1000); // dummy clock
-			HAL_Delay(1000);
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
+	HAL_SPI_TransmitReceive(hspi1, buffer, buffer, 8, 1000); // dummy clock
+	HAL_Delay(1000);
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
 //			break;
 //		case 1:
 //			break;
