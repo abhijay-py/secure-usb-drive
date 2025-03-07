@@ -17427,6 +17427,18 @@
 			(justify left bottom)
 		)
 	)
+	(gr_text "Team 20"
+		(at 112.5 134 0)
+		(layer "F.SilkS")
+		(uuid "b0e04592-faac-4018-9723-530b64f0505d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1875)
+			)
+			(justify left bottom)
+		)
+	)
 	(gr_text "5V\nLED"
 		(at 108.458 98.806 0)
 		(layer "F.SilkS")
