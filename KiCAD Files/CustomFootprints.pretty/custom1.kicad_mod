@@ -257,7 +257,7 @@
 	)
 	(model "${KIPRJMOD}/3D models/TSW-103-14-S-D.stp"
 		(offset
-			(xyz 2.589999875 1.129999978 0.06999999925)
+			(xyz 2.52 1.23 0.07)
 		)
 		(scale
 			(xyz 1 1 1)
