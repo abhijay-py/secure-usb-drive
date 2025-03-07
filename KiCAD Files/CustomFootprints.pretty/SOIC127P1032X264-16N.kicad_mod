@@ -312,8 +312,7 @@
 		(layers "F.Cu" "F.Paste" "F.Mask")
 		(uuid "683ad23c-555c-45dc-82c9-01465cf42695")
 	)
-	(model "W25N01GVSFIG.stp"
-		(hide yes)
+	(model "${KIPRJMOD}/3D models/W25N01GVSFIG.stp"
 		(offset
 			(xyz 0 0 0)
 		)
@@ -325,6 +324,7 @@
 		)
 	)
 	(model "C:/Users/Jay62/Downloads/LIB_W25N01GVSFIG/W25N01GVSFIG/3D/W25N01GVSFIG.stp"
+		(hide yes)
 		(offset
 			(xyz 0 0 0)
 		)

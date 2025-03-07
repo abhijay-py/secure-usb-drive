@@ -245,6 +245,7 @@
 		(uuid "11f2767d-df12-4e32-b3e8-7e948ebc60b8")
 	)
 	(model "6364372-2.stp"
+		(hide yes)
 		(offset
 			(xyz 3.499999947 -12.98999958 4.010000169)
 		)
@@ -255,7 +256,7 @@
 			(xyz -90 0 0)
 		)
 	)
-	(model "C:/Users/Jay62/Downloads/LIB_6364372-2/6364372-2/3D/6364372-2.stp"
+	(model "${KIPRJMOD}/3D models/6364372-2.stp"
 		(offset
 			(xyz 3.5 -13 3.9)
 		)

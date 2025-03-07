@@ -240,7 +240,7 @@
 		(layers "F.Cu" "F.Paste" "F.Mask")
 		(uuid "ea405a7a-cfe8-4f57-869a-4e796d05e1ce")
 	)
-	(model "AZ1117IH-3.3TRG1.stp"
+	(model "${KIPRJMOD}/3D models/AZ1117IH-3.3TRG1.stp"
 		(offset
 			(xyz 0 0 0)
 		)
@@ -252,6 +252,7 @@
 		)
 	)
 	(model "C:/Users/Jay62/Downloads/LIB_AZ1117IH-3.3TRG1/AZ1117IH-3.3TRG1/3D/AZ1117IH-3.3TRG1.stp"
+		(hide yes)
 		(offset
 			(xyz 0 0 0)
 		)

@@ -252,8 +252,7 @@
 		(layers "F.Cu" "F.Paste" "F.Mask")
 		(uuid "881efcb9-b0bd-4faf-884e-3a382b5a0dfd")
 	)
-	(model "USBLC6-2SC6.stp"
-		(hide yes)
+	(model "${KIPRJMOD}/3D models/USBLC6-2SC6.stp"
 		(offset
 			(xyz 0 0 0)
 		)
@@ -265,6 +264,7 @@
 		)
 	)
 	(model "C:/Users/Jay62/Downloads/LIB_USBLC6-2SC6/USBLC6-2SC6/3D/USBLC6-2SC6.stp"
+		(hide yes)
 		(offset
 			(xyz 0 0 0)
 		)

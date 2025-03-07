@@ -262,7 +262,7 @@
 		(layers "F.Cu" "F.Paste" "F.Mask")
 		(uuid "64cff1ae-906b-4609-98bf-51752835c8ec")
 	)
-	(model "222AMVBAR.stp"
+	(model "${KIPRJMOD}/3D models/222AMVBAR.stp"
 		(offset
 			(xyz 0 0 0)
 		)
@@ -274,6 +274,7 @@
 		)
 	)
 	(model "C:/Users/Jay62/Downloads/LIB_222AMVBAR/222AMVBAR/3D/222AMVBAR.stp"
+		(hide yes)
 		(offset
 			(xyz 0 0 0)
 		)

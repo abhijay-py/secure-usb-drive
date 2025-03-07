@@ -247,18 +247,19 @@
 		(remove_unused_layers no)
 		(uuid "2a25ac79-fbdb-4796-8943-1b3c64e593f9")
 	)
-	(model "TSW-105-05-F-S.stp"
+	(model "${KIPRJMOD}/3D models/TSW-105-05-F-S.stp"
 		(offset
-			(xyz 5.139999789 -0.1899999948 3.299999903)
+			(xyz 5.14 -0.19 2.7)
 		)
 		(scale
 			(xyz 1 1 1)
 		)
 		(rotate
-			(xyz -90 0 0)
+			(xyz 90 0 0)
 		)
 	)
 	(model "C:/Users/Jay62/Downloads/LIB_TSW-105-05-F-S/TSW-105-05-F-S/3D/TSW-105-05-F-S.stp"
+		(hide yes)
 		(offset
 			(xyz 5 0 0)
 		)

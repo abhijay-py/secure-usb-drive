@@ -302,7 +302,7 @@
 		(layers "F.Cu" "F.Paste" "F.Mask")
 		(uuid "d3977b11-24ca-495d-bf2d-13ba2f0ddf93")
 	)
-	(model "BM07B-SRSS-TB_LF__SN_.stp"
+	(model "${KIPRJMOD}/3D models/BM07B-SRSS-TB_LF__SN_.stp"
 		(offset
 			(xyz 0 0 0)
 		)
@@ -314,6 +314,7 @@
 		)
 	)
 	(model "C:/Users/Jay62/Downloads/LIB_BM07B-SRSS-TB_LF__SN_/BM07B-SRSS-TB_LF__SN_/3D/BM07B-SRSS-TB_LF__SN_.stp"
+		(hide yes)
 		(offset
 			(xyz 0 0 0)
 		)

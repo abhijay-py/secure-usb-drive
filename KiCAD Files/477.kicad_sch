@@ -2365,88 +2365,6 @@
 				)
 			)
 		)
-		(symbol "Mechanical:MountingHole"
-			(pin_names
-				(offset 1.016)
-			)
-			(exclude_from_sim yes)
-			(in_bom no)
-			(on_board yes)
-			(property "Reference" "H"
-				(at 0 5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "MountingHole"
-				(at 0 3.175 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Mounting Hole without connection"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "mounting hole"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "MountingHole*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "MountingHole_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 1.27)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-		)
 		(symbol "power:PWR_FLAG"
 			(power)
 			(pin_numbers hide)
@@ -3751,18 +3669,6 @@
 		(uuid 97ccd832-75e6-4222-963f-429f841119b3)
 	)
 	(rectangle
-		(start 91.44 135.89)
-		(end 119.38 196.85)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(fill
-			(type none)
-		)
-		(uuid a6a6df8f-c1bb-48fd-99ef-f0e6eda8f4a5)
-	)
-	(rectangle
 		(start 12.7 135.89)
 		(end 91.44 196.85)
 		(stroke
@@ -3786,7 +3692,7 @@
 		)
 		(uuid e754bea8-2022-4507-96d1-469c365cfe6f)
 	)
-	(text "LCD"
+	(text "LCD Connector"
 		(exclude_from_sim no)
 		(at 57.912 190.246 0)
 		(effects
@@ -3808,7 +3714,7 @@
 	)
 	(text "Microcontroller\n"
 		(exclude_from_sim no)
-		(at 54.864 78.994 0)
+		(at 63.754 82.804 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3836,9 +3742,9 @@
 		)
 		(uuid "59a126b4-3e35-42dd-a50d-ce8a8bb40d82")
 	)
-	(text "Keypad\n"
+	(text "Keypad Connector\n"
 		(exclude_from_sim no)
-		(at 260.858 96.012 0)
+		(at 232.664 96.012 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3856,16 +3762,6 @@
 		)
 		(uuid "76c52ffa-1d44-4316-b3ff-4b86731792f4")
 	)
-	(text "Mounting Holes\n"
-		(exclude_from_sim no)
-		(at 106.172 194.31 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "7a2d6cbc-ad4b-4793-a9ec-526e35b2823f")
-	)
 	(text "PB6/HOLD4"
 		(exclude_from_sim no)
 		(at 223.52 136.906 0)
@@ -3876,7 +3772,7 @@
 		)
 		(uuid "83065ce2-cf1c-453d-b0b8-1c407b6bc82e")
 	)
-	(text "USB Port\n"
+	(text "USB Port with ESD protection\n\n"
 		(exclude_from_sim no)
 		(at 155.448 94.234 0)
 		(effects
@@ -3886,9 +3782,9 @@
 		)
 		(uuid "a6aeadc2-4c19-461f-ae56-58ab16525bad")
 	)
-	(text "Fingerprint Sensor\n"
+	(text "Fingerprint Sensor Connector\n"
 		(exclude_from_sim no)
-		(at 233.172 48.768 0)
+		(at 218.186 49.784 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5881,134 +5777,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Mechanical:MountingHole")
-		(at 99.06 151.13 0)
-		(unit 1)
-		(exclude_from_sim yes)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "227341bf-8a4a-49ec-bd9d-8d733c714081")
-		(property "Reference" "H1"
-			(at 101.6 149.8599 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "MountingHole"
-			(at 101.6 152.3999 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_DIN965"
-			(at 99.06 151.13 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 99.06 151.13 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Mounting Hole without connection"
-			(at 99.06 151.13 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project ""
-				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
-					(reference "H1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Mechanical:MountingHole")
-		(at 99.06 158.75 0)
-		(unit 1)
-		(exclude_from_sim yes)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "233cb6a2-1b57-4e95-a889-a56456f329af")
-		(property "Reference" "H2"
-			(at 101.6 157.4799 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "MountingHole"
-			(at 101.6 160.0199 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_DIN965"
-			(at 99.06 158.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 99.06 158.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Mounting Hole without connection"
-			(at 99.06 158.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "477"
-				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
-					(reference "H2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "CustomSymbols:R_US")
 		(at 144.78 40.64 0)
 		(unit 1)
@@ -6681,70 +6449,6 @@
 			(project "477"
 				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
 					(reference "J1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Mechanical:MountingHole")
-		(at 99.06 176.53 0)
-		(unit 1)
-		(exclude_from_sim yes)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "627dd07e-8028-45be-acd7-68236d2cd350")
-		(property "Reference" "H4"
-			(at 101.6 175.2599 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "MountingHole"
-			(at 101.6 177.7999 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_DIN965"
-			(at 99.06 176.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 99.06 176.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Mounting Hole without connection"
-			(at 99.06 176.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "477"
-				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
-					(reference "H4")
 					(unit 1)
 				)
 			)
@@ -8510,70 +8214,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Mechanical:MountingHole")
-		(at 98.5993 167.2752 0)
-		(unit 1)
-		(exclude_from_sim yes)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "cd1c9923-cb87-46f8-a663-f6a80472e520")
-		(property "Reference" "H3"
-			(at 101.1393 166.0051 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "MountingHole"
-			(at 101.1393 168.5451 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_DIN965"
-			(at 98.5993 167.2752 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 98.5993 167.2752 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Mounting Hole without connection"
-			(at 98.5993 167.2752 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "477"
-				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
-					(reference "H3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "CustomSymbols:+3.3V")
 		(at 121.92 149.86 0)
 		(unit 1)
@@ -9041,7 +8681,7 @@
 		)
 	)
 	(sheet
-		(at 48.26 58.42)
+		(at 57.15 62.23)
 		(size 12.7 13.97)
 		(stroke
 			(width 0.1524)
@@ -9052,7 +8692,7 @@
 		)
 		(uuid "e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a")
 		(property "Sheetname" "Microcontroller Circuitry"
-			(at 42.672 56.134 0)
+			(at 51.562 59.944 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9061,7 +8701,7 @@
 			)
 		)
 		(property "Sheetfile" "microcontroller.kicad_sch"
-			(at 41.91 73.406 0)
+			(at 50.8 77.216 0)
 			(effects
 				(font
 					(size 1.27 1.27)

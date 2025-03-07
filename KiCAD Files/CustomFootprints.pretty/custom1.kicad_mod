@@ -255,8 +255,7 @@
 		(remove_unused_layers no)
 		(uuid "057af6da-e4fa-4b20-b855-5401d11199f2")
 	)
-	(model "TSW-103-14-S-D.stp"
-		(hide yes)
+	(model "${KIPRJMOD}/3D models/TSW-103-14-S-D.stp"
 		(offset
 			(xyz 2.589999875 1.129999978 0.06999999925)
 		)
@@ -268,6 +267,7 @@
 		)
 	)
 	(model "C:/Users/Jay62/Downloads/LIB_TSW-103-14-S-D/TSW-103-14-S-D/3D/TSW-103-14-S-D.stp"
+		(hide yes)
 		(offset
 			(xyz 2.5 1.5 0)
 		)

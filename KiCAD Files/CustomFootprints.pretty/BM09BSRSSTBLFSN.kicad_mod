@@ -314,7 +314,7 @@
 		(layers "F.Cu" "F.Paste" "F.Mask")
 		(uuid "6877f907-8711-46b2-a484-6bc07777bbce")
 	)
-	(model "BM09B-SRSS-TB_LF__SN_.stp"
+	(model "${KIPRJMOD}/3D models/BM09B-SRSS-TB_LF__SN_.stp"
 		(offset
 			(xyz 0 0 0)
 		)
@@ -326,6 +326,7 @@
 		)
 	)
 	(model "C:/Users/Jay62/Downloads/LIB_BM09B-SRSS-TB_LF__SN_/BM09B-SRSS-TB_LF__SN_/3D/BM09B-SRSS-TB_LF__SN_.stp"
+		(hide yes)
 		(offset
 			(xyz 0 0 0)
 		)
