@@ -4945,7 +4945,7 @@
 			)
 		)
 	)
-	(global_label "PB5{slash}KeyC3"
+	(global_label "PB5{slash}KeyC3 ESD"
 		(shape input)
 		(at 76.2 87.63 0)
 		(fields_autoplaced yes)
@@ -4958,7 +4958,7 @@
 		)
 		(uuid "02863b54-58e5-479c-897c-3496897499f3")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 90.0709 87.63 0)
+			(at 94.667 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5060,7 +5060,7 @@
 			)
 		)
 	)
-	(global_label "PB5{slash}KeyC3"
+	(global_label "PB5{slash}KeyC3 ESD"
 		(shape input)
 		(at 179.07 143.51 0)
 		(fields_autoplaced yes)
@@ -5073,7 +5073,7 @@
 		)
 		(uuid "110ef476-9278-45d6-895b-56f9576e29be")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 192.9409 143.51 0)
+			(at 197.537 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5428,7 +5428,7 @@
 			)
 		)
 	)
-	(global_label "PA0{slash}FP TX"
+	(global_label "PA0{slash}FP TX ESD"
 		(shape input)
 		(at 132.08 48.26 180)
 		(fields_autoplaced yes)
@@ -5441,7 +5441,7 @@
 		)
 		(uuid "38970c85-9c3a-4f04-b0c9-bdd9cf545954")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 118.6929 48.26 0)
+			(at 114.0968 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5589,7 +5589,7 @@
 			)
 		)
 	)
-	(global_label "PC12{slash}KeyR4"
+	(global_label "PC12{slash}KeyR4 ESD"
 		(shape input)
 		(at 40.64 82.55 180)
 		(fields_autoplaced yes)
@@ -5602,7 +5602,7 @@
 		)
 		(uuid "530db0a5-242a-4256-87c6-333fefb1f0fe")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 25.5596 82.55 0)
+			(at 20.9635 82.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5819,7 +5819,7 @@
 			)
 		)
 	)
-	(global_label "PB4{slash}KeyC2"
+	(global_label "PB4{slash}KeyC2 ESD"
 		(shape input)
 		(at 76.2 85.09 0)
 		(fields_autoplaced yes)
@@ -5832,7 +5832,7 @@
 		)
 		(uuid "769f6d94-ab46-45d4-8136-731feaa3f249")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 90.0709 85.09 0)
+			(at 94.667 85.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5842,7 +5842,7 @@
 			)
 		)
 	)
-	(global_label "PA15{slash}KeyR1"
+	(global_label "PA15{slash}KeyR1 ESD"
 		(shape input)
 		(at 77.47 71.12 0)
 		(fields_autoplaced yes)
@@ -5855,7 +5855,7 @@
 		)
 		(uuid "7803fc9c-463c-4115-9435-87a088c5159a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 92.369 71.12 0)
+			(at 96.9651 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5888,7 +5888,7 @@
 			)
 		)
 	)
-	(global_label "PA1{slash}FP RX"
+	(global_label "PA1{slash}FP RX ESD"
 		(shape input)
 		(at 77.47 33.02 0)
 		(fields_autoplaced yes)
@@ -5901,7 +5901,7 @@
 		)
 		(uuid "7edb3837-2535-4588-b107-96f6375be9be")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 91.1595 33.02 0)
+			(at 95.7556 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6072,7 +6072,7 @@
 			)
 		)
 	)
-	(global_label "PA0{slash}FP TX"
+	(global_label "PA0{slash}FP TX ESD"
 		(shape input)
 		(at 77.47 29.21 0)
 		(fields_autoplaced yes)
@@ -6085,7 +6085,7 @@
 		)
 		(uuid "aa040a06-a380-40f3-8513-f39065413221")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 90.8571 29.21 0)
+			(at 95.4532 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6187,7 +6187,7 @@
 			)
 		)
 	)
-	(global_label "PC11{slash}KeyR3"
+	(global_label "PC11{slash}KeyR3 ESD"
 		(shape input)
 		(at 40.64 80.01 180)
 		(fields_autoplaced yes)
@@ -6200,7 +6200,7 @@
 		)
 		(uuid "b0e4fc13-5511-435c-9a9c-b57c25ac697a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 25.5596 80.01 0)
+			(at 20.9635 80.01 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6417,7 +6417,7 @@
 			)
 		)
 	)
-	(global_label "PB3{slash}KeyC1"
+	(global_label "PB3{slash}KeyC1 ESD"
 		(shape input)
 		(at 76.2 82.55 0)
 		(fields_autoplaced yes)
@@ -6430,7 +6430,7 @@
 		)
 		(uuid "d353a1d9-ce0b-488c-8486-bc2e1af466b6")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 90.0709 82.55 0)
+			(at 94.667 82.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6486,7 +6486,7 @@
 			)
 		)
 	)
-	(global_label "PC10{slash}KeyR2"
+	(global_label "PC10{slash}KeyR2 ESD"
 		(shape input)
 		(at 40.64 77.47 180)
 		(fields_autoplaced yes)
@@ -6499,7 +6499,7 @@
 		)
 		(uuid "e591e520-cbfa-48a7-8432-7057868506be")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 25.5596 77.47 0)
+			(at 20.9635 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6509,7 +6509,7 @@
 			)
 		)
 	)
-	(global_label "PA1{slash}FP RX"
+	(global_label "PA1{slash}FP RX ESD"
 		(shape input)
 		(at 132.08 45.72 180)
 		(fields_autoplaced yes)
@@ -6522,7 +6522,7 @@
 		)
 		(uuid "e643a9c9-d9c0-477c-b33a-713cd39b8974")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 118.3905 45.72 0)
+			(at 113.7944 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
