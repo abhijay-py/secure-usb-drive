@@ -2365,6 +2365,168 @@
 				)
 			)
 		)
+		(symbol "Diode:BZX84Cxx"
+			(pin_numbers hide)
+			(pin_names hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "BZX84Cxx"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://diotec.com/tl_files/diotec/files/pdf/datasheets/bzx84c2v4.pdf"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "300mW Zener Diode, SOT-23"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "zener diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "SOT?23*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "BZX84Cxx_0_1"
+				(polyline
+					(pts
+						(xy 1.27 0) (xy -1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 -1.27) (xy -1.27 1.27) (xy -0.762 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "BZX84Cxx_1_1"
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at 1.27 0 180)
+					(length 2.54) hide
+					(name "NC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "power:PWR_FLAG"
 			(power)
 			(pin_numbers hide)
@@ -2463,7 +2625,7 @@
 		)
 	)
 	(junction
-		(at 64.77 153.67)
+		(at 64.77 123.19)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "14f384b2-b0cc-4675-905f-e37bd1dd3da2")
@@ -2487,7 +2649,7 @@
 		(uuid "3bb91807-76fe-4a82-b0b8-c7c7d7cbba1b")
 	)
 	(junction
-		(at 27.94 175.26)
+		(at 27.94 144.78)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "3e210773-67bc-425c-b778-5cebaea7f880")
@@ -2499,7 +2661,7 @@
 		(uuid "6a84ccf2-413b-41f5-b54e-371417ae72d2")
 	)
 	(junction
-		(at 33.02 167.64)
+		(at 33.02 137.16)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "80f599d9-6f4b-4ec7-bc63-29743df939a2")
@@ -2577,7 +2739,7 @@
 		(uuid "513d49da-3e2b-4295-8a25-3373b08c2357")
 	)
 	(no_connect
-		(at 64.77 163.83)
+		(at 64.77 133.35)
 		(uuid "54c2f729-25d6-4ad6-832f-5a4759e152ea")
 	)
 	(no_connect
@@ -2609,7 +2771,7 @@
 		(uuid "7fcda4af-d15b-4760-a34f-295a8236caa2")
 	)
 	(no_connect
-		(at 41.91 153.67)
+		(at 41.91 123.19)
 		(uuid "82055991-cef2-4d33-abd4-b6260b7404f2")
 	)
 	(no_connect
@@ -2732,7 +2894,7 @@
 	)
 	(wire
 		(pts
-			(xy 77.47 148.59) (xy 68.58 148.59)
+			(xy 77.47 118.11) (xy 68.58 118.11)
 		)
 		(stroke
 			(width 0)
@@ -2772,7 +2934,7 @@
 	)
 	(wire
 		(pts
-			(xy 41.91 156.21) (xy 33.02 156.21)
+			(xy 41.91 125.73) (xy 33.02 125.73)
 		)
 		(stroke
 			(width 0)
@@ -2822,7 +2984,7 @@
 	)
 	(wire
 		(pts
-			(xy 68.58 148.59) (xy 68.58 153.67)
+			(xy 68.58 118.11) (xy 68.58 123.19)
 		)
 		(stroke
 			(width 0)
@@ -2832,7 +2994,7 @@
 	)
 	(wire
 		(pts
-			(xy 64.77 179.07) (xy 72.39 179.07)
+			(xy 64.77 148.59) (xy 72.39 148.59)
 		)
 		(stroke
 			(width 0)
@@ -2852,7 +3014,7 @@
 	)
 	(wire
 		(pts
-			(xy 25.4 175.26) (xy 27.94 175.26)
+			(xy 25.4 144.78) (xy 27.94 144.78)
 		)
 		(stroke
 			(width 0)
@@ -2902,7 +3064,7 @@
 	)
 	(wire
 		(pts
-			(xy 27.94 175.26) (xy 44.45 175.26)
+			(xy 27.94 144.78) (xy 44.45 144.78)
 		)
 		(stroke
 			(width 0)
@@ -2912,7 +3074,7 @@
 	)
 	(wire
 		(pts
-			(xy 64.77 158.75) (xy 72.39 158.75)
+			(xy 64.77 128.27) (xy 72.39 128.27)
 		)
 		(stroke
 			(width 0)
@@ -2932,7 +3094,7 @@
 	)
 	(wire
 		(pts
-			(xy 27.94 177.8) (xy 27.94 175.26)
+			(xy 27.94 147.32) (xy 27.94 144.78)
 		)
 		(stroke
 			(width 0)
@@ -2962,7 +3124,7 @@
 	)
 	(wire
 		(pts
-			(xy 33.02 156.21) (xy 33.02 167.64)
+			(xy 33.02 125.73) (xy 33.02 137.16)
 		)
 		(stroke
 			(width 0)
@@ -2972,7 +3134,7 @@
 	)
 	(wire
 		(pts
-			(xy 64.77 171.45) (xy 86.36 171.45)
+			(xy 64.77 140.97) (xy 86.36 140.97)
 		)
 		(stroke
 			(width 0)
@@ -3062,7 +3224,7 @@
 	)
 	(wire
 		(pts
-			(xy 64.77 153.67) (xy 64.77 156.21)
+			(xy 64.77 123.19) (xy 64.77 125.73)
 		)
 		(stroke
 			(width 0)
@@ -3112,7 +3274,7 @@
 	)
 	(wire
 		(pts
-			(xy 64.77 173.99) (xy 64.77 179.07)
+			(xy 64.77 143.51) (xy 64.77 148.59)
 		)
 		(stroke
 			(width 0)
@@ -3292,7 +3454,7 @@
 	)
 	(wire
 		(pts
-			(xy 25.4 167.64) (xy 33.02 167.64)
+			(xy 25.4 137.16) (xy 33.02 137.16)
 		)
 		(stroke
 			(width 0)
@@ -3472,7 +3634,7 @@
 	)
 	(wire
 		(pts
-			(xy 68.58 153.67) (xy 64.77 153.67)
+			(xy 68.58 123.19) (xy 64.77 123.19)
 		)
 		(stroke
 			(width 0)
@@ -3512,7 +3674,7 @@
 	)
 	(wire
 		(pts
-			(xy 33.02 167.64) (xy 44.45 167.64)
+			(xy 33.02 137.16) (xy 44.45 137.16)
 		)
 		(stroke
 			(width 0)
@@ -3657,8 +3819,8 @@
 		(uuid 5f19bf5e-b03a-4caf-aced-af3314448dd0)
 	)
 	(rectangle
-		(start 12.7 12.7)
-		(end 119.38 135.89)
+		(start 12.7 13.97)
+		(end 119.38 111.76)
 		(stroke
 			(width 0)
 			(type default)
@@ -3669,8 +3831,8 @@
 		(uuid 97ccd832-75e6-4222-963f-429f841119b3)
 	)
 	(rectangle
-		(start 12.7 135.89)
-		(end 91.44 196.85)
+		(start 12.7 111.76)
+		(end 91.44 165.1)
 		(stroke
 			(width 0)
 			(type default)
@@ -3694,7 +3856,7 @@
 	)
 	(text "LCD Connector"
 		(exclude_from_sim no)
-		(at 57.912 190.246 0)
+		(at 57.912 159.766 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3792,6 +3954,29 @@
 		)
 		(uuid "fa504290-7a5d-4863-a412-f5b8bbaf929c")
 	)
+	(global_label "KeyR1"
+		(shape input)
+		(at 29.21 179.07 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 0 0 0 1)
+			)
+			(justify left)
+		)
+		(uuid "062a8bfa-f9c8-4bf9-b84a-3380f4f1d22f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 38.0009 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "PA5{slash}SCK"
 		(shape input)
 		(at 182.88 140.97 0)
@@ -3811,6 +3996,98 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "PB4{slash}KeyC2 ESD"
+		(shape input)
+		(at 130.81 179.07 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 0 0 0 1)
+			)
+			(justify right)
+		)
+		(uuid "0c26a2fb-b95c-408a-b0d2-46c206061ef5")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 130.81 197.537 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "KeyR3"
+		(shape input)
+		(at 76.2 179.07 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 0 0 0 1)
+			)
+			(justify left)
+		)
+		(uuid "0dd8354f-c2eb-481b-ad20-08efd24db98a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 84.9909 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "KeyR2"
+		(shape input)
+		(at 50.8 179.07 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 0 0 0 1)
+			)
+			(justify left)
+		)
+		(uuid "11037e74-9b67-418b-a40b-77977aa7ad92")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 59.5909 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "PC10{slash}KeyR2 ESD"
+		(shape input)
+		(at 43.18 179.07 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 0 0 0 1)
+			)
+			(justify right)
+		)
+		(uuid "111b62c5-39f9-4582-a630-6dd5137c8b1b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 43.18 198.7465 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -3861,7 +4138,7 @@
 			)
 		)
 	)
-	(global_label "PA15{slash}KeyR1"
+	(global_label "KeyR1"
 		(shape input)
 		(at 246.38 55.88 0)
 		(fields_autoplaced yes)
@@ -3874,7 +4151,7 @@
 		)
 		(uuid "1c39e9e2-a820-4913-9170-fe95a1beceb6")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 261.279 55.88 0)
+			(at 255.1709 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3907,6 +4184,29 @@
 			)
 		)
 	)
+	(global_label "KeyR4"
+		(shape input)
+		(at 97.79 179.07 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 0 0 0 1)
+			)
+			(justify left)
+		)
+		(uuid "212a54ba-b5f2-4ae4-b82b-864e9513987a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 106.5809 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "PA6{slash}MISO"
 		(shape input)
 		(at 137.16 158.75 180)
@@ -3926,6 +4226,29 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "KeyC2"
+		(shape input)
+		(at 138.43 179.07 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 0 0 0 1)
+			)
+			(justify left)
+		)
+		(uuid "26f3dd0b-2cfe-4545-8b10-2c17f83ebca1")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 147.2209 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 				(hide yes)
 			)
 		)
@@ -3999,7 +4322,7 @@
 			)
 		)
 	)
-	(global_label "PB5{slash}KeyC3"
+	(global_label "KeyC3"
 		(shape input)
 		(at 265.43 91.44 0)
 		(fields_autoplaced yes)
@@ -4012,7 +4335,7 @@
 		)
 		(uuid "3a91cbed-0be8-4aba-9dba-d79cf1c779b8")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 279.3009 91.44 0)
+			(at 274.2209 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4045,7 +4368,7 @@
 			)
 		)
 	)
-	(global_label "PA0{slash}FP TX"
+	(global_label "FP TX"
 		(shape input)
 		(at 224.79 34.29 180)
 		(fields_autoplaced yes)
@@ -4058,7 +4381,7 @@
 		)
 		(uuid "47ab0d77-09c0-49c6-b274-b9ad5c5ec257")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 211.4029 34.29 0)
+			(at 216.3015 34.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4139,7 +4462,7 @@
 	)
 	(global_label "PB15{slash}LCD MOSI"
 		(shape input)
-		(at 64.77 168.91 0)
+		(at 64.77 138.43 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4150,7 +4473,7 @@
 		)
 		(uuid "57b80676-d55c-470f-90f6-188373d4caf9")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 83.1766 168.91 0)
+			(at 83.1766 138.43 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4160,7 +4483,7 @@
 			)
 		)
 	)
-	(global_label "PC11{slash}KeyR3"
+	(global_label "KeyR3"
 		(shape input)
 		(at 264.16 69.85 0)
 		(fields_autoplaced yes)
@@ -4173,7 +4496,7 @@
 		)
 		(uuid "5d1b5baa-4b9c-4dc5-8288-d4169829fe27")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 279.2404 69.85 0)
+			(at 272.9509 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4183,7 +4506,7 @@
 			)
 		)
 	)
-	(global_label "PA1{slash}FP RX"
+	(global_label "FP RX"
 		(shape input)
 		(at 224.79 31.75 180)
 		(fields_autoplaced yes)
@@ -4196,7 +4519,7 @@
 		)
 		(uuid "64e11310-3a7a-4c0e-918d-0f0262dfd503")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 211.1005 31.75 0)
+			(at 215.9991 31.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4231,7 +4554,7 @@
 	)
 	(global_label "PB12{slash}LCD NSS"
 		(shape input)
-		(at 64.77 161.29 0)
+		(at 64.77 130.81 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4242,7 +4565,7 @@
 		)
 		(uuid "68a29807-3cd9-407e-a0ed-95b05dbba541")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 82.3299 161.29 0)
+			(at 82.3299 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4275,6 +4598,29 @@
 			)
 		)
 	)
+	(global_label "PC11{slash}KeyR3 ESD"
+		(shape input)
+		(at 68.58 179.07 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 0 0 0 1)
+			)
+			(justify right)
+		)
+		(uuid "6ce86319-edcb-4207-8c37-8a240525d085")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 68.58 198.7465 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "PH1{slash}CS4"
 		(shape input)
 		(at 218.44 156.21 180)
@@ -4289,6 +4635,29 @@
 		(uuid "7267cc00-6e30-4b49-90ce-d53409714e63")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 206.6253 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "PB5{slash}KeyC3 ESD"
+		(shape input)
+		(at 152.4 179.07 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 0 0 0 1)
+			)
+			(justify right)
+		)
+		(uuid "78d38f53-618a-481f-bea2-f72b6fa593ef")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 152.4 197.537 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4344,7 +4713,7 @@
 			)
 		)
 	)
-	(global_label "PC12{slash}KeyR4"
+	(global_label "KeyR4"
 		(shape input)
 		(at 269.24 73.66 0)
 		(fields_autoplaced yes)
@@ -4357,7 +4726,7 @@
 		)
 		(uuid "7d523ae5-3953-4dcc-830c-bc786bdea860")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 284.3204 73.66 0)
+			(at 278.0309 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4413,7 +4782,7 @@
 			)
 		)
 	)
-	(global_label "PB4{slash}KeyC2"
+	(global_label "KeyC2"
 		(shape input)
 		(at 266.7 82.55 0)
 		(fields_autoplaced yes)
@@ -4426,7 +4795,7 @@
 		)
 		(uuid "906111a1-3fcd-4cd6-97f6-fe7fcb10e453")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 280.5709 82.55 0)
+			(at 275.4909 82.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4436,7 +4805,7 @@
 			)
 		)
 	)
-	(global_label "PB3{slash}KeyC1"
+	(global_label "KeyC1"
 		(shape input)
 		(at 267.97 78.74 0)
 		(fields_autoplaced yes)
@@ -4449,7 +4818,7 @@
 		)
 		(uuid "9a709281-31ca-493d-b1fe-1ea3d4d7950b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 281.8409 78.74 0)
+			(at 276.7609 78.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4473,6 +4842,29 @@
 		(uuid "9b04b0a0-21dc-4d0f-852b-0c8b6688c1a7")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 122.9262 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "PC12{slash}KeyR4 ESD"
+		(shape input)
+		(at 90.17 179.07 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 0 0 0 1)
+			)
+			(justify right)
+		)
+		(uuid "a65249dd-c0ae-4f57-9ee0-f9fafb4e1c1f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 90.17 198.7465 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4574,7 +4966,76 @@
 			)
 		)
 	)
-	(global_label "PC10{slash}KeyR2"
+	(global_label "KeyC3"
+		(shape input)
+		(at 160.02 179.07 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 0 0 0 1)
+			)
+			(justify left)
+		)
+		(uuid "b70af7aa-1a3f-4b5b-a9b6-ac4e500da0e9")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 168.8109 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "FP TX"
+		(shape input)
+		(at 104.14 149.86 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 0 0 0 1)
+			)
+			(justify left)
+		)
+		(uuid "b884e2fc-1f26-4594-a7e9-7858c2366d93")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 112.6285 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "PA1{slash}FP RX ESD"
+		(shape input)
+		(at 93.98 120.65 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 0 0 0 1)
+			)
+			(justify right)
+		)
+		(uuid "b98d40e0-6fa2-4e5b-b9a7-11d771ec7fd3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 93.98 138.9356 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "KeyR2"
 		(shape input)
 		(at 257.81 60.96 0)
 		(fields_autoplaced yes)
@@ -4587,7 +5048,7 @@
 		)
 		(uuid "bdb92a5d-973b-41ca-95af-ae9322fc75b8")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 272.8904 60.96 0)
+			(at 266.6009 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4597,9 +5058,55 @@
 			)
 		)
 	)
+	(global_label "FP RX"
+		(shape input)
+		(at 101.6 120.65 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 0 0 0 1)
+			)
+			(justify left)
+		)
+		(uuid "be77394f-61f5-4e50-b481-e5664051529e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 110.3909 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "PB3{slash}KeyC1 ESD"
+		(shape input)
+		(at 111.76 179.07 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 0 0 0 1)
+			)
+			(justify right)
+		)
+		(uuid "c29a8a91-974c-4693-b166-55e338e61ee9")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 111.76 197.537 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "PB13{slash}LCD SCK"
 		(shape input)
-		(at 64.77 166.37 0)
+		(at 64.77 135.89 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4610,7 +5117,7 @@
 		)
 		(uuid "ce3e7a34-ee50-42e7-bf26-60eb74180e8e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 82.3299 166.37 0)
+			(at 82.3299 135.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4634,6 +5141,52 @@
 		(uuid "e0ae977e-1135-4581-a3b6-0b396c6597b7")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 131.3324 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "KeyC1"
+		(shape input)
+		(at 119.38 179.07 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 0 0 0 1)
+			)
+			(justify left)
+		)
+		(uuid "e29e8db2-b199-4167-a03b-ceb75362b8c5")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 128.1709 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "PA0{slash}FP TX ESD"
+		(shape input)
+		(at 96.52 149.86 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 0 0 0 1)
+			)
+			(justify right)
+		)
+		(uuid "e3dfe2f6-968e-4b1f-b7de-5f20f3edd163")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 96.52 167.8432 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4703,6 +5256,29 @@
 		(uuid "edf8aa0d-55a2-491f-be2d-646c75a9b5a2")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 205.96 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "PA15{slash}KeyR1 ESD"
+		(shape input)
+		(at 21.59 179.07 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 0 0 0 1)
+			)
+			(justify right)
+		)
+		(uuid "f11b4157-25de-43c4-881d-d18545825cc2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 21.59 198.5651 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4849,7 +5425,7 @@
 	)
 	(symbol
 		(lib_id "CustomSymbols:+5V")
-		(at 72.39 179.07 0)
+		(at 72.39 148.59 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4858,7 +5434,7 @@
 		(fields_autoplaced yes)
 		(uuid "08aa8676-8d39-474f-9c33-7fcdc68b5f23")
 		(property "Reference" "#PWR019"
-			(at 72.39 182.88 0)
+			(at 72.39 152.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4867,7 +5443,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 72.39 173.99 0)
+			(at 72.39 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4875,7 +5451,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 72.39 179.07 0)
+			(at 72.39 148.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4884,7 +5460,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 72.39 179.07 0)
+			(at 72.39 148.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4893,7 +5469,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 72.39 179.07 0)
+			(at 72.39 148.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4914,8 +5490,81 @@
 		)
 	)
 	(symbol
+		(lib_id "Diode:BZX84Cxx")
+		(at 160.02 182.88 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "09d6a3c7-4a72-4f93-8145-8e621316c8b6")
+		(property "Reference" "D7"
+			(at 162.56 181.6099 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "BZX84Cxx"
+			(at 162.56 184.1499 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 160.02 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://diotec.com/tl_files/diotec/files/pdf/datasheets/bzx84c2v4.pdf"
+			(at 160.02 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "300mW Zener Diode, SOT-23"
+			(at 160.02 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "2768e82f-fe8c-49cb-b102-5ef91223c9fa")
+		)
+		(pin "1"
+			(uuid "2f93a809-81bf-4065-b64a-f471b360ee3c")
+		)
+		(pin "2"
+			(uuid "08793e8c-898c-4536-90cf-a1671255e565")
+		)
+		(instances
+			(project "477"
+				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
+					(reference "D7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "CustomSymbols:GND")
-		(at 86.36 171.45 0)
+		(at 86.36 140.97 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4924,7 +5573,7 @@
 		(fields_autoplaced yes)
 		(uuid "0ca4b7e6-7a89-4a99-be71-b6ac2cfbd80d")
 		(property "Reference" "#PWR017"
-			(at 86.36 177.8 0)
+			(at 86.36 147.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4933,7 +5582,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 86.36 176.53 0)
+			(at 86.36 146.05 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4941,7 +5590,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 86.36 171.45 0)
+			(at 86.36 140.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4950,7 +5599,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 86.36 171.45 0)
+			(at 86.36 140.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4959,7 +5608,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 86.36 171.45 0)
+			(at 86.36 140.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4974,6 +5623,79 @@
 			(project "477"
 				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
 					(reference "#PWR017")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:BZX84Cxx")
+		(at 97.79 182.88 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "0d007efe-db8d-4daf-99f3-42015f31486e")
+		(property "Reference" "D12"
+			(at 100.33 181.6099 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "BZX84Cxx"
+			(at 100.33 184.1499 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 97.79 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://diotec.com/tl_files/diotec/files/pdf/datasheets/bzx84c2v4.pdf"
+			(at 97.79 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "300mW Zener Diode, SOT-23"
+			(at 97.79 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "dafc90ce-115a-40ef-a05a-c13a74295fd6")
+		)
+		(pin "1"
+			(uuid "3ca76eab-eef8-4d20-940f-9bd4b85e9eb3")
+		)
+		(pin "2"
+			(uuid "4130ad65-ffec-4832-9957-80d541fdb667")
+		)
+		(instances
+			(project "477"
+				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
+					(reference "D12")
 					(unit 1)
 				)
 			)
@@ -5646,7 +6368,7 @@
 	)
 	(symbol
 		(lib_id "CustomSymbols:+5V")
-		(at 72.39 158.75 0)
+		(at 72.39 128.27 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5655,7 +6377,7 @@
 		(fields_autoplaced yes)
 		(uuid "18c60ba2-3e3f-4ecf-b5f8-923cdca0c309")
 		(property "Reference" "#PWR018"
-			(at 72.39 162.56 0)
+			(at 72.39 132.08 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5664,7 +6386,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 72.39 153.67 0)
+			(at 72.39 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5672,7 +6394,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 72.39 158.75 0)
+			(at 72.39 128.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5681,7 +6403,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 72.39 158.75 0)
+			(at 72.39 128.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5690,7 +6412,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 72.39 158.75 0)
+			(at 72.39 128.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5778,6 +6500,273 @@
 	)
 	(symbol
 		(lib_id "CustomSymbols:R_US")
+		(at 25.4 179.07 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1be5bcab-256a-47bb-a078-5db546552a38")
+		(property "Reference" "R23"
+			(at 22.098 173.736 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "220"
+			(at 23.114 176.022 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 25.146 180.086 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 25.4 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, US symbol"
+			(at 25.4 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3b2f3e8b-236f-4e5a-805f-c826732f3b85")
+		)
+		(pin "2"
+			(uuid "180a0206-6777-4113-98ab-5d12f0bda090")
+		)
+		(instances
+			(project "477"
+				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
+					(reference "R23")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CustomSymbols:GND")
+		(at 138.43 186.69 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "201f5ed9-7113-41a5-8005-e07fd0d77087")
+		(property "Reference" "#PWR69"
+			(at 138.43 193.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 138.43 191.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 138.43 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 138.43 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 138.43 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a12f4d06-2b06-4125-aaeb-55e1ad46362c")
+		)
+		(instances
+			(project "477"
+				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
+					(reference "#PWR69")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CustomSymbols:R_US")
+		(at 97.79 120.65 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "216b585a-4c25-4588-8dc3-8301ad43b8b0")
+		(property "Reference" "R25"
+			(at 94.488 115.316 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "220"
+			(at 95.504 117.602 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 97.536 121.666 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 97.79 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, US symbol"
+			(at 97.79 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f9d14611-09e1-41a5-9607-ba769aefdad0")
+		)
+		(pin "2"
+			(uuid "7cb171e4-60fd-40ef-b77f-c17cc861571a")
+		)
+		(instances
+			(project "477"
+				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
+					(reference "R25")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CustomSymbols:R_US")
+		(at 156.21 179.07 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "28e539ce-5cbf-4f69-a9a9-46246ca92cdc")
+		(property "Reference" "R27"
+			(at 152.908 173.736 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "220"
+			(at 153.924 176.022 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 155.956 180.086 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 156.21 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, US symbol"
+			(at 156.21 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "165d0165-b486-4209-9659-9b37cfbdef12")
+		)
+		(pin "2"
+			(uuid "121f48b3-81a8-46fd-a640-45920e6b6b08")
+		)
+		(instances
+			(project "477"
+				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
+					(reference "R27")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CustomSymbols:R_US")
 		(at 144.78 40.64 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -5847,7 +6836,7 @@
 	)
 	(symbol
 		(lib_id "CustomSymbols:GND")
-		(at 77.47 148.59 0)
+		(at 77.47 118.11 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5856,7 +6845,7 @@
 		(fields_autoplaced yes)
 		(uuid "2d3fb1d3-44c0-43b9-a64c-ddfcd331ff97")
 		(property "Reference" "#PWR016"
-			(at 77.47 154.94 0)
+			(at 77.47 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5865,7 +6854,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 77.47 153.67 0)
+			(at 77.47 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5873,7 +6862,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 77.47 148.59 0)
+			(at 77.47 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5882,7 +6871,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 77.47 148.59 0)
+			(at 77.47 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5891,7 +6880,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 77.47 148.59 0)
+			(at 77.47 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6113,6 +7102,145 @@
 		)
 	)
 	(symbol
+		(lib_id "Diode:BZX84Cxx")
+		(at 50.8 182.88 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "44c0c4dc-5716-44a6-8959-414a60b215e1")
+		(property "Reference" "D10"
+			(at 53.34 181.6099 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "BZX84Cxx"
+			(at 53.34 184.1499 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 50.8 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://diotec.com/tl_files/diotec/files/pdf/datasheets/bzx84c2v4.pdf"
+			(at 50.8 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "300mW Zener Diode, SOT-23"
+			(at 50.8 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "74db838c-831d-41de-b6d0-69dd50ef450e")
+		)
+		(pin "1"
+			(uuid "21bac42b-5de2-47b8-beb5-deb0eb9a597f")
+		)
+		(pin "2"
+			(uuid "6d614e88-8cdd-4a95-abe1-9992ef7e908e")
+		)
+		(instances
+			(project "477"
+				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
+					(reference "D10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CustomSymbols:GND")
+		(at 29.21 186.69 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4883545a-82fc-4e3b-a14c-9af9e6a36159")
+		(property "Reference" "#PWR67"
+			(at 29.21 193.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 29.21 191.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 29.21 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 29.21 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 29.21 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "73e88306-3cbe-4543-b7de-6930f4e6b197")
+		)
+		(instances
+			(project "477"
+				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
+					(reference "#PWR67")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "CustomSymbols:R_US")
 		(at 215.9 86.36 0)
 		(unit 1)
@@ -6176,6 +7304,79 @@
 			(project "477"
 				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
 					(reference "R17")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:BZX84Cxx")
+		(at 138.43 182.88 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "54213bd5-6d43-4d2c-9077-9cb6fbbe4812")
+		(property "Reference" "D13"
+			(at 140.97 181.6099 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "BZX84Cxx"
+			(at 140.97 184.1499 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 138.43 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://diotec.com/tl_files/diotec/files/pdf/datasheets/bzx84c2v4.pdf"
+			(at 138.43 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "300mW Zener Diode, SOT-23"
+			(at 138.43 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "ac6f07e0-37de-4b73-8df5-ccbab63947b2")
+		)
+		(pin "1"
+			(uuid "392543fa-8ab0-41f8-90d5-bea9fedea2db")
+		)
+		(pin "2"
+			(uuid "cdf26a02-4e65-4607-9d3e-415bd38251f6")
+		)
+		(instances
+			(project "477"
+				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
+					(reference "D13")
 					(unit 1)
 				)
 			)
@@ -6248,34 +7449,32 @@
 		)
 	)
 	(symbol
-		(lib_id "CustomSymbols:C")
-		(at 25.4 171.45 0)
+		(lib_id "CustomSymbols:R_US")
+		(at 115.57 179.07 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "588774d6-1849-49c4-b17b-c0b09c8ba979")
-		(property "Reference" "C20"
-			(at 19.558 169.418 0)
+		(uuid "557da1a3-3150-49c5-a20d-3479ccb11a01")
+		(property "Reference" "R19"
+			(at 112.268 173.736 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
-		(property "Value" "2.2n"
-			(at 18.034 172.466 0)
+		(property "Value" "220"
+			(at 113.284 176.022 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
-			(at 26.3652 175.26 0)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 115.316 180.086 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6284,7 +7483,76 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 25.4 171.45 0)
+			(at 115.57 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, US symbol"
+			(at 115.57 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "67d391a7-9af9-495a-98f2-36988c0d1183")
+		)
+		(pin "2"
+			(uuid "7855dde4-3c2c-4f5e-add3-edc0036650c3")
+		)
+		(instances
+			(project "477"
+				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
+					(reference "R19")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CustomSymbols:C")
+		(at 25.4 140.97 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "588774d6-1849-49c4-b17b-c0b09c8ba979")
+		(property "Reference" "C20"
+			(at 19.558 138.938 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "2.2n"
+			(at 18.034 141.986 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
+			(at 26.3652 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 25.4 140.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6293,7 +7561,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 25.4 171.45 0)
+			(at 25.4 140.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6311,6 +7579,72 @@
 			(project "477"
 				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
 					(reference "C20")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CustomSymbols:GND")
+		(at 119.38 186.69 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5ada3f0b-6930-4845-899d-8b19aba021cd")
+		(property "Reference" "#PWR64"
+			(at 119.38 193.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 119.38 191.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 119.38 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 119.38 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 119.38 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4fbef727-e277-49a1-b5bd-c26d94d5ed0a")
+		)
+		(instances
+			(project "477"
+				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
+					(reference "#PWR64")
 					(unit 1)
 				)
 			)
@@ -6449,6 +7783,73 @@
 			(project "477"
 				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
 					(reference "J1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CustomSymbols:R_US")
+		(at 46.99 179.07 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5f23cd57-9e3d-4d35-ab9d-c858a2286c5d")
+		(property "Reference" "R22"
+			(at 43.688 173.736 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "220"
+			(at 44.704 176.022 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 46.736 180.086 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 46.99 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, US symbol"
+			(at 46.99 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "36f20f08-906c-4c71-8958-d563a13ac4fc")
+		)
+		(pin "2"
+			(uuid "ca507278-4549-43c2-aaf8-a1e4747a7762")
+		)
+		(instances
+			(project "477"
+				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
+					(reference "R22")
 					(unit 1)
 				)
 			)
@@ -6608,7 +8009,7 @@
 	)
 	(symbol
 		(lib_id "CustomSymbols:R_US")
-		(at 44.45 171.45 0)
+		(at 44.45 140.97 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6616,7 +8017,7 @@
 		(dnp no)
 		(uuid "6519c138-c71d-4ff8-89e3-8b8f56abf6ca")
 		(property "Reference" "R11"
-			(at 37.592 169.926 0)
+			(at 37.592 139.446 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6625,7 +8026,7 @@
 			)
 		)
 		(property "Value" "1M"
-			(at 37.592 172.466 0)
+			(at 37.592 141.986 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6634,7 +8035,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
-			(at 45.466 171.704 90)
+			(at 45.466 141.224 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6643,7 +8044,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 44.45 171.45 0)
+			(at 44.45 140.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6652,7 +8053,7 @@
 			)
 		)
 		(property "Description" "Resistor, US symbol"
-			(at 44.45 171.45 0)
+			(at 44.45 140.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6808,8 +8209,74 @@
 		)
 	)
 	(symbol
+		(lib_id "CustomSymbols:GND")
+		(at 76.2 186.69 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "671fd5ee-85f9-4e83-9b29-6c1f79918917")
+		(property "Reference" "#PWR65"
+			(at 76.2 193.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 76.2 191.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 76.2 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 76.2 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 76.2 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "becf1775-dcf6-4f8a-922f-a368d400793e")
+		)
+		(instances
+			(project "477"
+				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
+					(reference "#PWR65")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "CustomSymbols:BM09B-SRSS-TB_LF__SN_")
-		(at 41.91 153.67 0)
+		(at 41.91 123.19 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6818,7 +8285,7 @@
 		(fields_autoplaced yes)
 		(uuid "69010c77-8309-4972-878a-97ea104ec2b4")
 		(property "Reference" "J6"
-			(at 53.34 146.05 0)
+			(at 53.34 115.57 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6826,7 +8293,7 @@
 			)
 		)
 		(property "Value" "BM09B-SRSS-TB_LF__SN_"
-			(at 53.34 148.59 0)
+			(at 53.34 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6834,7 +8301,7 @@
 			)
 		)
 		(property "Footprint" "BM09BSRSSTBLFSN"
-			(at 60.96 248.59 0)
+			(at 60.96 218.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6844,7 +8311,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.jst-mfg.com/product/pdf/eng/eSR.pdf"
-			(at 60.96 348.59 0)
+			(at 60.96 318.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6854,7 +8321,7 @@
 			)
 		)
 		(property "Description" "JST (JAPAN SOLDERLESS TERMINALS) - BM09B-SRSS-TB(LF)(SN) - Pin Header, Top Entry, Wire-to-Board, 1 mm, 1 Rows, 9 Contacts, Surface Mount, SR Series"
-			(at 41.91 153.67 0)
+			(at 41.91 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6863,7 +8330,7 @@
 			)
 		)
 		(property "Height" "4.25"
-			(at 60.96 548.59 0)
+			(at 60.96 518.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6873,7 +8340,7 @@
 			)
 		)
 		(property "Mouser Part Number" "N/A"
-			(at 60.96 648.59 0)
+			(at 60.96 618.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6883,7 +8350,7 @@
 			)
 		)
 		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/JST-Commercial/BM09B-SRSS-TBLFSN?qs=QpmGXVUTftErDJaPkYqH%252Bw%3D%3D"
-			(at 60.96 748.59 0)
+			(at 60.96 718.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6893,7 +8360,7 @@
 			)
 		)
 		(property "Manufacturer_Name" "JST (JAPAN SOLDERLESS TERMINALS)"
-			(at 60.96 848.59 0)
+			(at 60.96 818.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6903,7 +8370,7 @@
 			)
 		)
 		(property "Manufacturer_Part_Number" "BM09B-SRSS-TB(LF)(SN)"
-			(at 60.96 948.59 0)
+			(at 60.96 918.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7016,6 +8483,79 @@
 			(project "477"
 				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
 					(reference "R8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:BZX84Cxx")
+		(at 104.14 153.67 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6fdf4ea5-766d-4b41-a55e-0ba60940c68f")
+		(property "Reference" "D6"
+			(at 106.68 152.3999 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "BZX84Cxx"
+			(at 106.68 154.9399 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 104.14 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://diotec.com/tl_files/diotec/files/pdf/datasheets/bzx84c2v4.pdf"
+			(at 104.14 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "300mW Zener Diode, SOT-23"
+			(at 104.14 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "3d7018eb-d659-49bf-b0a3-95db0f6b1b9b")
+		)
+		(pin "1"
+			(uuid "3f4dca7a-3235-4f82-9c86-66ecc79e17c1")
+		)
+		(pin "2"
+			(uuid "98224882-3a37-49d7-92ee-9db750eb2b24")
+		)
+		(instances
+			(project "477"
+				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
+					(reference "D6")
 					(unit 1)
 				)
 			)
@@ -7151,6 +8691,73 @@
 			(project ""
 				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
 					(reference "#PWR06")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CustomSymbols:R_US")
+		(at 72.39 179.07 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "78dc0849-757a-4bb9-bba0-83c7fb2e8ce7")
+		(property "Reference" "R21"
+			(at 69.088 173.736 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "220"
+			(at 70.104 176.022 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 72.136 180.086 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 72.39 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, US symbol"
+			(at 72.39 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6a1fd6a2-2cc2-4de3-8686-9c3def606e66")
+		)
+		(pin "2"
+			(uuid "4341b8ee-d88a-40c7-9fd7-142b2800a5ce")
+		)
+		(instances
+			(project "477"
+				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
+					(reference "R21")
 					(unit 1)
 				)
 			)
@@ -7518,6 +9125,72 @@
 	)
 	(symbol
 		(lib_id "CustomSymbols:GND")
+		(at 101.6 128.27 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "86fa9b78-3797-42a1-ac16-fa7c1057693e")
+		(property "Reference" "#PWR61"
+			(at 101.6 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 101.6 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 101.6 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 101.6 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 101.6 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8a0b4f2a-acd0-4ae2-9010-5dde770315d8")
+		)
+		(instances
+			(project ""
+				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
+					(reference "#PWR61")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CustomSymbols:GND")
 		(at 132.08 44.45 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7584,6 +9257,139 @@
 	)
 	(symbol
 		(lib_id "CustomSymbols:GND")
+		(at 97.79 186.69 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "88b6f633-5390-4604-ad46-46f9aa9c7fef")
+		(property "Reference" "#PWR68"
+			(at 97.79 193.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 97.79 191.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 97.79 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 97.79 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 97.79 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9a748849-683e-4751-9b6b-07232a6a30a1")
+		)
+		(instances
+			(project "477"
+				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
+					(reference "#PWR68")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CustomSymbols:R_US")
+		(at 134.62 179.07 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8c0c880f-c926-434a-bf90-0a35d3f52aae")
+		(property "Reference" "R18"
+			(at 131.318 173.736 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "220"
+			(at 132.334 176.022 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 134.366 180.086 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 134.62 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, US symbol"
+			(at 134.62 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "27fbcbff-2fb9-4331-a761-0825b69df149")
+		)
+		(pin "2"
+			(uuid "de77e2ee-a7b4-4f06-933b-6d47a181fd05")
+		)
+		(instances
+			(project "477"
+				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
+					(reference "R18")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CustomSymbols:GND")
 		(at 269.24 124.46 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7643,6 +9449,72 @@
 			(project "477"
 				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
 					(reference "#PWR025")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CustomSymbols:GND")
+		(at 104.14 157.48 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "91d07726-ec31-455f-a5f9-836507e685f6")
+		(property "Reference" "#PWR62"
+			(at 104.14 163.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 104.14 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 104.14 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 104.14 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 104.14 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c88c16b3-3392-4c21-b457-c6354e12a336")
+		)
+		(instances
+			(project "477"
+				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
+					(reference "#PWR62")
 					(unit 1)
 				)
 			)
@@ -7778,6 +9650,145 @@
 			(project "477"
 				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
 					(reference "R4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CustomSymbols:GND")
+		(at 160.02 186.69 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9ed7cd29-2e1d-4217-bc63-4f570b6c3eab")
+		(property "Reference" "#PWR63"
+			(at 160.02 193.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 160.02 191.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 160.02 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 160.02 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 160.02 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7bcbcb1a-31e1-4582-9692-0d738ae4d659")
+		)
+		(instances
+			(project "477"
+				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
+					(reference "#PWR63")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:BZX84Cxx")
+		(at 101.6 124.46 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a4b63b67-fa3d-4fb9-b272-cd3d53f50e9f")
+		(property "Reference" "D5"
+			(at 104.14 123.1899 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "BZX84Cxx"
+			(at 104.14 125.7299 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 101.6 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://diotec.com/tl_files/diotec/files/pdf/datasheets/bzx84c2v4.pdf"
+			(at 101.6 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "300mW Zener Diode, SOT-23"
+			(at 101.6 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "de99530a-c84b-4118-a16c-b3bea5d18047")
+		)
+		(pin "1"
+			(uuid "1f3b3083-8116-46ce-8c77-28783ee56873")
+		)
+		(pin "2"
+			(uuid "ebea82b8-cdae-4ca7-be23-41a61e8faa93")
+		)
+		(instances
+			(project ""
+				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
+					(reference "D5")
 					(unit 1)
 				)
 			)
@@ -7920,8 +9931,75 @@
 		)
 	)
 	(symbol
+		(lib_id "CustomSymbols:R_US")
+		(at 100.33 149.86 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b57fc5e3-ebd5-49ca-89c1-6d1664429449")
+		(property "Reference" "R24"
+			(at 97.028 144.526 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "220"
+			(at 98.044 146.812 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 100.076 150.876 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 100.33 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, US symbol"
+			(at 100.33 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "84cba887-123c-4891-babc-64d5f0e8fdd0")
+		)
+		(pin "2"
+			(uuid "857685da-eed3-491b-9c20-34181bfdb7eb")
+		)
+		(instances
+			(project "477"
+				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
+					(reference "R24")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "CustomSymbols:GND")
-		(at 27.94 177.8 0)
+		(at 27.94 147.32 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7930,7 +10008,7 @@
 		(fields_autoplaced yes)
 		(uuid "ba245f3d-1b52-478e-ae75-d80c49f9019f")
 		(property "Reference" "#PWR056"
-			(at 27.94 184.15 0)
+			(at 27.94 153.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7939,7 +10017,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 27.94 182.88 0)
+			(at 27.94 152.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7947,7 +10025,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 27.94 177.8 0)
+			(at 27.94 147.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7956,7 +10034,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 27.94 177.8 0)
+			(at 27.94 147.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7965,7 +10043,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 27.94 177.8 0)
+			(at 27.94 147.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8046,6 +10124,219 @@
 			(project ""
 				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
 					(reference "#PWR051")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:BZX84Cxx")
+		(at 119.38 182.88 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c5e7a383-82be-4155-9f97-d05c0cd45705")
+		(property "Reference" "D8"
+			(at 121.92 181.6099 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "BZX84Cxx"
+			(at 121.92 184.1499 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 119.38 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://diotec.com/tl_files/diotec/files/pdf/datasheets/bzx84c2v4.pdf"
+			(at 119.38 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "300mW Zener Diode, SOT-23"
+			(at 119.38 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "e6874054-a8a2-4a1d-8046-b682d7aa4155")
+		)
+		(pin "1"
+			(uuid "c1eb9207-d10a-4af7-9a06-fe99462519b9")
+		)
+		(pin "2"
+			(uuid "a6077d83-ec20-4910-8977-193da22af746")
+		)
+		(instances
+			(project "477"
+				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
+					(reference "D8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CustomSymbols:R_US")
+		(at 93.98 179.07 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c62338c7-0b6d-4b0c-b018-7d9234db5021")
+		(property "Reference" "R20"
+			(at 90.678 173.736 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "220"
+			(at 91.694 176.022 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 93.726 180.086 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 93.98 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, US symbol"
+			(at 93.98 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4d0c42cf-a811-491c-8b44-9607632a6c78")
+		)
+		(pin "2"
+			(uuid "6a6f6c1a-9ed9-4527-9ebb-aebd5fd283e6")
+		)
+		(instances
+			(project "477"
+				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
+					(reference "R20")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:BZX84Cxx")
+		(at 76.2 182.88 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c944ef09-b8ea-44f8-8c70-9cd951587d8c")
+		(property "Reference" "D9"
+			(at 78.74 181.6099 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "BZX84Cxx"
+			(at 78.74 184.1499 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 76.2 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://diotec.com/tl_files/diotec/files/pdf/datasheets/bzx84c2v4.pdf"
+			(at 76.2 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "300mW Zener Diode, SOT-23"
+			(at 76.2 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "ff41851f-24e7-45dd-b589-9905d05b6549")
+		)
+		(pin "1"
+			(uuid "a620357d-f99a-49dc-8e95-85470310b2ff")
+		)
+		(pin "2"
+			(uuid "84a2fab9-c6a1-4600-92ed-4454c72abf00")
+		)
+		(instances
+			(project "477"
+				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
+					(reference "D9")
 					(unit 1)
 				)
 			)
@@ -8616,6 +10907,72 @@
 	)
 	(symbol
 		(lib_id "CustomSymbols:GND")
+		(at 50.8 186.69 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ef7ede38-a9fa-4fd3-bc63-9cdc29ef7f85")
+		(property "Reference" "#PWR66"
+			(at 50.8 193.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 50.8 191.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 50.8 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 50.8 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 50.8 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b190debe-5250-443f-b5e9-925fece06b4a")
+		)
+		(instances
+			(project "477"
+				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
+					(reference "#PWR66")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CustomSymbols:GND")
 		(at 281.94 156.21 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8675,6 +11032,79 @@
 			(project "477"
 				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
 					(reference "#PWR029")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:BZX84Cxx")
+		(at 29.21 182.88 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "fd1fadb9-6af5-4efa-a27b-d5115a754342")
+		(property "Reference" "D11"
+			(at 31.75 181.6099 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "BZX84Cxx"
+			(at 31.75 184.1499 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 29.21 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://diotec.com/tl_files/diotec/files/pdf/datasheets/bzx84c2v4.pdf"
+			(at 29.21 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "300mW Zener Diode, SOT-23"
+			(at 29.21 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "dd2fd837-5cd8-4333-8f26-193e9d4f5e9c")
+		)
+		(pin "1"
+			(uuid "e82e91fc-76f0-41f4-bd33-5d6a552cb031")
+		)
+		(pin "2"
+			(uuid "cd012d24-0faa-4d90-a98f-aa6d8e35471d")
+		)
+		(instances
+			(project "477"
+				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15"
+					(reference "D11")
 					(unit 1)
 				)
 			)
