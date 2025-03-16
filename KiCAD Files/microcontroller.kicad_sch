@@ -3863,6 +3863,12 @@
 		(uuid "ddff0abe-7bbb-4f6c-8d11-0e455a530e3c")
 	)
 	(junction
+		(at 237.49 21.59)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e57a8df7-e24a-4c8d-afd3-74b8c4926e96")
+	)
+	(junction
 		(at 232.41 91.44)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4237,6 +4243,16 @@
 			(type default)
 		)
 		(uuid "5d791a27-7afe-40fb-89fd-5f9fecb3d765")
+	)
+	(wire
+		(pts
+			(xy 226.06 21.59) (xy 229.87 21.59)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "64e31a27-d6e6-43cb-9755-afeeed5f5fa9")
 	)
 	(wire
 		(pts
@@ -4637,6 +4653,16 @@
 			(type default)
 		)
 		(uuid "d7880a9c-1f08-418a-9153-b5b284edf1e4")
+	)
+	(wire
+		(pts
+			(xy 226.06 20.32) (xy 226.06 21.59)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d87bc2a4-432e-4b9e-b976-745088274c78")
 	)
 	(wire
 		(pts
@@ -10398,6 +10424,72 @@
 		)
 	)
 	(symbol
+		(lib_id "CustomSymbols:+3.3V")
+		(at 226.06 20.32 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a1a0009a-21ac-415f-9290-a58746f23898")
+		(property "Reference" "#PWR70"
+			(at 226.06 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 226.06 15.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 226.06 20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 226.06 20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 226.06 20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "bac2de7a-2c18-4646-acef-571ed2d2ca63")
+		)
+		(instances
+			(project "477"
+				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a"
+					(reference "#PWR70")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "CustomSymbols:GND")
 		(at 35.56 154.94 0)
 		(unit 1)
@@ -11651,6 +11743,75 @@
 			(project "477"
 				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a"
 					(reference "C10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CustomSymbols:R_US")
+		(at 233.68 21.59 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c8fc8146-13f2-4a2c-80e8-56e403b8f09b")
+		(property "Reference" "R4"
+			(at 236.093 27.559 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1K"
+			(at 236.093 25.019 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 233.934 20.574 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 233.68 21.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, US symbol"
+			(at 233.68 21.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3c537ab3-ad1b-4ae5-98b3-a562a3bcbfac")
+		)
+		(pin "2"
+			(uuid "67029a2f-0c4c-416b-9466-54bb5bc0c606")
+		)
+		(instances
+			(project "477"
+				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a"
+					(reference "R4")
 					(unit 1)
 				)
 			)
