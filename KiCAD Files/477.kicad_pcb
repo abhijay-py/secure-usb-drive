@@ -39,21 +39,60 @@
 		(58 "User.9" user)
 	)
 	(setup
+		(stackup
+			(layer "F.SilkS"
+				(type "Top Silk Screen")
+			)
+			(layer "F.Paste"
+				(type "Top Solder Paste")
+			)
+			(layer "F.Mask"
+				(type "Top Solder Mask")
+				(thickness 0.01)
+			)
+			(layer "F.Cu"
+				(type "copper")
+				(thickness 0.035)
+			)
+			(layer "dielectric 1"
+				(type "core")
+				(thickness 1.51)
+				(material "FR4")
+				(epsilon_r 4.5)
+				(loss_tangent 0.02)
+			)
+			(layer "B.Cu"
+				(type "copper")
+				(thickness 0.035)
+			)
+			(layer "B.Mask"
+				(type "Bottom Solder Mask")
+				(thickness 0.01)
+			)
+			(layer "B.Paste"
+				(type "Bottom Solder Paste")
+			)
+			(layer "B.SilkS"
+				(type "Bottom Silk Screen")
+			)
+			(copper_finish "None")
+			(dielectric_constraints no)
+		)
 		(pad_to_mask_clearance 0)
 		(allow_soldermask_bridges_in_footprints no)
 		(pcbplotparams
 			(layerselection 0x00010fc_ffffffff)
 			(plot_on_all_layers_selection 0x0000000_00000000)
 			(disableapertmacros no)
-			(usegerberextensions no)
-			(usegerberattributes yes)
-			(usegerberadvancedattributes yes)
-			(creategerberjobfile yes)
+			(usegerberextensions yes)
+			(usegerberattributes no)
+			(usegerberadvancedattributes no)
+			(creategerberjobfile no)
 			(dashed_line_dash_ratio 12.000000)
 			(dashed_line_gap_ratio 3.000000)
 			(svgprecision 4)
 			(plotframeref no)
-			(viasonmask no)
+			(viasonmask yes)
 			(mode 1)
 			(useauxorigin no)
 			(hpglpennumber 1)
@@ -71,12 +110,12 @@
 			(plotfptext yes)
 			(plotinvisibletext no)
 			(sketchpadsonfab no)
-			(subtractmaskfromsilk no)
+			(subtractmaskfromsilk yes)
 			(outputformat 1)
 			(mirror no)
-			(drillshape 1)
+			(drillshape 0)
 			(scaleselection 1)
-			(outputdirectory "")
+			(outputdirectory "fab/")
 		)
 	)
 	(net 0 "")
@@ -7712,7 +7751,7 @@
 		(descr "THT pad as test Point, diameter 1.0mm, hole diameter 0.5mm")
 		(tags "test point THT pad")
 		(property "Reference" "TP14"
-			(at -0.4 -2 0)
+			(at 3 0 0)
 			(layer "F.SilkS")
 			(uuid "d314190c-d2dd-4e26-abd8-3c050be1cde3")
 			(effects
@@ -15981,7 +16020,7 @@
 		(descr "SOT23 (H=1.1mm)")
 		(tags "TVS Diode (Bi-directional)")
 		(property "Reference" "D7"
-			(at 3.55 0 360)
+			(at 3.55 0 0)
 			(layer "B.SilkS")
 			(uuid "a7a00a2c-809a-445e-837d-5f764ed293c6")
 			(effects
@@ -15993,7 +16032,7 @@
 			)
 		)
 		(property "Value" "D5V0L2B3SO-7"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "B.SilkS")
 			(hide yes)
 			(uuid "307e1c53-f6b7-4a21-98b2-a5768fca1b96")
@@ -16006,7 +16045,7 @@
 			)
 		)
 		(property "Footprint" "SOT96P240X110-3N"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "64c6dc00-d7d9-4d07-a7dc-c98bf203992c")
@@ -16019,7 +16058,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.diodes.com//assets/Datasheets/D5V0L2B3SO.pdf"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "b9f97540-01dc-4863-bb0d-01cd19234854")
@@ -16032,7 +16071,7 @@
 			)
 		)
 		(property "Description" "TVS,Diode,Array,ESD,Sup,+/-30KV,SOT23 DiodesZetex D5V0L2B3SO-7, Bi-Directional TVS Diode Array Array, 14V, 84W, 3-Pin SOT-23"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "c44a8b62-a63b-4dee-8b5a-1f1076a65a3b")
@@ -16259,7 +16298,7 @@
 			(uuid "a6ef9a1b-e954-4041-a2b3-80f4864ffe20")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 3.55 0 360)
+			(at 3.55 0 0)
 			(layer "B.Fab")
 			(uuid "3931358c-964f-441a-a0e3-ee04c80dc282")
 			(effects
@@ -17610,7 +17649,7 @@
 		(descr "SOT23 (H=1.1mm)")
 		(tags "TVS Diode (Bi-directional)")
 		(property "Reference" "D6"
-			(at 0 3 360)
+			(at 0 3 0)
 			(layer "B.SilkS")
 			(uuid "7a6b0c8f-2b72-4438-acf2-671c1e4e1f57")
 			(effects
@@ -17622,7 +17661,7 @@
 			)
 		)
 		(property "Value" "D5V0L2B3SO-7"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "B.SilkS")
 			(hide yes)
 			(uuid "2fc298f8-8e25-4320-b22c-e5833f9bf815")
@@ -17635,7 +17674,7 @@
 			)
 		)
 		(property "Footprint" "SOT96P240X110-3N"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "e350fea6-4c74-4f63-b380-b73979231640")
@@ -17648,7 +17687,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.diodes.com//assets/Datasheets/D5V0L2B3SO.pdf"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "b548dd9d-c178-4d44-9f96-cf3eb92669ef")
@@ -17661,7 +17700,7 @@
 			)
 		)
 		(property "Description" "TVS,Diode,Array,ESD,Sup,+/-30KV,SOT23 DiodesZetex D5V0L2B3SO-7, Bi-Directional TVS Diode Array Array, 14V, 84W, 3-Pin SOT-23"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "051f00c9-bfb4-48ab-b2b8-36bf89e1fb02")
@@ -17888,7 +17927,7 @@
 			(uuid "8299e28d-5395-4ad1-85f5-5d534877ab49")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 3 360)
+			(at 0 3 0)
 			(layer "B.Fab")
 			(uuid "f1f49906-98fd-4774-9ed0-7e4d4a6c5dae")
 			(effects
@@ -19990,7 +20029,7 @@
 		(descr "SOT23 (H=1.1mm)")
 		(tags "TVS Diode (Bi-directional)")
 		(property "Reference" "D5"
-			(at 0.05 3 360)
+			(at 0.05 3 0)
 			(layer "B.SilkS")
 			(uuid "f32842bb-f61a-4321-b86b-fd0598646072")
 			(effects
@@ -20002,7 +20041,7 @@
 			)
 		)
 		(property "Value" "D5V0L2B3SO-7"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "B.SilkS")
 			(hide yes)
 			(uuid "b581c683-8195-4155-9421-4aa85191f60f")
@@ -20015,7 +20054,7 @@
 			)
 		)
 		(property "Footprint" "SOT96P240X110-3N"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "769affa8-4add-433b-9b08-54bf81a3a944")
@@ -20028,7 +20067,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.diodes.com//assets/Datasheets/D5V0L2B3SO.pdf"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "0c38dd52-c34c-4bd3-930f-272865bc4c9b")
@@ -20041,7 +20080,7 @@
 			)
 		)
 		(property "Description" "TVS,Diode,Array,ESD,Sup,+/-30KV,SOT23 DiodesZetex D5V0L2B3SO-7, Bi-Directional TVS Diode Array Array, 14V, 84W, 3-Pin SOT-23"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "9c0f7d58-83e8-45e5-a2c9-ed84ca0d13b8")
@@ -20268,7 +20307,7 @@
 			(uuid "ff3698d3-6d5a-4d7e-bf97-b26ca1bc7489")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0.05 3 360)
+			(at 0.05 3 0)
 			(layer "B.Fab")
 			(uuid "9b193c91-e505-4b37-836f-30a2027bf92d")
 			(effects
@@ -20533,7 +20572,7 @@
 		(descr "SOT23 (H=1.1mm)")
 		(tags "TVS Diode (Bi-directional)")
 		(property "Reference" "D8"
-			(at -3.45 0 360)
+			(at -3.45 0 0)
 			(layer "B.SilkS")
 			(uuid "751887cd-6e4c-4546-856a-7b5f81ba31a3")
 			(effects
@@ -20545,7 +20584,7 @@
 			)
 		)
 		(property "Value" "D5V0L2B3SO-7"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "B.SilkS")
 			(hide yes)
 			(uuid "b3ebbb20-08d9-4bb9-bac7-fac3a09be82b")
@@ -20558,7 +20597,7 @@
 			)
 		)
 		(property "Footprint" "SOT96P240X110-3N"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "4a4b09dd-d650-4ef6-a7ed-b3eeeb589192")
@@ -20571,7 +20610,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.diodes.com//assets/Datasheets/D5V0L2B3SO.pdf"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "ca6f8de6-5abe-45b5-b540-ab3e1d85ed5d")
@@ -20584,7 +20623,7 @@
 			)
 		)
 		(property "Description" "TVS,Diode,Array,ESD,Sup,+/-30KV,SOT23 DiodesZetex D5V0L2B3SO-7, Bi-Directional TVS Diode Array Array, 14V, 84W, 3-Pin SOT-23"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "781a9368-985c-4748-89ea-dd9347c756b4")
@@ -20811,7 +20850,7 @@
 			(uuid "53ad8a45-d35d-4999-a3c7-7e76eae8f9de")
 		)
 		(fp_text user "${REFERENCE}"
-			(at -3.45 0 360)
+			(at -3.45 0 0)
 			(layer "B.Fab")
 			(uuid "158c3b01-a38d-4244-b0af-e646382a5135")
 			(effects
