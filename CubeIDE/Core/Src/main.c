@@ -60,6 +60,7 @@ static void MX_TIM7_Init(void);
 static void MX_SPI1_Init(void);
 static void MX_SPI2_Init(void);
 static void MX_UART5_Init(void);
+
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -77,6 +78,7 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
+  char spi_buf[4352]; //Up to 4352 bytes, so we need to maximize spi buffer
 
   /* USER CODE END 1 */
 
@@ -102,6 +104,7 @@ int main(void)
   MX_SPI1_Init();
   MX_SPI2_Init();
   MX_UART5_Init();
+
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim7); // Start timer
   /* USER CODE END 2 */
@@ -361,6 +364,13 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin : PA3 */
   GPIO_InitStruct.Pin = GPIO_PIN_3;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PA0 */
+  GPIO_InitStruct.Pin = GPIO_PIN_0;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
