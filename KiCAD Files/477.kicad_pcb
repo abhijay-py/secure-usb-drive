@@ -367,7 +367,6 @@
 				)
 			)
 		)
-		(path "/1236db3f-2876-45c1-b1e6-124b76891b9c")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -728,7 +727,6 @@
 			)
 		)
 		(property ki_fp_filters "Pin* Test*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/69d6ac2f-446e-45fe-aa23-cd47efb452a0")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr exclude_from_pos_files)
@@ -835,7 +833,6 @@
 			)
 		)
 		(property ki_fp_filters "C_*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/38c75a1f-e9a9-43ab-90c8-1657e890f038")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr smd)
@@ -1038,7 +1035,6 @@
 			)
 		)
 		(property ki_fp_filters "C_*")
-		(path "/70c921ce-d937-4839-8c5f-fbdc10e65c41")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -1241,7 +1237,6 @@
 			)
 		)
 		(property ki_fp_filters "Pin* Test*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/62679774-2376-408d-ae21-c864e5978d1c")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr exclude_from_pos_files)
@@ -1451,7 +1446,6 @@
 			)
 		)
 		(property ki_fp_filters "C_*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/0221838f-5d6c-468d-9844-71a023cf81ca")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr smd)
@@ -1654,7 +1648,6 @@
 			)
 		)
 		(property ki_fp_filters "Pin* Test*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/c57f3177-30ac-4fe1-b604-a03ea770f9b0")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr exclude_from_pos_files)
@@ -1761,7 +1754,6 @@
 			)
 		)
 		(property ki_fp_filters "LED* LED_SMD:* LED_THT:*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/3f8cb78c-5aba-47f5-b2ff-f9c8547d5663")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr smd)
@@ -2047,7 +2039,6 @@
 				)
 			)
 		)
-		(path "/5e0df163-9679-4c1b-93b3-64f6e875e8ce")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -2399,7 +2390,6 @@
 			)
 		)
 		(property ki_fp_filters "R_*")
-		(path "/ee08cd80-7965-494e-9713-4baa8cded704")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -2602,7 +2592,6 @@
 			)
 		)
 		(property ki_fp_filters "R_*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/55c3b425-a5ff-4ee5-954d-7007616baf4a")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr smd)
@@ -2908,7 +2897,6 @@
 			)
 		)
 		(property ki_fp_filters "R_*")
-		(path "/c62338c7-0b6d-4b0c-b018-7d9234db5021")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -3111,7 +3099,6 @@
 			)
 		)
 		(property ki_fp_filters "R_*")
-		(path "/28e539ce-5cbf-4f69-a9a9-46246ca92cdc")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -3314,7 +3301,6 @@
 			)
 		)
 		(property ki_fp_filters "R_*")
-		(path "/5f23cd57-9e3d-4d35-ab9d-c858a2286c5d")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -3516,7 +3502,6 @@
 			)
 		)
 		(property ki_fp_filters "R_*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/c8fc8146-13f2-4a2c-80e8-56e403b8f09b")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr smd)
@@ -3730,7 +3715,6 @@
 			)
 		)
 		(property ki_fp_filters "R_*")
-		(path "/6519c138-c71d-4ff8-89e3-8b8f56abf6ca")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -3933,7 +3917,6 @@
 			)
 		)
 		(property ki_fp_filters "Pin* Test*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/6c2f1f56-fc07-45e6-bf26-b561bd5cb653")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr exclude_from_pos_files)
@@ -4040,7 +4023,6 @@
 			)
 		)
 		(property ki_fp_filters "Pin* Test*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/4758ea95-1a6b-40c6-9893-6fc70e9b228a")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr exclude_from_pos_files)
@@ -4147,7 +4129,6 @@
 			)
 		)
 		(property ki_fp_filters "LED* LED_SMD:* LED_THT:*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/9ff62376-642c-4fc5-8dc0-4109f12694d4")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr smd)
@@ -4372,7 +4353,6 @@
 			)
 		)
 		(property ki_fp_filters "C_*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/af085c5a-ffc3-4260-8afd-49176ebde670")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr smd)
@@ -4636,7 +4616,6 @@
 				)
 			)
 		)
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/25cb13b5-07ed-4d11-b8dd-34c68e9f72f9")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr smd)
@@ -4931,7 +4910,6 @@
 			)
 		)
 		(property ki_fp_filters "R_*")
-		(path "/2ab82809-bd14-4e45-9ec8-dc507b724bfd")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -5134,7 +5112,6 @@
 			)
 		)
 		(property ki_fp_filters "C_*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/26d53d72-f6b0-4ec7-bd3a-8dfcf3fedbab")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr smd)
@@ -5337,7 +5314,6 @@
 			)
 		)
 		(property ki_fp_filters "LED* LED_SMD:* LED_THT:*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/f19823c9-0fc8-46d6-b283-76206de072ca")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr smd)
@@ -5562,7 +5538,6 @@
 			)
 		)
 		(property ki_fp_filters "Pin* Test*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/7636684b-9aa9-4229-9440-23f1ae3f7b85")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr exclude_from_pos_files)
@@ -5669,7 +5644,6 @@
 			)
 		)
 		(property ki_fp_filters "Pin* Test*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/d18d2edb-2456-4d7b-a4db-389dba13568c")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr exclude_from_pos_files)
@@ -5776,7 +5750,6 @@
 			)
 		)
 		(property ki_fp_filters "R_*")
-		(path "/557da1a3-3150-49c5-a20d-3479ccb11a01")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -6082,7 +6055,6 @@
 			)
 		)
 		(property ki_fp_filters "R_*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/fb98e4ae-bddc-4b53-b239-40b7cd4bee41")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr smd)
@@ -6285,7 +6257,6 @@
 			)
 		)
 		(property ki_fp_filters "Pin* Test*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/e1c9295c-9806-473d-9be8-9991970daccc")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr exclude_from_pos_files)
@@ -6389,7 +6360,6 @@
 			)
 		)
 		(property ki_fp_filters "LQFP*10x10mm*P0.5mm*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/aa38a858-f4b0-4921-8927-0dc9ef19a66a")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr smd)
@@ -7496,7 +7466,6 @@
 			)
 		)
 		(property ki_fp_filters "R_*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/dc77adc3-787d-48bc-b0cd-04d3e93a11dd")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr smd)
@@ -7813,7 +7782,6 @@
 			)
 		)
 		(property ki_fp_filters "Pin* Test*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/b6aefb47-92fa-4fae-82ce-019b16cbd893")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr exclude_from_pos_files)
@@ -7981,7 +7949,6 @@
 				)
 			)
 		)
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/3b659fb9-97cc-4d39-b1cc-d7db81d03e97")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr through_hole)
@@ -8275,7 +8242,6 @@
 			)
 		)
 		(property ki_fp_filters "R_*")
-		(path "/1be5bcab-256a-47bb-a078-5db546552a38")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -8478,7 +8444,6 @@
 			)
 		)
 		(property ki_fp_filters "C_*")
-		(path "/588774d6-1849-49c4-b17b-c0b09c8ba979")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -8742,7 +8707,6 @@
 				)
 			)
 		)
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/f3566fa9-0902-4b12-9e52-eee078156b04")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr smd)
@@ -8937,7 +8901,6 @@
 			)
 		)
 		(property ki_fp_filters "C_*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/fa98346c-1f66-4641-94b7-770d201e957a")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr smd)
@@ -9140,7 +9103,6 @@
 			)
 		)
 		(property ki_fp_filters "Pin* Test*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/af0585ec-109d-4728-9611-319282481458")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr exclude_from_pos_files)
@@ -9308,7 +9270,6 @@
 				)
 			)
 		)
-		(path "/0e8f6558-cdae-4f9f-8c8d-8dbee0bc72f6")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -9700,7 +9661,6 @@
 			)
 		)
 		(property ki_fp_filters "Pin* Test*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/3a2bdf63-08d4-4f32-98a5-10ba8a1bfe96")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr exclude_from_pos_files)
@@ -9807,7 +9767,6 @@
 			)
 		)
 		(property ki_fp_filters "C_*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/cfe85675-5b09-4a16-8c55-d99ee859d95b")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr smd)
@@ -10010,7 +9969,6 @@
 			)
 		)
 		(property ki_fp_filters "R_*")
-		(path "/78dc0849-757a-4bb9-bba0-83c7fb2e8ce7")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -10213,7 +10171,6 @@
 			)
 		)
 		(property ki_fp_filters "R_*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/0f091619-e3cd-48f8-96f4-65d85f7d0ad0")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr smd)
@@ -10416,7 +10373,6 @@
 			)
 		)
 		(property ki_fp_filters "C_*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/f4422e39-9ad6-4f4b-a262-657849d30681")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr smd)
@@ -10680,7 +10636,6 @@
 				)
 			)
 		)
-		(path "/82965f27-d1c0-4069-bf89-6d5c9db2c40e")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -11133,7 +11088,6 @@
 				)
 			)
 		)
-		(path "/6603c262-4389-4fa0-99fa-f17f8c70ab95")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -11435,7 +11389,6 @@
 			)
 		)
 		(property ki_fp_filters "R_*")
-		(path "/8c0c880f-c926-434a-bf90-0a35d3f52aae")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -11638,7 +11591,6 @@
 			)
 		)
 		(property ki_fp_filters "Pin* Test*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/3596b808-eb4e-4f84-9815-44ab67d79d4c")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr exclude_from_pos_files)
@@ -11832,7 +11784,6 @@
 				)
 			)
 		)
-		(path "/6284143f-e83b-4636-8659-1dc8de5349d4")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr through_hole)
@@ -12126,7 +12077,6 @@
 			)
 		)
 		(property ki_fp_filters "C_*")
-		(path "/42b35260-25e7-4912-a8b5-6c11a39e14dc")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -12390,7 +12340,6 @@
 				)
 			)
 		)
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/246d0b44-9f14-415c-8f90-3f90836f4f93")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr through_hole)
@@ -12745,7 +12694,6 @@
 				)
 			)
 		)
-		(path "/cbbdf7cd-b4a6-403c-8200-25c4d915b7f5")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -13137,7 +13085,6 @@
 			)
 		)
 		(property ki_fp_filters "Pin* Test*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/5b3e46ef-278d-4fb8-bff5-75cc96c1cea8")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr exclude_from_pos_files)
@@ -13244,7 +13191,6 @@
 			)
 		)
 		(property ki_fp_filters "LED* LED_SMD:* LED_THT:*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/1756c948-3b88-45dc-bedc-0dd1b9b64900")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr smd)
@@ -13469,7 +13415,6 @@
 			)
 		)
 		(property ki_fp_filters "R_*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/1d0891d2-2e26-420c-9e91-5d1b17e525d8")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr smd)
@@ -13733,7 +13678,6 @@
 				)
 			)
 		)
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/0a8a09fc-1996-4a35-906d-ae121a656a03")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr smd)
@@ -14078,7 +14022,6 @@
 				)
 			)
 		)
-		(path "/69010c77-8309-4972-878a-97ea104ec2b4")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -14457,7 +14400,6 @@
 			)
 		)
 		(property ki_fp_filters "R_*")
-		(path "/4c306671-8415-42cb-aba8-74886cebe2c5")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -14660,7 +14602,6 @@
 			)
 		)
 		(property ki_fp_filters "C_*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/2248ce7d-1e1e-473b-b138-792e40c2858a")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr smd)
@@ -14924,7 +14865,6 @@
 				)
 			)
 		)
-		(path "/177db025-f1b6-4e5e-ac07-a33810cf2c4b")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -15377,7 +15317,6 @@
 				)
 			)
 		)
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/c41cee47-ebb0-464f-a825-2dded2f4ca9a")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr through_hole)
@@ -15671,7 +15610,6 @@
 			)
 		)
 		(property ki_fp_filters "C_*")
-		(path "/00e960b3-8ee5-48c6-9af3-88573f8dd864")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -15879,7 +15817,6 @@
 			)
 		)
 		(property ki_fp_filters "C_*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/2572728a-85a2-4108-8b65-621c7099051b")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr smd)
@@ -16022,7 +15959,7 @@
 		(property "Reference" "D7"
 			(at 3.55 0 0)
 			(layer "B.SilkS")
-			(uuid "a7a00a2c-809a-445e-837d-5f764ed293c6")
+			(uuid "314c2716-5e46-44d3-9d51-021b7eba1f14")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16035,7 +15972,7 @@
 			(at 0 0 0)
 			(layer "B.SilkS")
 			(hide yes)
-			(uuid "307e1c53-f6b7-4a21-98b2-a5768fca1b96")
+			(uuid "8b257fda-164c-4fa0-b30b-cf5a0b462c4a")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16044,11 +15981,11 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" "SOT96P240X110-3N"
+		(property "Footprint" "CustomFootprints:SOT96P240X110-3N"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "64c6dc00-d7d9-4d07-a7dc-c98bf203992c")
+			(uuid "10550def-65e2-417b-9609-2ee3bf442a0b")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16061,7 +15998,7 @@
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "b9f97540-01dc-4863-bb0d-01cd19234854")
+			(uuid "e47e83bd-0675-4541-98da-df4947bf322c")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16074,7 +16011,7 @@
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "c44a8b62-a63b-4dee-8b5a-1f1076a65a3b")
+			(uuid "4340cf57-f400-452d-920a-aa78a0eb8f93")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16153,7 +16090,6 @@
 				(justify mirror)
 			)
 		)
-		(path "/dc01f153-4224-4f34-a6ab-2d8fcf937a18")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -16165,7 +16101,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "5c618483-e227-4ebb-8f5c-e545a36131c5")
+			(uuid "1086d010-6273-4058-a6f4-a8833fb9475d")
 		)
 		(fp_line
 			(start -0.15 -1.45)
@@ -16175,7 +16111,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "049f1109-d330-4795-8317-d7b45b83291f")
+			(uuid "e01a66f4-f2f4-4631-acb4-775e4380ef9a")
 		)
 		(fp_line
 			(start -0.15 1.45)
@@ -16185,7 +16121,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "6acd7877-ea45-404e-8bc5-2d73d0845c76")
+			(uuid "18750de1-f408-40d0-ba94-f20adeabf747")
 		)
 		(fp_line
 			(start 0.15 -1.45)
@@ -16195,7 +16131,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "067846fb-567e-4422-842c-1e2de213312b")
+			(uuid "306dd335-d679-4712-818a-60af5795a945")
 		)
 		(fp_line
 			(start 0.15 1.45)
@@ -16205,7 +16141,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "3a971fb7-7680-4890-b777-212920fb7bb9")
+			(uuid "077b1e77-c450-44cc-aac6-e0fc6a089389")
 		)
 		(fp_line
 			(start -1.85 -1.75)
@@ -16215,7 +16151,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "770b4df5-b996-40b7-8125-64156584952d")
+			(uuid "91bbc788-6759-4a19-a42c-d8628e40150c")
 		)
 		(fp_line
 			(start -1.85 1.75)
@@ -16225,7 +16161,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "82925d0f-d7bf-482f-a2c4-1e9edd78d695")
+			(uuid "893435ac-7d39-40c8-982d-07d628c6cff1")
 		)
 		(fp_line
 			(start 1.85 -1.75)
@@ -16235,7 +16171,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "11a04afa-da2f-4807-b0c8-b847f48c66c8")
+			(uuid "656b092c-b2db-4d8f-8775-82954e8ae363")
 		)
 		(fp_line
 			(start 1.85 1.75)
@@ -16245,7 +16181,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "8320d277-e46e-4201-8f2c-56ee67626a92")
+			(uuid "2166d782-4c18-4dd7-97b6-7e454106e574")
 		)
 		(fp_line
 			(start -0.65 -1.45)
@@ -16255,7 +16191,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "5d501e02-d789-4abe-be46-64620d5c0a15")
+			(uuid "1a631b98-d10b-4575-859a-cc5755804e87")
 		)
 		(fp_line
 			(start -0.65 1.45)
@@ -16265,7 +16201,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "1c04b6d2-4808-47de-9ca2-243e6e6a3bf5")
+			(uuid "e8f5184a-c773-41f4-b382-4627350a85e3")
 		)
 		(fp_line
 			(start 0.31 1.45)
@@ -16275,7 +16211,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "049dfa65-c4e6-41d1-a5c4-3e447c994883")
+			(uuid "dcdcfde9-fc04-4e51-9397-db7aebca889f")
 		)
 		(fp_line
 			(start 0.65 -1.45)
@@ -16285,7 +16221,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "0274a0a2-3402-4716-bbc9-39ccc68d73e6")
+			(uuid "73a81b3d-7de8-4269-a9ab-1eed34af2ebb")
 		)
 		(fp_line
 			(start 0.65 1.45)
@@ -16295,12 +16231,12 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "a6ef9a1b-e954-4041-a2b3-80f4864ffe20")
+			(uuid "13bbf9f1-832e-4d7b-b3f0-7ab78d7ae144")
 		)
 		(fp_text user "${REFERENCE}"
 			(at 3.55 0 0)
 			(layer "B.Fab")
-			(uuid "3931358c-964f-441a-a0e3-ee04c80dc282")
+			(uuid "510358f1-256a-41e4-b3ff-dcfc81417454")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16316,7 +16252,7 @@
 			(net 1 "GND")
 			(pinfunction "1")
 			(pintype "passive")
-			(uuid "3f02e086-31b9-414b-b263-b8203c3f8578")
+			(uuid "a20e1ec9-c756-4154-b8b5-cd213ab4d40f")
 		)
 		(pad "2" smd rect
 			(at -1.05 -0.96 270)
@@ -16325,7 +16261,7 @@
 			(net 1 "GND")
 			(pinfunction "2")
 			(pintype "passive")
-			(uuid "08203479-8b6e-4990-8c35-7694175c91d7")
+			(uuid "19e11f94-3da9-425d-ab82-5094d74cdabf")
 		)
 		(pad "3" smd rect
 			(at 1.05 0 270)
@@ -16334,11 +16270,23 @@
 			(net 107 "KeyR1")
 			(pinfunction "3")
 			(pintype "passive")
-			(uuid "26d7eeea-fa16-4512-82a2-8bb5830e97f7")
+			(uuid "b441beea-0634-4537-858c-3caf92b18cd5")
 		)
 		(model "D5V0L2B3SO-7.stp"
+			(hide yes)
 			(offset
 				(xyz -0.6999999776 0 0.09999999999)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 0 -90)
+			)
+		)
+		(model "${KIPRJMOD}/3D models/D5V0L2B3SO-7.stp"
+			(offset
+				(xyz -0.5 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -16357,7 +16305,7 @@
 		(property "Reference" "D13"
 			(at 4.05 0 0)
 			(layer "B.SilkS")
-			(uuid "cb68e50b-9a88-431d-b559-e65c3cea07c8")
+			(uuid "6c9f3535-f0ad-42d0-a979-65d6b896fb6c")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16370,7 +16318,7 @@
 			(at 0 0 0)
 			(layer "B.SilkS")
 			(hide yes)
-			(uuid "a3c37208-b715-4bec-9c86-49b07e9c2b61")
+			(uuid "4333f297-774d-482e-9e81-31964a3ef7d1")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16379,11 +16327,11 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" "SOT96P240X110-3N"
+		(property "Footprint" "CustomFootprints:SOT96P240X110-3N"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "9accf1cc-5c86-4fca-9db8-d2dbe035fd8f")
+			(uuid "27c3024e-52da-4afb-8e3a-667a136e4b06")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16396,7 +16344,7 @@
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "ce721e12-aa3b-46c0-80bc-80931033a59c")
+			(uuid "39495cbd-884e-498d-9d01-115a5b0bae83")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16409,7 +16357,7 @@
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "09915d51-6662-40dd-9255-94f25a4cad07")
+			(uuid "58e7fbfc-eb85-4e04-86fc-1d31897b5033")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16488,7 +16436,6 @@
 				(justify mirror)
 			)
 		)
-		(path "/63d9b341-32ba-43a3-8114-8d4eb6fb7268")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -16500,7 +16447,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "b91ac8ab-874b-4549-bdcf-c301ebbac0c8")
+			(uuid "c136802d-11d0-4679-9b8a-0709e598dc56")
 		)
 		(fp_line
 			(start 0.15 -1.45)
@@ -16510,7 +16457,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "54e570c8-7d10-4c34-973d-fd3f2965c592")
+			(uuid "b1a776c9-6fb1-4571-8a2d-240b19fcb121")
 		)
 		(fp_line
 			(start -0.15 1.45)
@@ -16520,7 +16467,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "bb0c6af5-c9ea-4f66-87f7-71b813f63be1")
+			(uuid "253d6e50-f46b-477e-a5de-7badb5b170e9")
 		)
 		(fp_line
 			(start -0.15 -1.45)
@@ -16530,7 +16477,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "51ecabf2-954e-4901-878e-0a686d725b08")
+			(uuid "883d930d-28e8-4511-ba7a-757eacecb9d2")
 		)
 		(fp_line
 			(start -0.5 1.535)
@@ -16540,7 +16487,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "a1774772-4b22-47b7-8a9a-89f965f51d91")
+			(uuid "13fcc1e7-4f0b-4bc9-8d6f-18cece5dd945")
 		)
 		(fp_line
 			(start 1.85 1.75)
@@ -16550,7 +16497,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "f5a01b46-f36c-477c-9878-464fb08128fa")
+			(uuid "a6104008-c67c-49b6-a3f1-94876699bbc3")
 		)
 		(fp_line
 			(start 1.85 -1.75)
@@ -16560,7 +16507,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "b1948c80-ccde-4872-8a7e-15625c3704ca")
+			(uuid "a2ba6c75-25ba-4c7c-9f1e-f5b08dcb0253")
 		)
 		(fp_line
 			(start -1.85 1.75)
@@ -16570,7 +16517,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "a4d17453-a02f-4b1b-9d84-ad54e07037fe")
+			(uuid "6d8c6df2-03a3-4e60-804a-a8ff01e16948")
 		)
 		(fp_line
 			(start -1.85 -1.75)
@@ -16580,7 +16527,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "7c032b8e-44b1-46eb-9518-cef8bcdd8c59")
+			(uuid "cef7c9de-4da8-46d7-bb82-2a2c25857579")
 		)
 		(fp_line
 			(start 0.65 1.45)
@@ -16590,7 +16537,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "49640028-7c0a-454e-a424-5883cadc2b3d")
+			(uuid "5f0984bf-7482-471d-9a4f-e118fd475a7d")
 		)
 		(fp_line
 			(start 0.65 -1.45)
@@ -16600,7 +16547,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "59b85075-198b-4df6-94e1-b945a8cb6e7a")
+			(uuid "03843ef5-c45c-4f9e-8e58-3a6bf8b96d2f")
 		)
 		(fp_line
 			(start 0.31 1.45)
@@ -16610,7 +16557,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "0864238c-e7db-4fcd-8580-c2d69f4d00ec")
+			(uuid "4501979a-1585-4592-81ee-9509e57cefa2")
 		)
 		(fp_line
 			(start -0.65 1.45)
@@ -16620,7 +16567,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "0bbb1f4c-d2fa-4768-9a0e-565ab39ce73f")
+			(uuid "798ad635-4f57-4632-bb80-5fa49e3fa4ec")
 		)
 		(fp_line
 			(start -0.65 -1.45)
@@ -16630,12 +16577,12 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "505bb9c2-084d-41d7-adbf-10291bdb0ad4")
+			(uuid "b2b21f4b-8a87-4791-9857-4c49273903aa")
 		)
 		(fp_text user "${REFERENCE}"
 			(at 4.05 0 0)
 			(layer "B.Fab")
-			(uuid "c477706e-4cf9-46d5-81ff-7182decfd221")
+			(uuid "85058fd7-0c04-4760-878d-6227fefb8f96")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16651,7 +16598,7 @@
 			(net 1 "GND")
 			(pinfunction "1")
 			(pintype "passive")
-			(uuid "1d134349-dc36-4e20-af37-b6110d130870")
+			(uuid "46b24a1d-5a92-4957-96e4-90b7be993ac3")
 		)
 		(pad "2" smd rect
 			(at -1.05 -0.96 90)
@@ -16660,7 +16607,7 @@
 			(net 1 "GND")
 			(pinfunction "2")
 			(pintype "passive")
-			(uuid "938cce07-6abc-4afd-951a-fb1ef4b4500e")
+			(uuid "b9d1854f-49f7-4480-b551-8bc7ed55cde4")
 		)
 		(pad "3" smd rect
 			(at 1.05 0 90)
@@ -16669,11 +16616,23 @@
 			(net 90 "KeyC3")
 			(pinfunction "3")
 			(pintype "passive")
-			(uuid "6f3d1182-1da8-497a-8650-442f2fa7468e")
+			(uuid "04366603-ace4-4f42-9691-e17c24171c10")
 		)
 		(model "D5V0L2B3SO-7.stp"
+			(hide yes)
 			(offset
 				(xyz -0.6999999776 0 0.09999999999)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 0 -90)
+			)
+		)
+		(model "${KIPRJMOD}/3D models/D5V0L2B3SO-7.stp"
+			(offset
+				(xyz -0.5 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -16757,7 +16716,6 @@
 			)
 		)
 		(property ki_fp_filters "R_*")
-		(path "/b57fc5e3-ebd5-49ca-89c1-6d1664429449")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -16965,7 +16923,6 @@
 			)
 		)
 		(property ki_fp_filters "C_*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/b6c82705-6a4b-48b5-a1dd-5e2a6ab66719")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr smd)
@@ -17173,7 +17130,6 @@
 			)
 		)
 		(property ki_fp_filters "C_*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/4a59fcf4-636e-4cf3-b281-3edb34e85fd6")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr smd)
@@ -17316,7 +17272,7 @@
 		(property "Reference" "D12"
 			(at -3.95 0.5 0)
 			(layer "B.SilkS")
-			(uuid "09cadbb6-add4-4c07-a1da-7b1dcd0b3312")
+			(uuid "d384882e-76de-479d-af1c-c65d465ef074")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17329,7 +17285,7 @@
 			(at 0 0 0)
 			(layer "B.SilkS")
 			(hide yes)
-			(uuid "759aa220-db69-4cda-88f3-4570687eb2c9")
+			(uuid "e25793b3-7a33-42fe-97fa-3dbc088cc9f2")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17338,11 +17294,11 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" "SOT96P240X110-3N"
+		(property "Footprint" "CustomFootprints:SOT96P240X110-3N"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "80d630c6-3ce5-4c09-bd96-70546cf0ec7f")
+			(uuid "1354278e-a913-4bc0-bdf2-f3d6c959015e")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17355,7 +17311,7 @@
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "e80ec5ff-f1b3-47a4-bb28-0a24126746c4")
+			(uuid "2d215f7c-7641-488a-8a3d-49adba901c13")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17368,7 +17324,7 @@
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "150202d7-aa0a-40cb-925d-de9f7c0c57a5")
+			(uuid "ea9c39e2-b82d-4151-a295-70635d8e8f5a")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17447,7 +17403,6 @@
 				(justify mirror)
 			)
 		)
-		(path "/7eb0c717-6d1d-4c78-8675-13a5c26f553b")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -17459,7 +17414,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "a1a86c4c-d849-483f-add4-a4763bf37e02")
+			(uuid "2cf06a83-829f-4815-b89a-a556753d664a")
 		)
 		(fp_line
 			(start 0.15 -1.45)
@@ -17469,7 +17424,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "f8385765-3501-441d-bf08-5c7785895d88")
+			(uuid "c1e9b45e-9cbd-4d5a-899e-5709275ab6f5")
 		)
 		(fp_line
 			(start -0.15 1.45)
@@ -17479,7 +17434,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "eec3ca41-a893-47d9-8225-cfca470f21bd")
+			(uuid "daa8bc73-9361-4cbc-a127-70228e5c5a16")
 		)
 		(fp_line
 			(start -0.15 -1.45)
@@ -17489,7 +17444,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "c7520c22-674a-4ac5-a866-4c3536384f3a")
+			(uuid "c0deb2ea-25ef-45a9-bba5-b3367d93348a")
 		)
 		(fp_line
 			(start -0.5 1.535)
@@ -17499,7 +17454,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "e9d43859-56a4-421e-ac6f-bb178080e8f4")
+			(uuid "2b12e9c7-db3a-4135-80d0-8399172f7b28")
 		)
 		(fp_line
 			(start 1.85 1.75)
@@ -17509,7 +17464,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "3f5c728b-4d52-430a-ba09-b6a774b56a6e")
+			(uuid "812a6b71-d36f-4f37-b737-67bda1218269")
 		)
 		(fp_line
 			(start 1.85 -1.75)
@@ -17519,7 +17474,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "95f1e242-48f3-4886-9ae5-24af66520866")
+			(uuid "eb300445-6478-4ac5-aa55-ea6eb1b30696")
 		)
 		(fp_line
 			(start -1.85 1.75)
@@ -17529,7 +17484,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "4bba618f-4926-4589-a23e-2fb9a3672c77")
+			(uuid "58cfb33b-368c-4500-bcd5-6c3847bb6eb5")
 		)
 		(fp_line
 			(start -1.85 -1.75)
@@ -17539,7 +17494,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "270798f3-00ff-4e3d-ac93-e6f1e88d7dcf")
+			(uuid "8bae03b6-556c-4a50-8025-a166a9a7e76c")
 		)
 		(fp_line
 			(start 0.65 1.45)
@@ -17549,7 +17504,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "2b3ef4fa-c1e9-4498-8fe2-bf2b31fa58da")
+			(uuid "1f6656e6-a81a-4084-adda-0679ddcfa436")
 		)
 		(fp_line
 			(start 0.65 -1.45)
@@ -17559,7 +17514,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "8393ec2d-6a14-4116-ac16-b38566723baf")
+			(uuid "509202cc-7284-4c4f-a1a7-1fe60fad7ef1")
 		)
 		(fp_line
 			(start 0.31 1.45)
@@ -17569,7 +17524,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "fd801cd2-f210-450e-9969-f1882a2da7eb")
+			(uuid "953cf3f3-2103-4e77-901b-860ff9ca0f21")
 		)
 		(fp_line
 			(start -0.65 1.45)
@@ -17579,7 +17534,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "c73349b4-ae97-447a-8acf-fc7647dc83ef")
+			(uuid "5d5d86c3-2061-4595-b84f-4658f243c7fd")
 		)
 		(fp_line
 			(start -0.65 -1.45)
@@ -17589,12 +17544,12 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "c0a0914f-c24c-4019-b249-40d92764a03c")
+			(uuid "aa6ea9b0-c414-4f73-b859-9f5535aca480")
 		)
 		(fp_text user "${REFERENCE}"
 			(at -3.95 0.5 0)
 			(layer "B.Fab")
-			(uuid "133f9bbb-226a-47c4-8dce-d900f553244a")
+			(uuid "668b46c4-2e47-4478-a0c3-3b74f771279f")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17610,7 +17565,7 @@
 			(net 1 "GND")
 			(pinfunction "1")
 			(pintype "passive")
-			(uuid "704727b5-bbff-48c4-af7d-60f86c06dc0d")
+			(uuid "6f39dfe0-818e-4507-9e1f-ca512300fb2d")
 		)
 		(pad "2" smd rect
 			(at -1.05 -0.96 90)
@@ -17619,7 +17574,7 @@
 			(net 1 "GND")
 			(pinfunction "2")
 			(pintype "passive")
-			(uuid "d61979a0-bb3a-4687-a185-ad1a140cad3b")
+			(uuid "26aa45ee-edc2-4086-b8a9-ecb537f271e4")
 		)
 		(pad "3" smd rect
 			(at 1.05 0 90)
@@ -17628,11 +17583,23 @@
 			(net 109 "KeyC2")
 			(pinfunction "3")
 			(pintype "passive")
-			(uuid "9d43d24a-8a51-48bf-8664-04ea661b36b4")
+			(uuid "b3da9497-8614-4ee7-a406-515747afb610")
 		)
 		(model "D5V0L2B3SO-7.stp"
+			(hide yes)
 			(offset
 				(xyz -0.6999999776 0 0.09999999999)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 0 -90)
+			)
+		)
+		(model "${KIPRJMOD}/3D models/D5V0L2B3SO-7.stp"
+			(offset
+				(xyz -0.5 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -17651,7 +17618,7 @@
 		(property "Reference" "D6"
 			(at 0 3 0)
 			(layer "B.SilkS")
-			(uuid "7a6b0c8f-2b72-4438-acf2-671c1e4e1f57")
+			(uuid "085922c8-05fb-4a0b-81bc-954e66e1bf07")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17664,7 +17631,7 @@
 			(at 0 0 0)
 			(layer "B.SilkS")
 			(hide yes)
-			(uuid "2fc298f8-8e25-4320-b22c-e5833f9bf815")
+			(uuid "ed282b7f-4dd4-496b-b6e6-ca67f5689ba8")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17673,11 +17640,11 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" "SOT96P240X110-3N"
+		(property "Footprint" "CustomFootprints:SOT96P240X110-3N"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "e350fea6-4c74-4f63-b380-b73979231640")
+			(uuid "99db11a4-5b31-4247-924e-197006f6e25d")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17690,7 +17657,7 @@
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "b548dd9d-c178-4d44-9f96-cf3eb92669ef")
+			(uuid "1a1640c7-2989-4f68-b86f-edbea0e732fd")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17703,7 +17670,7 @@
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "051f00c9-bfb4-48ab-b2b8-36bf89e1fb02")
+			(uuid "7eb99dff-14d0-47f3-8312-de706b8f2071")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17782,7 +17749,6 @@
 				(justify mirror)
 			)
 		)
-		(path "/cfab7440-8733-48aa-83fb-096dfe35f9de")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -17794,7 +17760,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "ba90e7da-9712-4235-a22e-80f4b2331cf1")
+			(uuid "41f07e1d-68a1-4358-ac34-3bcb2f37f997")
 		)
 		(fp_line
 			(start -0.15 -1.45)
@@ -17804,7 +17770,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "56e74256-21bf-4ac7-93c2-cc10ecfdf1ae")
+			(uuid "5fe0ce1a-378f-404e-85cf-5da07e28a1bb")
 		)
 		(fp_line
 			(start -0.15 1.45)
@@ -17814,7 +17780,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "738db544-e5d5-42ec-99dc-5be484bbcb5b")
+			(uuid "2da9b6a9-42c8-438e-b4aa-d35713e95b52")
 		)
 		(fp_line
 			(start 0.15 -1.45)
@@ -17824,7 +17790,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "077d1513-d317-48e1-929c-97c1f71e2cfd")
+			(uuid "d5659748-81b9-47ed-86cf-819fdfdbf94e")
 		)
 		(fp_line
 			(start 0.15 1.45)
@@ -17834,7 +17800,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "d9e667de-a3a0-4e23-89e6-7a6c180ccbfe")
+			(uuid "5409b7ba-9d97-4e4d-a8f0-8ba578262978")
 		)
 		(fp_line
 			(start -1.85 -1.75)
@@ -17844,7 +17810,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "8cf28b49-6eb5-485d-b225-a55d5837faf3")
+			(uuid "cd84cbb7-aec4-4885-9f85-c7bf876aafe4")
 		)
 		(fp_line
 			(start -1.85 1.75)
@@ -17854,7 +17820,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "47b06623-db8b-4c7f-a2c2-d87e9526247e")
+			(uuid "8907e270-5712-4f82-b907-2071dc95c0d9")
 		)
 		(fp_line
 			(start 1.85 -1.75)
@@ -17864,7 +17830,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "916c59ce-675b-4f0b-bba2-0c0fa71f367f")
+			(uuid "5f941d98-ba46-46fa-ba61-19058029f54e")
 		)
 		(fp_line
 			(start 1.85 1.75)
@@ -17874,7 +17840,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "a4c87ca7-ae48-4f34-afbc-0efa9add4780")
+			(uuid "543016ca-4197-4638-8085-9be414687e23")
 		)
 		(fp_line
 			(start -0.65 -1.45)
@@ -17884,7 +17850,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "57a9834c-69f4-4040-a216-9000209f1d57")
+			(uuid "5c3e220f-7e6b-4a5c-9672-18c583ff7325")
 		)
 		(fp_line
 			(start -0.65 1.45)
@@ -17894,7 +17860,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "ca8d22f8-6099-4b3c-8bea-d6e20e5ec413")
+			(uuid "2407ac5a-03c7-467f-93db-34796bdce7ae")
 		)
 		(fp_line
 			(start 0.31 1.45)
@@ -17904,7 +17870,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "62bdebf7-8385-461f-a258-6456f386ccc1")
+			(uuid "a7dc723a-f60d-440f-8983-93c87f21f223")
 		)
 		(fp_line
 			(start 0.65 -1.45)
@@ -17914,7 +17880,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "44381c9d-640f-40ea-a6fb-be3b82de84a7")
+			(uuid "107effac-3817-4afa-9e2d-4462fc702737")
 		)
 		(fp_line
 			(start 0.65 1.45)
@@ -17924,12 +17890,12 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "8299e28d-5395-4ad1-85f5-5d534877ab49")
+			(uuid "c2f3787a-cef0-4d4a-b03f-59cfaaf9c551")
 		)
 		(fp_text user "${REFERENCE}"
 			(at 0 3 0)
 			(layer "B.Fab")
-			(uuid "f1f49906-98fd-4774-9ed0-7e4d4a6c5dae")
+			(uuid "41a4985e-5c96-44c3-a0f4-aa3b9b5d043b")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17945,7 +17911,7 @@
 			(net 1 "GND")
 			(pinfunction "1")
 			(pintype "passive")
-			(uuid "eba1837b-4b3b-4e20-ab2e-5c367cec4e02")
+			(uuid "de01a3fb-8ed5-4c5e-a907-b37fd6d391fe")
 		)
 		(pad "2" smd rect
 			(at -1.05 -0.96 270)
@@ -17954,7 +17920,7 @@
 			(net 1 "GND")
 			(pinfunction "2")
 			(pintype "passive")
-			(uuid "facf5e22-786e-4e59-8a95-3823806f6d2a")
+			(uuid "4a4c18a1-8b6a-4310-9d73-3a67e87354e7")
 		)
 		(pad "3" smd rect
 			(at 1.05 0 270)
@@ -17963,11 +17929,23 @@
 			(net 89 "FP TX")
 			(pinfunction "3")
 			(pintype "passive")
-			(uuid "21d47b35-eba5-4d44-8d5c-fe22aa6955e8")
+			(uuid "2db9c75d-978d-4111-b71b-99bff14e2333")
 		)
 		(model "D5V0L2B3SO-7.stp"
+			(hide yes)
 			(offset
 				(xyz -0.6999999776 0 0.09999999999)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 0 -90)
+			)
+		)
+		(model "${KIPRJMOD}/3D models/D5V0L2B3SO-7.stp"
+			(offset
+				(xyz -0.5 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -18051,7 +18029,6 @@
 			)
 		)
 		(property ki_fp_filters "C_*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/c5a24db1-3fa8-4006-b3e7-d9f75a5c2641")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr smd)
@@ -18259,7 +18236,6 @@
 			)
 		)
 		(property ki_fp_filters "C_*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/b028309b-5dd1-4a86-a18f-ce69fe54ea7d")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr smd)
@@ -18467,7 +18443,6 @@
 			)
 		)
 		(property ki_fp_filters "R_*")
-		(path "/216b585a-4c25-4588-8dc3-8301ad43b8b0")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -18610,7 +18585,7 @@
 		(property "Reference" "D11"
 			(at -2.95 0 180)
 			(layer "B.SilkS")
-			(uuid "27b3f851-5630-4ea4-8ac4-ddd01745525f")
+			(uuid "db0ba67a-aed5-4224-88a8-2465075c02c5")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18623,7 +18598,7 @@
 			(at 0 0 90)
 			(layer "B.SilkS")
 			(hide yes)
-			(uuid "faea70a3-05a2-4552-bdd8-9b7bf01ebcb9")
+			(uuid "05d95f89-876f-46cc-bda5-c991b6d12b8f")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18632,11 +18607,11 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" "SOT96P240X110-3N"
+		(property "Footprint" "CustomFootprints:SOT96P240X110-3N"
 			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "a930a64b-ad45-4d0d-838a-d1dd82e99637")
+			(uuid "520d5e90-c7f4-4282-8cf4-0cc5228fd368")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18649,7 +18624,7 @@
 			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "3fb93b1c-a49c-410c-8ce2-06e020c131f0")
+			(uuid "b2405e21-0dce-439e-8966-51736f006353")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18662,7 +18637,7 @@
 			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "7666fbff-e9b3-454f-a89c-bd71055e2c6a")
+			(uuid "6b592adc-60e8-4202-8973-08941ae2410a")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18741,7 +18716,6 @@
 				(justify mirror)
 			)
 		)
-		(path "/7f737820-4f83-4cc5-9c77-e753411b52d3")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -18753,7 +18727,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "05e632fc-fc6e-4d55-9fce-4a97a570f5bd")
+			(uuid "bb4416d3-8174-4d3d-b21a-e5a0b1a68a6e")
 		)
 		(fp_line
 			(start -0.15 1.45)
@@ -18763,7 +18737,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "cffbecc5-7e9d-4042-8683-b9c7b70b55df")
+			(uuid "474eaa5a-1ff6-4cb9-a898-eff4e88a6446")
 		)
 		(fp_line
 			(start 0.15 1.45)
@@ -18773,7 +18747,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "4ca87c28-3e6a-417e-9ced-aa147308db60")
+			(uuid "461490d8-8df5-4f9b-a1f1-ddaa55bcd670")
 		)
 		(fp_line
 			(start -0.15 -1.45)
@@ -18783,7 +18757,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "6bfe590e-6eea-4e2c-860b-47c746f845f4")
+			(uuid "248f8ef3-1ad8-42b4-8d52-24576d340e19")
 		)
 		(fp_line
 			(start 0.15 -1.45)
@@ -18793,7 +18767,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "7114183a-1e38-430b-b5e8-f1b0c13d676d")
+			(uuid "f1537286-ca41-4424-b651-eeab59dc4678")
 		)
 		(fp_line
 			(start -1.85 1.75)
@@ -18803,7 +18777,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "68e31a8c-5c73-4541-9d5a-19d0f36331da")
+			(uuid "c04b47b7-2d1a-4d82-bd41-09fa35c26459")
 		)
 		(fp_line
 			(start 1.85 1.75)
@@ -18813,7 +18787,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "2869d862-0da0-4e1a-8a35-71f283f5ced4")
+			(uuid "65c95ecc-5091-42cc-b0d6-717d3d1a092c")
 		)
 		(fp_line
 			(start -1.85 -1.75)
@@ -18823,7 +18797,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "cfb9a48b-5d3b-45e9-9bbb-970f1c3991ed")
+			(uuid "d975e10b-5ffd-47ea-bb8e-3ecb5bc835de")
 		)
 		(fp_line
 			(start 1.85 -1.75)
@@ -18833,7 +18807,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "6b54ccb3-daea-4f1e-bc9f-11ea0bfa1914")
+			(uuid "6a8d3f52-f9d7-4a00-b557-63a517a2b588")
 		)
 		(fp_line
 			(start -0.65 1.45)
@@ -18843,7 +18817,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "4df0bd9a-bdf4-42ab-8718-23e27cd6a5f2")
+			(uuid "73698643-b8a5-4d16-8a63-e6e7da90718b")
 		)
 		(fp_line
 			(start 0.31 1.45)
@@ -18853,7 +18827,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "e01040d1-1da0-40e8-84b5-a648723a8e3b")
+			(uuid "84a9bc08-da85-43b9-ba6d-49724d0252b3")
 		)
 		(fp_line
 			(start 0.65 1.45)
@@ -18863,7 +18837,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "a9de3da1-2b7d-4aeb-957e-27053000ca79")
+			(uuid "0e547a6a-4a0b-485d-acba-0fbd86ff7945")
 		)
 		(fp_line
 			(start -0.65 -1.45)
@@ -18873,7 +18847,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "0c6371de-cff5-4265-9d7a-1087a26da45d")
+			(uuid "597428f2-2b75-4c5b-bf62-0f0e7a1323a6")
 		)
 		(fp_line
 			(start 0.65 -1.45)
@@ -18883,12 +18857,12 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "1d631e17-4c58-437c-a4cf-002bb5d7a801")
+			(uuid "59251286-e8b3-4b38-a0b7-2eec15ac252b")
 		)
 		(fp_text user "${REFERENCE}"
 			(at -2.95 0 180)
 			(layer "B.Fab")
-			(uuid "9a823000-7811-4fcf-8b08-a690ea4370dc")
+			(uuid "65be7a18-c1c2-43d9-97ef-583f21d34ca2")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18904,7 +18878,7 @@
 			(net 1 "GND")
 			(pinfunction "1")
 			(pintype "passive")
-			(uuid "477ce011-9145-4a8a-826e-39bc9bcaee2e")
+			(uuid "5fe874a9-db06-4286-ab1b-031e8ddc0662")
 		)
 		(pad "2" smd rect
 			(at -1.05 -0.96 180)
@@ -18913,7 +18887,7 @@
 			(net 1 "GND")
 			(pinfunction "2")
 			(pintype "passive")
-			(uuid "a90c0106-f437-4ff6-af04-52397576cc1c")
+			(uuid "56a43034-ebb6-42c8-bb29-ad4ce9c7b759")
 		)
 		(pad "3" smd rect
 			(at 1.05 0 180)
@@ -18922,11 +18896,23 @@
 			(net 104 "KeyC1")
 			(pinfunction "3")
 			(pintype "passive")
-			(uuid "1c5a93cd-19e6-4a3d-9f29-3ec3b6a96aee")
+			(uuid "6f276d99-5587-46d0-ab8b-cd5717459e92")
 		)
 		(model "D5V0L2B3SO-7.stp"
+			(hide yes)
 			(offset
 				(xyz -0.6999999776 0 0.09999999999)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 0 -90)
+			)
+		)
+		(model "${KIPRJMOD}/3D models/D5V0L2B3SO-7.stp"
+			(offset
+				(xyz -0.5 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -19010,7 +18996,6 @@
 			)
 		)
 		(property ki_fp_filters "C_*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/29f05be4-28de-4cda-9a09-7a28e94ddd9f")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr smd)
@@ -19153,7 +19138,7 @@
 		(property "Reference" "D9"
 			(at -2.95 0 180)
 			(layer "B.SilkS")
-			(uuid "6dc69ec0-dd85-4642-ad12-eeccbd388837")
+			(uuid "d30218e2-7e6a-45e6-9eff-e93e8f95426a")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19166,7 +19151,7 @@
 			(at 0 0 90)
 			(layer "B.SilkS")
 			(hide yes)
-			(uuid "bc9f915d-096e-4776-9b3d-c466b7499d22")
+			(uuid "f1931094-dea0-4e78-a825-d9330a2ea41c")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19175,11 +19160,11 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" "SOT96P240X110-3N"
+		(property "Footprint" "CustomFootprints:SOT96P240X110-3N"
 			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "571a0031-c84a-438d-83fb-68d2f7ffbfb7")
+			(uuid "6a9a24e5-c107-489b-9507-9814ea131939")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19192,7 +19177,7 @@
 			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "527d3238-4253-4124-86b0-f5ed6205851c")
+			(uuid "bb612ac2-a0b5-4bff-afe2-9e9ec778076c")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19205,7 +19190,7 @@
 			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "36fa2867-a9c8-4653-ab72-faa97b345046")
+			(uuid "01a3629e-b046-480f-aad7-96795c72dd40")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19284,7 +19269,6 @@
 				(justify mirror)
 			)
 		)
-		(path "/1b45f8d6-77cf-4f6a-a45d-da9a5120324c")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -19296,7 +19280,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "f3e99828-fdbf-4ce3-8e9e-424d3dbe54b4")
+			(uuid "c79a6b42-fa6e-4581-95bd-93646fb621b2")
 		)
 		(fp_line
 			(start -0.15 1.45)
@@ -19306,7 +19290,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "9b6ef8ca-0242-4ded-9315-b18344459121")
+			(uuid "c5ba9758-c9c5-4552-bc19-8e86c6fcb2d3")
 		)
 		(fp_line
 			(start 0.15 1.45)
@@ -19316,7 +19300,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "6eb43600-7028-4b7d-87f7-a383b8214080")
+			(uuid "96c3a6fb-18b1-4d89-9e1f-b52430d5ce48")
 		)
 		(fp_line
 			(start -0.15 -1.45)
@@ -19326,7 +19310,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "1b9f7ece-dcd8-40f5-8f3f-787b9bf0dd01")
+			(uuid "81dbc8b4-2135-478a-a1cb-0d389590cc1e")
 		)
 		(fp_line
 			(start 0.15 -1.45)
@@ -19336,7 +19320,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "69e85c52-c840-40d4-9b87-29a99b2dede3")
+			(uuid "e93fb860-b966-4f13-ac3b-d2602d33caf3")
 		)
 		(fp_line
 			(start -1.85 1.75)
@@ -19346,7 +19330,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "3dfbd74c-cece-4186-ad97-36b8e7c8b314")
+			(uuid "3544a83a-20ae-4e02-a3c6-355fe329d56d")
 		)
 		(fp_line
 			(start 1.85 1.75)
@@ -19356,7 +19340,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "2bf1eb01-cfba-4503-b4d6-ebba913d4c0e")
+			(uuid "08ed8270-26d0-48de-92d8-3d064b569226")
 		)
 		(fp_line
 			(start -1.85 -1.75)
@@ -19366,7 +19350,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "2d4d5783-2102-47e9-9975-bc472398a7e1")
+			(uuid "e4f728b2-3345-4c30-a46d-b0cfaf1e98d7")
 		)
 		(fp_line
 			(start 1.85 -1.75)
@@ -19376,7 +19360,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "adce1e52-df1b-4609-a0ce-aab5ce01014c")
+			(uuid "faf40268-c33f-4397-8ea3-d26981a4f474")
 		)
 		(fp_line
 			(start -0.65 1.45)
@@ -19386,7 +19370,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "4cf88550-472c-49d5-883d-81475eb724d5")
+			(uuid "1d531313-fa23-4ed6-a4f6-b4e3dd8957fc")
 		)
 		(fp_line
 			(start 0.31 1.45)
@@ -19396,7 +19380,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "739b9c83-b5d0-46a9-b207-956021bd5cb9")
+			(uuid "c194d6c9-72b3-4176-9fcd-57dfd324253b")
 		)
 		(fp_line
 			(start 0.65 1.45)
@@ -19406,7 +19390,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "ae13dad4-af30-4504-ad00-586bcf234fcb")
+			(uuid "5cca98d7-1611-4311-ae9b-6405b34c9c2f")
 		)
 		(fp_line
 			(start -0.65 -1.45)
@@ -19416,7 +19400,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "57d4d148-7973-4646-8ff2-87266a201d4e")
+			(uuid "bcb97dd3-fb40-448a-af79-f898c06382b0")
 		)
 		(fp_line
 			(start 0.65 -1.45)
@@ -19426,12 +19410,12 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "415f8931-23ac-4e01-abe1-63508009c46c")
+			(uuid "1e0ddbc4-d380-4c92-b1cb-480daa4dbc17")
 		)
 		(fp_text user "${REFERENCE}"
 			(at -2.95 0 180)
 			(layer "B.Fab")
-			(uuid "89a1f3fb-ac62-45fd-aa5e-46318c03f5a7")
+			(uuid "c995de32-96eb-4bc5-b978-af259bdc0a67")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19447,7 +19431,7 @@
 			(net 1 "GND")
 			(pinfunction "1")
 			(pintype "passive")
-			(uuid "d46dc953-d8c9-4778-993d-74a1417ba1b3")
+			(uuid "f9157d01-388a-4e90-a12f-dbf99bb530ac")
 		)
 		(pad "2" smd rect
 			(at -1.05 -0.96 180)
@@ -19456,7 +19440,7 @@
 			(net 1 "GND")
 			(pinfunction "2")
 			(pintype "passive")
-			(uuid "514f481b-cf6f-4042-b167-41384138563c")
+			(uuid "b364fd9d-9ca1-4f6a-8e54-081933f9b761")
 		)
 		(pad "3" smd rect
 			(at 1.05 0 180)
@@ -19465,11 +19449,23 @@
 			(net 105 "KeyR3")
 			(pinfunction "3")
 			(pintype "passive")
-			(uuid "e0e83fa0-aaaa-44f0-9e01-ea948eeeaaef")
+			(uuid "a1e914ab-7635-42ad-a6c8-95b50eb92129")
 		)
 		(model "D5V0L2B3SO-7.stp"
+			(hide yes)
 			(offset
 				(xyz -0.6999999776 0 0.09999999999)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 0 -90)
+			)
+		)
+		(model "${KIPRJMOD}/3D models/D5V0L2B3SO-7.stp"
+			(offset
+				(xyz -0.5 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -19488,7 +19484,7 @@
 		(property "Reference" "D10"
 			(at -2.95 0 180)
 			(layer "B.SilkS")
-			(uuid "4318c8f0-9f82-496d-93f5-fcc1b88f9547")
+			(uuid "53808b9d-d55f-4653-a2c3-01459e6bd7e6")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19501,7 +19497,7 @@
 			(at 0 0 90)
 			(layer "B.SilkS")
 			(hide yes)
-			(uuid "07cb055a-2e74-4535-9291-209229a5ebfe")
+			(uuid "2dec91c4-7569-43a3-ae97-06d71f16ef21")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19510,11 +19506,11 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" "SOT96P240X110-3N"
+		(property "Footprint" "CustomFootprints:SOT96P240X110-3N"
 			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "37b7513c-ce70-4a86-8f04-af2ed6ee3ddd")
+			(uuid "f5de2d41-660a-49d1-899e-8b174c712c35")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19527,7 +19523,7 @@
 			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "e4f86598-8f03-4169-9fa8-d5682a5d3d7a")
+			(uuid "52015e90-1bc8-4cd2-bf91-f8b98f3a44b5")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19540,7 +19536,7 @@
 			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "0facae72-7d0c-4da2-9259-75274c9edca2")
+			(uuid "169e4ba9-3159-4ee1-affa-7cd371b68218")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19619,7 +19615,6 @@
 				(justify mirror)
 			)
 		)
-		(path "/81720677-49b2-433e-85f3-a96de854a7f5")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -19631,7 +19626,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "3c8a139f-61aa-410b-9163-cb6f80b0790d")
+			(uuid "8844dd7e-7d49-4e69-a8dc-241fc2f680a7")
 		)
 		(fp_line
 			(start -0.15 1.45)
@@ -19641,7 +19636,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "7b548279-bb45-49f4-9c0c-f7a952258789")
+			(uuid "cd6122d1-fd1f-4ce8-99ee-07d591262b65")
 		)
 		(fp_line
 			(start 0.15 1.45)
@@ -19651,7 +19646,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "0231b4e5-d64c-40d0-a5c3-04c3a0aba452")
+			(uuid "aa9159f5-97f4-43b6-be6e-ae3b8dc4c454")
 		)
 		(fp_line
 			(start -0.15 -1.45)
@@ -19661,7 +19656,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "c8aed92a-9014-457a-8133-8be455e8923f")
+			(uuid "50cce01a-98b3-4b10-b2a9-a0f7ba73feb4")
 		)
 		(fp_line
 			(start 0.15 -1.45)
@@ -19671,7 +19666,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "babb7351-b6c4-4714-86ae-c328f0b53c9b")
+			(uuid "46241ef8-446d-4070-be61-76c5c29a0e73")
 		)
 		(fp_line
 			(start -1.85 1.75)
@@ -19681,7 +19676,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "b2afc4dd-970e-427f-8c33-998007dfb63d")
+			(uuid "98eaba96-3414-4d77-8e48-f4cd948523ae")
 		)
 		(fp_line
 			(start 1.85 1.75)
@@ -19691,7 +19686,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "8aecef32-8f2e-401c-9241-2758629dc133")
+			(uuid "4104ec7b-0c09-4851-a28a-d14b8257c4d4")
 		)
 		(fp_line
 			(start -1.85 -1.75)
@@ -19701,7 +19696,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "836c9da4-ce54-4cb0-8567-36f790247ba2")
+			(uuid "bb53c64f-a285-414b-9b17-0455c7a57a40")
 		)
 		(fp_line
 			(start 1.85 -1.75)
@@ -19711,7 +19706,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "d4763bf1-d4d3-4d95-9022-55c279eb15bb")
+			(uuid "f00a6e24-cb1d-4a9a-9ebd-dc1cdc073546")
 		)
 		(fp_line
 			(start -0.65 1.45)
@@ -19721,7 +19716,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "9cfb8170-6312-460d-a99d-7a2cd1c5c2c6")
+			(uuid "5f1a1509-b5be-48e5-9af8-9d6cf7877b8e")
 		)
 		(fp_line
 			(start 0.31 1.45)
@@ -19731,7 +19726,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "973f6627-0272-4033-94a1-88c12910cce7")
+			(uuid "090b357f-3a1b-47c6-9a21-be51e6832859")
 		)
 		(fp_line
 			(start 0.65 1.45)
@@ -19741,7 +19736,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "b5cbde30-13d6-40fa-b136-1f1faee3e7cf")
+			(uuid "19b26029-6449-4f94-a677-b4669b036f7a")
 		)
 		(fp_line
 			(start -0.65 -1.45)
@@ -19751,7 +19746,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "7e6d213d-8022-486a-8457-3b68dc360203")
+			(uuid "0dbcca99-bf63-48c3-8930-26a85b7fa1fb")
 		)
 		(fp_line
 			(start 0.65 -1.45)
@@ -19761,12 +19756,12 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "de1c13e8-663b-4b30-8130-c84c0915166f")
+			(uuid "06ded428-b425-48ab-8e0b-9c8fd891c6bc")
 		)
 		(fp_text user "${REFERENCE}"
 			(at -2.95 0 180)
 			(layer "B.Fab")
-			(uuid "699d58bf-08d0-4ddf-8637-3888fd6e5912")
+			(uuid "b1f0c866-0482-45af-96b3-399982e6fed1")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19782,7 +19777,7 @@
 			(net 1 "GND")
 			(pinfunction "1")
 			(pintype "passive")
-			(uuid "a21291a9-4b7a-4f3e-a8da-42005cb1173a")
+			(uuid "6f80bc13-5cc2-4003-82d0-3ecebfc0356d")
 		)
 		(pad "2" smd rect
 			(at -1.05 -0.96 180)
@@ -19791,7 +19786,7 @@
 			(net 1 "GND")
 			(pinfunction "2")
 			(pintype "passive")
-			(uuid "84a17073-a1e5-428d-afca-525cf2182e46")
+			(uuid "e8b76a8b-b3f5-43a1-acbe-2591b7e53cf7")
 		)
 		(pad "3" smd rect
 			(at 1.05 0 180)
@@ -19800,11 +19795,23 @@
 			(net 108 "KeyR4")
 			(pinfunction "3")
 			(pintype "passive")
-			(uuid "bc20ae53-46a9-4861-8102-8147c558c553")
+			(uuid "eb8d23d0-2c45-42ee-ba42-722f6a0494cb")
 		)
 		(model "D5V0L2B3SO-7.stp"
+			(hide yes)
 			(offset
 				(xyz -0.6999999776 0 0.09999999999)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 0 -90)
+			)
+		)
+		(model "${KIPRJMOD}/3D models/D5V0L2B3SO-7.stp"
+			(offset
+				(xyz -0.5 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -19888,7 +19895,6 @@
 			)
 		)
 		(property ki_fp_filters "C_*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/6439f317-f360-4225-b9b1-3d0bcfdfe771")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr smd)
@@ -20031,7 +20037,7 @@
 		(property "Reference" "D5"
 			(at 0.05 3 0)
 			(layer "B.SilkS")
-			(uuid "f32842bb-f61a-4321-b86b-fd0598646072")
+			(uuid "bce676ec-bb9e-45f7-b0ba-dee70fc1886b")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20044,7 +20050,7 @@
 			(at 0 0 0)
 			(layer "B.SilkS")
 			(hide yes)
-			(uuid "b581c683-8195-4155-9421-4aa85191f60f")
+			(uuid "4783d526-0fb4-4de4-b929-164df91830c0")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20053,11 +20059,11 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" "SOT96P240X110-3N"
+		(property "Footprint" "CustomFootprints:SOT96P240X110-3N"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "769affa8-4add-433b-9b08-54bf81a3a944")
+			(uuid "de14ebd6-1ac7-4324-bdb2-b58ae06c6733")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20070,7 +20076,7 @@
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "0c38dd52-c34c-4bd3-930f-272865bc4c9b")
+			(uuid "4689e328-dcb6-4432-be06-d4339dba9fe2")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20083,7 +20089,7 @@
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "9c0f7d58-83e8-45e5-a2c9-ed84ca0d13b8")
+			(uuid "66a07ca1-7667-4035-8ec5-aacb25b582d2")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20162,7 +20168,6 @@
 				(justify mirror)
 			)
 		)
-		(path "/4b1a84ac-410d-440c-a571-6b245a58e6e2")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -20174,7 +20179,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "1ba4461b-5514-4ce6-8eb4-034f01837748")
+			(uuid "eb5994a4-f7fb-496a-82e9-3cfea1657af5")
 		)
 		(fp_line
 			(start -0.15 -1.45)
@@ -20184,7 +20189,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "416d79e5-7583-414c-b18c-7dea77ee29b5")
+			(uuid "054ed9e5-a7b9-4045-ba60-de0d8d89586a")
 		)
 		(fp_line
 			(start -0.15 1.45)
@@ -20194,7 +20199,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "ecc28639-3107-44e4-8d3e-a528fa632ad5")
+			(uuid "ec3aa9de-5211-4873-94b8-2dd376172960")
 		)
 		(fp_line
 			(start 0.15 -1.45)
@@ -20204,7 +20209,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "bf6c51d4-4ca7-46d3-a831-21daf340b9fd")
+			(uuid "28ceb9e0-6ad7-4af7-9962-00d0f6629539")
 		)
 		(fp_line
 			(start 0.15 1.45)
@@ -20214,7 +20219,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "9a131f16-fc99-46f7-a49c-cb7126e22567")
+			(uuid "2ca1206c-d385-43a4-8e8d-554803357069")
 		)
 		(fp_line
 			(start -1.85 -1.75)
@@ -20224,7 +20229,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "d3027c04-f9ec-40a0-9d2e-730c4ceb1ec2")
+			(uuid "c19097a9-1598-4a52-9967-a08bf344ce17")
 		)
 		(fp_line
 			(start -1.85 1.75)
@@ -20234,7 +20239,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "8568ab42-7f5e-4a1e-952b-100ca921f87e")
+			(uuid "4fdb754a-18b9-49d5-acf1-5d4ccc9db28f")
 		)
 		(fp_line
 			(start 1.85 -1.75)
@@ -20244,7 +20249,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "cca8c7fc-0eec-48b7-b058-68bf54fa322a")
+			(uuid "7df79485-22f9-4ada-ba9c-27de4dc53799")
 		)
 		(fp_line
 			(start 1.85 1.75)
@@ -20254,7 +20259,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "b3640137-4e1d-4c38-a6ed-5b0833ffc4fe")
+			(uuid "577eb5c3-2830-41ef-9260-61f69a91c16d")
 		)
 		(fp_line
 			(start -0.65 -1.45)
@@ -20264,7 +20269,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "89e357ab-c3ec-499f-91e3-39025900d484")
+			(uuid "96661e15-a8b3-48de-83d9-8c6e5e94efa2")
 		)
 		(fp_line
 			(start -0.65 1.45)
@@ -20274,7 +20279,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "46d184f6-d589-40c0-89b6-e5303edf584b")
+			(uuid "460d045b-48ce-4e7c-a7e3-dc1aeaaaa96b")
 		)
 		(fp_line
 			(start 0.31 1.45)
@@ -20284,7 +20289,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "1b042bf9-4b37-4cf2-84a4-5121401a353d")
+			(uuid "72c0f4a4-03ed-4a61-9f9d-0a1edbfdc8ef")
 		)
 		(fp_line
 			(start 0.65 -1.45)
@@ -20294,7 +20299,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "3058b879-88a1-4324-8b9c-27787ab0254f")
+			(uuid "84861a77-2f6b-4dcc-abf2-0d3ee4bdca8d")
 		)
 		(fp_line
 			(start 0.65 1.45)
@@ -20304,12 +20309,12 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "ff3698d3-6d5a-4d7e-bf97-b26ca1bc7489")
+			(uuid "b36a035a-068e-4248-9588-e159e6376470")
 		)
 		(fp_text user "${REFERENCE}"
 			(at 0.05 3 0)
 			(layer "B.Fab")
-			(uuid "9b193c91-e505-4b37-836f-30a2027bf92d")
+			(uuid "98078b00-1217-4142-97f0-b786c29140b1")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20325,7 +20330,7 @@
 			(net 1 "GND")
 			(pinfunction "1")
 			(pintype "passive")
-			(uuid "d8492c2f-33b5-488b-b640-9424cf9034ca")
+			(uuid "614f8492-bd76-40c3-909d-8a980871f3bc")
 		)
 		(pad "2" smd rect
 			(at -1.05 -0.96 270)
@@ -20334,7 +20339,7 @@
 			(net 1 "GND")
 			(pinfunction "2")
 			(pintype "passive")
-			(uuid "76fb3f87-1299-4070-a6e8-9a8bf388bf79")
+			(uuid "a5805492-5db4-4bd9-a1f2-b4914b39a84a")
 		)
 		(pad "3" smd rect
 			(at 1.05 0 270)
@@ -20343,11 +20348,23 @@
 			(net 88 "FP RX")
 			(pinfunction "3")
 			(pintype "passive")
-			(uuid "c410664d-2bb2-45ed-8d71-1c77523eb8da")
+			(uuid "608f2c56-1fc5-499d-8985-22cedeb96d9b")
 		)
 		(model "D5V0L2B3SO-7.stp"
+			(hide yes)
 			(offset
 				(xyz -0.6999999776 0 0.09999999999)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 0 -90)
+			)
+		)
+		(model "${KIPRJMOD}/3D models/D5V0L2B3SO-7.stp"
+			(offset
+				(xyz -0.5 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -20431,7 +20448,6 @@
 			)
 		)
 		(property ki_fp_filters "R_*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/eef0acdc-35b4-4465-8faf-3509291ed1a9")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr smd)
@@ -20574,7 +20590,7 @@
 		(property "Reference" "D8"
 			(at -3.45 0 0)
 			(layer "B.SilkS")
-			(uuid "751887cd-6e4c-4546-856a-7b5f81ba31a3")
+			(uuid "c1d1e5e2-dab9-471b-9c60-b001bd1b72d8")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20587,7 +20603,7 @@
 			(at 0 0 0)
 			(layer "B.SilkS")
 			(hide yes)
-			(uuid "b3ebbb20-08d9-4bb9-bac7-fac3a09be82b")
+			(uuid "bb24e908-5a70-41b9-a248-2651abbc3efe")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20596,11 +20612,11 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" "SOT96P240X110-3N"
+		(property "Footprint" "CustomFootprints:SOT96P240X110-3N"
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "4a4b09dd-d650-4ef6-a7ed-b3eeeb589192")
+			(uuid "b9e72cda-aa2e-42e6-8f14-a3faa674aebf")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20613,7 +20629,7 @@
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "ca6f8de6-5abe-45b5-b540-ab3e1d85ed5d")
+			(uuid "97558225-50dc-48bc-a998-1b348306448e")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20626,7 +20642,7 @@
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "781a9368-985c-4748-89ea-dd9347c756b4")
+			(uuid "e3d91181-508c-484f-a031-39beaa23f09b")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20705,7 +20721,6 @@
 				(justify mirror)
 			)
 		)
-		(path "/a37a032b-5f42-488a-b239-21241f58b603")
 		(sheetname "Root")
 		(sheetfile "477.kicad_sch")
 		(attr smd)
@@ -20717,7 +20732,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "425d7c89-f963-44e3-868e-59cf2c469144")
+			(uuid "f25b84ec-b163-4bd4-a347-dcdda9801704")
 		)
 		(fp_line
 			(start -0.15 -1.45)
@@ -20727,7 +20742,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "656ccce8-5017-45e7-83de-4ed683f4fb7f")
+			(uuid "5760d4f4-9a45-47bd-ab3f-cb49ecdadf45")
 		)
 		(fp_line
 			(start -0.15 1.45)
@@ -20737,7 +20752,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "04245a20-b02c-47d9-a8e0-4628ea778642")
+			(uuid "98b41088-fe35-4820-97c2-7090b0ff4838")
 		)
 		(fp_line
 			(start 0.15 -1.45)
@@ -20747,7 +20762,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "aa56b1a0-31b8-4a26-98a8-92c95511dbc4")
+			(uuid "177a0550-5b23-48f0-b478-12c58c0293fd")
 		)
 		(fp_line
 			(start 0.15 1.45)
@@ -20757,7 +20772,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "af47888f-fca9-40ba-ba7a-a1597aaea269")
+			(uuid "ec880bd6-3aef-497b-8a95-b9c69d313098")
 		)
 		(fp_line
 			(start -1.85 -1.75)
@@ -20767,7 +20782,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "155329aa-0771-42cd-8067-03423dd6c3b5")
+			(uuid "aa7e0be3-eab9-4187-8c71-f8bcb78b9d5b")
 		)
 		(fp_line
 			(start -1.85 1.75)
@@ -20777,7 +20792,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "7c24421d-9eb9-4cb6-8695-3ed54723f65a")
+			(uuid "56a191bd-cef9-4488-8c7f-4eea41ad4b6f")
 		)
 		(fp_line
 			(start 1.85 -1.75)
@@ -20787,7 +20802,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "35f86e10-6f4f-42fa-a3bc-cee5ca7950f6")
+			(uuid "33275e0b-b9ad-448f-b99e-514737eab3e0")
 		)
 		(fp_line
 			(start 1.85 1.75)
@@ -20797,7 +20812,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "e2bffbd0-6df9-4dd4-a362-6123db2257c9")
+			(uuid "8c17fbcc-3c3c-44ae-8efb-1c59cb36e910")
 		)
 		(fp_line
 			(start -0.65 -1.45)
@@ -20807,7 +20822,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "d92b2025-e12c-4611-af64-c3bc01ac77ea")
+			(uuid "66d9ddbf-02b9-49b0-b919-2a67c0fea9d3")
 		)
 		(fp_line
 			(start -0.65 1.45)
@@ -20817,7 +20832,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "bb102255-1379-49fa-944b-f25cadffc64a")
+			(uuid "703d7276-3de6-4157-a112-ccb5050f3b8e")
 		)
 		(fp_line
 			(start 0.31 1.45)
@@ -20827,7 +20842,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "28277af6-2975-4822-bf70-61fdefdc1045")
+			(uuid "7781fdbf-c1e7-4f26-986b-490c992a212b")
 		)
 		(fp_line
 			(start 0.65 -1.45)
@@ -20837,7 +20852,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "9f0a0eec-da65-40d9-893b-fcede8151db2")
+			(uuid "0e090453-1f5c-46dc-9cb1-cb92c9e640d5")
 		)
 		(fp_line
 			(start 0.65 1.45)
@@ -20847,12 +20862,12 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "53ad8a45-d35d-4999-a3c7-7e76eae8f9de")
+			(uuid "217af275-4622-4df1-bf83-36faea2979d3")
 		)
 		(fp_text user "${REFERENCE}"
 			(at -3.45 0 0)
 			(layer "B.Fab")
-			(uuid "158c3b01-a38d-4244-b0af-e646382a5135")
+			(uuid "30936782-90ad-4e78-b082-c00474529eeb")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20868,7 +20883,7 @@
 			(net 1 "GND")
 			(pinfunction "1")
 			(pintype "passive")
-			(uuid "80c63f4e-78eb-4d63-9036-7fd711013b85")
+			(uuid "4070569f-8e47-4d1a-b0b9-7e053fca10f8")
 		)
 		(pad "2" smd rect
 			(at -1.05 -0.96 270)
@@ -20877,7 +20892,7 @@
 			(net 1 "GND")
 			(pinfunction "2")
 			(pintype "passive")
-			(uuid "e02616b9-d282-4186-859d-7fff1b5df84e")
+			(uuid "6ccb828b-9c76-4c3a-8400-01a28aef2be9")
 		)
 		(pad "3" smd rect
 			(at 1.05 0 270)
@@ -20886,11 +20901,23 @@
 			(net 106 "KeyR2")
 			(pinfunction "3")
 			(pintype "passive")
-			(uuid "79240f7d-292d-43be-96b2-b080b09e4d01")
+			(uuid "28d3cdf5-9cd4-4fab-8e3d-8342d347f5f6")
 		)
 		(model "D5V0L2B3SO-7.stp"
+			(hide yes)
 			(offset
 				(xyz -0.6999999776 0 0.09999999999)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 0 -90)
+			)
+		)
+		(model "${KIPRJMOD}/3D models/D5V0L2B3SO-7.stp"
+			(offset
+				(xyz -0.5 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -20974,7 +21001,6 @@
 			)
 		)
 		(property ki_fp_filters "C_*")
-		(path "/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a/f88b5bb3-5124-46e4-a4a8-fb7838f98a74")
 		(sheetname "Microcontroller Circuitry")
 		(sheetfile "microcontroller.kicad_sch")
 		(attr smd)

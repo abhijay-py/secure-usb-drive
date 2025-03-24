@@ -235,8 +235,20 @@
 		(uuid "ed24c728-5a75-4fa7-8efb-c33143e1a500")
 	)
 	(model "D5V0L2B3SO-7.stp"
+		(hide yes)
 		(offset
 			(xyz -0.6999999776 0 0.09999999999)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 0 -90)
+		)
+	)
+	(model "${KIPRJMOD}/3D models/D5V0L2B3SO-7.stp"
+		(offset
+			(xyz -0.5 0 0)
 		)
 		(scale
 			(xyz 1 1 1)
