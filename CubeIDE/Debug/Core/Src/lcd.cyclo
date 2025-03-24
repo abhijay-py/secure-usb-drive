@@ -1,0 +1,9 @@
+../Core/Src/lcd.c:20:6:lcd_display_first_row	1
+../Core/Src/lcd.c:32:6:lcd_cursor_on	1
+../Core/Src/lcd.c:41:6:lcd_cursor_location	2
+../Core/Src/lcd.c:52:6:lcd_welcome	1
+../Core/Src/lcd.c:59:6:lcd_clear	1
+../Core/Src/lcd.c:64:6:lcd_on	1
+../Core/Src/lcd.c:69:6:lcd_off	1
+../Core/Src/lcd.c:74:6:send_bytes	3
+../Core/Src/lcd.c:85:6:periodic_send	1
