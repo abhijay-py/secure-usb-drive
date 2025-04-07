@@ -1,9 +1,0 @@
-../Core/Src/lcd.c:20:6:lcd_display_first_row	16	static
-../Core/Src/lcd.c:32:6:lcd_cursor_on	16	static
-../Core/Src/lcd.c:41:6:lcd_cursor_location	24	static
-../Core/Src/lcd.c:52:6:lcd_welcome	40	static
-../Core/Src/lcd.c:59:6:lcd_clear	24	static
-../Core/Src/lcd.c:64:6:lcd_on	24	static
-../Core/Src/lcd.c:69:6:lcd_off	24	static
-../Core/Src/lcd.c:74:6:send_bytes	32	static
-../Core/Src/lcd.c:85:6:periodic_send	24	static

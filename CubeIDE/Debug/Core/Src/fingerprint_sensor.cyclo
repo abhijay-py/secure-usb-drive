@@ -1,9 +1,0 @@
-../Core/Src/fingerprint_sensor.c:14:17:calculate_checksum	1
-../Core/Src/fingerprint_sensor.c:19:13:generate_package	1
-../Core/Src/fingerprint_sensor.c:36:27:send_command	1
-../Core/Src/fingerprint_sensor.c:53:27:receive_acknowledgment	10
-../Core/Src/fingerprint_sensor.c:106:27:send_and_receive_command	2
-../Core/Src/fingerprint_sensor.c:122:20:delete_specified_user	1
-../Core/Src/fingerprint_sensor.c:133:20:compare_1_1	1
-../Core/Src/fingerprint_sensor.c:146:20:add_fingerprint	3
-../Core/Src/fingerprint_sensor.c:165:20:set_timeout	1
