@@ -49,10 +49,40 @@
 SPI_HandleTypeDef hspi1;
 SPI_HandleTypeDef hspi2;
 
+TIM_HandleTypeDef htim7;
+
 UART_HandleTypeDef huart4;
 
 /* USER CODE BEGIN PV */
+//(update with LCD)
 
+//FLASH GPIOs
+const IC_Pin FLASH_P_HOLD_ONE = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_6};
+const IC_Pin FLASH_P_HOLD_TWO = (IC_Pin){.pin_letter = GPIOA, .pin_num = GPIO_PIN_2};
+const IC_Pin FLASH_P_HOLD_THREE = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_1};
+const IC_Pin FLASH_P_HOLD_FOUR = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_6};
+const IC_Pin FLASH_P_CS_ONE = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_9};
+const IC_Pin FLASH_P_CS_TWO = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_1};
+const IC_Pin FLASH_P_CS_THREE = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_3};
+const IC_Pin FLASH_P_CS_FOUR = (IC_Pin){.pin_letter = GPIOH, .pin_num = GPIO_PIN_1};
+const IC_Pin FLASH_P_WP_ONE = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_7};
+const IC_Pin FLASH_P_WP_TWO = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_0};
+const IC_Pin FLASH_P_WP_THREE = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_2};
+const IC_Pin FLASH_P_WP_FOUR = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_0};
+
+
+//KEYPAD GPIOs
+const IC_Pin KEY_P_C_ONE = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_3};
+const IC_Pin KEY_P_C_TWO = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_4};
+const IC_Pin KEY_P_C_THREE = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_5};
+const IC_Pin KEY_P_R_ONE = (IC_Pin){.pin_letter = GPIOA, .pin_num = GPIO_PIN_15};
+const IC_Pin KEY_P_R_TWO = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_10};
+const IC_Pin KEY_P_R_THREE = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_11};
+const IC_Pin KEY_P_R_FOUR = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_12};
+
+//DEBUG GPIOs
+const IC_Pin DEBUG_P_NINE = (IC_Pin){.pin_letter = GPIOA, .pin_num = GPIO_PIN_9};
+const IC_Pin DEBUG_P_EIGHT = (IC_Pin){.pin_letter = GPIOA, .pin_num = GPIO_PIN_8};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -62,6 +92,7 @@ static void MX_GPIO_Init(void);
 static void MX_UART4_Init(void);
 static void MX_SPI1_Init(void);
 static void MX_SPI2_Init(void);
+static void MX_TIM7_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -108,6 +139,7 @@ int main(void)
   MX_SPI2_Init();
   MX_FATFS_Init();
   MX_USB_DEVICE_Init();
+  MX_TIM7_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -118,15 +150,21 @@ int main(void)
   lcd_clear(&hspi2);
   lcd_on(&hspi2);
   lcd_welcome(&hspi2);
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
-  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_RESET);
-  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, GPIO_PIN_SET);
   reset_ic(&hspi1, 0);
+  Init_Pin();
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	Write_Pin(DEBUG_P_NINE, 1);
+	Write_Pin(DEBUG_P_EIGHT, 0);
+	HAL_Delay(2000);
+	flash_read_status_register(&hspi1, 1, 1);
+	flash_write_status_register(&hspi1, 1, 1);
+	flash_read_status_register(&hspi1, 1, 1);
+	HAL_Delay(2000);
+
   }
   /* USER CODE END 3 */
 }
@@ -264,7 +302,7 @@ static void MX_SPI2_Init(void)
   hspi2.Init.DataSize = SPI_DATASIZE_8BIT;
   hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi2.Init.CLKPhase = SPI_PHASE_1EDGE;
-  hspi2.Init.NSS = SPI_NSS_HARD_OUTPUT;
+  hspi2.Init.NSS = SPI_NSS_SOFT;
   hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
   hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
@@ -287,6 +325,44 @@ static void MX_SPI2_Init(void)
   /* USER CODE BEGIN SPI2_Init 2 */
 
   /* USER CODE END SPI2_Init 2 */
+
+}
+
+/**
+  * @brief TIM7 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM7_Init(void)
+{
+
+  /* USER CODE BEGIN TIM7_Init 0 */
+
+  /* USER CODE END TIM7_Init 0 */
+
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM7_Init 1 */
+
+  /* USER CODE END TIM7_Init 1 */
+  htim7.Instance = TIM7;
+  htim7.Init.Prescaler = 7999;
+  htim7.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim7.Init.Period = 65535;
+  htim7.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim7) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim7, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM7_Init 2 */
+
+  /* USER CODE END TIM7_Init 2 */
 
 }
 
@@ -415,7 +491,39 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+//Easy Write pin with the ic_pin type
+void Write_Pin(IC_Pin pin, int value)
+{
+	if (value == 0) {
+		HAL_GPIO_WritePin(pin.pin_letter, pin.pin_num, GPIO_PIN_RESET);
+	}
+	else {
+		HAL_GPIO_WritePin(pin.pin_letter, pin.pin_num, GPIO_PIN_SET);
+	}
 
+}
+
+//Initialize pins to "default value" (update with LCD)
+void Init_Pin() {
+	Write_Pin(FLASH_P_WP_ONE, 1);
+	Write_Pin(FLASH_P_WP_TWO, 1);
+	Write_Pin(FLASH_P_WP_THREE, 1);
+	Write_Pin(FLASH_P_WP_FOUR, 1);
+	Write_Pin(FLASH_P_CS_ONE, 1);
+	Write_Pin(FLASH_P_CS_TWO, 1);
+	Write_Pin(FLASH_P_CS_THREE, 1);
+	Write_Pin(FLASH_P_CS_FOUR, 1);
+	Write_Pin(FLASH_P_HOLD_ONE, 1);
+	Write_Pin(FLASH_P_HOLD_TWO, 1);
+	Write_Pin(FLASH_P_HOLD_THREE, 1);
+	Write_Pin(FLASH_P_HOLD_FOUR, 1);
+	Write_Pin(DEBUG_P_EIGHT, 0);
+	Write_Pin(DEBUG_P_NINE, 0);
+	Write_Pin(KEY_P_R_ONE, 0);
+	Write_Pin(KEY_P_R_TWO, 0);
+	Write_Pin(KEY_P_R_THREE, 0);
+	Write_Pin(KEY_P_R_FOUR, 0);
+}
 /* USER CODE END 4 */
 
  /* MPU Configuration */

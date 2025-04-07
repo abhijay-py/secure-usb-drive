@@ -9,23 +9,6 @@
 
 #include "flash.h"
 
-//const uint8_t FLASH_RESET = 0b11111111;
-//const uint8_t FLASH_WRITE_ENABLE = 0b00000110;
-//const uint8_t FLASH_WRITE_DISABLE = 0b00000100;
-//const uint8_t FLASH_PAGE_READ = 0b00011101;
-//const uint8_t FLASH_READ_FROM_CACHE = 0b00000011;
-//const uint8_t FLASH_PROGRAM_EXECUTE = 0b00010000;
-//const uint8_t FLASH_PROGRAM_LOAD = 0b00000010;
-//const uint8_t FLASH_PROGRAM_LOAD_RANDOM = 0b10000100;
-//const uint8_t FLASH_BLOCK_ERASE = 0b11011000;
-//const uint8_t FLASH_GET_FEATURE = 0b00001111;
-//const uint8_t FLASH_SET_FEATURE = 0b00011111;
-//const uint8_t FLASH_READ_JEDEC_ID = 0b10011111;
-
-const IC_Pin FLASH_P_HOLD = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_6};
-const IC_Pin FLASH_P_CHIP_SELECT = (IC_Pin){.pin_letter = GPIOA, .pin_num = GPIO_PIN_0};
-const IC_Pin FLASH_P_WRITE_PROTECT = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_2};
-
 const uint8_t FLASH_RESET = 0xFF;
 const uint8_t FLASH_WRITE_ENABLE = 0x06;
 const uint8_t FLASH_WRITE_DISABLE = 0x04;
@@ -43,42 +26,91 @@ const uint8_t STATUS_REGISTER_ONE = 0xA0;
 const uint8_t STATUS_REGISTER_TWO = 0xB0;
 const uint8_t STATUS_REGISTER_THREE = 0xC0;
 
+void pin_setup(int flash_chip_num, int cs, int wp, int hold){
+	if (wp != -1) {
+		switch (flash_chip_num) {
+			case 1:
+				Write_Pin(FLASH_P_WP_ONE, wp);
+				break;
+			case 2:
+				Write_Pin(FLASH_P_WP_TWO, wp);
+				break;
+			case 3:
+				Write_Pin(FLASH_P_WP_THREE, wp);
+				break;
+			case 4:
+				Write_Pin(FLASH_P_WP_FOUR, wp);
+				break;
+			default:
+				return;
+		}
+	}
+	if (hold != -1) {
+		switch (flash_chip_num) {
+			case 1:
+				Write_Pin(FLASH_P_HOLD_ONE, hold);
+				break;
+			case 2:
+				Write_Pin(FLASH_P_HOLD_TWO, hold);
+				break;
+			case 3:
+				Write_Pin(FLASH_P_HOLD_THREE, hold);
+				break;
+			case 4:
+				Write_Pin(FLASH_P_HOLD_FOUR, hold);
+				break;
+			default:
+				return;
+		}
+	}
+	if (cs != -1) {
+		switch (flash_chip_num) {
+			case 1:
+				Write_Pin(FLASH_P_CS_ONE, cs);
+				break;
+			case 2:
+				Write_Pin(FLASH_P_CS_TWO, cs);
+				break;
+			case 3:
+				Write_Pin(FLASH_P_CS_THREE, cs);
+				break;
+			case 4:
+				Write_Pin(FLASH_P_CS_FOUR, cs);
+				break;
+			default:
+				return;
+		}
+	}
+}
+
 void reset_ic(SPI_HandleTypeDef *hspi1, int flash_chip_num) {
 	HAL_Delay(1000);
 
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_SET);
-			HAL_SPI_Transmit(hspi1, &FLASH_RESET, 1, 1000);
-			while(hspi1 -> State != HAL_SPI_STATE_READY);
-			HAL_Delay(1000);
-			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
+	pin_setup(flash_chip_num, 0, -1, -1);
+	HAL_SPI_Transmit(hspi1, &FLASH_RESET, 1, 1000);
+	pin_setup(flash_chip_num, 1, -1, -1);
 }
 
-void flash_read_jedec_id(SPI_HandleTypeDef *hspi1, int flash_chip_num) {
-	HAL_Delay(1000);
-	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, GPIO_PIN_SET);
+void flash_read_jedec_id(SPI_HandleTypeDef *hspi1, int flash_chip_num, int debug) {
+	pin_setup(flash_chip_num, 0, -1, -1);
 
 	uint8_t buffer[5];
 
 	HAL_SPI_TransmitReceive(hspi1, FLASH_READ_JEDEC_ID, buffer, 5, 1000);
-	if (buffer[3] == 0xEF) {
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);
+
+	pin_setup(flash_chip_num, 1, -1, -1);
+
+	if (debug != 0) {
+		if (buffer[2] == 0xEF && buffer[3] == 0xAA && buffer[4] == 0x21) {
+			Write_Pin(DEBUG_P_EIGHT, 1);
+		}
+		else {
+			Write_Pin(DEBUG_P_EIGHT, 0);
+		}
 	}
-	else {
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);
-	}
-	HAL_Delay(1000);
-	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, GPIO_PIN_RESET);
 }
 
 uint8_t flash_read_status_register(SPI_HandleTypeDef *hspi1, int flash_chip_num, int status_register) {
-	HAL_Delay(1000);
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_SET);
-
 	uint8_t tx_buffer[3] = {FLASH_READ_STATUS_REGISTER, 0x00, 0x00};
 	uint8_t rx_buffer[3];
 
@@ -94,23 +126,15 @@ uint8_t flash_read_status_register(SPI_HandleTypeDef *hspi1, int flash_chip_num,
 			break;
 	}
 
+	pin_setup(flash_chip_num, 0, -1, -1);
 	HAL_SPI_TransmitReceive(hspi1, tx_buffer, rx_buffer, 3, 1000);
-
-	HAL_Delay(1000);
-	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
+	pin_setup(flash_chip_num, 1, -1, -1);
 
 	return rx_buffer[3];
 }
 
-void flash_write_status_register(SPI_HandleTypeDef *hspi1, int flash_chip_num, int status_register) {
-	HAL_Delay(1000);
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, GPIO_PIN_SET);
-
-	uint8_t tx_buffer[3] = {FLASH_WRITE_STATUS_REGISTER, 0x00, 0b11000};
-	uint8_t wel = 0x06;
+void flash_write_status_register(SPI_HandleTypeDef *hspi1, int flash_chip_num, int status_register, uint8_t value) {
+	uint8_t tx_buffer[3] = {FLASH_WRITE_STATUS_REGISTER, 0x00, value};
 
 	switch (status_register){
 		case 1:
@@ -124,13 +148,9 @@ void flash_write_status_register(SPI_HandleTypeDef *hspi1, int flash_chip_num, i
 			break;
 	}
 
-	HAL_SPI_Transmit(hspi1, &wel, 1, 1000);
+	pin_setup(flash_chip_num, 0, -1, -1);
 	HAL_SPI_Transmit(hspi1, tx_buffer, 3, 1000);
-
-	HAL_Delay(1000);
-	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
+	pin_setup(flash_chip_num, 1, -1, -1);
 
 }
 

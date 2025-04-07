@@ -6,7 +6,6 @@
  */
 #include "main.h"
 #include "lcd.h"
-#include "stm32f4xx_hal_spi.h"
 
 const uint8_t FN_SET_CMD = 0x38;
 const uint8_t LCD_ON_CMD = 0x41;

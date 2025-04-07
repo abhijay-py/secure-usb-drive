@@ -1,0 +1,5 @@
+..\Core\Src\flash.c:29:6:pin_setup	16
+..\Core\Src\flash.c:86:6:reset_ic	1
+..\Core\Src\flash.c:94:6:flash_read_jedec_id	5
+..\Core\Src\flash.c:113:9:flash_read_status_register	5
+..\Core\Src\flash.c:136:6:flash_write_status_register	5

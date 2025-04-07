@@ -36,11 +36,48 @@ extern "C" {
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
+typedef struct
+{
+ 	GPIO_TypeDef* pin_letter;
+	uint16_t pin_num;
+}IC_Pin;
 
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
+extern TIM_HandleTypeDef htim7;
+extern UART_HandleTypeDef huart4;
+
+//FLASH GPIOs
+extern const IC_Pin FLASH_P_HOLD_ONE;
+extern const IC_Pin FLASH_P_HOLD_TWO;
+extern const IC_Pin FLASH_P_HOLD_THREE;
+extern const IC_Pin FLASH_P_HOLD_FOUR;
+extern const IC_Pin FLASH_P_CS_ONE;
+extern const IC_Pin FLASH_P_CS_TWO;
+extern const IC_Pin FLASH_P_CS_THREE;
+extern const IC_Pin FLASH_P_CS_FOUR;
+extern const IC_Pin FLASH_P_WP_ONE;
+extern const IC_Pin FLASH_P_WP_TWO;
+extern const IC_Pin FLASH_P_WP_THREE;
+extern const IC_Pin FLASH_P_WP_FOUR;
+
+
+//KEYPAD GPIOs
+extern const IC_Pin KEY_P_C_ONE;
+extern const IC_Pin KEY_P_C_TWO;
+extern const IC_Pin KEY_P_C_THREE;
+extern const IC_Pin KEY_P_R_ONE;
+extern const IC_Pin KEY_P_R_TWO;
+extern const IC_Pin KEY_P_R_THREE;
+extern const IC_Pin KEY_P_R_FOUR;
+
+//DEBUG GPIOs
+extern const IC_Pin DEBUG_P_NINE;
+extern const IC_Pin DEBUG_P_EIGHT;
+
+
 
 /* USER CODE END EC */
 
@@ -53,7 +90,8 @@ extern "C" {
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
-
+void Write_Pin(IC_Pin pin, int value);
+void Init_Pin();
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/

@@ -8,19 +8,15 @@
 #ifndef INC_FLASH_H_
 #define INC_FLASH_H_
 
-#include "stm32f4xx_hal.h"
-#include "stm32f4xx_hal_spi.h"
+#include "stm32h7xx_hal.h"
+#include "stm32h7xx_hal_spi.h"
+#include "main.h"
 
-typedef struct
-{
- 	GPIO_TypeDef* pin_letter;
-	uint16_t pin_num;
-}IC_Pin;
-
+void pin_setup(int flash_chip_num, int cs, int wp, int hold);
 void reset_ic(SPI_HandleTypeDef *hspi1, int flash_chip_num);
-void flash_read_jedec_id(SPI_HandleTypeDef *hspi1, int flash_chip_num);
+void flash_read_jedec_id(SPI_HandleTypeDef *hspi1, int flash_chip_num, int debug);
 uint8_t flash_read_status_register(SPI_HandleTypeDef *hspi1, int flash_chip_num, int status_register);
-void flash_write_status_register(SPI_HandleTypeDef *hspi1, int flash_chip_num, int status_register);
+void flash_write_status_register(SPI_HandleTypeDef *hspi1, int flash_chip_num, int status_register, uint8_t value);
 
 extern const IC_Pin FLASH_P_HOLD;
 extern const IC_Pin FLASH_P_CHIP_SELECT;
