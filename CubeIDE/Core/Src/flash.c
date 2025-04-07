@@ -133,7 +133,7 @@ uint8_t flash_read_status_register(SPI_HandleTypeDef *hspi1, int flash_chip_num,
 	return rx_buffer[3];
 }
 
-void flash_write_status_register(SPI_HandleTypeDef *hspi1, int flash_chip_num, int status_register, uint8_t value) {
+void flash_write_status_register(SPI_HandleTypeDef *hspi1, int flash_chip_num, int status_register, uint8_t value) {0
 	uint8_t tx_buffer[3] = {FLASH_WRITE_STATUS_REGISTER, 0x00, value};
 
 	switch (status_register){
@@ -152,6 +152,14 @@ void flash_write_status_register(SPI_HandleTypeDef *hspi1, int flash_chip_num, i
 	HAL_SPI_Transmit(hspi1, tx_buffer, 3, 1000);
 	pin_setup(flash_chip_num, 1, -1, -1);
 
+}
+
+void flash_set_write(SPI_HandleTypeDef *hspi1, int flash_chip_num, uint8_t write_permission) {
+	pin_setup(flash_chip_num, 0, -1, -1);
+
+	HAL_SPI_Transmit(hspi1, write_permission, 1, 1000);
+
+	pin_setup(flash_chip_num, 1, -1, -1);
 }
 
 

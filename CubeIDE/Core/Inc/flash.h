@@ -17,6 +17,7 @@ void reset_ic(SPI_HandleTypeDef *hspi1, int flash_chip_num);
 void flash_read_jedec_id(SPI_HandleTypeDef *hspi1, int flash_chip_num, int debug);
 uint8_t flash_read_status_register(SPI_HandleTypeDef *hspi1, int flash_chip_num, int status_register);
 void flash_write_status_register(SPI_HandleTypeDef *hspi1, int flash_chip_num, int status_register, uint8_t value);
+void flash_write(SPI_HandleTypeDef *hspi1, int flash_chip_num, uint8_t write_permission);
 
 extern const IC_Pin FLASH_P_HOLD;
 extern const IC_Pin FLASH_P_CHIP_SELECT;
