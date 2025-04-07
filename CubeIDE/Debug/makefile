@@ -60,8 +60,8 @@ all: main-build
 main-build: encrypted\ usb\ drive.elf secondary-outputs
 
 # Tool invocations
-encrypted\ usb\ drive.elf encrypted\ usb\ drive.map: $(OBJS) $(USER_OBJS) C:\Users\chaos\Documents\Class\ Assignments\Spring\ 2025\ECE\ 477\encrypted-usb-drive\CubeIDE\STM32F413ZHTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "encrypted usb drive.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\chaos\Documents\Class Assignments\Spring 2025\ECE 477\encrypted-usb-drive\CubeIDE\STM32F413ZHTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="encrypted usb drive.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+encrypted\ usb\ drive.elf encrypted\ usb\ drive.map: $(OBJS) $(USER_OBJS) C:\Users\Jay62\570proj\encrypted-usb-drive\CubeIDE\STM32F413ZHTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "encrypted usb drive.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Jay62\570proj\encrypted-usb-drive\CubeIDE\STM32F413ZHTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="encrypted usb drive.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

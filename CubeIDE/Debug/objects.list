@@ -1,4 +1,5 @@
 "./Core/Src/fingerprint_sensor.o"
+"./Core/Src/flash.o"
 "./Core/Src/keypad.o"
 "./Core/Src/lcd.o"
 "./Core/Src/main.o"
