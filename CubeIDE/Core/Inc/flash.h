@@ -12,12 +12,24 @@
 #include "stm32h7xx_hal_spi.h"
 #include "main.h"
 
-void pin_setup(int flash_chip_num, int cs, int wp, int hold);
-void reset_ic(SPI_HandleTypeDef *hspi1, int flash_chip_num);
-void flash_read_jedec_id(SPI_HandleTypeDef *hspi1, int flash_chip_num, int debug);
-uint8_t flash_read_status_register(SPI_HandleTypeDef *hspi1, int flash_chip_num, int status_register);
-void flash_write_status_register(SPI_HandleTypeDef *hspi1, int flash_chip_num, int status_register, uint8_t value);
-void flash_page_transfer(SPI_HandleTypeDef *hspi1, int flash_chip_num, uint16_t page_address);
+typedef enum {
+	FLASH_OK,
+	FLASH_HAL_ERROR,
+	FLASH_INVALID_CHIP_NUM,
+	FLASH_INVALID_STATUS_REG,
+	FLASH_INVALID_READ_SIZE,
+
+} Flash_Status;
+
+Flash_Status pin_setup(int flash_chip_num, int cs, int wp, int hold);
+Flash_Status reset_ic(SPI_HandleTypeDef *hspi1, int flash_chip_num);
+Flash_Status flash_read_jedec_id(SPI_HandleTypeDef *hspi1, int flash_chip_num, int debug);
+Flash_Status flash_read_status_register(SPI_HandleTypeDef *hspi1, int flash_chip_num, int status_register, uint8_t* data_out);
+Flash_Status flash_write_status_register(SPI_HandleTypeDef *hspi1, int flash_chip_num, int status_register, uint8_t value);
+Flash_Status flash_page_read(SPI_HandleTypeDef *hspi1, int flash_chip_num, uint16_t page_address);
+Flash_Status flash_data_read(SPI_HandleTypeDef *hspi1, int flash_chip_num, uint16_t count, int count_in_pages, uint8_t* rx_buffer);
+
+
 
 
 #endif /* INC_FLASH_H_ */

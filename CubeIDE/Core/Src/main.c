@@ -149,8 +149,10 @@ int main(void)
   lcd_clear(&hspi2);
   lcd_on(&hspi2);
   lcd_welcome(&hspi2);
-  reset_ic(&hspi1, 0);
+  reset_ic(&hspi1, 1);
   Init_Pin();
+  uint8_t data_out;
+  uint8_t rx_buffer[6000] = {0};
   while (1)
   {
     /* USER CODE END WHILE */
@@ -159,7 +161,10 @@ int main(void)
 	Write_Pin(DEBUG_P_NINE, 1);
 	Write_Pin(DEBUG_P_EIGHT, 0);
 	HAL_Delay(2000);
-	flash_read_jedec_id(&hspi1, 1, 1);
+	flash_read_status_register(&hspi1, 1, 2, &data_out);
+	flash_write_status_register(&hspi1, 1, 2, data_out & 0b11110111);
+	flash_page_read(&hspi1, 1, 0);
+	flash_data_read(&hspi1, 1, 2, 1, rx_buffer);
 	HAL_Delay(2000);
 
   }

@@ -1,6 +1,7 @@
-..\Core\Src\flash.c:29:6:pin_setup	24	static
-..\Core\Src\flash.c:86:6:reset_ic	16	static
-..\Core\Src\flash.c:94:6:flash_read_jedec_id	48	static
-..\Core\Src\flash.c:114:9:flash_read_status_register	40	static
-..\Core\Src\flash.c:137:6:flash_write_status_register	32	static
-..\Core\Src\flash.c:158:6:flash_page_transfer	32	static
+..\Core\Src\flash.c:30:14:pin_setup	24	static
+..\Core\Src\flash.c:88:14:reset_ic	32	static
+..\Core\Src\flash.c:104:14:flash_read_jedec_id	56	static
+..\Core\Src\flash.c:129:14:flash_read_status_register	48	static
+..\Core\Src\flash.c:163:14:flash_write_status_register	40	static
+..\Core\Src\flash.c:195:14:flash_page_read	40	static
+..\Core\Src\flash.c:216:14:flash_data_read	65528	static

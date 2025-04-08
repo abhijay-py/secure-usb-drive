@@ -26,7 +26,8 @@ const uint8_t STATUS_REGISTER_ONE = 0xA0;
 const uint8_t STATUS_REGISTER_TWO = 0xB0;
 const uint8_t STATUS_REGISTER_THREE = 0xC0;
 
-void pin_setup(int flash_chip_num, int cs, int wp, int hold){
+//ALL Functions assume pins are reset after use.
+Flash_Status pin_setup(int flash_chip_num, int cs, int wp, int hold){
 	if (wp != -1) {
 		switch (flash_chip_num) {
 			case 1:
@@ -42,7 +43,7 @@ void pin_setup(int flash_chip_num, int cs, int wp, int hold){
 				Write_Pin(FLASH_P_WP_FOUR, wp);
 				break;
 			default:
-				return;
+				return FLASH_INVALID_CHIP_NUM;
 		}
 	}
 	if (hold != -1) {
@@ -60,7 +61,7 @@ void pin_setup(int flash_chip_num, int cs, int wp, int hold){
 				Write_Pin(FLASH_P_HOLD_FOUR, hold);
 				break;
 			default:
-				return;
+				return FLASH_INVALID_CHIP_NUM;
 		}
 	}
 	if (cs != -1) {
@@ -78,27 +79,34 @@ void pin_setup(int flash_chip_num, int cs, int wp, int hold){
 				Write_Pin(FLASH_P_CS_FOUR, cs);
 				break;
 			default:
-				return;
+				return FLASH_INVALID_CHIP_NUM;
 		}
 	}
+	return FLASH_OK;
 }
 
-void reset_ic(SPI_HandleTypeDef *hspi1, int flash_chip_num) {
-	HAL_Delay(1000);
+Flash_Status reset_ic(SPI_HandleTypeDef *hspi1, int flash_chip_num) {
+	uint8_t tx_buffer[1] = {FLASH_RESET};
 
-	pin_setup(flash_chip_num, 0, -1, -1);
-	HAL_SPI_Transmit(hspi1, &FLASH_RESET, 1, 1000);
+	Flash_Status error_one = pin_setup(flash_chip_num, 0, -1, -1);
+	int error_two = HAL_SPI_Transmit(hspi1, tx_buffer, 1, 1000);
 	pin_setup(flash_chip_num, 1, -1, -1);
+
+	if (error_one != FLASH_OK) {
+		return error_one;
+	}
+	else if (error_two != 0) {
+		return FLASH_HAL_ERROR;
+	}
+	return FLASH_OK;
 }
 
-void flash_read_jedec_id(SPI_HandleTypeDef *hspi1, int flash_chip_num, int debug) {
-	pin_setup(flash_chip_num, 0, -1, -1);
-
+Flash_Status flash_read_jedec_id(SPI_HandleTypeDef *hspi1, int flash_chip_num, int debug) {
 	uint8_t tx_buffer[5] = {FLASH_READ_JEDEC_ID, 0x00, 0x00, 0x00, 0x00};
 	uint8_t rx_buffer[5] = {0x00, 0x00, 0x00, 0x00, 0x00};
 
-	HAL_SPI_TransmitReceive(hspi1, tx_buffer, rx_buffer, 5, 1000);
-
+	Flash_Status error_one = pin_setup(flash_chip_num, 0, -1, -1);
+	int error_two = HAL_SPI_TransmitReceive(hspi1, tx_buffer, rx_buffer, 5, 1000);
 	pin_setup(flash_chip_num, 1, -1, -1);
 
 	if (debug != 0) {
@@ -109,9 +117,16 @@ void flash_read_jedec_id(SPI_HandleTypeDef *hspi1, int flash_chip_num, int debug
 			Write_Pin(DEBUG_P_EIGHT, 0);
 		}
 	}
+	if (error_one != FLASH_OK) {
+		return error_one;
+	}
+	else if (error_two != 0) {
+		return FLASH_HAL_ERROR;
+	}
+	return FLASH_OK;
 }
 
-uint8_t flash_read_status_register(SPI_HandleTypeDef *hspi1, int flash_chip_num, int status_register) {
+Flash_Status flash_read_status_register(SPI_HandleTypeDef *hspi1, int flash_chip_num, int status_register, uint8_t* data_out) {
 	uint8_t tx_buffer[3] = {FLASH_READ_STATUS_REGISTER, 0x00, 0x00};
 	uint8_t rx_buffer[3] = {0x00, 0x00, 0x00};
 
@@ -125,16 +140,27 @@ uint8_t flash_read_status_register(SPI_HandleTypeDef *hspi1, int flash_chip_num,
 		case 3:
 			tx_buffer[1] = STATUS_REGISTER_THREE;
 			break;
+		case 4:
+			return FLASH_INVALID_STATUS_REG;
 	}
 
-	pin_setup(flash_chip_num, 0, -1, -1);
-	HAL_SPI_TransmitReceive(hspi1, tx_buffer, rx_buffer, 3, 1000);
+	Flash_Status error_one = pin_setup(flash_chip_num, 0, -1, -1);
+	int error_two = HAL_SPI_TransmitReceive(hspi1, tx_buffer, rx_buffer, 3, 1000);
 	pin_setup(flash_chip_num, 1, -1, -1);
 
-	return rx_buffer[3];
+	*data_out = rx_buffer[2];
+
+	if (error_one != FLASH_OK) {
+		return error_one;
+	}
+	else if (error_two != 0) {
+		return FLASH_HAL_ERROR;
+	}
+
+	return FLASH_OK;
 }
 
-void flash_write_status_register(SPI_HandleTypeDef *hspi1, int flash_chip_num, int status_register, uint8_t value) {0
+Flash_Status flash_write_status_register(SPI_HandleTypeDef *hspi1, int flash_chip_num, int status_register, uint8_t value) {
 	uint8_t tx_buffer[3] = {FLASH_WRITE_STATUS_REGISTER, 0x00, value};
 
 	switch (status_register){
@@ -147,22 +173,75 @@ void flash_write_status_register(SPI_HandleTypeDef *hspi1, int flash_chip_num, i
 		case 3:
 			tx_buffer[1] = STATUS_REGISTER_THREE;
 			break;
+		case 4:
+			return FLASH_INVALID_STATUS_REG;
 	}
 
-	pin_setup(flash_chip_num, 0, -1, -1);
-	HAL_SPI_Transmit(hspi1, tx_buffer, 3, 1000);
+	Flash_Status error_one = pin_setup(flash_chip_num, 0, -1, -1);
+	int error_two = HAL_SPI_Transmit(hspi1, tx_buffer, 3, 1000);
 	pin_setup(flash_chip_num, 1, -1, -1);
 
+	if (error_one != FLASH_OK) {
+		return error_one;
+	}
+	else if (error_two != 0) {
+		return FLASH_HAL_ERROR;
+	}
+
+	return FLASH_OK;
 }
 
-void flash_page_transfer(SPI_HandleTypeDef *hspi1, int flash_chip_num, uint16_t page_address) {
+//Transfer page to data buffer
+Flash_Status flash_page_read(SPI_HandleTypeDef *hspi1, int flash_chip_num, uint16_t page_address) {
 	uint8_t tx_buffer[4] = {FLASH_PAGE_READ, 0x00, 0x00, 0x00};
 	tx_buffer[2] = page_address >> 8;
 	tx_buffer[3] = page_address & 0xff;
 	
-	pin_setup(flash_chip_num, 0, -1, -1);
-	HAL_SPI_Transmit(hspi1, tx_buffer, 4, 1000);
+	Flash_Status error_one = pin_setup(flash_chip_num, 0, -1, -1);
+	int error_two = HAL_SPI_Transmit(hspi1, tx_buffer, 4, 1000);
 	pin_setup(flash_chip_num, 1, -1, -1);
+
+	if (error_one != FLASH_OK) {
+		return error_one;
+	}
+	else if (error_two != 0) {
+		return FLASH_HAL_ERROR;
+	}
+
+	return FLASH_OK;
 }
 
-//MAX Transmit size 65536 bytes both ways.
+//Requires flash_page_read to function properly. Also does a continuous read so must have status register set correctly.
+//rx_buffer[4:] gets all the data. ASSUME rx_buffer is the right size.
+Flash_Status flash_data_read(SPI_HandleTypeDef *hspi1, int flash_chip_num, uint16_t count, int count_in_pages, uint8_t* rx_buffer) {
+	uint16_t size;
+
+	if (count_in_pages != 0) {
+		if (count > 31) {
+			return FLASH_INVALID_READ_SIZE;
+		}
+		size = count * 2112 + 4;
+	}
+	else {
+		if (count > 65472) {
+			return FLASH_INVALID_READ_SIZE;
+		}
+		size = count + 4;
+	}
+
+	uint8_t tx_buffer[65476] = {0};
+	tx_buffer[0] = FLASH_READ_FROM_CACHE;
+
+	Flash_Status error_one = pin_setup(flash_chip_num, 0, -1, -1);
+	int error_two = HAL_SPI_TransmitReceive(hspi1, tx_buffer, rx_buffer, size, 1000);
+	pin_setup(flash_chip_num, 1, -1, -1);
+
+	if (error_one != FLASH_OK) {
+		return error_one;
+	}
+	else if (error_two != 0) {
+		return FLASH_HAL_ERROR;
+	}
+
+	return FLASH_OK;
+}
