@@ -73,6 +73,10 @@ extern const IC_Pin KEY_P_R_TWO;
 extern const IC_Pin KEY_P_R_THREE;
 extern const IC_Pin KEY_P_R_FOUR;
 
+//LCD GPIOs
+
+extern const IC_Pin LCD_P_CS;
+
 //DEBUG GPIOs
 extern const IC_Pin DEBUG_P_NINE;
 extern const IC_Pin DEBUG_P_EIGHT;

@@ -80,6 +80,9 @@ const IC_Pin KEY_P_R_TWO = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_10}
 const IC_Pin KEY_P_R_THREE = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_11};
 const IC_Pin KEY_P_R_FOUR = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_12};
 
+//LCD GPIOs
+const IC_Pin LCD_P_CS = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_12};
+
 //DEBUG GPIOs
 const IC_Pin DEBUG_P_NINE = (IC_Pin){.pin_letter = GPIOA, .pin_num = GPIO_PIN_9};
 const IC_Pin DEBUG_P_EIGHT = (IC_Pin){.pin_letter = GPIOA, .pin_num = GPIO_PIN_8};
@@ -145,12 +148,12 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_RESET);
+  Init_Pin();
   lcd_clear(&hspi2);
   lcd_on(&hspi2);
   lcd_welcome(&hspi2);
   reset_ic(&hspi1, 1);
-  Init_Pin();
+
   uint8_t data_out;
   uint8_t rx_buffer[6000] = {0};
   while (1)
@@ -446,7 +449,7 @@ static void MX_GPIO_Init(void)
                           |GPIO_PIN_15, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_6, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_12|GPIO_PIN_6, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : PH1 */
   GPIO_InitStruct.Pin = GPIO_PIN_1;
@@ -475,8 +478,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PB0 PB1 PB6 */
-  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_6;
+  /*Configure GPIO pins : PB0 PB1 PB12 PB6 */
+  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_12|GPIO_PIN_6;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
