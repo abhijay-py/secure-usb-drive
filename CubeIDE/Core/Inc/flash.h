@@ -17,23 +17,7 @@ void reset_ic(SPI_HandleTypeDef *hspi1, int flash_chip_num);
 void flash_read_jedec_id(SPI_HandleTypeDef *hspi1, int flash_chip_num, int debug);
 uint8_t flash_read_status_register(SPI_HandleTypeDef *hspi1, int flash_chip_num, int status_register);
 void flash_write_status_register(SPI_HandleTypeDef *hspi1, int flash_chip_num, int status_register, uint8_t value);
-
-extern const IC_Pin FLASH_P_HOLD;
-extern const IC_Pin FLASH_P_CHIP_SELECT;
-extern const IC_Pin FLASH_P_WRITE_PROTECT;
-
-extern const uint8_t FLASH_RESET;
-extern const uint8_t FLASH_WRITE_ENABLE;
-extern const uint8_t FLASH_WRITE_DISABLE;
-extern const uint8_t FLASH_PAGE_READ;
-extern const uint8_t FLASH_READ_FROM_CACHE;
-extern const uint8_t FLASH_PROGRAM_EXECUTE;
-extern const uint8_t FLASH_PROGRAM_LOAD;
-extern const uint8_t FLASH_PROGRAM_LOAD_RANDOM;
-extern const uint8_t FLASH_BLOCK_ERASE;
-extern const uint8_t FLASH_READ_STATUS_REGISTER;
-extern const uint8_t FLASH_WRITE_STATUS_REGISTER;
-extern const uint8_t FLASH_READ_JEDEC_ID[5];
+void flash_page_transfer(SPI_HandleTypeDef *hspi1, int flash_chip_num, uint16_t page_address);
 
 
 #endif /* INC_FLASH_H_ */

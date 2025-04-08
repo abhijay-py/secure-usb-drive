@@ -20,7 +20,7 @@ const uint8_t FLASH_PROGRAM_LOAD_RANDOM = 0x84;
 const uint8_t FLASH_BLOCK_ERASE = 0xD8;
 const uint8_t FLASH_READ_STATUS_REGISTER = 0x0F;
 const uint8_t FLASH_WRITE_STATUS_REGISTER = 0x1F;
-const uint8_t FLASH_READ_JEDEC_ID[5] = {0x9F, 0x00, 0x00, 0x00, 0x00};
+const uint8_t FLASH_READ_JEDEC_ID = 0x9F;
 
 const uint8_t STATUS_REGISTER_ONE = 0xA0;
 const uint8_t STATUS_REGISTER_TWO = 0xB0;
@@ -94,14 +94,15 @@ void reset_ic(SPI_HandleTypeDef *hspi1, int flash_chip_num) {
 void flash_read_jedec_id(SPI_HandleTypeDef *hspi1, int flash_chip_num, int debug) {
 	pin_setup(flash_chip_num, 0, -1, -1);
 
-	uint8_t buffer[5];
+	uint8_t tx_buffer[5] = {FLASH_READ_JEDEC_ID, 0x00, 0x00, 0x00, 0x00};
+	uint8_t rx_buffer[5] = {0x00, 0x00, 0x00, 0x00, 0x00};
 
-	HAL_SPI_TransmitReceive(hspi1, FLASH_READ_JEDEC_ID, buffer, 5, 1000);
+	HAL_SPI_TransmitReceive(hspi1, tx_buffer, rx_buffer, 5, 1000);
 
 	pin_setup(flash_chip_num, 1, -1, -1);
 
 	if (debug != 0) {
-		if (buffer[2] == 0xEF && buffer[3] == 0xAA && buffer[4] == 0x21) {
+		if (rx_buffer[2] == 0xEF && rx_buffer[3] == 0xAA && rx_buffer[4] == 0x21) {
 			Write_Pin(DEBUG_P_EIGHT, 1);
 		}
 		else {
@@ -112,7 +113,7 @@ void flash_read_jedec_id(SPI_HandleTypeDef *hspi1, int flash_chip_num, int debug
 
 uint8_t flash_read_status_register(SPI_HandleTypeDef *hspi1, int flash_chip_num, int status_register) {
 	uint8_t tx_buffer[3] = {FLASH_READ_STATUS_REGISTER, 0x00, 0x00};
-	uint8_t rx_buffer[3];
+	uint8_t rx_buffer[3] = {0x00, 0x00, 0x00};
 
 	switch (status_register){
 		case 1:
@@ -154,4 +155,14 @@ void flash_write_status_register(SPI_HandleTypeDef *hspi1, int flash_chip_num, i
 
 }
 
+void flash_page_transfer(SPI_HandleTypeDef *hspi1, int flash_chip_num, uint16_t page_address) {
+	uint8_t tx_buffer[4] = {FLASH_PAGE_READ, 0x00, 0x00, 0x00};
+	tx_buffer[2] = page_address >> 8;
+	tx_buffer[3] = page_address & 0xff;
 
+	pin_setup(flash_chip_num, 0, -1, -1);
+	HAL_SPI_Transmit(hspi1, tx_buffer, 4, 1000);
+	pin_setup(flash_chip_num, 1, -1, -1);
+}
+
+//MAX Transmit size 65536 bytes both ways.

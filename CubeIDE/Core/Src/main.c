@@ -110,7 +110,6 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-	char spi_buf[4352]; //Up to 4352 bytes, so we need to maximize spi buffer
   /* USER CODE END 1 */
 
   /* MPU Configuration--------------------------------------------------------*/
@@ -160,9 +159,7 @@ int main(void)
 	Write_Pin(DEBUG_P_NINE, 1);
 	Write_Pin(DEBUG_P_EIGHT, 0);
 	HAL_Delay(2000);
-	flash_read_status_register(&hspi1, 1, 1);
-	flash_write_status_register(&hspi1, 1, 1);
-	flash_read_status_register(&hspi1, 1, 1);
+	flash_read_jedec_id(&hspi1, 1, 1);
 	HAL_Delay(2000);
 
   }
