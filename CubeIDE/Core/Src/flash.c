@@ -22,6 +22,9 @@ const uint8_t FLASH_BLOCK_ERASE = 0xD8;
 const uint8_t FLASH_READ_STATUS_REGISTER = 0x0F;
 const uint8_t FLASH_WRITE_STATUS_REGISTER = 0x1F;
 const uint8_t FLASH_READ_JEDEC_ID = 0x9F;
+const uint8_t FLASH_BAD_BLOCK_MANAGEMENT = 0xA1;
+const uint8_t FLASH_BAD_BLOCK_LUT = 0xA5;
+const uint8_t FLASH_ECC_PAGE_ADDRESS = 0xA9;
 
 //Status Register Addresses
 const uint8_t STATUS_REGISTER_ONE = 0xA0;
@@ -72,20 +75,20 @@ Flash_Status flash_page_read(SPI_HandleTypeDef *hspi1, int flash_chip_num, uint1
 
 //Requires flash_page_read to function properly. Also does a continuous read so must have status register set correctly.
 //rx_buffer[4:] gets all the data. ASSUME rx_buffer is the right size.
-Flash_Status flash_data_read(SPI_HandleTypeDef *hspi1, int flash_chip_num, uint16_t count, uint8_t* rx_buffer, int count_in_pages) {
+Flash_Status flash_data_read(SPI_HandleTypeDef *hspi1, int flash_chip_num, uint16_t bytes_or_pages, uint8_t* rx_buffer, int count_in_pages) {
 	uint16_t size;
 
 	if (count_in_pages != 0) {
-		if (count > 31) {
+		if (bytes_or_pages > 31) {
 			return FLASH_INVALID_READ_SIZE;
 		}
-		size = count * 2048 + 4;
+		size = bytes_or_pages * 2048 + 4;
 	}
 	else {
-		if (count > 63492) {
+		if (bytes_or_pages > 63492) {
 			return FLASH_INVALID_READ_SIZE;
 		}
-		size = count + 4;
+		size = bytes_or_pages + 4;
 	}
 
 	uint8_t tx_buffer[63492] = {0};
@@ -105,9 +108,8 @@ Flash_Status flash_data_read(SPI_HandleTypeDef *hspi1, int flash_chip_num, uint1
 	return FLASH_OK;
 }
 
-//ASSUME tx_buffer is right size (2048 bytes). Bytes 0-2 will be overwritten. Must disable write protections (block prot and status register writes)
+//ASSUME tx_buffer is right size (3 + bytes). Bytes 0-2 will be overwritten. Must disable write protections (block prot and status register writes)
 //Column Address (CA) only requires CA[11:0], CA[15:12] are considered as dummy bits.
-//Double check if WEL is reset
 Flash_Status flash_data_write(SPI_HandleTypeDef *hspi1, int flash_chip_num, uint16_t column_address, uint16_t bytes, uint8_t* tx_buffer, int overwrite_other_data) {
 	if (bytes > 2048) {
 		return FLASH_INVALID_WRITE_SIZE;
@@ -142,11 +144,20 @@ Flash_Status flash_data_write(SPI_HandleTypeDef *hspi1, int flash_chip_num, uint
 		return FLASH_HAL_ERROR;
 	}
 
+	tx_wel_buffer[0] = FLASH_WRITE_DISABLE;
+
+	pin_setup(flash_chip_num, 0, -1, -1);
+	error_two = HAL_SPI_Transmit(hspi1, tx_wel_buffer, 1, 1000);
+	pin_setup(flash_chip_num, 1, -1, -1);
+
+	if (error_two != 0) {
+		return FLASH_HAL_ERROR;
+	}
+
 	return FLASH_OK;
 }
 
 //Commits data write changes.
-//Double check if WEL is reset
 Flash_Status flash_page_write(SPI_HandleTypeDef *hspi1, int flash_chip_num, uint16_t page_address) {
 	uint8_t tx_wel_buffer[1] = {FLASH_WRITE_ENABLE};
 
@@ -261,6 +272,78 @@ Flash_Status flash_write_status_register(SPI_HandleTypeDef *hspi1, int flash_chi
 
 	Flash_Status error_one = pin_setup(flash_chip_num, 0, -1, -1);
 	int error_two = HAL_SPI_Transmit(hspi1, tx_buffer, 3, 1000);
+	pin_setup(flash_chip_num, 1, -1, -1);
+
+	if (error_one != FLASH_OK) {
+		return error_one;
+	}
+	else if (error_two != 0) {
+		return FLASH_HAL_ERROR;
+	}
+
+	return FLASH_OK;
+}
+
+//Writes page address of ecc failure in address_out
+Flash_Status flash_ecc_failure_address(SPI_HandleTypeDef *hspi1, int flash_chip_num, uint16_t* address_out) {
+	uint8_t tx_buffer[4] = {FLASH_ECC_PAGE_ADDRESS, 0x00, 0x00, 0x00};
+	uint8_t rx_buffer[4];
+
+	Flash_Status error_one = pin_setup(flash_chip_num, 0, -1, -1);
+	int error_two = HAL_SPI_TransmitReceive(hspi1, tx_buffer, rx_buffer, 4, 1000);
+	pin_setup(flash_chip_num, 1, -1, -1);
+
+	if (error_one != FLASH_OK) {
+		return error_one;
+	}
+	else if (error_two != 0) {
+		return FLASH_HAL_ERROR;
+	}
+
+	*address_out = rx_buffer[3] << 8 | rx_buffer[4];
+
+	return FLASH_OK;
+}
+
+//Add to BBM LUT
+Flash_Status flash_remap_bad_block(SPI_HandleTypeDef *hspi1, int flash_chip_num, uint16_t bad_block_address, uint16_t new_block_address) {
+	uint8_t tx_wel_buffer[1] = {FLASH_WRITE_ENABLE};
+
+	Flash_Status error_one = pin_setup(flash_chip_num, 0, -1, -1);
+	int error_two = HAL_SPI_Transmit(hspi1, tx_wel_buffer, 1, 1000);
+	pin_setup(flash_chip_num, 1, -1, -1);
+
+	if (error_one != FLASH_OK) {
+		return error_one;
+	}
+	else if (error_two != 0) {
+		return FLASH_HAL_ERROR;
+	}
+
+	uint8_t tx_buffer[5] = {FLASH_BAD_BLOCK_MANAGEMENT, 0x00, 0x00, 0x00, 0x00};
+	tx_buffer[1] = bad_block_address >> 8;
+	tx_buffer[2] = bad_block_address & 0xff;
+	tx_buffer[3] = new_block_address >> 8;
+	tx_buffer[4] = new_block_address & 0xff;
+
+	pin_setup(flash_chip_num, 0, -1, -1);
+	error_two = HAL_SPI_Transmit(hspi1, tx_buffer, 5, 1000);
+	pin_setup(flash_chip_num, 1, -1, -1);
+
+	if (error_two != 0) {
+		return FLASH_HAL_ERROR;
+	}
+
+	return FLASH_OK;
+}
+
+//Read BBM LUT, rx_buffer should be 82 bytes.
+Flash_Status flash_read_bad_block_LUT(SPI_HandleTypeDef *hspi1, int flash_chip_num, uint8_t* rx_buffer) {
+	uint8_t tx_buffer[82] = {0};
+	tx_buffer[0] = FLASH_BAD_BLOCK_LUT;
+
+	Flash_Status error_one = pin_setup(flash_chip_num, 0, -1, -1);
+	int error_two = HAL_SPI_TransmitReceive(hspi1, tx_buffer, rx_buffer, 82, 1000);
 	pin_setup(flash_chip_num, 1, -1, -1);
 
 	if (error_one != FLASH_OK) {

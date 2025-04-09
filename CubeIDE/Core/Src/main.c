@@ -156,6 +156,7 @@ int main(void)
 
   uint8_t data_out;
   uint8_t rx_buffer[6000] = {0};
+  uint8_t tx_buffer[4] = {0};
   while (1)
   {
     /* USER CODE END WHILE */
@@ -166,14 +167,30 @@ int main(void)
 	HAL_Delay(2000);
 	flash_read_status_register(&hspi1, 1, 1, &data_out);
 	flash_write_status_register(&hspi1, 1, 1, data_out & 0b10000111);
+	HAL_Delay(10);
 	flash_read_status_register(&hspi1, 1, 2, &data_out);
 	flash_write_status_register(&hspi1, 1, 2, data_out & 0b11110111);
+	HAL_Delay(10);
 	flash_page_read(&hspi1, 1, 0);
+	HAL_Delay(10);
+	flash_data_read(&hspi1, 1, 2, rx_buffer, 1);
+	HAL_Delay(10);
+	flash_data_write(&hspi1, 1, 1, 1, tx_buffer, 0);
+	HAL_Delay(10);
+	flash_page_write(&hspi1, 1, 0);
+	HAL_Delay(10);
+	flash_page_read(&hspi1, 1, 0);
+	HAL_Delay(10);
+	flash_data_read(&hspi1, 1, 2, rx_buffer, 1);
+	HAL_Delay(10);
+	block_erase(&hspi1, 1, 0);
+	HAL_Delay(10);
+	flash_page_read(&hspi1, 1, 0);
+	HAL_Delay(10);
 	flash_data_read(&hspi1, 1, 2, rx_buffer, 1);
 	HAL_Delay(2000);
-
   }
-  /* USER CODE END 3 */
+ /* USER CODE END 3 */
 }
 
 /**
