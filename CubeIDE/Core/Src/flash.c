@@ -213,23 +213,23 @@ Flash_Status flash_page_read(SPI_HandleTypeDef *hspi1, int flash_chip_num, uint1
 
 //Requires flash_page_read to function properly. Also does a continuous read so must have status register set correctly.
 //rx_buffer[4:] gets all the data. ASSUME rx_buffer is the right size.
-Flash_Status flash_data_read(SPI_HandleTypeDef *hspi1, int flash_chip_num, uint16_t count, int count_in_pages, uint8_t* rx_buffer) {
+Flash_Status flash_data_read(SPI_HandleTypeDef *hspi1, int flash_chip_num, uint16_t count, uint8_t* rx_buffer, int count_in_pages) {
 	uint16_t size;
 
 	if (count_in_pages != 0) {
 		if (count > 31) {
 			return FLASH_INVALID_READ_SIZE;
 		}
-		size = count * 2112 + 4;
+		size = count * 2048 + 4;
 	}
 	else {
-		if (count > 65472) {
+		if (count > 63492) {
 			return FLASH_INVALID_READ_SIZE;
 		}
 		size = count + 4;
 	}
 
-	uint8_t tx_buffer[65476] = {0};
+	uint8_t tx_buffer[63492] = {0};
 	tx_buffer[0] = FLASH_READ_FROM_CACHE;
 
 	Flash_Status error_one = pin_setup(flash_chip_num, 0, -1, -1);
@@ -240,6 +240,44 @@ Flash_Status flash_data_read(SPI_HandleTypeDef *hspi1, int flash_chip_num, uint1
 		return error_one;
 	}
 	else if (error_two != 0) {
+		return FLASH_HAL_ERROR;
+	}
+
+	return FLASH_OK;
+}
+
+//ASSUME tx_buffer is right size (2048 bytes). Bytes 0-2 will be overwritten. Must disable write protections (block prot and status register writes)
+Flash_Status flash_data_write(SPI_HandleTypeDef *hspi1, int flash_chip_num, uint16_t column_address, uint16_t bytes, uint8_t* tx_buffer, int overwrite_other_data) {
+	if (bytes > 2048) {
+		return FLASH_INVALID_WRITE_SIZE;
+	}
+	uint8_t tx_wel_buffer[1] = {FLASH_WRITE_ENABLE};
+
+	Flash_Status error_one = pin_setup(flash_chip_num, 0, -1, -1);
+	int error_two = HAL_SPI_Transmit(hspi1, tx_wel_buffer, 1, 1000);
+	pin_setup(flash_chip_num, 1, -1, -1);
+
+	if (error_one != FLASH_OK) {
+		return error_one;
+	}
+	else if (error_two != 0) {
+		return FLASH_HAL_ERROR;
+	}
+
+	if (overwrite_other_data == 1) {
+		tx_buffer[0] = FLASH_PROGRAM_LOAD;
+	}
+	else {
+		tx_buffer[0] = FLASH_PROGRAM_LOAD_RANDOM;
+	}
+	tx_buffer[1] = column_address >> 8;
+	tx_buffer[2] = column_address & 0xff;
+
+	pin_setup(flash_chip_num, 0, -1, -1);
+	error_two = HAL_SPI_Transmit(hspi1, tx_buffer, bytes + 3, 1000);
+	pin_setup(flash_chip_num, 1, -1, -1);
+
+	if (error_two != 0) {
 		return FLASH_HAL_ERROR;
 	}
 

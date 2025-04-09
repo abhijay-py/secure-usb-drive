@@ -164,10 +164,12 @@ int main(void)
 	Write_Pin(DEBUG_P_NINE, 1);
 	Write_Pin(DEBUG_P_EIGHT, 0);
 	HAL_Delay(2000);
+	flash_read_status_register(&hspi1, 1, 1, &data_out);
+	flash_write_status_register(&hspi1, 1, 1, data_out & 0b10000111);
 	flash_read_status_register(&hspi1, 1, 2, &data_out);
 	flash_write_status_register(&hspi1, 1, 2, data_out & 0b11110111);
 	flash_page_read(&hspi1, 1, 0);
-	flash_data_read(&hspi1, 1, 2, 1, rx_buffer);
+	flash_data_read(&hspi1, 1, 2, rx_buffer, 1);
 	HAL_Delay(2000);
 
   }
