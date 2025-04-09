@@ -4,4 +4,5 @@
 ..\Core\Src\flash.c:129:14:flash_read_status_register	48	static
 ..\Core\Src\flash.c:163:14:flash_write_status_register	40	static
 ..\Core\Src\flash.c:195:14:flash_page_read	40	static
-..\Core\Src\flash.c:216:14:flash_data_read	65528	static
+..\Core\Src\flash.c:216:14:flash_data_read	63544	static
+..\Core\Src\flash.c:250:14:flash_data_write	40	static
