@@ -1,0 +1,13 @@
+..\Core\Src\flash.c:40:14:reset_ic	3
+..\Core\Src\flash.c:57:14:flash_page_read	3
+..\Core\Src\flash.c:78:14:flash_data_read	6
+..\Core\Src\flash.c:113:14:flash_data_write	7
+..\Core\Src\flash.c:161:14:flash_page_write	4
+..\Core\Src\flash.c:191:14:block_erase	4
+..\Core\Src\flash.c:221:14:flash_read_status_register	7
+..\Core\Src\flash.c:256:14:flash_write_status_register	7
+..\Core\Src\flash.c:288:14:flash_ecc_failure_address	3
+..\Core\Src\flash.c:309:14:flash_remap_bad_block	4
+..\Core\Src\flash.c:341:14:flash_read_bad_block_LUT	3
+..\Core\Src\flash.c:360:14:pin_setup	16
+..\Core\Src\flash.c:419:14:flash_read_jedec_id	7
