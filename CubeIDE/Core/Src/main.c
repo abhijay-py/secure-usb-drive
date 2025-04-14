@@ -124,7 +124,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
+  int active_flash_ic = 0;
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -143,54 +143,43 @@ int main(void)
   MX_USB_DEVICE_Init();
   MX_TIM7_Init();
   /* USER CODE BEGIN 2 */
-
+  init_pin();
+  flash_init(&hspi1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  Init_Pin();
   lcd_clear(&hspi2);
   lcd_on(&hspi2);
   lcd_welcome(&hspi2);
-  reset_ic(&hspi1, 1);
 
+  active_flash_ic = 1;
   uint8_t data_out;
-  uint8_t rx_buffer[6000] = {0};
+  uint8_t rx_buffer[70000] = {0};
   uint8_t tx_buffer[4] = {0};
+
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	Write_Pin(DEBUG_P_NINE, 1);
-	Write_Pin(DEBUG_P_EIGHT, 0);
-	HAL_Delay(2000);
-	flash_read_status_register(&hspi1, 1, 1, &data_out);
-	flash_write_status_register(&hspi1, 1, 1, data_out & 0b10000111);
-	HAL_Delay(10);
-	flash_read_status_register(&hspi1, 1, 2, &data_out);
-	flash_write_status_register(&hspi1, 1, 2, data_out & 0b11110111);
-	HAL_Delay(10);
-	flash_page_read(&hspi1, 1, 0);
-	HAL_Delay(10);
-	flash_data_read(&hspi1, 1, 2, rx_buffer, 1);
-	HAL_Delay(10);
-	flash_data_write(&hspi1, 1, 1, 1, tx_buffer, 0);
-	HAL_Delay(10);
-	flash_page_write(&hspi1, 1, 0);
-	HAL_Delay(10);
-	flash_page_read(&hspi1, 1, 0);
-	HAL_Delay(10);
-	flash_data_read(&hspi1, 1, 2, rx_buffer, 1);
-	HAL_Delay(10);
-	block_erase(&hspi1, 1, 0);
-	HAL_Delay(10);
-	flash_page_read(&hspi1, 1, 0);
-	HAL_Delay(10);
-	flash_data_read(&hspi1, 1, 2, rx_buffer, 1);
-	HAL_Delay(2000);
+		Write_Pin(DEBUG_P_NINE, 1);
+		Write_Pin(DEBUG_P_EIGHT, 0);
+		HAL_Delay(2000);
+		flash_read_status_register(active_flash_ic, 1, &data_out);
+		flash_write_status_register(active_flash_ic, 1, data_out & 0b10000111);
+		HAL_Delay(10);
+		flash_read_status_register(active_flash_ic, 2, &data_out);
+		flash_write_status_register(active_flash_ic, 2, data_out & 0b11110111);
+		HAL_Delay(10);
+		flash_page_read(active_flash_ic, 0);
+		HAL_Delay(10);
+		flash_data_read(active_flash_ic, 31, rx_buffer, 1);
+		HAL_Delay(2000);
+
+
   }
- /* USER CODE END 3 */
+  /* USER CODE END 3 */
 }
 
 /**
@@ -528,7 +517,7 @@ void Write_Pin(IC_Pin pin, int value)
 }
 
 //Initialize pins to "default value" (update with LCD)
-void Init_Pin() {
+void init_pin() {
 	Write_Pin(FLASH_P_WP_ONE, 1);
 	Write_Pin(FLASH_P_WP_TWO, 1);
 	Write_Pin(FLASH_P_WP_THREE, 1);

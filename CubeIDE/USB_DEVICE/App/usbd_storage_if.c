@@ -194,10 +194,8 @@ int8_t STORAGE_Init_HS(uint8_t lun)
 int8_t STORAGE_GetCapacity_HS(uint8_t lun, uint32_t *block_num, uint16_t *block_size)
 {
   /* USER CODE BEGIN 10 */
-  UNUSED(lun);
-
-  *block_num  = STORAGE_BLK_NBR;
-  *block_size = STORAGE_BLK_SIZ;
+	  *block_num  = 65536;
+	  *block_size = 2048;
   return (USBD_OK);
   /* USER CODE END 10 */
 }
@@ -239,10 +237,8 @@ int8_t STORAGE_IsWriteProtected_HS(uint8_t lun)
 int8_t STORAGE_Read_HS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t blk_len)
 {
   /* USER CODE BEGIN 13 */
-  UNUSED(lun);
-  UNUSED(buf);
-  UNUSED(blk_addr);
-  UNUSED(blk_len);
+
+
 
   return (USBD_OK);
   /* USER CODE END 13 */

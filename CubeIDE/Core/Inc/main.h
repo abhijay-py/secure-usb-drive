@@ -95,7 +95,7 @@ void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
 void Write_Pin(IC_Pin pin, int value);
-void Init_Pin();
+void init_pin();
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
