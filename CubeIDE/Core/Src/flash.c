@@ -35,6 +35,7 @@ const uint8_t STATUS_REGISTER_THREE = 0xC0;
 SPI_HandleTypeDef *hspiflash;
 int *flash_chip_num;
 
+
 //USB Data Wrapper Functions
 
 //Reset flash ICs and pass in spi.
