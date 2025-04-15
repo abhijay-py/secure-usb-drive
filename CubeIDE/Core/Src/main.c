@@ -515,6 +515,15 @@ void Write_Pin(IC_Pin pin, int value)
 	}
 
 }
+int Read_Pin(IC_Pin pin)
+{
+	GPIO_PinState value = HAL_GPIO_ReadPin(pin.pin_letter, pin.pin_num);
+
+	if (value == GPIO_PIN_SET){
+		return 1;
+	}
+	return 0;
+}
 
 //Initialize pins to "default value" (update with LCD)
 void init_pin() {
