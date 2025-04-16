@@ -72,13 +72,13 @@ const IC_Pin FLASH_P_WP_FOUR = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN
 
 
 //KEYPAD GPIOs
-const IC_Pin KEY_P_C_ONE = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_3};
-const IC_Pin KEY_P_C_TWO = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_4};
-const IC_Pin KEY_P_C_THREE = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_5};
-const IC_Pin KEY_P_R_ONE = (IC_Pin){.pin_letter = GPIOA, .pin_num = GPIO_PIN_15};
-const IC_Pin KEY_P_R_TWO = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_10};
-const IC_Pin KEY_P_R_THREE = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_11};
-const IC_Pin KEY_P_R_FOUR = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_12};
+const IC_Pin KEY_P_C_ONE = (IC_Pin){.pin_letter = GPIOA, .pin_num = GPIO_PIN_15};
+const IC_Pin KEY_P_C_TWO = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_10};
+const IC_Pin KEY_P_C_THREE = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_11};
+const IC_Pin KEY_P_R_ONE = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_12};
+const IC_Pin KEY_P_R_TWO = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_3};
+const IC_Pin KEY_P_R_THREE = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_4};
+const IC_Pin KEY_P_R_FOUR = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_5};
 
 //LCD GPIOs
 const IC_Pin LCD_P_CS = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_12};
