@@ -148,47 +148,22 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  Init_Pin();
-  lcd_clear(&hspi2);
-  lcd_on(&hspi2);
-  lcd_welcome(&hspi2);
-  reset_ic(&hspi1, 1);
-
-  uint8_t data_out;
-  uint8_t rx_buffer[6000] = {0};
-  uint8_t tx_buffer[4] = {0};
+  uint8_t ack_type;
+  delete_specified_user(0, &ack_type);
+  add_fingerprint(1, 0, 1, &ack_type);
+  add_fingerprint(2, 0, 1, &ack_type);
+  add_fingerprint(3, 0, 1, &ack_type);
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	Write_Pin(DEBUG_P_NINE, 1);
-	Write_Pin(DEBUG_P_EIGHT, 0);
-	HAL_Delay(2000);
-	flash_read_status_register(&hspi1, 1, 1, &data_out);
-	flash_write_status_register(&hspi1, 1, 1, data_out & 0b10000111);
-	HAL_Delay(10);
-	flash_read_status_register(&hspi1, 1, 2, &data_out);
-	flash_write_status_register(&hspi1, 1, 2, data_out & 0b11110111);
-	HAL_Delay(10);
-	flash_page_read(&hspi1, 1, 0);
-	HAL_Delay(10);
-	flash_data_read(&hspi1, 1, 2, rx_buffer, 1);
-	HAL_Delay(10);
-	flash_data_write(&hspi1, 1, 1, 1, tx_buffer, 0);
-	HAL_Delay(10);
-	flash_page_write(&hspi1, 1, 0);
-	HAL_Delay(10);
-	flash_page_read(&hspi1, 1, 0);
-	HAL_Delay(10);
-	flash_data_read(&hspi1, 1, 2, rx_buffer, 1);
-	HAL_Delay(10);
-	block_erase(&hspi1, 1, 0);
-	HAL_Delay(10);
-	flash_page_read(&hspi1, 1, 0);
-	HAL_Delay(10);
-	flash_data_read(&hspi1, 1, 2, rx_buffer, 1);
-	HAL_Delay(2000);
+	compare_1_1(0, &ack_type);
+	if (ack_type == ACK_SUCCESS) {
+	  Write_Pin(DEBUG_P_NINE, 1);
+	} else {
+	  Write_Pin(DEBUG_P_NINE, 0);
+	}
   }
  /* USER CODE END 3 */
 }
@@ -516,7 +491,7 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 //Easy Write pin with the ic_pin type
-void Write_Pin(IC_Pin pin, int value)
+void (IC_Pin pin, int value)
 {
 	if (value == 0) {
 		HAL_GPIO_WritePin(pin.pin_letter, pin.pin_num, GPIO_PIN_RESET);
