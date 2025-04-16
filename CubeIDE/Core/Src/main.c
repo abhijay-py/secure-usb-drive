@@ -124,7 +124,6 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-  int active_flash_ic = 0;
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -153,10 +152,10 @@ int main(void)
   lcd_on(&hspi2);
   lcd_welcome(&hspi2);
 
-  active_flash_ic = 1;
+  set_flash_chip_num(1);
   uint8_t data_out;
   uint8_t rx_buffer[70000] = {0};
-  uint8_t tx_buffer[4] = {0};
+  uint8_t tx_buffer[2048] = {0};
 
   while (1)
   {
@@ -166,15 +165,17 @@ int main(void)
 		Write_Pin(DEBUG_P_NINE, 1);
 		Write_Pin(DEBUG_P_EIGHT, 0);
 		HAL_Delay(2000);
-		flash_read_status_register(active_flash_ic, 1, &data_out);
-		flash_write_status_register(active_flash_ic, 1, data_out & 0b10000111);
-		HAL_Delay(10);
-		flash_read_status_register(active_flash_ic, 2, &data_out);
-		flash_write_status_register(active_flash_ic, 2, data_out & 0b11110111);
-		HAL_Delay(10);
-		flash_page_read(active_flash_ic, 0);
-		HAL_Delay(10);
-		flash_data_read(active_flash_ic, 31, rx_buffer, 1);
+		flash_read_status_register(1, &data_out);
+		flash_write_status_register(1, data_out & 0b10000111);
+		flash_read_status_register(2, &data_out);
+		flash_write_status_register(2, data_out & 0b11110111);
+		flash_data_write(0, 2048, tx_buffer, 1);
+		flash_page_write(32);
+		flash_page_read(0);
+		flash_data_read(31, rx_buffer, 1);
+		flash_page_read(32);
+		flash_data_read(31, rx_buffer, 1);
+		flash_block_erase(32);
 		HAL_Delay(2000);
 
 

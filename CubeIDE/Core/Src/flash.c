@@ -31,17 +31,18 @@ const uint8_t STATUS_REGISTER_ONE = 0xA0;
 const uint8_t STATUS_REGISTER_TWO = 0xB0;
 const uint8_t STATUS_REGISTER_THREE = 0xC0;
 
-//SPI Holder
+//Flash Parameters
 SPI_HandleTypeDef *hspiflash;
-int *flash_chip_num;
+int flash_chip_num = 0;
+int flash_freeze = 0;
+int flash_busy = 0;
 
 
 //USB Data Wrapper Functions
 
-//Reset flash ICs and pass in spi.
-void flash_init(SPI_HandleTypeDef *hspi1, int* active_flash_chip) {
+//Reset flash ICs and pass in spi
+void flash_init(SPI_HandleTypeDef *hspi1) {
 	hspiflash = hspi1;
-	flash_chip_num = active_flash_chip;
 	reset_ic(1);
 	reset_ic(2);
 	reset_ic(3);
@@ -49,16 +50,124 @@ void flash_init(SPI_HandleTypeDef *hspi1, int* active_flash_chip) {
 }
 
 //Fill up buf from USB with blk_len blocks from blk_addr.
+//Check we don't go over max page addr, blocks in this context means pages as usb will treat pages as blocks
+//
 int flash_read(uint8_t* buf, uint32_t blk_addr, uint16_t blk_len) {
+	int remaining_block_count = blk_len;
+	uint16_t current_address = blk_addr & 0xFFFF;
+	int buf_index = 0;
+	uint8_t rx_buffer[63492] = {0};
 
+	//Check if we have enough data to transfer from a certain address and pointers are okay
+	if ((remaining_block_count + current_address) > 0xFFFF || check_pointers() != FLASH_OK) {
+		return -1;
+	}
+	//Returns Busy if flash freeze
+	if (flash_freeze == 1) {
+		return 1;
+	}
+
+	flash_busy = 1;
+
+	//Calculate iterations for loop
+	int iterations = remaining_block_count / 31;
+
+	if (iterations * 31 != remaining_block_count) {
+		iterations++;
+	}
+
+	//Loop until all data is obtained
+	for (int i = 0; i < iterations; i++) {
+		//Get next page
+		error = flash_page_read(current_address);
+
+		if (error != FLASH_OK) {
+			return -1;
+			flash_busy = 0;
+		}
+		//Transfer remaining blocks
+		if (remaining_block_count < 31) {
+			//Read Data in
+			error = flash_data_read(remaining_block_count, rx_buffer, 1);
+			if (error != FLASH_OK) {
+				return -1;
+				flash_busy = 0;
+			}
+
+			//Transfer data from rx_buffer to buf
+			memcpy((void*)(buf + buf_index), (void*)(rx_buffer + 4), 2048*remaining_block_count*sizeof(uint8_t));
+		}
+		//Transfer max 31 blocks
+		else {
+			//Read Data in
+			error = flash_data_read(31, rx_buffer, 1);
+			if (error != FLASH_OK) {
+				return -1;
+				flash_busy = 0;
+			}
+
+			//Transfer data from rx_buffer to buf
+			memcpy((void*)(buf + buf_index), (void*)(rx_buffer + 4), 2048*31*sizeof(uint8_t));
+			buf_index += 2048 * 31;
+			current_address += 31;
+		}
+	}
+	flash_busy = 0;
+
+	return 0;
 }
+
+
+
+//USB Verification Functions
 
 //Checks if pointers have been passed in to flash_init()
 Flash_Status check_pointers() {
-	if (hspiflash == NULL || flash_chip_num == NULL) {
-		return FLASH_POINTERS_UNINITIALIZED;
+	if (hspiflash == NULL) {
+		return FLASH_SPI_UNINITIALIZED;
 	}
 	return FLASH_OK;
+}
+
+//Check if chip is busy, returns -1 if error, 0 if not busy, 1 if busy
+int check_busy() {
+	uint8_t value;
+	Flash_Status error_one = flash_read_status_register(3, &value);
+
+	if (error_one != FLASH_OK) {
+		return -1;
+	}
+	else if ((value & 0x1) != 0) {
+		return 1;
+	}
+	return 0;
+}
+
+
+
+//Setters and Getters for parameters
+
+//Setters of flash_chip_num are expected to ensure flash is not busy.
+//Ideally you freeze then wait for processing to finish then change flash chip.
+void set_flash_chip_num(int value) {
+	flash_chip_num = value;
+}
+void set_flash_freeze(int value) {
+	if (value != 0) {
+		flash_freeze = 1;
+	}
+	else {
+		flash_freeze = 0;
+	}
+}
+int get_flash_chip_num() {
+	return flash_chip_num;
+}
+int get_flash_freeze() {
+	return flash_freeze;
+}
+int get_flash_busy() {
+	return flash_busy;
 }
 
 
@@ -97,15 +206,24 @@ Flash_Status flash_page_read(uint16_t page_address) {
 	tx_buffer[2] = page_address >> 8;
 	tx_buffer[3] = page_address & 0xff;
 	
-	Flash_Status error_one = pin_setup(*flash_chip_num, 0, -1, -1);
+	Flash_Status error_one = pin_setup(flash_chip_num, 0, -1, -1);
 	int error_two = HAL_SPI_Transmit(hspiflash, tx_buffer, 4, 1000);
-	pin_setup(*flash_chip_num, 1, -1, -1);
+	pin_setup(flash_chip_num, 1, -1, -1);
 
 	if (error_one != FLASH_OK) {
 		return error_one;
 	}
 	else if (error_two != 0) {
 		return FLASH_HAL_ERROR;
+	}
+
+	int busy = 1;
+
+	while (busy != 0) {
+		busy = check_busy();
+		if (busy == -1) {
+			return FLASH_BUSY_ERROR;
+		}
 	}
 
 	return FLASH_OK;
@@ -137,15 +255,24 @@ Flash_Status flash_data_read(uint16_t bytes_or_pages, uint8_t* rx_buffer, int co
 	uint8_t tx_buffer[63492] = {0};
 	tx_buffer[0] = FLASH_READ_FROM_CACHE;
 
-	Flash_Status error_one = pin_setup(*flash_chip_num, 0, -1, -1);
+	Flash_Status error_one = pin_setup(flash_chip_num, 0, -1, -1);
 	int error_two = HAL_SPI_TransmitReceive(hspiflash, tx_buffer, rx_buffer, size, 1000);
-	pin_setup(*flash_chip_num, 1, -1, -1);
+	pin_setup(flash_chip_num, 1, -1, -1);
 
 	if (error_one != FLASH_OK) {
 		return error_one;
 	}
 	else if (error_two != 0) {
 		return FLASH_HAL_ERROR;
+	}
+
+	int busy = 1;
+
+	while (busy != 0) {
+		busy = check_busy();
+		if (busy == -1) {
+			return FLASH_BUSY_ERROR;
+		}
 	}
 
 	return FLASH_OK;
@@ -164,9 +291,9 @@ Flash_Status flash_data_write(uint16_t column_address, uint16_t bytes, uint8_t* 
 	}
 	uint8_t tx_wel_buffer[1] = {FLASH_WRITE_ENABLE};
 
-	Flash_Status error_one = pin_setup(*flash_chip_num, 0, -1, -1);
+	Flash_Status error_one = pin_setup(flash_chip_num, 0, -1, -1);
 	int error_two = HAL_SPI_Transmit(hspiflash, tx_wel_buffer, 1, 1000);
-	pin_setup(*flash_chip_num, 1, -1, -1);
+	pin_setup(flash_chip_num, 1, -1, -1);
 
 	if (error_one != FLASH_OK) {
 		return error_one;
@@ -184,9 +311,9 @@ Flash_Status flash_data_write(uint16_t column_address, uint16_t bytes, uint8_t* 
 	tx_buffer[1] = column_address >> 8;
 	tx_buffer[2] = column_address & 0xff;
 
-	pin_setup(*flash_chip_num, 0, -1, -1);
+	pin_setup(flash_chip_num, 0, -1, -1);
 	error_two = HAL_SPI_Transmit(hspiflash, tx_buffer, bytes + 3, 1000);
-	pin_setup(*flash_chip_num, 1, -1, -1);
+	pin_setup(flash_chip_num, 1, -1, -1);
 
 	if (error_two != 0) {
 		return FLASH_HAL_ERROR;
@@ -194,9 +321,9 @@ Flash_Status flash_data_write(uint16_t column_address, uint16_t bytes, uint8_t* 
 
 	tx_wel_buffer[0] = FLASH_WRITE_DISABLE;
 
-	pin_setup(*flash_chip_num, 0, -1, -1);
+	pin_setup(flash_chip_num, 0, -1, -1);
 	error_two = HAL_SPI_Transmit(hspiflash, tx_wel_buffer, 1, 1000);
-	pin_setup(*flash_chip_num, 1, -1, -1);
+	pin_setup(flash_chip_num, 1, -1, -1);
 
 	if (error_two != 0) {
 		return FLASH_HAL_ERROR;
@@ -214,9 +341,9 @@ Flash_Status flash_page_write(uint16_t page_address) {
 
 	uint8_t tx_wel_buffer[1] = {FLASH_WRITE_ENABLE};
 
-	Flash_Status error_one = pin_setup(*flash_chip_num, 0, -1, -1);
+	Flash_Status error_one = pin_setup(flash_chip_num, 0, -1, -1);
 	int error_two = HAL_SPI_Transmit(hspiflash, tx_wel_buffer, 1, 1000);
-	pin_setup(*flash_chip_num, 1, -1, -1);
+	pin_setup(flash_chip_num, 1, -1, -1);
 
 	if (error_one != FLASH_OK) {
 		return error_one;
@@ -229,12 +356,21 @@ Flash_Status flash_page_write(uint16_t page_address) {
 	tx_buffer[2] = page_address >> 8;
 	tx_buffer[3] = page_address & 0xff;
 
-	pin_setup(*flash_chip_num, 0, -1, -1);
+	pin_setup(flash_chip_num, 0, -1, -1);
 	error_two = HAL_SPI_Transmit(hspiflash, tx_buffer, 4, 1000);
-	pin_setup(*flash_chip_num, 1, -1, -1);
+	pin_setup(flash_chip_num, 1, -1, -1);
 
 	if (error_two != 0) {
 		return FLASH_HAL_ERROR;
+	}
+
+	int busy = 1;
+
+	while (busy != 0) {
+		busy = check_busy();
+		if (busy == -1) {
+			return FLASH_BUSY_ERROR;
+		}
 	}
 
 	return FLASH_OK;
@@ -249,9 +385,9 @@ Flash_Status block_erase(uint16_t page_address) {
 
 	uint8_t tx_wel_buffer[1] = {FLASH_WRITE_ENABLE};
 
-	Flash_Status error_one = pin_setup(*flash_chip_num, 0, -1, -1);
+	Flash_Status error_one = pin_setup(flash_chip_num, 0, -1, -1);
 	int error_two = HAL_SPI_Transmit(hspiflash, tx_wel_buffer, 1, 1000);
-	pin_setup(*flash_chip_num, 1, -1, -1);
+	pin_setup(flash_chip_num, 1, -1, -1);
 
 	if (error_one != FLASH_OK) {
 		return error_one;
@@ -264,12 +400,21 @@ Flash_Status block_erase(uint16_t page_address) {
 	tx_buffer[2] = page_address >> 8;
 	tx_buffer[3] = page_address & 0xff;
 
-	pin_setup(*flash_chip_num, 0, -1, -1);
+	pin_setup(flash_chip_num, 0, -1, -1);
 	error_two = HAL_SPI_Transmit(hspiflash, tx_buffer, 4, 1000);
-	pin_setup(*flash_chip_num, 1, -1, -1);
+	pin_setup(flash_chip_num, 1, -1, -1);
 
 	if (error_two != 0) {
 		return FLASH_HAL_ERROR;
+	}
+
+	int busy = 1;
+
+	while (busy != 0) {
+		busy = check_busy();
+		if (busy == -1) {
+			return FLASH_BUSY_ERROR;
+		}
 	}
 
 	return FLASH_OK;
@@ -299,9 +444,9 @@ Flash_Status flash_read_status_register(int status_register, uint8_t* data_out) 
 			return FLASH_INVALID_STATUS_REG;
 	}
 
-	Flash_Status error_one = pin_setup(*flash_chip_num, 0, -1, -1);
+	Flash_Status error_one = pin_setup(flash_chip_num, 0, -1, -1);
 	int error_two = HAL_SPI_TransmitReceive(hspiflash, tx_buffer, rx_buffer, 3, 1000);
-	pin_setup(*flash_chip_num, 1, -1, -1);
+	pin_setup(flash_chip_num, 1, -1, -1);
 
 	*data_out = rx_buffer[2];
 
@@ -338,9 +483,9 @@ Flash_Status flash_write_status_register(int status_register, uint8_t value) {
 			return FLASH_INVALID_STATUS_REG;
 	}
 
-	Flash_Status error_one = pin_setup(*flash_chip_num, 0, -1, -1);
+	Flash_Status error_one = pin_setup(flash_chip_num, 0, -1, -1);
 	int error_two = HAL_SPI_Transmit(hspiflash, tx_buffer, 3, 1000);
-	pin_setup(*flash_chip_num, 1, -1, -1);
+	pin_setup(flash_chip_num, 1, -1, -1);
 
 	if (error_one != FLASH_OK) {
 		return error_one;
@@ -362,9 +507,9 @@ Flash_Status flash_ecc_failure_address(uint16_t* address_out) {
 	uint8_t tx_buffer[4] = {FLASH_ECC_PAGE_ADDRESS, 0x00, 0x00, 0x00};
 	uint8_t rx_buffer[4];
 
-	Flash_Status error_one = pin_setup(*flash_chip_num, 0, -1, -1);
+	Flash_Status error_one = pin_setup(flash_chip_num, 0, -1, -1);
 	int error_two = HAL_SPI_TransmitReceive(hspiflash, tx_buffer, rx_buffer, 4, 1000);
-	pin_setup(*flash_chip_num, 1, -1, -1);
+	pin_setup(flash_chip_num, 1, -1, -1);
 
 	if (error_one != FLASH_OK) {
 		return error_one;
@@ -387,9 +532,9 @@ Flash_Status flash_remap_bad_block(uint16_t bad_block_address, uint16_t new_bloc
 
 	uint8_t tx_wel_buffer[1] = {FLASH_WRITE_ENABLE};
 
-	Flash_Status error_one = pin_setup(*flash_chip_num, 0, -1, -1);
+	Flash_Status error_one = pin_setup(flash_chip_num, 0, -1, -1);
 	int error_two = HAL_SPI_Transmit(hspiflash, tx_wel_buffer, 1, 1000);
-	pin_setup(*flash_chip_num, 1, -1, -1);
+	pin_setup(flash_chip_num, 1, -1, -1);
 
 	if (error_one != FLASH_OK) {
 		return error_one;
@@ -404,12 +549,21 @@ Flash_Status flash_remap_bad_block(uint16_t bad_block_address, uint16_t new_bloc
 	tx_buffer[3] = new_block_address >> 8;
 	tx_buffer[4] = new_block_address & 0xff;
 
-	pin_setup(*flash_chip_num, 0, -1, -1);
+	pin_setup(flash_chip_num, 0, -1, -1);
 	error_two = HAL_SPI_Transmit(hspiflash, tx_buffer, 5, 1000);
-	pin_setup(*flash_chip_num, 1, -1, -1);
+	pin_setup(flash_chip_num, 1, -1, -1);
 
 	if (error_two != 0) {
 		return FLASH_HAL_ERROR;
+	}
+
+	int busy = 1;
+
+	while (busy != 0) {
+		busy = check_busy();
+		if (busy == -1) {
+			return FLASH_BUSY_ERROR;
+		}
 	}
 
 	return FLASH_OK;
@@ -425,9 +579,9 @@ Flash_Status flash_read_bad_block_LUT(uint8_t* rx_buffer) {
 	uint8_t tx_buffer[82] = {0};
 	tx_buffer[0] = FLASH_BAD_BLOCK_LUT;
 
-	Flash_Status error_one = pin_setup(*flash_chip_num, 0, -1, -1);
+	Flash_Status error_one = pin_setup(flash_chip_num, 0, -1, -1);
 	int error_two = HAL_SPI_TransmitReceive(hspiflash, tx_buffer, rx_buffer, 82, 1000);
-	pin_setup(*flash_chip_num, 1, -1, -1);
+	pin_setup(flash_chip_num, 1, -1, -1);
 
 	if (error_one != FLASH_OK) {
 		return error_one;
@@ -513,9 +667,9 @@ Flash_Status flash_read_jedec_id(int debug) {
 	uint8_t tx_buffer[5] = {FLASH_READ_JEDEC_ID, 0x00, 0x00, 0x00, 0x00};
 	uint8_t rx_buffer[5] = {0x00, 0x00, 0x00, 0x00, 0x00};
 
-	Flash_Status error_one = pin_setup(*flash_chip_num, 0, -1, -1);
+	Flash_Status error_one = pin_setup(flash_chip_num, 0, -1, -1);
 	int error_two = HAL_SPI_TransmitReceive(hspiflash, tx_buffer, rx_buffer, 5, 1000);
-	pin_setup(*flash_chip_num, 1, -1, -1);
+	pin_setup(flash_chip_num, 1, -1, -1);
 
 	if (debug != 0) {
 		if (rx_buffer[2] == 0xEF && rx_buffer[3] == 0xAA && rx_buffer[4] == 0x21) {

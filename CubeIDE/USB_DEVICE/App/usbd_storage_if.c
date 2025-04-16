@@ -22,7 +22,7 @@
 #include "usbd_storage_if.h"
 
 /* USER CODE BEGIN INCLUDE */
-
+#include "flash.h"
 /* USER CODE END INCLUDE */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -237,9 +237,14 @@ int8_t STORAGE_IsWriteProtected_HS(uint8_t lun)
 int8_t STORAGE_Read_HS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t blk_len)
 {
   /* USER CODE BEGIN 13 */
+  error = flash_read(buf, blk_addr, blk_len);
 
-
-
+  if (error == 1) {
+	  return (USBD_BUSY);
+  }
+  else if (error == -1) {
+	  return (USBD_FAIL);
+  }
   return (USBD_OK);
   /* USER CODE END 13 */
 }
