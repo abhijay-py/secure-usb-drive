@@ -15,6 +15,12 @@ const uint8_t LCD_ENTRY_CMD = 0x06;
 const uint8_t LCD_HOME_CMD = 0x46;
 const uint8_t LCD_CURS_LOC_CMD = 0x45;
 const uint8_t LCD_PREFIX = 0xFE;
+const uint8_t LCD_LIGHT = 0x53;
+
+void lcd_light(SPI_HandleTypeDef *hspi2, uint8_t brightness) {
+	const uint8_t tx_buffer[] = {LCD_PREFIX, LCD_LIGHT, brightness};
+	send_bytes(hspi2, tx_buffer, sizeof(tx_buffer));
+}
 
 void lcd_display_first_row(SPI_HandleTypeDef *hspi2, uint8_t *string) {
 //	HAL_SPI_Transmit(hspi2, &LCD_ON_CMD, 1, 1000); //Sending in normal mode
