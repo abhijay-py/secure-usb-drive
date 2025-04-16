@@ -51,12 +51,18 @@ void flash_init(SPI_HandleTypeDef *hspi1) {
 
 //Fill up buf from USB with blk_len blocks from blk_addr.
 //Check we don't go over max page addr, blocks in this context means pages as usb will treat pages as blocks
-//
+//Max read size of 500 kB or 244 blocks, can also fail if buf not big enough. (not checked for)
 int flash_read(uint8_t* buf, uint32_t blk_addr, uint16_t blk_len) {
 	int remaining_block_count = blk_len;
 	uint16_t current_address = blk_addr & 0xFFFF;
 	int buf_index = 0;
 	uint8_t rx_buffer[63492] = {0};
+	Flash_Status error;
+
+	//Return immediate of blk_len is 0
+	if (blk_len == 0) {
+		return 0;
+	}
 
 	//Check if we have enough data to transfer from a certain address and pointers are okay
 	if ((remaining_block_count + current_address) > 0xFFFF || check_pointers() != FLASH_OK) {
@@ -110,6 +116,7 @@ int flash_read(uint8_t* buf, uint32_t blk_addr, uint16_t blk_len) {
 			memcpy((void*)(buf + buf_index), (void*)(rx_buffer + 4), 2048*31*sizeof(uint8_t));
 			buf_index += 2048 * 31;
 			current_address += 31;
+			remaining_block_count -= 31;
 		}
 	}
 	flash_busy = 0;
@@ -117,6 +124,54 @@ int flash_read(uint8_t* buf, uint32_t blk_addr, uint16_t blk_len) {
 	return 0;
 }
 
+//Write from buf from USB with blk_len blocks to blk_addr.
+int flash_write(uint8_t* buf, uint32_t blk_addr, uint16_t blk_len) {
+	uint16_t current_address = blk_addr & 0xFFFF;
+	int buf_index = 0;
+	uint8_t tx_buffer[2051] = {0}; //Data (2048 bytes) + Transmission (3 bytes)
+	Flash_Status error;
+
+	//Return immediate of blk_len is 0
+	if (blk_len == 0) {
+		return 0;
+	}
+
+	//Check if we have enough data to transfer from a certain address and pointers are okay
+	if ((blk_len + current_address) > 0xFFFF || check_pointers() != FLASH_OK) {
+		return -1;
+	}
+
+	//Returns Busy if flash freeze
+	if (flash_freeze == 1) {
+		return 1;
+	}
+
+	flash_busy = 1;
+
+	//Loop until all data is obtained
+	for (int i = blk_len; i > 0; i--) {
+		memcpy((void*)(buf + buf_index), (void*)(tx_buffer + 3), 2048*sizeof(uint8_t));
+
+		error = flash_data_write(0, 2048, tx_buffer, 1);
+
+		if (error != FLASH_OK) {
+			return -1;
+		}
+
+		error = flash_page_write(current_address);
+
+		if (error != FLASH_OK) {
+			return -1;
+		}
+
+		buf_index += 2048;
+		current_address++;
+	}
+
+	flash_busy = 0;
+
+	return 0;
+}
 
 
 //USB Verification Functions
@@ -377,7 +432,7 @@ Flash_Status flash_page_write(uint16_t page_address) {
 }
 
 //Erases 128KB (1 block or 64 pages) addressed by PA[15:6]
-Flash_Status block_erase(uint16_t page_address) {
+Flash_Status flash_block_erase(uint16_t page_address) {
 	Flash_Status pointer_check = check_pointers();
 	if (pointer_check != FLASH_OK) {
 		return pointer_check;

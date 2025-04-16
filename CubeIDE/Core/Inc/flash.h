@@ -26,8 +26,9 @@ typedef enum {
 } Flash_Status;
 
 //USB Data Wrapper Functions
-void flash_init(SPI_HandleTypeDef *hspi1, int* active_flash_chip, int* freeze_signal, int* busy_signal);
+void flash_init(SPI_HandleTypeDef *hspi1);
 int flash_read(uint8_t* buf, uint32_t blk_addr, uint16_t blk_len);
+int flash_write(uint8_t* buf, uint32_t blk_addr, uint16_t blk_len);
 
 //USB Verification Functions
 Flash_Status check_pointers();
@@ -46,7 +47,7 @@ Flash_Status flash_page_read(uint16_t page_address);
 Flash_Status flash_data_read(uint16_t bytes_or_pages, uint8_t* rx_buffer, int count_in_pages);
 Flash_Status flash_data_write(uint16_t column_address, uint16_t bytes, uint8_t* tx_buffer, int overwrite_other_data);
 Flash_Status flash_page_write(uint16_t page_address);
-Flash_Status block_erase(uint16_t page_address);
+Flash_Status flash_block_erase(uint16_t page_address);
 Flash_Status flash_read_status_register(int status_register, uint8_t* data_out);
 Flash_Status flash_write_status_register(int status_register, uint8_t value);
 Flash_Status flash_ecc_failure_address(uint16_t* address_out);

@@ -154,8 +154,12 @@ int main(void)
 
   set_flash_chip_num(1);
   uint8_t data_out;
-  uint8_t rx_buffer[70000] = {0};
-  uint8_t tx_buffer[2048] = {0};
+  uint8_t read_buf[42000] = {0};
+  uint8_t write_buf[21000] = {0};
+  flash_read_status_register(1, &data_out);
+  flash_write_status_register(1, data_out & 0b10000111);
+  flash_read_status_register(2, &data_out);
+  flash_write_status_register(2, data_out & 0b11110111);
 
   while (1)
   {
@@ -164,20 +168,6 @@ int main(void)
     /* USER CODE BEGIN 3 */
 		Write_Pin(DEBUG_P_NINE, 1);
 		Write_Pin(DEBUG_P_EIGHT, 0);
-		HAL_Delay(2000);
-		flash_read_status_register(1, &data_out);
-		flash_write_status_register(1, data_out & 0b10000111);
-		flash_read_status_register(2, &data_out);
-		flash_write_status_register(2, data_out & 0b11110111);
-		flash_data_write(0, 2048, tx_buffer, 1);
-		flash_page_write(32);
-		flash_page_read(0);
-		flash_data_read(31, rx_buffer, 1);
-		flash_page_read(32);
-		flash_data_read(31, rx_buffer, 1);
-		flash_block_erase(32);
-		HAL_Delay(2000);
-
 
   }
   /* USER CODE END 3 */
