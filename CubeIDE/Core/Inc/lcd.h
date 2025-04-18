@@ -12,6 +12,7 @@
 
 #define HOME 0x46
 
+void lcd_print(SPI_HandleTypeDef *hspi2, const uint8_t *string);
 void lcd_welcome(SPI_HandleTypeDef *hspi2);
 void lcd_clear(SPI_HandleTypeDef *hspi2);
 void lcd_on(SPI_HandleTypeDef *hspi2);

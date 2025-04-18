@@ -41,6 +41,10 @@ void lcd_cursor_on(SPI_HandleTypeDef *hspi2) {
 //	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_SET);
 }
 
+void lcd_print(SPI_HandleTypeDef *hspi2, const uint8_t *string) {
+	send_bytes(hspi2, string, strlen((char*)string));
+}
+
 // note that the hex location ranges from column 0x00 to 0x0F for row 1
 // note that the hex location ranges from column 0x40 to 0x4F for row 2
 void lcd_cursor_location(SPI_HandleTypeDef *hspi2, const uint8_t hex_location) {
