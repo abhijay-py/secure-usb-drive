@@ -63,11 +63,11 @@
   */
 
 #define STORAGE_LUN_NBR                  1
-#define STORAGE_BLK_NBR                  0x10000
+#define STORAGE_BLK_NBR                  0x80
 #define STORAGE_BLK_SIZ                  0x200
 
 /* USER CODE BEGIN PRIVATE_DEFINES */
-
+uint8_t buffer[STORAGE_BLK_SIZ * STORAGE_BLK_NBR];
 /* USER CODE END PRIVATE_DEFINES */
 
 /**
@@ -193,9 +193,12 @@ int8_t STORAGE_Init_HS(uint8_t lun)
   */
 int8_t STORAGE_GetCapacity_HS(uint8_t lun, uint32_t *block_num, uint16_t *block_size)
 {
+//	UNUSED(lun);
   /* USER CODE BEGIN 10 */
-	  *block_num  = 65536 - 1;
-	  *block_size = 2048;
+//	  *block_num  = 65536 - 1;
+//	  *block_size = 2048;
+	*block_num  = STORAGE_BLK_NBR;
+	*block_size = STORAGE_BLK_SIZ;
   return (USBD_OK);
   /* USER CODE END 10 */
 }
@@ -242,14 +245,15 @@ int8_t STORAGE_IsWriteProtected_HS(uint8_t lun)
 int8_t STORAGE_Read_HS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t blk_len)
 {
   /* USER CODE BEGIN 13 */
-  int error = flash_read(buf, blk_addr, blk_len);
-
-  if (error == 1) {
-	  return (USBD_BUSY);
-  }
-  else if (error == -1) {
-	  return (USBD_FAIL);
-  }
+//  int error = flash_read(buf, blk_addr, blk_len);
+//
+//  if (error == 1) {
+//	  return (USBD_BUSY);
+//  }
+//  else if (error == -1) {
+//	  return (USBD_FAIL);
+//  }
+	memcpy(buf, &buffer[blk_addr*STORAGE_BLK_SIZ], blk_len*STORAGE_BLK_SIZ);
   return (USBD_OK);
   /* USER CODE END 13 */
 }
@@ -265,15 +269,16 @@ int8_t STORAGE_Read_HS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t bl
 int8_t STORAGE_Write_HS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t blk_len)
 {
   /* USER CODE BEGIN 14 */
-	int error = flash_write(buf, blk_addr, blk_len);
-
-	if (error == 1) {
-	  return (USBD_BUSY);
-	}
-	else if (error == -1) {
-	  return (USBD_FAIL);
-	}
-	return (USBD_OK);
+//	int error = flash_write(buf, blk_addr, blk_len);
+//
+//	if (error == 1) {
+//	  return (USBD_BUSY);
+//	}
+//	else if (error == -1) {
+//	  return (USBD_FAIL);
+//	}
+//	return (USBD_OK);
+	memcpy(&buffer[blk_addr*STORAGE_BLK_SIZ], buf, blk_len*STORAGE_BLK_SIZ);
 
   return (USBD_OK);
   /* USER CODE END 14 */
