@@ -90,7 +90,6 @@ const IC_Pin DEBUG_P_EIGHT = (IC_Pin){.pin_letter = GPIOA, .pin_num = GPIO_PIN_8
 
 // STATES
 enum State {
-	STARTUP,
 	USERSEL,
 	RECVPASS,
 	UNLOCKED,
@@ -175,28 +174,14 @@ int main(void)
   lcd_print(&hspi2, (uint8_t*)"Proceed");
   Write_Pin(LCD_P_CS, 1);
 
-  struct User user1 = {.user_id = 1, .password = {0, 0, 0, 0}};
-  struct User user2 = {.user_id = 2, .password = {0, 0, 0, 0}};
-  struct User user3 = {.user_id = 3, .password = {0, 0, 0, 0}};
+  struct User selected_user = {.user_id = 0, .password = {0, 0, 0, 0}};
 
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-//	  if (keypad_matrix[0][0] >= 10) { // Debounce for 40ms (10*4 = 40)
-//	  	Write_Pin(DEBUG_P_NINE, 1);
-//	  } else {
-//	  	Write_Pin(DEBUG_P_NINE, 0);
-//	  }
-
-	  if (state == STARTUP) {
-		  // we are never deliberately returning to this state
-		  if (keypad[0][0] >= 10) {
-			  state == USERSEL;
-		  }
-	  }
-	  else if (state == USERSEL) {
+	  if (state == USERSEL) {
 		  Write_Pin(LCD_P_CS, 0);
 		  lcd_on(&hspi2); // this line
 		  lcd_light(&hspi2, 0x8); // and this line might only be needed on power up
@@ -206,6 +191,10 @@ int main(void)
 		  lcd_cursor_location(&hspi2, 0x40); // second row of LCD
 		  lcd_print(&hspi2, (uint8_t*)"1 2 3 4");
 		  Write_Pin(LCD_P_CS, 1);
+
+		  if (keypad_matrix[0][0] >= 10) { // 1
+
+	  	  }
 	  }
 	  else if (state == RECVPASS) {
 		  Write_Pin(LCD_P_CS, 0);
@@ -318,19 +307,6 @@ int main(void)
 			  state = UNLOCKED;
 		  }
 	  }
-
-//
-//	  if (keypad_matrix[0][0] >= 10) {
-//		  Write_Pin(DEBUG_P_EIGHT, 1);
-//	  } else {
-//		  Write_Pin(DEBUG_P_EIGHT, 0);
-//	  }
-//
-//	  if (keypad_matrix[0][1] >= 10) {
-//		  Write_Pin(DEBUG_P_NINE, 1);
-//	  } else {
-//		  Write_Pin(DEBUG_P_NINE, 0);
-//	  }
   }
   /* USER CODE END 3 */
 }
