@@ -141,11 +141,10 @@ int main(void)
   flash_init(&hspi1);
   set_flash_chip_num(3);
   flash_read_status_register(1, &data_out);
-  flash_write_status_register(1, data_out & 0x00);
-  flash_read_status_register(1, &data_out);
+  flash_write_status_register(1, data_out & 0b10000111);
   flash_read_status_register(2, &data_out);
   flash_write_status_register(2, data_out & 0b11110111);
-  flash_read_status_register(2, &data_out);
+
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -161,8 +160,12 @@ int main(void)
   lcd_clear(&hspi2);
   lcd_on(&hspi2);
   lcd_welcome(&hspi2);
-  uint8_t read_buffer[2048*64];
-  Flash_Status error;
+//  uint8_t read_buffers[512*64] = {0};
+//  uint8_t write_buffers[512*64] = {0};
+//  for (int i =0; i < 512*64; i++) {
+//	  write_buffers[i] = 0xAA;
+//  }
+//  Flash_Status error;
 
   while (1)
   {
@@ -171,17 +174,10 @@ int main(void)
     /* USER CODE BEGIN 3 */
 		Write_Pin(DEBUG_P_NINE, 1);
 		Write_Pin(DEBUG_P_EIGHT, 0);
-		error = flash_page_read(0);
-		error = flash_data_read(1, read_buffer, 1);
-		read_buffer[3] = 0xDD;
-		error = flash_data_write(0, 1, read_buffer, 1);
-		error = flash_page_write(0);
-		error = flash_page_read(0);
-		error = flash_data_read(1, read_buffer, 1);
-		error = flash_read_status_register(1, &data_out);
-		error = flash_read_status_register(2, &data_out);
-		error = flash_read_status_register(3, &data_out);
-		HAL_Delay(1000);
+//		flash_read(read_buffers, 2, 10);
+//		flash_write(write_buffers, 2, 10);
+//		flash_read(read_buffers, 2, 10);
+//		HAL_Delay(1000);
 
   }
   /* USER CODE END 3 */

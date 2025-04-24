@@ -133,11 +133,14 @@ int flash_read(uint8_t* buf, uint32_t blk_addr, uint16_t blk_len) {
 int flash_write(uint8_t* buf, uint32_t blk_addr, uint16_t blk_len) {
 	uint16_t remaining_block_count = blk_len;
 	uint16_t current_address = (blk_addr/4) & 0xFFFF;
+	uint16_t current_block = (blk_addr/4) >> 6;
 	uint16_t remaining_page_count = (blk_len + blk_addr - 1) / 4 - current_address + 1;
 	uint16_t buf_index = 0;
 	uint16_t page_offset = blk_addr % 4;
 	uint16_t tx_buffer_preset = page_offset;
 	uint8_t tx_buffer[2051] = {0}; //Data (2048 bytes) + Transmission (3 bytes)
+	uint8_t read_buffer[2052] = {0};
+	int current_flash_num;
 //	uint8_t read_buffer[2048] = {0}; //Debug
 //	for (int i = 0; i < 2048; i++) {
 //		read_buffer[i] = 0xBB;
@@ -158,14 +161,52 @@ int flash_write(uint8_t* buf, uint32_t blk_addr, uint16_t blk_len) {
 		return 1;
 	}
 
-
 	flash_busy = 1;
 
 
 	//Loop until all data is written
 	for (int i = 0; i < remaining_page_count; i++) {
+		if (i == 0 || current_block != current_address >> 6) {
+			current_block = current_address >> 6;
+			flash_blk_manage(current_address);
+			for (int j = current_block << 6; j < current_address; j++) {
+				flash_write_from_erase(j);
+			}
+			if (tx_buffer_preset != 0) {
+				current_flash_num = flash_chip_num;
+				flash_chip_num = 4;
+				error = flash_page_read(current_address);
+				error = flash_data_read(1, read_buffer, 1);
+				memcpy((void*)(tx_buffer + 3), (void*)(read_buffer + 4), tx_buffer_preset * 512 *sizeof(uint8_t));
+				memcpy((void*)(tx_buffer + 3 + tx_buffer_preset * 512), (void*)buf, 512*(4 - tx_buffer_preset)*sizeof(uint8_t));
+				flash_chip_num = current_flash_num;
+				error = flash_data_write(0, 2048, tx_buffer, 1);
+
+				if (error != FLASH_OK) {
+					return -1;
+					flash_busy = 0;
+				}
+
+				//Commit changes
+				error = flash_page_write(current_address);
+
+				if (error != FLASH_OK) {
+					return -1;
+					flash_busy = 0;
+				}
+
+				tx_buffer_preset = 0;
+				buf_index += 2048 - 512 * tx_buffer_preset;
+				current_address++;
+				remaining_block_count -= 4 - tx_buffer_preset;
+				continue;
+			}
+		}
 		//Transfer remaining blocks
 		if (i == remaining_page_count - 1) {
+			if (remaining_block_count < 4) {
+				break;
+			}
 			memcpy((void*)(tx_buffer + 3), (void*)(buf + buf_index), 512*remaining_block_count*sizeof(uint8_t));
 			//Write Data out
 			error = flash_data_write(512 * tx_buffer_preset, 512*remaining_block_count, tx_buffer, 0);
@@ -182,6 +223,9 @@ int flash_write(uint8_t* buf, uint32_t blk_addr, uint16_t blk_len) {
 				return -1;
 				flash_busy = 0;
 			}
+			buf_index += remaining_block_count;
+			current_address++;
+			remaining_block_count = 0;
 
 		}
 		//Transfer max 31 blocks
@@ -210,12 +254,88 @@ int flash_write(uint8_t* buf, uint32_t blk_addr, uint16_t blk_len) {
 		tx_buffer_preset = 0;
 	}
 
+	if (remaining_block_count != 0) {
+		memcpy((void*)(tx_buffer + 3), (void*)(buf + buf_index), 512*remaining_block_count*sizeof(uint8_t));
+		current_flash_num = flash_chip_num;
+		flash_chip_num = 4;
+		error = flash_page_read(current_address);
+		error = flash_data_read(1, read_buffer, 1);
+		flash_chip_num = current_flash_num;
+		memcpy((void*)(tx_buffer + 3 + 512*remaining_block_count), (void*)(read_buffer + 4), 512*(4 - remaining_block_count)*sizeof(uint8_t));
+		error = flash_data_write(0, 2048, tx_buffer, 1);
+
+		if (error != FLASH_OK) {
+			return -1;
+			flash_busy = 0;
+		}
+
+		//Commit changes
+		error = flash_page_write(current_address);
+
+		if (error != FLASH_OK) {
+			return -1;
+			flash_busy = 0;
+		}
+		current_address++;
+	}
+	while (current_block != current_address >> 6) {
+		flash_write_from_erase(current_address);
+		current_address++;
+	}
 
 	flash_busy = 0;
 //	flash_read(read_buffer, current_address, blk_len);
 	return 0;
 }
 
+//To erase and save data to buffer chip
+void flash_blk_manage(uint16_t page_address) {
+	uint16_t block_address = page_address & 0b000000;
+	int current_flash_num = flash_chip_num;
+	uint8_t rx_buffer[63492] = {0};
+	uint8_t tx_buffer[2051] = {0};
+	Flash_Status error;
+	flash_chip_num = 4;
+	flash_block_erase(0);
+	flash_chip_num = current_flash_num;
+	for (int j = 0; j < 3; j++) {
+		error = flash_page_read(block_address);
+		if (j == 2) {
+			error = flash_data_read(2, rx_buffer, 1);
+		}
+		else {
+			error = flash_data_read(31, rx_buffer, 1);
+		}
+		flash_chip_num = 4;
+		for (int i = 0; i < 31; i++) {
+			if (j == 2 && i == 2) {
+				break;
+			}
+			memcpy((void*)(tx_buffer + 3), (void*)(rx_buffer + 4 + i * 2048), 2048*sizeof(uint8_t));
+			error = flash_data_write(0, 2048, tx_buffer, 1);
+			error = flash_page_write(block_address);
+			block_address++;
+		}
+		flash_chip_num = current_flash_num;
+	}
+	flash_block_erase(page_address);
+}
+
+//To rewrite data from the buffer chip
+void flash_write_from_erase(uint16_t page_address) {
+	uint16_t other_chip_address = page_address && 0b111111;
+	int current_flash_num = flash_chip_num;
+	Flash_Status error;
+	uint8_t rx_buffer[2052] = {0};
+	uint8_t tx_buffer[2051] = {0};
+	flash_chip_num = 4;
+	error = flash_page_read(other_chip_address);
+	error = flash_data_read(1, rx_buffer, 1);
+	memcpy((void*)(tx_buffer + 3), (void*)(rx_buffer + 4), 2048*sizeof(uint8_t));
+	flash_chip_num = current_flash_num;
+	error = flash_data_write(0, 2048, tx_buffer, 1);
+	error = flash_page_write(page_address);
+}
 
 //USB Verification Functions
 
@@ -433,6 +553,7 @@ Flash_Status flash_data_write(uint16_t column_address, uint16_t bytes, uint8_t* 
 //Commits data write changes.
 Flash_Status flash_page_write(uint16_t page_address) {
 	Flash_Status pointer_check = check_pointers();
+	uint8_t data_out;
 	if (pointer_check != FLASH_OK) {
 		return pointer_check;
 	}

@@ -29,7 +29,8 @@ typedef enum {
 void flash_init(SPI_HandleTypeDef *hspi1);
 int flash_read(uint8_t* buf, uint32_t blk_addr, uint16_t blk_len);
 int flash_write(uint8_t* buf, uint32_t blk_addr, uint16_t blk_len);
-
+void flash_blk_manage(uint16_t page_address);
+void flash_write_from_erase(uint16_t page_address);
 //USB Verification Functions
 Flash_Status check_pointers();
 int check_busy();
@@ -55,5 +56,6 @@ Flash_Status flash_remap_bad_block(uint16_t bad_block_address, uint16_t new_bloc
 Flash_Status flash_read_bad_block_LUT(uint8_t* rx_buffer);
 Flash_Status pin_setup(int chip_num, int cs, int wp, int hold);
 Flash_Status flash_read_jedec_id(int debug);
+
 
 #endif /* INC_FLASH_H_ */
