@@ -36,6 +36,7 @@ SPI_HandleTypeDef *hspiflash;
 int flash_chip_num = 1;
 int flash_freeze = 0;
 int flash_busy = 0;
+uint8_t rx_buffer_full_size[63492] = {0};
 
 
 //USB Data Wrapper Functions
@@ -59,7 +60,6 @@ int flash_read(uint8_t* buf, uint32_t blk_addr, uint16_t blk_len) {
 	uint16_t buf_index = 0;
 	uint16_t page_offset = blk_addr % 4;
 	uint16_t rx_buffer_preset = page_offset;
-	uint8_t rx_buffer[63492] = {0};
 	Flash_Status error;
 
 	//Return immediate of blk_len is 0
@@ -97,26 +97,26 @@ int flash_read(uint8_t* buf, uint32_t blk_addr, uint16_t blk_len) {
 		//Transfer remaining blocks
 		if (remaining_page_count < 31) {
 			//Read Data in
-			error = flash_data_read(remaining_page_count, rx_buffer, 1);
+			error = flash_data_read(remaining_page_count, rx_buffer_full_size, 1);
 			if (error != FLASH_OK) {
 				return -1;
 				flash_busy = 0;
 			}
 
 			//Transfer data from rx_buffer to buf
-			memcpy((void*)(buf + buf_index), (void*)(rx_buffer + 4 + 512 * rx_buffer_preset), 512*remaining_block_count*sizeof(uint8_t));
+			memcpy((void*)(buf + buf_index), (void*)(rx_buffer_full_size + 4 + 512 * rx_buffer_preset), 512*remaining_block_count*sizeof(uint8_t));
 		}
 		//Transfer max 31 blocks
 		else {
 			//Read Data in
-			error = flash_data_read(31, rx_buffer, 1);
+			error = flash_data_read(31, rx_buffer_full_size, 1);
 			if (error != FLASH_OK) {
 				return -1;
 				flash_busy = 0;
 			}
 
 			//Transfer data from rx_buffer to buf
-			memcpy((void*)(buf + buf_index), (void*)(rx_buffer + 4 + 512 * rx_buffer_preset), (2048*31 - 512 * rx_buffer_preset)*sizeof(uint8_t));
+			memcpy((void*)(buf + buf_index), (void*)(rx_buffer_full_size + 4 + 512 * rx_buffer_preset), (2048*31 - 512 * rx_buffer_preset)*sizeof(uint8_t));
 			buf_index += 2048 * 31 - 512 * rx_buffer_preset;
 			current_address += 31;
 			remaining_block_count -= 31 * 4  - rx_buffer_preset;
@@ -292,7 +292,6 @@ int flash_write(uint8_t* buf, uint32_t blk_addr, uint16_t blk_len) {
 void flash_blk_manage(uint16_t page_address) {
 	uint16_t block_address = page_address & 0b000000;
 	int current_flash_num = flash_chip_num;
-	uint8_t rx_buffer[63492] = {0};
 	uint8_t tx_buffer[2051] = {0};
 	Flash_Status error;
 	flash_chip_num = 4;
@@ -301,17 +300,17 @@ void flash_blk_manage(uint16_t page_address) {
 	for (int j = 0; j < 3; j++) {
 		error = flash_page_read(block_address);
 		if (j == 2) {
-			error = flash_data_read(2, rx_buffer, 1);
+			error = flash_data_read(2, rx_buffer_full_size, 1);
 		}
 		else {
-			error = flash_data_read(31, rx_buffer, 1);
+			error = flash_data_read(31, rx_buffer_full_size, 1);
 		}
 		flash_chip_num = 4;
 		for (int i = 0; i < 31; i++) {
 			if (j == 2 && i == 2) {
 				break;
 			}
-			memcpy((void*)(tx_buffer + 3), (void*)(rx_buffer + 4 + i * 2048), 2048*sizeof(uint8_t));
+			memcpy((void*)(tx_buffer + 3), (void*)(rx_buffer_full_size + 4 + i * 2048), 2048*sizeof(uint8_t));
 			error = flash_data_write(0, 2048, tx_buffer, 1);
 			error = flash_page_write(block_address);
 			block_address++;

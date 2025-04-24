@@ -139,7 +139,7 @@ int main(void)
   uint8_t data_out;
   init_pin();
   flash_init(&hspi1);
-  set_flash_chip_num(3);
+  set_flash_chip_num(2);
   flash_read_status_register(1, &data_out);
   flash_write_status_register(1, data_out & 0b10000111);
   flash_read_status_register(2, &data_out);
@@ -150,7 +150,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_UART4_Init();
   MX_SPI2_Init();
-  MX_USB_DEVICE_Init();
+  //MX_USB_DEVICE_Init();
   MX_TIM7_Init();
   /* USER CODE BEGIN 2 */
   /* USER CODE END 2 */
@@ -160,12 +160,12 @@ int main(void)
   lcd_clear(&hspi2);
   lcd_on(&hspi2);
   lcd_welcome(&hspi2);
-//  uint8_t read_buffers[512*64] = {0};
-//  uint8_t write_buffers[512*64] = {0};
-//  for (int i =0; i < 512*64; i++) {
-//	  write_buffers[i] = 0xAA;
-//  }
-//  Flash_Status error;
+  uint8_t read_buffers[512*64] = {0};
+  uint8_t write_buffers[512*64] = {0};
+  for (int i =0; i < 512*64; i++) {
+	  write_buffers[i] = 0xAA;
+  }
+  Flash_Status error;
 
   while (1)
   {
@@ -174,10 +174,10 @@ int main(void)
     /* USER CODE BEGIN 3 */
 		Write_Pin(DEBUG_P_NINE, 1);
 		Write_Pin(DEBUG_P_EIGHT, 0);
-//		flash_read(read_buffers, 2, 10);
-//		flash_write(write_buffers, 2, 10);
-//		flash_read(read_buffers, 2, 10);
-//		HAL_Delay(1000);
+		flash_read(read_buffers, 2, 10);
+		flash_write(write_buffers, 2, 10);
+		flash_read(read_buffers, 2, 10);
+		HAL_Delay(1000);
 
   }
   /* USER CODE END 3 */
@@ -276,7 +276,7 @@ static void MX_SPI1_Init(void)
   hspi1.Init.CRCPolynomial = 0x0;
   hspi1.Init.NSSPMode = SPI_NSS_PULSE_ENABLE;
   hspi1.Init.NSSPolarity = SPI_NSS_POLARITY_LOW;
-  hspi1.Init.FifoThreshold = SPI_FIFO_THRESHOLD_01DATA;
+  hspi1.Init.FifoThreshold = SPI_FIFO_THRESHOLD_04DATA;
   hspi1.Init.TxCRCInitializationPattern = SPI_CRC_INITIALIZATION_ALL_ZERO_PATTERN;
   hspi1.Init.RxCRCInitializationPattern = SPI_CRC_INITIALIZATION_ALL_ZERO_PATTERN;
   hspi1.Init.MasterSSIdleness = SPI_MASTER_SS_IDLENESS_00CYCLE;
