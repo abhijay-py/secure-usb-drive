@@ -90,7 +90,6 @@ const IC_Pin DEBUG_P_EIGHT = (IC_Pin){.pin_letter = GPIOA, .pin_num = GPIO_PIN_8
 
 // STATES
 enum State {
-	STARTUP,
 	USERSEL,
 	RECVPASS,
 	UNLOCKED,
@@ -164,170 +163,150 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-//  enum State state = STARTUP;
-//  Write_Pin(LCD_P_CS, 0);
-//  lcd_on(&hspi2); // this line
-//  lcd_light(&hspi2, 0x8); // and this line might only be needed on power up
-//  lcd_clear(&hspi2);
-//  lcd_cursor_location(&hspi2, 0x00); // 1st row LCD
-//  lcd_print(&hspi2, (uint8_t*)"Press 1 To");
-//  lcd_cursor_location(&hspi2, 0x40); // second row of LCD
-//  lcd_print(&hspi2, (uint8_t*)"Proceed");
-//  Write_Pin(LCD_P_CS, 1);
-//
-//  struct User user1 = {.user_id = 1, .password = {0, 0, 0, 0}};
-//  struct User user2 = {.user_id = 2, .password = {0, 0, 0, 0}};
-//  struct User user3 = {.user_id = 3, .password = {0, 0, 0, 0}};
+  enum State state = STARTUP;
+  Write_Pin(LCD_P_CS, 0);
+  lcd_on(&hspi2); // this line
+  lcd_light(&hspi2, 0x8); // and this line might only be needed on power up
+  lcd_clear(&hspi2);
+  lcd_cursor_location(&hspi2, 0x00); // 1st row LCD
+  lcd_print(&hspi2, (uint8_t*)"Press 1 To");
+  lcd_cursor_location(&hspi2, 0x40); // second row of LCD
+  lcd_print(&hspi2, (uint8_t*)"Proceed");
+  Write_Pin(LCD_P_CS, 1);
+
+  struct User selected_user = {.user_id = 0, .password = {0, 0, 0, 0}};
 
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-//	  if (state == STARTUP) {
-//		  // we are never deliberately returning to this state
-//		  if (keypad[0][0] >= 10) {
-//			  state == USERSEL;
-//		  }
-//	  }
-//	  else if (state == USERSEL) {
-//		  Write_Pin(LCD_P_CS, 0);
-//		  lcd_on(&hspi2); // this line
-//		  lcd_light(&hspi2, 0x8); // and this line might only be needed on power up
-//		  lcd_clear(&hspi2);
-//		  lcd_cursor_location(&hspi2, 0x00); // 1st row LCD
-//		  lcd_print(&hspi2, (uint8_t*)"Select User ID");
-//		  lcd_cursor_location(&hspi2, 0x40); // second row of LCD
-//		  lcd_print(&hspi2, (uint8_t*)"1 2 3 4");
-//		  Write_Pin(LCD_P_CS, 1);
-//	  }
-//	  else if (state == RECVPASS) {
-//		  Write_Pin(LCD_P_CS, 0);
-//		  lcd_clear(&hspi2);
-//		  lcd_cursor_location(&hspi2, 0x00); // first row of LCD
-//		  lcd_print(&hspi2, (uint8_t*)"select one choice");
-//		  lcd_cursor_location(&hspi2, 0x40);
-//		  lcd_print(&hspi2, (uint8_t*)"fp * pass # bk 0");
-//		  Write_Pin(LCD_P_CS, 1);
-//
-//		  // PSEUDOC
-//		  if (keypad[0][0] >= 10000) {
-//			  state = USERSEL;
-//		  }
-//		  else if (keypad[0][0] >= 10) { // change to star - SELECTED PASSWORD
-//			  int success = 1;
-//			  int count = 0;
-//			  int key;
-//			  while (count < 4) {
-//				  // await key press
-//				  if (key != struct userid correspondance [count]) {
-//					  success = 0;
-//					  break;
-//				  }
-//			  }
-//			  if (success) {
-//				  state = UNLOCKED;
-//			  }
+	  if (state == USERSEL) {
+		  Write_Pin(LCD_P_CS, 0);
+		  lcd_on(&hspi2); // this line
+		  lcd_light(&hspi2, 0x8); // and this line might only be needed on power up
+		  lcd_clear(&hspi2);
+		  lcd_cursor_location(&hspi2, 0x00); // 1st row LCD
+		  lcd_print(&hspi2, (uint8_t*)"Select User ID");
+		  lcd_cursor_location(&hspi2, 0x40); // second row of LCD
+		  lcd_print(&hspi2, (uint8_t*)"1 2 3 4");
+		  Write_Pin(LCD_P_CS, 1);
+
+		  if (keypad_matrix[0][0] >= 10) { // 1
+
+	  	  }
+	  }
+	  else if (state == RECVPASS) {
+		  Write_Pin(LCD_P_CS, 0);
+		  lcd_clear(&hspi2);
+		  lcd_cursor_location(&hspi2, 0x00); // first row of LCD
+		  lcd_print(&hspi2, (uint8_t*)"select one choice");
+		  lcd_cursor_location(&hspi2, 0x40);
+		  lcd_print(&hspi2, (uint8_t*)"fp * pass # bk 0");
+		  Write_Pin(LCD_P_CS, 1);
+
+		  // PSEUDOC
+		  if (keypad[0][0] >= 10000) {
+			  state = USERSEL;
+		  }
+		  else if (keypad[0][0] >= 10) { // change to star - SELECTED PASSWORD
+			  int success = 1;
+			  int count = 0;
+			  int key;
+			  while (count < 4) {
+				  // await key press
+				  if (key != struct userid correspondance [count]) {
+					  success = 0;
+					  break;
+				  }
+			  }
+			  if (success) {
+				  state = UNLOCKED;
+			  }
+			  else {
+				  Write_Pin(LCD_P_CS, 0);
+				  lcd_clear(&hspi2);
+				  lcd_cursor_location(&hspi2, 0x00); // first row of LCD
+				  lcd_print(&hspi2, (uint8_t*)"INCORRECT");
+				  lcd_cursor_location(&hspi2, 0x40);
+				  lcd_print(&hspi2, (uint8_t*)"PASSWORD");
+				  Write_Pin(LCD_P_CS, 1);
+				  HAL_Delay(2000);
+			  }
+		  }
+		  else if (keypad[0][0] >= 10) { // change to pound - SELECTED FINGERPRINT
+			  // send fingerprint match request
+			  // while state == RECVPASS
+			  // if success state = UNLOCKED
 //			  else {
 //				  Write_Pin(LCD_P_CS, 0);
 //				  lcd_clear(&hspi2);
 //				  lcd_cursor_location(&hspi2, 0x00); // first row of LCD
 //				  lcd_print(&hspi2, (uint8_t*)"INCORRECT");
 //				  lcd_cursor_location(&hspi2, 0x40);
-//				  lcd_print(&hspi2, (uint8_t*)"PASSWORD");
+//				  lcd_print(&hspi2, (uint8_t*)"PRINT");
 //				  Write_Pin(LCD_P_CS, 1);
 //				  HAL_Delay(2000);
 //			  }
-//		  }
-//		  else if (keypad[0][0] >= 10) { // change to pound - SELECTED FINGERPRINT
-//			  // send fingerprint match request
-//			  // while state == RECVPASS
-//			  // if success state = UNLOCKED
-////			  else {
-////				  Write_Pin(LCD_P_CS, 0);
-////				  lcd_clear(&hspi2);
-////				  lcd_cursor_location(&hspi2, 0x00); // first row of LCD
-////				  lcd_print(&hspi2, (uint8_t*)"INCORRECT");
-////				  lcd_cursor_location(&hspi2, 0x40);
-////				  lcd_print(&hspi2, (uint8_t*)"PRINT");
-////				  Write_Pin(LCD_P_CS, 1);
-////				  HAL_Delay(2000);
-////			  }
-//		  }
-//	  }
-//	  else if (state == UNLOCKED) {
-//		  if 0 pressed {
-//			  state = CHGPRINT;
-//		  }
-//		  else if * pressed {
-//			  state = CHGPIN;
-//		  }
-//		  else if # pressed {
-//			  state = LOCKED;
-//		  }
-//	  }
-//	  else if (state == CHGPRINT) {
-//		  Write_Pin(LCD_P_CS, 0);
-//		  lcd_clear(&hspi2);
-//		  lcd_cursor_location(&hspi2, 0x00); // first row of LCD
-//		  lcd_print(&hspi2, (uint8_t*)"ENTER PRINT");
-//		  lcd_cursor_location(&hspi2, 0x40);
-//		  lcd_print(&hspi2, (uint8_t*)"OR 2 TO CANCEL");
-//		  Write_Pin(LCD_P_CS, 1);
-//		  HAL_Delay(2000);
-//		  // ask user for print on fingerprint sensor
-//		  while no success fingerprint yet {
-//		  if 2 pressed {
-//			  state = UNLOCKED;
-//			  break;
-//		  }
-//		  }
-//	  }
-//	  else if (state == CHGPIN) {
-//		  Write_Pin(LCD_P_CS, 0);
-//		  lcd_clear(&hspi2);
-//		  lcd_cursor_location(&hspi2, 0x00); // first row of LCD
-//		  lcd_print(&hspi2, (uint8_t*)"ENTER PASS");
-//		  lcd_cursor_location(&hspi2, 0x40);
-//		  lcd_print(&hspi2, (uint8_t*)"OR 2 TO CANCEL");
-//		  Write_Pin(LCD_P_CS, 1);
-//		  HAL_Delay(2000);
-//		  int count = 0;
-//		  while (count < 4) {
-//			  // await key peress
-//		  if * pressed {
-//			  state = UNLOCKED;
-//			  break;
-//		  }
-//		  struct user_id correspondance [count] = key_pressed;
-//		  count += 1
-//		  }
-//		  state = UNLOCKED;
-//	  }
-//	  else if (state == LOCKING) {
-//		  if # pressed {
-//			  state = USERSEL;
-//		  }
-//		  else if * pressed {
-//			  state = UNLOCKED;
-//		  }
-//	  }
-
-//
-//	  if (keypad_matrix[0][0] >= 10) {
-//		  Write_Pin(DEBUG_P_EIGHT, 1);
-//	  } else {
-//		  Write_Pin(DEBUG_P_EIGHT, 0);
-//	  }
-//
-//	  if (keypad_matrix[0][1] >= 10) {
-//		  Write_Pin(DEBUG_P_NINE, 1);
-//	  } else {
-//		  Write_Pin(DEBUG_P_NINE, 0);
-//	  }
-
-	  Write_Pin(DEBUG_P_EIGHT, 1);
-	  Write_Pin(DEBUG_P_NINE, 1);
+		  }
+	  }
+	  else if (state == UNLOCKED) {
+		  if 0 pressed {
+			  state = CHGPRINT;
+		  }
+		  else if * pressed {
+			  state = CHGPIN;
+		  }
+		  else if # pressed {
+			  state = LOCKED;
+		  }
+	  }
+	  else if (state == CHGPRINT) {
+		  Write_Pin(LCD_P_CS, 0);
+		  lcd_clear(&hspi2);
+		  lcd_cursor_location(&hspi2, 0x00); // first row of LCD
+		  lcd_print(&hspi2, (uint8_t*)"ENTER PRINT");
+		  lcd_cursor_location(&hspi2, 0x40);
+		  lcd_print(&hspi2, (uint8_t*)"OR 2 TO CANCEL");
+		  Write_Pin(LCD_P_CS, 1);
+		  HAL_Delay(2000);
+		  // ask user for print on fingerprint sensor
+		  while no success fingerprint yet {
+		  if 2 pressed {
+			  state = UNLOCKED;
+			  break;
+		  }
+		  }
+	  }
+	  else if (state == CHGPIN) {
+		  Write_Pin(LCD_P_CS, 0);
+		  lcd_clear(&hspi2);
+		  lcd_cursor_location(&hspi2, 0x00); // first row of LCD
+		  lcd_print(&hspi2, (uint8_t*)"ENTER PASS");
+		  lcd_cursor_location(&hspi2, 0x40);
+		  lcd_print(&hspi2, (uint8_t*)"OR 2 TO CANCEL");
+		  Write_Pin(LCD_P_CS, 1);
+		  HAL_Delay(2000);
+		  int count = 0;
+		  while (count < 4) {
+			  // await key peress
+		  if * pressed {
+			  state = UNLOCKED;
+			  break;
+		  }
+		  struct user_id correspondance [count] = key_pressed;
+		  count += 1
+		  }
+		  state = UNLOCKED;
+	  }
+	  else if (state == LOCKING) {
+		  if # pressed {
+			  state = USERSEL;
+		  }
+		  else if * pressed {
+			  state = UNLOCKED;
+		  }
+	  }
   }
   /* USER CODE END 3 */
 }
