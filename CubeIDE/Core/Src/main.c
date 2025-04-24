@@ -18,7 +18,6 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "fatfs.h"
 #include "usb_device.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -86,6 +85,11 @@ const IC_Pin LCD_P_CS = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_12};
 //DEBUG GPIOs
 const IC_Pin DEBUG_P_NINE = (IC_Pin){.pin_letter = GPIOA, .pin_num = GPIO_PIN_9};
 const IC_Pin DEBUG_P_EIGHT = (IC_Pin){.pin_letter = GPIOA, .pin_num = GPIO_PIN_8};
+
+
+uint8_t buffed[65536] = {1}; //(32 pages)
+uint8_t help[65536];
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -130,20 +134,26 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
+  MX_GPIO_Init();
+  MX_SPI1_Init();
+  uint8_t data_out;
+  init_pin();
+  flash_init(&hspi1);
+  set_flash_chip_num(3);
+  flash_read_status_register(1, &data_out);
+  flash_write_status_register(1, data_out & 0x00);
+  flash_read_status_register(1, &data_out);
+  flash_read_status_register(2, &data_out);
+  flash_write_status_register(2, data_out & 0b11110111);
+  flash_read_status_register(2, &data_out);
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
-  MX_GPIO_Init();
   MX_UART4_Init();
-  MX_SPI1_Init();
   MX_SPI2_Init();
-  MX_FATFS_Init();
   MX_USB_DEVICE_Init();
   MX_TIM7_Init();
   /* USER CODE BEGIN 2 */
-  init_pin();
-  flash_init(&hspi1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -151,15 +161,8 @@ int main(void)
   lcd_clear(&hspi2);
   lcd_on(&hspi2);
   lcd_welcome(&hspi2);
-
-  set_flash_chip_num(1);
-  uint8_t data_out;
-  uint8_t read_buf[42000] = {0};
-  uint8_t write_buf[21000] = {0};
-  flash_read_status_register(1, &data_out);
-  flash_write_status_register(1, data_out & 0b10000111);
-  flash_read_status_register(2, &data_out);
-  flash_write_status_register(2, data_out & 0b11110111);
+  uint8_t read_buffer[2048*64];
+  Flash_Status error;
 
   while (1)
   {
@@ -168,6 +171,17 @@ int main(void)
     /* USER CODE BEGIN 3 */
 		Write_Pin(DEBUG_P_NINE, 1);
 		Write_Pin(DEBUG_P_EIGHT, 0);
+		error = flash_page_read(0);
+		error = flash_data_read(1, read_buffer, 1);
+		read_buffer[3] = 0xDD;
+		error = flash_data_write(0, 1, read_buffer, 1);
+		error = flash_page_write(0);
+		error = flash_page_read(0);
+		error = flash_data_read(1, read_buffer, 1);
+		error = flash_read_status_register(1, &data_out);
+		error = flash_read_status_register(2, &data_out);
+		error = flash_read_status_register(3, &data_out);
+		HAL_Delay(1000);
 
   }
   /* USER CODE END 3 */
@@ -496,6 +510,12 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 //Easy Write pin with the ic_pin type
+void read_try_try (uint8_t* buf, uint32_t blk_addr, uint16_t blk_len){
+	memcpy((buf), &help[blk_addr * 512], 512*blk_len);
+}
+void write_try_try (uint8_t* buf, uint32_t blk_addr, uint16_t blk_len){
+	memcpy(&help[blk_addr*512], (buf), 512*blk_len);
+}
 void Write_Pin(IC_Pin pin, int value)
 {
 	if (value == 0) {

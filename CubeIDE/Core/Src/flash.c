@@ -33,7 +33,7 @@ const uint8_t STATUS_REGISTER_THREE = 0xC0;
 
 //Flash Parameters
 SPI_HandleTypeDef *hspiflash;
-int flash_chip_num = 0;
+int flash_chip_num = 1;
 int flash_freeze = 0;
 int flash_busy = 0;
 
@@ -53,9 +53,12 @@ void flash_init(SPI_HandleTypeDef *hspi1) {
 //Check we don't go over max page addr, blocks in this context means pages as usb will treat pages as blocks
 //Max read size of 500 kB or 244 blocks, can also fail if buf not big enough. (not checked for)
 int flash_read(uint8_t* buf, uint32_t blk_addr, uint16_t blk_len) {
-	int remaining_block_count = blk_len;
-	uint16_t current_address = blk_addr & 0xFFFF;
-	int buf_index = 0;
+	uint16_t remaining_block_count = blk_len;
+	uint16_t current_address = (blk_addr/4) & 0xFFFF;
+	uint16_t remaining_page_count = (blk_len + blk_addr - 1) / 4 - current_address + 1;
+	uint16_t buf_index = 0;
+	uint16_t page_offset = blk_addr % 4;
+	uint16_t rx_buffer_preset = page_offset;
 	uint8_t rx_buffer[63492] = {0};
 	Flash_Status error;
 
@@ -65,7 +68,7 @@ int flash_read(uint8_t* buf, uint32_t blk_addr, uint16_t blk_len) {
 	}
 
 	//Check if we have enough data to transfer from a certain address and pointers are okay
-	if ((remaining_block_count + current_address) > 0xFFFF || check_pointers() != FLASH_OK) {
+	if ((blk_len + blk_addr) > 262144 || check_pointers() != FLASH_OK) {
 		return -1;
 	}
 	//Returns Busy if flash freeze
@@ -73,10 +76,10 @@ int flash_read(uint8_t* buf, uint32_t blk_addr, uint16_t blk_len) {
 		return 1;
 	}
 
-	flash_busy = 1;
 
+	flash_busy = 1;
 	//Calculate iterations for loop
-	int iterations = remaining_block_count / 31;
+	int iterations = remaining_page_count / (31);
 
 	if (iterations * 31 != remaining_block_count) {
 		iterations++;
@@ -92,16 +95,16 @@ int flash_read(uint8_t* buf, uint32_t blk_addr, uint16_t blk_len) {
 			flash_busy = 0;
 		}
 		//Transfer remaining blocks
-		if (remaining_block_count < 31) {
+		if (remaining_page_count < 31) {
 			//Read Data in
-			error = flash_data_read(remaining_block_count, rx_buffer, 1);
+			error = flash_data_read(remaining_page_count, rx_buffer, 1);
 			if (error != FLASH_OK) {
 				return -1;
 				flash_busy = 0;
 			}
 
 			//Transfer data from rx_buffer to buf
-			memcpy((void*)(buf + buf_index), (void*)(rx_buffer + 4), 2048*remaining_block_count*sizeof(uint8_t));
+			memcpy((void*)(buf + buf_index), (void*)(rx_buffer + 4 + 512 * rx_buffer_preset), 512*remaining_block_count*sizeof(uint8_t));
 		}
 		//Transfer max 31 blocks
 		else {
@@ -113,11 +116,13 @@ int flash_read(uint8_t* buf, uint32_t blk_addr, uint16_t blk_len) {
 			}
 
 			//Transfer data from rx_buffer to buf
-			memcpy((void*)(buf + buf_index), (void*)(rx_buffer + 4), 2048*31*sizeof(uint8_t));
-			buf_index += 2048 * 31;
+			memcpy((void*)(buf + buf_index), (void*)(rx_buffer + 4 + 512 * rx_buffer_preset), (2048*31 - 512 * rx_buffer_preset)*sizeof(uint8_t));
+			buf_index += 2048 * 31 - 512 * rx_buffer_preset;
 			current_address += 31;
-			remaining_block_count -= 31;
+			remaining_block_count -= 31 * 4  - rx_buffer_preset;
+			remaining_page_count -= 31;
 		}
+		rx_buffer_preset = 0;
 	}
 	flash_busy = 0;
 
@@ -126,9 +131,17 @@ int flash_read(uint8_t* buf, uint32_t blk_addr, uint16_t blk_len) {
 
 //Write from buf from USB with blk_len blocks to blk_addr.
 int flash_write(uint8_t* buf, uint32_t blk_addr, uint16_t blk_len) {
-	uint16_t current_address = blk_addr & 0xFFFF;
-	int buf_index = 0;
+	uint16_t remaining_block_count = blk_len;
+	uint16_t current_address = (blk_addr/4) & 0xFFFF;
+	uint16_t remaining_page_count = (blk_len + blk_addr - 1) / 4 - current_address + 1;
+	uint16_t buf_index = 0;
+	uint16_t page_offset = blk_addr % 4;
+	uint16_t tx_buffer_preset = page_offset;
 	uint8_t tx_buffer[2051] = {0}; //Data (2048 bytes) + Transmission (3 bytes)
+//	uint8_t read_buffer[2048] = {0}; //Debug
+//	for (int i = 0; i < 2048; i++) {
+//		read_buffer[i] = 0xBB;
+//	}
 	Flash_Status error;
 
 	//Return immediate of blk_len is 0
@@ -137,39 +150,69 @@ int flash_write(uint8_t* buf, uint32_t blk_addr, uint16_t blk_len) {
 	}
 
 	//Check if we have enough data to transfer from a certain address and pointers are okay
-	if ((blk_len + current_address) > 0xFFFF || check_pointers() != FLASH_OK) {
+	if ((blk_len + blk_addr) > 262144 || check_pointers() != FLASH_OK) {
 		return -1;
 	}
-
 	//Returns Busy if flash freeze
 	if (flash_freeze == 1) {
 		return 1;
 	}
 
+
 	flash_busy = 1;
 
-	//Loop until all data is obtained
-	for (int i = blk_len; i > 0; i--) {
-		memcpy((void*)(buf + buf_index), (void*)(tx_buffer + 3), 2048*sizeof(uint8_t));
 
-		error = flash_data_write(0, 2048, tx_buffer, 1);
+	//Loop until all data is written
+	for (int i = 0; i < remaining_page_count; i++) {
+		//Transfer remaining blocks
+		if (i == remaining_page_count - 1) {
+			memcpy((void*)(tx_buffer + 3), (void*)(buf + buf_index), 512*remaining_block_count*sizeof(uint8_t));
+			//Write Data out
+			error = flash_data_write(512 * tx_buffer_preset, 512*remaining_block_count, tx_buffer, 0);
 
-		if (error != FLASH_OK) {
-			return -1;
+			if (error != FLASH_OK) {
+				return -1;
+				flash_busy = 0;
+			}
+
+			//Commit changes
+			error = flash_page_write(current_address);
+
+			if (error != FLASH_OK) {
+				return -1;
+				flash_busy = 0;
+			}
+
 		}
+		//Transfer max 31 blocks
+		else {
+			memcpy((void*)(tx_buffer + 3), (void*)(buf + buf_index), (2048 - tx_buffer_preset * 512)*sizeof(uint8_t));
+			//Write Data out
+			error = flash_data_write(512 * tx_buffer_preset, 2048 - tx_buffer_preset * 512, tx_buffer, 0);
 
-		error = flash_page_write(current_address);
+			if (error != FLASH_OK) {
+				return -1;
+				flash_busy = 0;
+			}
 
-		if (error != FLASH_OK) {
-			return -1;
+			//Commit changes
+			error = flash_page_write(current_address);
+
+			if (error != FLASH_OK) {
+				return -1;
+				flash_busy = 0;
+			}
+
+			buf_index += 2048 - 512 * tx_buffer_preset;
+			current_address++;
+			remaining_block_count -= 4 - tx_buffer_preset;
 		}
-
-		buf_index += 2048;
-		current_address++;
+		tx_buffer_preset = 0;
 	}
 
-	flash_busy = 0;
 
+	flash_busy = 0;
+//	flash_read(read_buffer, current_address, blk_len);
 	return 0;
 }
 
