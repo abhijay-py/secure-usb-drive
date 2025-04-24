@@ -1,1 +1,3 @@
-..\Core\Src\keypad.c:16:6:HAL_TIM_PeriodElapsedCallback	24	static
+..\Core\Src\keypad.c:16:8:row_to_pin	16	static
+..\Core\Src\keypad.c:28:8:col_to_pin	16	static
+..\Core\Src\keypad.c:39:6:HAL_TIM_PeriodElapsedCallback	48	static

@@ -95,6 +95,7 @@ void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
 void Write_Pin(IC_Pin pin, int value);
+int Read_Pin(IC_Pin pin);
 void Init_Pin();
 /* USER CODE END EFP */
 

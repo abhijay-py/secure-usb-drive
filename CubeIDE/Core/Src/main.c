@@ -72,13 +72,13 @@ const IC_Pin FLASH_P_WP_FOUR = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN
 
 
 //KEYPAD GPIOs
-const IC_Pin KEY_P_C_ONE = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_3};
-const IC_Pin KEY_P_C_TWO = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_4};
-const IC_Pin KEY_P_C_THREE = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_5};
-const IC_Pin KEY_P_R_ONE = (IC_Pin){.pin_letter = GPIOA, .pin_num = GPIO_PIN_15};
-const IC_Pin KEY_P_R_TWO = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_10};
-const IC_Pin KEY_P_R_THREE = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_11};
-const IC_Pin KEY_P_R_FOUR = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_12};
+const IC_Pin KEY_P_C_ONE = (IC_Pin){.pin_letter = GPIOA, .pin_num = GPIO_PIN_15};
+const IC_Pin KEY_P_C_TWO = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_10};
+const IC_Pin KEY_P_C_THREE = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_11};
+const IC_Pin KEY_P_R_ONE = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_12};
+const IC_Pin KEY_P_R_TWO = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_3};
+const IC_Pin KEY_P_R_THREE = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_4};
+const IC_Pin KEY_P_R_FOUR = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_5};
 
 //LCD GPIOs
 const IC_Pin LCD_P_CS = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_12};
@@ -143,54 +143,35 @@ int main(void)
   MX_USB_DEVICE_Init();
   MX_TIM7_Init();
   /* USER CODE BEGIN 2 */
-
+  HAL_TIM_Base_Start_IT(&htim7);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  Init_Pin();
-  lcd_clear(&hspi2);
-  lcd_on(&hspi2);
-  lcd_welcome(&hspi2);
-  reset_ic(&hspi1, 1);
-
-  uint8_t data_out;
-  uint8_t rx_buffer[6000] = {0};
-  uint8_t tx_buffer[4] = {0};
+//  Write_Pin(DEBUG_P_EIGHT, 1);
+//  uint8_t ack_type;
+//  delete_specified_user(0, &ack_type);
+//  add_fingerprint(1, 0, 1, &ack_type);
+//  add_fingerprint(2, 0, 1, &ack_type);
+//  add_fingerprint(3, 0, 1, &ack_type);
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	Write_Pin(DEBUG_P_NINE, 1);
-	Write_Pin(DEBUG_P_EIGHT, 0);
-	HAL_Delay(2000);
-	flash_read_status_register(&hspi1, 1, 1, &data_out);
-	flash_write_status_register(&hspi1, 1, 1, data_out & 0b10000111);
-	HAL_Delay(10);
-	flash_read_status_register(&hspi1, 1, 2, &data_out);
-	flash_write_status_register(&hspi1, 1, 2, data_out & 0b11110111);
-	HAL_Delay(10);
-	flash_page_read(&hspi1, 1, 0);
-	HAL_Delay(10);
-	flash_data_read(&hspi1, 1, 2, rx_buffer, 1);
-	HAL_Delay(10);
-	flash_data_write(&hspi1, 1, 1, 1, tx_buffer, 0);
-	HAL_Delay(10);
-	flash_page_write(&hspi1, 1, 0);
-	HAL_Delay(10);
-	flash_page_read(&hspi1, 1, 0);
-	HAL_Delay(10);
-	flash_data_read(&hspi1, 1, 2, rx_buffer, 1);
-	HAL_Delay(10);
-	block_erase(&hspi1, 1, 0);
-	HAL_Delay(10);
-	flash_page_read(&hspi1, 1, 0);
-	HAL_Delay(10);
-	flash_data_read(&hspi1, 1, 2, rx_buffer, 1);
-	HAL_Delay(2000);
+	  if (keypad_matrix[0][0] >= 10) { // Debounce for 40ms (10*4 = 40)
+	  	Write_Pin(DEBUG_P_NINE, 1);
+	  } else {
+	  	Write_Pin(DEBUG_P_NINE, 0);
+	  }
+//	compare_1_1(0, &ack_type);
+//	if (ack_type == ACK_SUCCESS) {
+//	  Write_Pin(DEBUG_P_NINE, 1);
+//	} else {
+//	  Write_Pin(DEBUG_P_NINE, 0);
+//	}
   }
- /* USER CODE END 3 */
+  /* USER CODE END 3 */
 }
 
 /**
@@ -370,9 +351,9 @@ static void MX_TIM7_Init(void)
 
   /* USER CODE END TIM7_Init 1 */
   htim7.Instance = TIM7;
-  htim7.Init.Prescaler = 7999;
+  htim7.Init.Prescaler = 31999;
   htim7.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim7.Init.Period = 65535;
+  htim7.Init.Period = 1;
   htim7.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim7) != HAL_OK)
   {
@@ -460,15 +441,14 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3
-                          |GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_9|GPIO_PIN_10
-                          |GPIO_PIN_11|GPIO_PIN_12, GPIO_PIN_RESET);
+                          |GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_9|GPIO_PIN_12, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_8|GPIO_PIN_9
-                          |GPIO_PIN_15, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_8|GPIO_PIN_9, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_12|GPIO_PIN_6, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_12|GPIO_PIN_3
+                          |GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : PH1 */
   GPIO_InitStruct.Pin = GPIO_PIN_1;
@@ -478,37 +458,41 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOH, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PC0 PC1 PC2 PC3
-                           PC6 PC7 PC9 PC10
-                           PC11 PC12 */
+                           PC6 PC7 PC9 PC12 */
   GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3
-                          |GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_9|GPIO_PIN_10
-                          |GPIO_PIN_11|GPIO_PIN_12;
+                          |GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_9|GPIO_PIN_12;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PA2 PA3 PA8 PA9
-                           PA15 */
-  GPIO_InitStruct.Pin = GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_8|GPIO_PIN_9
-                          |GPIO_PIN_15;
+  /*Configure GPIO pins : PA2 PA3 PA8 PA9 */
+  GPIO_InitStruct.Pin = GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_8|GPIO_PIN_9;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PB0 PB1 PB12 PB6 */
-  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_12|GPIO_PIN_6;
+  /*Configure GPIO pins : PB0 PB1 PB12 PB3
+                           PB4 PB5 PB6 */
+  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_12|GPIO_PIN_3
+                          |GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PB3 PB4 PB5 */
-  GPIO_InitStruct.Pin = GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5;
+  /*Configure GPIO pin : PA15 */
+  GPIO_InitStruct.Pin = GPIO_PIN_15;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PC10 PC11 */
+  GPIO_InitStruct.Pin = GPIO_PIN_10|GPIO_PIN_11;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */
@@ -525,6 +509,16 @@ void Write_Pin(IC_Pin pin, int value)
 		HAL_GPIO_WritePin(pin.pin_letter, pin.pin_num, GPIO_PIN_SET);
 	}
 
+}
+
+int Read_Pin(IC_Pin pin)
+{
+	GPIO_PinState value = HAL_GPIO_ReadPin(pin.pin_letter, pin.pin_num);
+
+	if (value == GPIO_PIN_SET){
+		return 1;
+	}
+	return 0;
 }
 
 //Initialize pins to "default value" (update with LCD)
