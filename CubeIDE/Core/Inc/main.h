@@ -97,6 +97,20 @@ void Error_Handler(void);
 void Write_Pin(IC_Pin pin, int value);
 int Read_Pin(IC_Pin pin);
 void Init_Pin();
+
+//Menu Functions
+void load_users_from_flash();
+void save_users_to_flash();
+void switch_to_usersel();
+void switch_to_recvpass();
+void switch_to_password();
+void switch_to_fingerprint();
+void switch_to_unlocked();
+void switch_to_chgprint();
+void switch_to_chgpin();
+void switch_to_locking();
+
+
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/

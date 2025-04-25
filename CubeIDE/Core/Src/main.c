@@ -243,6 +243,10 @@ int main(void)
                 	  for (int j = 0; j < NUM_COLS; j++) {
                 		  if (is_key_pressed(i, j, 1)) {
                 			  key = key_to_char(i, j);
+                			  Write_Pin(LCD_P_CS, 0);
+                			lcd_print(&hspi2, (uint8_t*)"*");
+                			  Write_Pin(LCD_P_CS, 1);
+
                 		  }
                 	  }
                   }
@@ -330,7 +334,7 @@ int main(void)
 		      delete_specified_user(selected_user->user_id, &ack_type);
 		      for (int i = 1; i <= 3; i++) {
 		          add_fingerprint(i, selected_user->user_id, 1, &ack_type);
-		          if (ack_type != ACK_SUCCESS) {
+		          if (ack_type != ACK_SUCCESS && ack_type != ACK_NOUSER) {
 		        	  Write_Pin(LCD_P_CS, 0);
 		        	  lcd_clear(&hspi2);
 		        	  lcd_cursor_location(&hspi2, 0x00); // first row of LCD
@@ -342,11 +346,14 @@ int main(void)
 		        	  break;
 		          }
 		      }
-		      switch_to_unlocked();
+
+
+		     switch_to_unlocked();
 		      break;
           }
 
           case CHGPIN: {
+        	  uint8_t cursor = 0x40;
 		      int success = 1;
 		      int count = 0;
 		      int new_password[4];
@@ -811,6 +818,7 @@ void switch_to_password() {
 	lcd_clear(&hspi2);
 	lcd_cursor_location(&hspi2, 0x00); // first row of LCD
 	lcd_print(&hspi2, (uint8_t*)"ENTER PASSWORD");
+	lcd_cursor_location(&hspi2, 0x40);
     Write_Pin(LCD_P_CS, 1);
 }
 
