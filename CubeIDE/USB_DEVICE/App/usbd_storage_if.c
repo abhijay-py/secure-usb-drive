@@ -22,7 +22,7 @@
 #include "usbd_storage_if.h"
 
 /* USER CODE BEGIN INCLUDE */
-
+#include "flash.h"
 /* USER CODE END INCLUDE */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -52,8 +52,8 @@
 #define STORAGE_BLK_NBR                  0x40
 #define STORAGE_BLK_SIZ                  0x200
 
+uint8_t buffer[512 * 64];
 /* USER CODE BEGIN PRIVATE_TYPES */
-uint8_t buffer[STORAGE_BLK_NBR * STORAGE_BLK_SIZ];
 /* USER CODE END PRIVATE_TYPES */
 
 /**

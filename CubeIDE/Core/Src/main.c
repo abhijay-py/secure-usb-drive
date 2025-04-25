@@ -18,8 +18,8 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "fatfs.h"
 #include "usb_device.h"
+#include "usbd_storage_if.h"
 #include "usbd_core.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -87,6 +87,7 @@ const IC_Pin LCD_P_CS = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_12};
 //DEBUG GPIOs
 const IC_Pin DEBUG_P_NINE = (IC_Pin){.pin_letter = GPIOA, .pin_num = GPIO_PIN_9};
 const IC_Pin DEBUG_P_EIGHT = (IC_Pin){.pin_letter = GPIOA, .pin_num = GPIO_PIN_8};
+
 /* USER CODE END PV */
 
 // STATES
@@ -158,15 +159,24 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
+  MX_GPIO_Init();
+  MX_SPI1_Init();
+  uint8_t value;
+  Init_Pin();
+  flash_init(&hspi1);
+  for (int i = 0; i < 4; i++) {
+	  set_flash_chip_num(i);
+	  flash_read_status_register(1, &value);
+	  flash_write_status_register(1, value & 0b10000111);
+	  flash_read_status_register(2, &value);
+	  flash_write_status_register(2, value & 0b11110111);
+  }
 
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
-  MX_GPIO_Init();
   MX_UART4_Init();
-  MX_SPI1_Init();
   MX_SPI2_Init();
-  MX_FATFS_Init();
   MX_USB_DEVICE_Init();
   MX_TIM7_Init();
   /* USER CODE BEGIN 2 */
@@ -177,6 +187,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
 
 //  enum State state = UNLOCKED;
+
   switch_to_usersel();
 
   load_users_from_flash();
@@ -245,6 +256,8 @@ int main(void)
               }
               if (success) {
             	  // TODO: COPY FLASH DATA TO BUFFER HERE
+            	  set_flash_chip_num(selected_user->user_id);
+            	  flash_read(buffer, 0, 64);
 
             	  if (USBD_Start(&hUsbDeviceHS) != USBD_OK)
             	  {
@@ -274,7 +287,8 @@ int main(void)
               compare_1_1(selected_user->user_id, &ack_type);
               if (ack_type == ACK_SUCCESS) {
             	  // TODO: COPY FLASH DATA TO BUFFER HERE
-
+            	  set_flash_chip_num(selected_user->user_id);
+            	  flash_read(buffer, 0, 64);
                   if (USBD_Start(&hUsbDeviceHS) != USBD_OK)
                   {
                 	  Error_Handler();
@@ -374,7 +388,8 @@ int main(void)
           case LOCKING: {
               if (is_key_pressed(3, 2, 1)) { // # pressed
             	  // TODO: copy and paste buffer to flash IC
-
+            	  set_flash_chip_num(selected_user->user_id);
+            	  flash_write(buffer, 0, 64);
             	  if (USBD_Stop(&hUsbDeviceHS) != USBD_OK) {
             	      Error_Handler();
             	  }
@@ -893,10 +908,6 @@ void Init_Pin() {
 	Write_Pin(FLASH_P_HOLD_FOUR, 1);
 	Write_Pin(DEBUG_P_EIGHT, 0);
 	Write_Pin(DEBUG_P_NINE, 0);
-	Write_Pin(KEY_P_R_ONE, 0);
-	Write_Pin(KEY_P_R_TWO, 0);
-	Write_Pin(KEY_P_R_THREE, 0);
-	Write_Pin(KEY_P_R_FOUR, 0);
 }
 /* USER CODE END 4 */
 

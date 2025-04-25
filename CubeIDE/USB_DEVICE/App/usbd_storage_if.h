@@ -91,7 +91,7 @@
 extern USBD_StorageTypeDef USBD_Storage_Interface_fops_HS;
 
 /* USER CODE BEGIN EXPORTED_VARIABLES */
-
+extern uint8_t buffer[];
 /* USER CODE END EXPORTED_VARIABLES */
 
 /**
