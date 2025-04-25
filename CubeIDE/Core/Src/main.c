@@ -169,7 +169,12 @@ int main(void)
 
   // TODO: remove setting password here
   // TODO: actually add separate users
-  struct User selected_user = {.user_id = 0, .password = {0, 0, 0, 0}};
+  struct User user_1 = {.user_id = 1, .password = {0, 0, 0, 0}};
+  struct User user_2 = {.user_id = 2, .password = {0, 0, 0, 0}};
+  struct User user_3 = {.user_id = 3, .password = {0, 0, 0, 0}};
+  struct User user_4 = {.user_id = 4, .password = {0, 0, 0, 0}};
+
+  struct User* selected_user = NULL;
   lcd_clear_cs(&hspi2);
 
   while (1)
@@ -189,19 +194,19 @@ int main(void)
               Write_Pin(LCD_P_CS, 1);
               
               if (is_key_pressed(0, 0, 1)) { // 1
-                  selected_user.user_id = 1;
+                  selected_user = &user_1;
                   state = RECVPASS;
                   lcd_clear_cs(&hspi2);
               } else if (is_key_pressed(0, 1, 1)) { // 2
-                  selected_user.user_id = 2;
+                  selected_user = &user_2;
                   state = RECVPASS;
                   lcd_clear_cs(&hspi2);
               } else if (is_key_pressed(0, 2, 1)) { // 3
-                  selected_user.user_id = 3;
+                  selected_user = &user_3;
                   state = RECVPASS;
                   lcd_clear_cs(&hspi2);
               } else if (is_key_pressed(1, 0, 1)) { // 4
-                  selected_user.user_id = 4;
+                  selected_user = &user_4;
                   state = RECVPASS;
                   lcd_clear_cs(&hspi2);
               }
@@ -251,7 +256,7 @@ int main(void)
                   }
                   // await key press
                   if (key != '\0' && key != '*' && key != '#') {
-                	  if (key != selected_user.password[count] + '0') {
+                	  if (key != selected_user->password[count] + '0') {
                 		  success = 0;
                 	  }
                 	  count++;
@@ -283,7 +288,7 @@ int main(void)
 
               // send fingerprint match request
               uint8_t ack_type;
-              compare_1_1(selected_user.user_id, &ack_type);
+              compare_1_1(selected_user->user_id, &ack_type);
               if (ack_type == ACK_SUCCESS) {
                   state = UNLOCKED;
                   lcd_clear_cs(&hspi2);
@@ -336,7 +341,7 @@ int main(void)
 		      // ask user for print on fingerprint sensor
 		      uint8_t ack_type;
 		      for (int i = 1; i <= 3; i++) {
-		          add_fingerprint(i, selected_user.user_id, 1, &ack_type);
+		          add_fingerprint(i, selected_user->user_id, 1, &ack_type);
 		          if (ack_type != ACK_SUCCESS) {
 		        	  Write_Pin(LCD_P_CS, 0);
 		        	  lcd_clear(&hspi2);
@@ -389,7 +394,7 @@ int main(void)
 		      // Change the password if it's good
 		      if (success) {
 		          for (int i = 0; i < 4; i++) {
-		        	  selected_user.password[i] = new_password[i];
+		        	  selected_user->password[i] = new_password[i];
 		          }
 		      }
 
