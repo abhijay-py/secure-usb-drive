@@ -43,7 +43,7 @@ static Fingerprint_Status send_command(
 
 	// Transmit tx_buff
 	const HAL_StatusTypeDef tx_result
-		= HAL_UART_Transmit(&huart4, tx_buff, PACKET_SIZE, 1000);
+		= HAL_UART_Transmit(&huart4, tx_buff, PACKET_SIZE, 100000);
 	return tx_result != HAL_OK ? FINGERPRINT_HAL_ERROR : FINGERPRINT_OK;
 }
 

@@ -48,9 +48,12 @@
   * @brief Private types.
   * @{
   */
+#define STORAGE_LUN_NBR                  1
+#define STORAGE_BLK_NBR                  0x40
+#define STORAGE_BLK_SIZ                  0x200
 
 /* USER CODE BEGIN PRIVATE_TYPES */
-
+uint8_t buffer[STORAGE_BLK_NBR * STORAGE_BLK_SIZ];
 /* USER CODE END PRIVATE_TYPES */
 
 /**
@@ -62,9 +65,9 @@
   * @{
   */
 
-#define STORAGE_LUN_NBR                  1
-#define STORAGE_BLK_NBR                  0x10000
-#define STORAGE_BLK_SIZ                  0x200
+//#define STORAGE_LUN_NBR                  1
+//#define STORAGE_BLK_NBR                  0x10000
+//#define STORAGE_BLK_SIZ                  0x200
 
 /* USER CODE BEGIN PRIVATE_DEFINES */
 
@@ -194,7 +197,7 @@ int8_t STORAGE_Init_HS(uint8_t lun)
 int8_t STORAGE_GetCapacity_HS(uint8_t lun, uint32_t *block_num, uint16_t *block_size)
 {
   /* USER CODE BEGIN 10 */
-  UNUSED(lun);
+//  UNUSED(lun);
 
   *block_num  = STORAGE_BLK_NBR;
   *block_size = STORAGE_BLK_SIZ;
@@ -239,10 +242,11 @@ int8_t STORAGE_IsWriteProtected_HS(uint8_t lun)
 int8_t STORAGE_Read_HS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t blk_len)
 {
   /* USER CODE BEGIN 13 */
-  UNUSED(lun);
-  UNUSED(buf);
-  UNUSED(blk_addr);
-  UNUSED(blk_len);
+//  UNUSED(lun);
+//  UNUSED(buf);
+//  UNUSED(blk_addr);
+//  UNUSED(blk_len);
+	memcpy(buf, &buffer[blk_addr * STORAGE_BLK_SIZ], blk_len * STORAGE_BLK_SIZ);
 
   return (USBD_OK);
   /* USER CODE END 13 */
@@ -259,10 +263,11 @@ int8_t STORAGE_Read_HS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t bl
 int8_t STORAGE_Write_HS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t blk_len)
 {
   /* USER CODE BEGIN 14 */
-  UNUSED(lun);
-  UNUSED(buf);
-  UNUSED(blk_addr);
-  UNUSED(blk_len);
+//  UNUSED(lun);
+//  UNUSED(buf);
+//  UNUSED(blk_addr);
+//  UNUSED(blk_len);
+  memcpy(&buffer[blk_addr * STORAGE_BLK_SIZ], buf, blk_len * STORAGE_BLK_SIZ);
 
   return (USBD_OK);
   /* USER CODE END 14 */

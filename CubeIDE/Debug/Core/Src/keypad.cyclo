@@ -1,1 +1,5 @@
-..\Core\Src\keypad.c:16:6:HAL_TIM_PeriodElapsedCallback	5
+..\Core\Src\keypad.c:18:8:row_to_pin	5
+..\Core\Src\keypad.c:30:8:col_to_pin	5
+..\Core\Src\keypad.c:41:6:key_to_char	21
+..\Core\Src\keypad.c:73:5:is_key_pressed	3
+..\Core\Src\keypad.c:87:6:HAL_TIM_PeriodElapsedCallback	5

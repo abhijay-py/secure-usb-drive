@@ -86,6 +86,10 @@ void MX_USB_DEVICE_Init(void)
   }
 
   /* USER CODE BEGIN USB_DEVICE_Init_PostTreatment */
+  if (USBD_Stop(&hUsbDeviceHS) != USBD_OK)
+  {
+    Error_Handler();
+  }
   HAL_PWREx_EnableUSBVoltageDetector();
 
   /* USER CODE END USB_DEVICE_Init_PostTreatment */
