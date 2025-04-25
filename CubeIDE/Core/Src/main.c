@@ -241,7 +241,7 @@ int main(void)
                   char key = '\0';
                   for (int i = 0; i < NUM_ROWS; i++) {
                 	  for (int j = 0; j < NUM_COLS; j++) {
-                		  if (is_key_pressed(i, j, 1)) {
+                		  if (is_key_pressed(i, j, 5)) {
                 			  key = key_to_char(i, j);
                 			  Write_Pin(LCD_P_CS, 0);
                 			lcd_print(&hspi2, (uint8_t*)"*");
