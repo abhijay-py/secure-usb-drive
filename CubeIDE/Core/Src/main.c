@@ -20,6 +20,7 @@
 #include "main.h"
 #include "fatfs.h"
 #include "usb_device.h"
+#include "usbd_core.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -119,7 +120,16 @@ static void MX_TIM7_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+const struct User default_users[4] = {
+		(struct User){.user_id = 1, .password = {0, 0, 0, 0}},
+		(struct User){.user_id = 2, .password = {0, 0, 0, 0}},
+		(struct User){.user_id = 3, .password = {0, 0, 0, 0}},
+		(struct User){.user_id = 4, .password = {0, 0, 0, 0}}
+};
 
+struct User users[4];
+
+enum State state;
 /* USER CODE END 0 */
 
 /**
@@ -166,20 +176,16 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
-//  enum State state = USERSEL;
-  enum State state = UNLOCKED;
+//  enum State state = UNLOCKED;
+  switch_to_usersel();
 
-  // TODO: remove setting password here
-  // TODO: actually add separate users
-  struct User user_1 = {.user_id = 1, .password = {0, 0, 0, 0}};
-  struct User user_2 = {.user_id = 2, .password = {0, 0, 0, 0}};
-  struct User user_3 = {.user_id = 3, .password = {0, 0, 0, 0}};
-  struct User user_4 = {.user_id = 4, .password = {0, 0, 0, 0}};
+  load_users_from_flash();
+
+//  struct User users[4] = {user_1, user_2, user_3, user_4};
 
 //  struct User* selected_user = NULL;
-  struct User* selected_user = &user_1;
-
-  lcd_clear_cs(&hspi2);
+//  struct User* selected_user = &user_1;
+  struct User* selected_user = &users[0];
 
   while (1)
   {
@@ -188,65 +194,36 @@ int main(void)
     /* USER CODE BEGIN 3 */
 	  switch (state) {
           case USERSEL: {
-              Write_Pin(LCD_P_CS, 0);
-              lcd_on(&hspi2); // this line
-              lcd_light(&hspi2, 0x8); // and this line might only be needed on power up
-              lcd_cursor_location(&hspi2, 0x00); // 1st row LCD
-              lcd_print(&hspi2, (uint8_t*)"Select User ID");
-              lcd_cursor_location(&hspi2, 0x40); // second row of LCD
-              lcd_print(&hspi2, (uint8_t*)"1 2 3 4");
-              Write_Pin(LCD_P_CS, 1);
-              
               if (is_key_pressed(0, 0, 1)) { // 1
-                  selected_user = &user_1;
-                  state = RECVPASS;
-                  lcd_clear_cs(&hspi2);
+                  selected_user = &users[0];
+                  switch_to_recvpass();
               } else if (is_key_pressed(0, 1, 1)) { // 2
-                  selected_user = &user_2;
-                  state = RECVPASS;
-                  lcd_clear_cs(&hspi2);
+                  selected_user = &users[1];
+                  switch_to_recvpass();
               } else if (is_key_pressed(0, 2, 1)) { // 3
-                  selected_user = &user_3;
-                  state = RECVPASS;
-                  lcd_clear_cs(&hspi2);
+                  selected_user = &users[2];
+                  switch_to_recvpass();
               } else if (is_key_pressed(1, 0, 1)) { // 4
-                  selected_user = &user_4;
-                  state = RECVPASS;
-                  lcd_clear_cs(&hspi2);
+                  selected_user = &users[3];
+                  switch_to_recvpass();
               }
               break;
           }
 
           case RECVPASS: {
-              Write_Pin(LCD_P_CS, 0);
-              lcd_cursor_location(&hspi2, 0x00); // first row of LCD
-              lcd_print(&hspi2, (uint8_t*)"SELECT 1 CHOICE");
-              lcd_cursor_location(&hspi2, 0x40);
-              lcd_print(&hspi2, (uint8_t*)"FP # PASS * BK 0");
-              Write_Pin(LCD_P_CS, 1);
-              
-              // PSEUDOC
               if (is_key_pressed(3, 1, 100)) { // 0 held for 4 sec
-                  state = USERSEL;
-                  lcd_clear_cs(&hspi2);
+                  switch_to_usersel();
               }
               else if (is_key_pressed(3, 0, 1)) { // star - SELECTED PASSWORD
-                  state = PASSWORD;
-                  lcd_clear_cs(&hspi2);
+            	  switch_to_password();
               }
               else if (is_key_pressed(3, 2, 1)) { // pound - SELECTED FINGERPRINT
-                  state = FINGERPRINT;
-                  lcd_clear_cs(&hspi2);
+            	  switch_to_fingerprint();
               }
               break;
           }
 
           case PASSWORD: {
-              Write_Pin(LCD_P_CS, 0);
-              lcd_cursor_location(&hspi2, 0x00); // first row of LCD
-              lcd_print(&hspi2, (uint8_t*)"ENTER PASSWORD");
-              Write_Pin(LCD_P_CS, 1);
-
               int success = 1;
               int count = 0;
               while (count < 4) {
@@ -267,8 +244,12 @@ int main(void)
                   }
               }
               if (success) {
-                  state = UNLOCKED;
-                  lcd_clear_cs(&hspi2);
+            	  if (USBD_Start(&hUsbDeviceHS) != USBD_OK)
+            	  {
+            	      Error_Handler();
+            	  }
+
+            	  switch_to_unlocked();
               }
               else {
                   Write_Pin(LCD_P_CS, 0);
@@ -279,23 +260,23 @@ int main(void)
                   lcd_print(&hspi2, (uint8_t*)"PASSWORD");
                   Write_Pin(LCD_P_CS, 1);
                   HAL_Delay(2000);
-                  lcd_clear(&hspi2);
+
+                  switch_to_recvpass();
               }
               break;
           }
 
           case FINGERPRINT: {
-              Write_Pin(LCD_P_CS, 0);
-              lcd_cursor_location(&hspi2, 0x00); // first row of LCD
-              lcd_print(&hspi2, (uint8_t*)"ENTER FP");
-              Write_Pin(LCD_P_CS, 1);
-
               // send fingerprint match request
               uint8_t ack_type = 9;
               compare_1_1(selected_user->user_id, &ack_type);
               if (ack_type == ACK_SUCCESS) {
-                  state = UNLOCKED;
-                  lcd_clear_cs(&hspi2);
+                  if (USBD_Start(&hUsbDeviceHS) != USBD_OK)
+                  {
+                	  Error_Handler();
+                  }
+
+                  switch_to_unlocked();
               }
               else {
                   Write_Pin(LCD_P_CS, 0);
@@ -306,42 +287,26 @@ int main(void)
                   lcd_print(&hspi2, (uint8_t*)"PRINT");
                   Write_Pin(LCD_P_CS, 1);
                   HAL_Delay(2000);
-                  lcd_clear(&hspi2);
+
+                  switch_to_recvpass();
               }
               break;
           }
               
           case UNLOCKED: {
-        	  // TODO: add a second line here
-              Write_Pin(LCD_P_CS, 0);
-              lcd_cursor_location(&hspi2, 0x00); // first row of LCD
-              lcd_print(&hspi2, (uint8_t*)"UNLOCKED");
-              Write_Pin(LCD_P_CS, 1);
-
               if (is_key_pressed(3, 1, 1)) { // 0 pressed
-		          state = CHGPRINT;
-		          lcd_clear_cs(&hspi2);
+		          switch_to_chgprint();
 		      }
 		      else if (is_key_pressed(3, 0, 1)) { // * pressed
-		          state = CHGPIN;
-		          lcd_clear_cs(&hspi2);
+		          switch_to_chgpin();
 		      }
 		      else if (is_key_pressed(3, 2, 1)) { // # pressed
-		          state = LOCKING;
-		          lcd_clear_cs(&hspi2);
+		    	  switch_to_locking();
 		      }
               break;
           }
 
           case CHGPRINT: {
-              Write_Pin(LCD_P_CS, 0);
-		      lcd_cursor_location(&hspi2, 0x00); // first row of LCD
-		      lcd_print(&hspi2, (uint8_t*)"ENTER PRINT");
-		      lcd_cursor_location(&hspi2, 0x40);
-		      lcd_print(&hspi2, (uint8_t*)"OR WAIT TO CANC");
-		      Write_Pin(LCD_P_CS, 1);
-//		      HAL_Delay(2000);
-
 		      // ask user for print on fingerprint sensor
 		      uint8_t ack_type = 9;
 		      delete_specified_user(selected_user->user_id, &ack_type);
@@ -359,19 +324,11 @@ int main(void)
 		        	  break;
 		          }
 		      }
-		      state = UNLOCKED;
-		      lcd_clear_cs(&hspi2);
+		      switch_to_unlocked();
 		      break;
           }
 
           case CHGPIN: {
-              Write_Pin(LCD_P_CS, 0);
-		      lcd_cursor_location(&hspi2, 0x00); // first row of LCD
-		      lcd_print(&hspi2, (uint8_t*)"ENTER PASS");
-		      lcd_cursor_location(&hspi2, 0x40);
-		      lcd_print(&hspi2, (uint8_t*)"OR # TO CANCEL");
-		      Write_Pin(LCD_P_CS, 1);
-
 		      int success = 1;
 		      int count = 0;
 		      int new_password[4];
@@ -400,22 +357,24 @@ int main(void)
 		      if (success) {
 		          for (int i = 0; i < 4; i++) {
 		        	  selected_user->password[i] = new_password[i];
+		        	  users[(selected_user->user_id) - 1].password[i] = new_password[i];
 		          }
+//		          memcpy(users[(selected_user->user_id) - 1].password, new_password, 4);
+		          save_users_to_flash();
 		      }
 
-		      state = UNLOCKED;
-		      lcd_clear_cs(&hspi2);
+		      switch_to_unlocked();
 		      break;
           }
 
           case LOCKING: {
-        	  // TODO: add LCD screen text here
               if (is_key_pressed(3, 2, 1)) { // # pressed
-		          state = USERSEL;
-		          lcd_clear_cs(&hspi2);
+            	  if (USBD_Stop(&hUsbDeviceHS) != USBD_OK) {
+            	      Error_Handler();
+            	  }
+		          switch_to_usersel();
 		      } else if (is_key_pressed(3, 0, 1)) { // * pressed
-		          state = UNLOCKED;
-		          lcd_clear_cs(&hspi2);
+		          switch_to_unlocked();
 		      }
               break;
           }
@@ -750,6 +709,147 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 //Easy Write pin with the ic_pin type
+
+#define USER_SECTOR_ADDR 0X0817E000
+#define USER_SECTOR_NUM  63
+
+void load_users_from_flash(void) {
+	// read user0 and user1
+	memcpy(&users[0], (void*)USER_SECTOR_ADDR, 16);
+
+	// read user2 and user3
+	memcpy(&users[2], (void*)(USER_SECTOR_ADDR + 16), 16);
+    if (users[0].user_id != 1 || users[1].user_id != 2 || users[2].user_id != 3  || users[3].user_id != 4) {
+        memcpy(users, default_users, sizeof(users));
+    }
+}
+
+void save_users_to_flash(void) {
+    HAL_FLASH_Unlock();
+
+    // erase the sector before writing
+    FLASH_EraseInitTypeDef eraseInit;
+    eraseInit.TypeErase    = FLASH_TYPEERASE_SECTORS;
+    eraseInit.Banks        = FLASH_BANK_2;
+    eraseInit.Sector       = USER_SECTOR_NUM;
+    eraseInit.NbSectors    = 1;
+    uint32_t sectorError = 0;
+    HAL_FLASHEx_Erase(&eraseInit, &sectorError);
+
+    uint8_t temp1[16] __attribute__((aligned(16)));
+    memset(temp1, 0xFF, 16);
+    memcpy(temp1, &users[0], 16); // users[0] and users[1]
+    HAL_FLASH_Program(
+        FLASH_TYPEPROGRAM_FLASHWORD,
+        USER_SECTOR_ADDR,
+        (uint32_t)temp1
+    );
+
+    uint8_t temp2[16] __attribute__((aligned(16)));
+    memset(temp2, 0xFF, 16);
+    memcpy(temp2, &users[2], 16); // users[2] and users[3]
+    HAL_FLASH_Program(
+        FLASH_TYPEPROGRAM_FLASHWORD,
+        USER_SECTOR_ADDR + 16,
+        (uint32_t)temp2
+    );
+
+    HAL_FLASH_Lock();
+}
+
+void switch_to_usersel() {
+	state = USERSEL;
+
+	Write_Pin(LCD_P_CS, 0);
+	lcd_on(&hspi2); // this line
+	lcd_light(&hspi2, 0x8); // and this line might only be needed on power up
+	lcd_clear(&hspi2);
+	lcd_cursor_location(&hspi2, 0x00); // 1st row LCD
+	lcd_print(&hspi2, (uint8_t*)"Select User ID");
+	lcd_cursor_location(&hspi2, 0x40); // second row of LCD
+	lcd_print(&hspi2, (uint8_t*)"1 2 3 4");
+	Write_Pin(LCD_P_CS, 1);
+}
+
+void switch_to_recvpass() {
+	state = RECVPASS;
+
+	Write_Pin(LCD_P_CS, 0);
+	lcd_clear(&hspi2);
+	lcd_cursor_location(&hspi2, 0x00); // first row of LCD
+	lcd_print(&hspi2, (uint8_t*)"SELECT 1 CHOICE");
+	lcd_cursor_location(&hspi2, 0x40);
+	lcd_print(&hspi2, (uint8_t*)"FP # PASS * BK 0");
+	Write_Pin(LCD_P_CS, 1);
+}
+
+void switch_to_password() {
+	state = PASSWORD;
+
+	Write_Pin(LCD_P_CS, 0);
+	lcd_clear(&hspi2);
+	lcd_cursor_location(&hspi2, 0x00); // first row of LCD
+	lcd_print(&hspi2, (uint8_t*)"ENTER PASSWORD");
+    Write_Pin(LCD_P_CS, 1);
+}
+
+void switch_to_fingerprint() {
+	state = FINGERPRINT;
+
+	Write_Pin(LCD_P_CS, 0);
+	lcd_clear(&hspi2);
+	lcd_cursor_location(&hspi2, 0x00); // first row of LCD
+	lcd_print(&hspi2, (uint8_t*)"ENTER FP");
+	Write_Pin(LCD_P_CS, 1);
+}
+
+void switch_to_unlocked() {
+	state = UNLOCKED;
+
+	Write_Pin(LCD_P_CS, 0);
+	lcd_clear(&hspi2);
+	lcd_cursor_location(&hspi2, 0x00); // first row of LCD
+	lcd_print(&hspi2, (uint8_t*)"UNLOCKED");
+	lcd_cursor_location(&hspi2, 0x40);
+	lcd_print(&hspi2, (uint8_t*)"FP 0 PASS * LK #");
+	Write_Pin(LCD_P_CS, 1);
+}
+
+void switch_to_chgprint() {
+	state = CHGPRINT;
+
+	Write_Pin(LCD_P_CS, 0);
+	lcd_clear(&hspi2);
+	lcd_cursor_location(&hspi2, 0x00); // first row of LCD
+	lcd_print(&hspi2, (uint8_t*)"ENTER PRINT");
+	Write_Pin(LCD_P_CS, 1);
+//	HAL_Delay(2000);
+}
+
+void switch_to_chgpin() {
+	state = CHGPIN;
+
+	Write_Pin(LCD_P_CS, 0);
+	lcd_clear(&hspi2);
+	lcd_cursor_location(&hspi2, 0x00); // first row of LCD
+	lcd_print(&hspi2, (uint8_t*)"ENTER PASS");
+	lcd_cursor_location(&hspi2, 0x40);
+	lcd_print(&hspi2, (uint8_t*)"OR # TO CANCEL");
+	Write_Pin(LCD_P_CS, 1);
+}
+
+void switch_to_locking() {
+	state = LOCKING;
+
+	Write_Pin(LCD_P_CS, 0);
+	lcd_clear(&hspi2);
+	lcd_cursor_location(&hspi2, 0x00); // first row of LCD
+	lcd_print(&hspi2, (uint8_t*)"LOCK & SAVE?");
+	lcd_cursor_location(&hspi2, 0x40);
+	lcd_print(&hspi2, (uint8_t*)"Y:# N:*");
+	Write_Pin(LCD_P_CS, 1);
+}
+
 void Write_Pin(IC_Pin pin, int value)
 {
 	if (value == 0) {
