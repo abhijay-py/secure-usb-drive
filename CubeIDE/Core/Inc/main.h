@@ -94,8 +94,6 @@ extern const IC_Pin DEBUG_P_EIGHT;
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
-void read_try_try (uint8_t* buf, uint32_t blk_addr, uint16_t blk_len);
-void write_try_try (uint8_t* buf, uint32_t blk_addr, uint16_t blk_len);
 void Write_Pin(IC_Pin pin, int value);
 int Read_Pin(IC_Pin pin);
 void init_pin();

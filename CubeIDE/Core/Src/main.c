@@ -150,7 +150,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_UART4_Init();
   MX_SPI2_Init();
-  //MX_USB_DEVICE_Init();
+  MX_USB_DEVICE_Init();
   MX_TIM7_Init();
   /* USER CODE BEGIN 2 */
   /* USER CODE END 2 */
@@ -161,11 +161,10 @@ int main(void)
   lcd_on(&hspi2);
   lcd_welcome(&hspi2);
   uint8_t read_buffers[512*64] = {0};
-  uint8_t write_buffers[512*64] = {0};
-  for (int i =0; i < 512*64; i++) {
-	  write_buffers[i] = 0xAA;
-  }
-  Flash_Status error;
+//  uint8_t write_buffers[512*64] = {0};
+//  for (int i =0; i < 512*64; i++) {
+//	  write_buffers[i] = 0x43;
+//  }
 
   while (1)
   {
@@ -174,10 +173,10 @@ int main(void)
     /* USER CODE BEGIN 3 */
 		Write_Pin(DEBUG_P_NINE, 1);
 		Write_Pin(DEBUG_P_EIGHT, 0);
-		flash_read(read_buffers, 2, 10);
-		flash_write(write_buffers, 2, 10);
-		flash_read(read_buffers, 2, 10);
-		HAL_Delay(1000);
+		flash_read(read_buffers, 0, 64);
+//		flash_write(write_buffers, 0, 64);
+//		flash_read(read_buffers, 0, 64);
+//		HAL_Delay(1000);
 
   }
   /* USER CODE END 3 */
@@ -506,12 +505,6 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 //Easy Write pin with the ic_pin type
-void read_try_try (uint8_t* buf, uint32_t blk_addr, uint16_t blk_len){
-	memcpy((buf), &help[blk_addr * 512], 512*blk_len);
-}
-void write_try_try (uint8_t* buf, uint32_t blk_addr, uint16_t blk_len){
-	memcpy(&help[blk_addr*512], (buf), 512*blk_len);
-}
 void Write_Pin(IC_Pin pin, int value)
 {
 	if (value == 0) {
