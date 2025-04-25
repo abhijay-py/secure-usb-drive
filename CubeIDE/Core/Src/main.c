@@ -92,6 +92,8 @@ const IC_Pin DEBUG_P_EIGHT = (IC_Pin){.pin_letter = GPIOA, .pin_num = GPIO_PIN_8
 enum State {
 	USERSEL,
 	RECVPASS,
+	PASSWORD,
+	FINGERPRINT,
 	UNLOCKED,
 	CHGPRINT,
 	CHGPIN,
@@ -163,149 +165,250 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  enum State state = STARTUP;
-  Write_Pin(LCD_P_CS, 0);
-  lcd_on(&hspi2); // this line
-  lcd_light(&hspi2, 0x8); // and this line might only be needed on power up
-  lcd_clear(&hspi2);
-  lcd_cursor_location(&hspi2, 0x00); // 1st row LCD
-  lcd_print(&hspi2, (uint8_t*)"Press 1 To");
-  lcd_cursor_location(&hspi2, 0x40); // second row of LCD
-  lcd_print(&hspi2, (uint8_t*)"Proceed");
-  Write_Pin(LCD_P_CS, 1);
+  enum State state = USERSEL;
 
+  // TODO: remove setting password here
+  // TODO: actually add separate users
   struct User selected_user = {.user_id = 0, .password = {0, 0, 0, 0}};
+  lcd_clear_cs(&hspi2);
 
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  if (state == USERSEL) {
-		  Write_Pin(LCD_P_CS, 0);
-		  lcd_on(&hspi2); // this line
-		  lcd_light(&hspi2, 0x8); // and this line might only be needed on power up
-		  lcd_clear(&hspi2);
-		  lcd_cursor_location(&hspi2, 0x00); // 1st row LCD
-		  lcd_print(&hspi2, (uint8_t*)"Select User ID");
-		  lcd_cursor_location(&hspi2, 0x40); // second row of LCD
-		  lcd_print(&hspi2, (uint8_t*)"1 2 3 4");
-		  Write_Pin(LCD_P_CS, 1);
+	  switch (state) {
+          case USERSEL: {
+              Write_Pin(LCD_P_CS, 0);
+              lcd_on(&hspi2); // this line
+              lcd_light(&hspi2, 0x8); // and this line might only be needed on power up
+              lcd_cursor_location(&hspi2, 0x00); // 1st row LCD
+              lcd_print(&hspi2, (uint8_t*)"Select User ID");
+              lcd_cursor_location(&hspi2, 0x40); // second row of LCD
+              lcd_print(&hspi2, (uint8_t*)"1 2 3 4");
+              Write_Pin(LCD_P_CS, 1);
+              
+              if (is_key_pressed(0, 0, 1)) { // 1
+                  selected_user.user_id = 1;
+                  state = RECVPASS;
+                  lcd_clear_cs(&hspi2);
+              } else if (is_key_pressed(0, 1, 1)) { // 2
+                  selected_user.user_id = 2;
+                  state = RECVPASS;
+                  lcd_clear_cs(&hspi2);
+              } else if (is_key_pressed(0, 2, 1)) { // 3
+                  selected_user.user_id = 3;
+                  state = RECVPASS;
+                  lcd_clear_cs(&hspi2);
+              } else if (is_key_pressed(1, 0, 1)) { // 4
+                  selected_user.user_id = 4;
+                  state = RECVPASS;
+                  lcd_clear_cs(&hspi2);
+              }
+              break;
+          }
 
-		  if (keypad_matrix[0][0] >= 10) { // 1
+          case RECVPASS: {
+              Write_Pin(LCD_P_CS, 0);
+              lcd_cursor_location(&hspi2, 0x00); // first row of LCD
+              lcd_print(&hspi2, (uint8_t*)"SELECT 1 CHOICE");
+              lcd_cursor_location(&hspi2, 0x40);
+              lcd_print(&hspi2, (uint8_t*)"FP # PASS * BK 0");
+              Write_Pin(LCD_P_CS, 1);
+              
+              // PSEUDOC
+              if (is_key_pressed(3, 1, 100)) { // 0 held for 4 sec
+                  state = USERSEL;
+                  lcd_clear_cs(&hspi2);
+              }
+              else if (is_key_pressed(3, 0, 1)) { // star - SELECTED PASSWORD
+                  state = PASSWORD;
+                  lcd_clear_cs(&hspi2);
+              }
+              else if (is_key_pressed(3, 2, 1)) { // pound - SELECTED FINGERPRINT
+                  state = FINGERPRINT;
+                  lcd_clear_cs(&hspi2);
+              }
+              break;
+          }
 
-	  	  }
-	  }
-	  else if (state == RECVPASS) {
-		  Write_Pin(LCD_P_CS, 0);
-		  lcd_clear(&hspi2);
-		  lcd_cursor_location(&hspi2, 0x00); // first row of LCD
-		  lcd_print(&hspi2, (uint8_t*)"select one choice");
-		  lcd_cursor_location(&hspi2, 0x40);
-		  lcd_print(&hspi2, (uint8_t*)"fp * pass # bk 0");
-		  Write_Pin(LCD_P_CS, 1);
+          case PASSWORD: {
+              Write_Pin(LCD_P_CS, 0);
+              lcd_cursor_location(&hspi2, 0x00); // first row of LCD
+              lcd_print(&hspi2, (uint8_t*)"ENTER PASSWORD");
+              Write_Pin(LCD_P_CS, 1);
 
-		  // PSEUDOC
-		  if (keypad[0][0] >= 10000) {
-			  state = USERSEL;
-		  }
-		  else if (keypad[0][0] >= 10) { // change to star - SELECTED PASSWORD
-			  int success = 1;
-			  int count = 0;
-			  int key;
-			  while (count < 4) {
-				  // await key press
-				  if (key != struct userid correspondance [count]) {
-					  success = 0;
-					  break;
-				  }
-			  }
-			  if (success) {
-				  state = UNLOCKED;
-			  }
-			  else {
-				  Write_Pin(LCD_P_CS, 0);
-				  lcd_clear(&hspi2);
-				  lcd_cursor_location(&hspi2, 0x00); // first row of LCD
-				  lcd_print(&hspi2, (uint8_t*)"INCORRECT");
-				  lcd_cursor_location(&hspi2, 0x40);
-				  lcd_print(&hspi2, (uint8_t*)"PASSWORD");
-				  Write_Pin(LCD_P_CS, 1);
-				  HAL_Delay(2000);
-			  }
-		  }
-		  else if (keypad[0][0] >= 10) { // change to pound - SELECTED FINGERPRINT
-			  // send fingerprint match request
-			  // while state == RECVPASS
-			  // if success state = UNLOCKED
-//			  else {
-//				  Write_Pin(LCD_P_CS, 0);
-//				  lcd_clear(&hspi2);
-//				  lcd_cursor_location(&hspi2, 0x00); // first row of LCD
-//				  lcd_print(&hspi2, (uint8_t*)"INCORRECT");
-//				  lcd_cursor_location(&hspi2, 0x40);
-//				  lcd_print(&hspi2, (uint8_t*)"PRINT");
-//				  Write_Pin(LCD_P_CS, 1);
-//				  HAL_Delay(2000);
-//			  }
-		  }
-	  }
-	  else if (state == UNLOCKED) {
-		  if 0 pressed {
-			  state = CHGPRINT;
-		  }
-		  else if * pressed {
-			  state = CHGPIN;
-		  }
-		  else if # pressed {
-			  state = LOCKED;
-		  }
-	  }
-	  else if (state == CHGPRINT) {
-		  Write_Pin(LCD_P_CS, 0);
-		  lcd_clear(&hspi2);
-		  lcd_cursor_location(&hspi2, 0x00); // first row of LCD
-		  lcd_print(&hspi2, (uint8_t*)"ENTER PRINT");
-		  lcd_cursor_location(&hspi2, 0x40);
-		  lcd_print(&hspi2, (uint8_t*)"OR 2 TO CANCEL");
-		  Write_Pin(LCD_P_CS, 1);
-		  HAL_Delay(2000);
-		  // ask user for print on fingerprint sensor
-		  while no success fingerprint yet {
-		  if 2 pressed {
-			  state = UNLOCKED;
-			  break;
-		  }
-		  }
-	  }
-	  else if (state == CHGPIN) {
-		  Write_Pin(LCD_P_CS, 0);
-		  lcd_clear(&hspi2);
-		  lcd_cursor_location(&hspi2, 0x00); // first row of LCD
-		  lcd_print(&hspi2, (uint8_t*)"ENTER PASS");
-		  lcd_cursor_location(&hspi2, 0x40);
-		  lcd_print(&hspi2, (uint8_t*)"OR 2 TO CANCEL");
-		  Write_Pin(LCD_P_CS, 1);
-		  HAL_Delay(2000);
-		  int count = 0;
-		  while (count < 4) {
-			  // await key peress
-		  if * pressed {
-			  state = UNLOCKED;
-			  break;
-		  }
-		  struct user_id correspondance [count] = key_pressed;
-		  count += 1
-		  }
-		  state = UNLOCKED;
-	  }
-	  else if (state == LOCKING) {
-		  if # pressed {
-			  state = USERSEL;
-		  }
-		  else if * pressed {
-			  state = UNLOCKED;
-		  }
+              int success = 1;
+              int count = 0;
+              while (count < 4) {
+                  char key = '\0';
+                  for (int i = 0; i < NUM_ROWS; i++) {
+                	  for (int j = 0; j < NUM_COLS; j++) {
+                		  if (is_key_pressed(i, j, 1)) {
+                			  key = key_to_char(i, j);
+                		  }
+                	  }
+                  }
+                  // await key press
+                  if (key != '\0' && key != '*' && key != '#') {
+                	  if (key != selected_user.password[count] + '0') {
+                		  success = 0;
+                	  }
+                	  count++;
+                  }
+              }
+              if (success) {
+                  state = UNLOCKED;
+                  lcd_clear_cs(&hspi2);
+              }
+              else {
+                  Write_Pin(LCD_P_CS, 0);
+                  lcd_clear(&hspi2);
+                  lcd_cursor_location(&hspi2, 0x00); // first row of LCD
+                  lcd_print(&hspi2, (uint8_t*)"INCORRECT");
+                  lcd_cursor_location(&hspi2, 0x40);
+                  lcd_print(&hspi2, (uint8_t*)"PASSWORD");
+                  Write_Pin(LCD_P_CS, 1);
+                  HAL_Delay(2000);
+                  lcd_clear(&hspi2);
+              }
+              break;
+          }
+
+          case FINGERPRINT: {
+              Write_Pin(LCD_P_CS, 0);
+              lcd_cursor_location(&hspi2, 0x00); // first row of LCD
+              lcd_print(&hspi2, (uint8_t*)"ENTER FP");
+              Write_Pin(LCD_P_CS, 1);
+
+              // send fingerprint match request
+              uint8_t ack_type;
+              compare_1_1(selected_user.user_id, &ack_type);
+              if (ack_type == ACK_SUCCESS) {
+                  state = UNLOCKED;
+                  lcd_clear_cs(&hspi2);
+              }
+              else {
+                  Write_Pin(LCD_P_CS, 0);
+                  lcd_clear(&hspi2);
+                  lcd_cursor_location(&hspi2, 0x00); // first row of LCD
+                  lcd_print(&hspi2, (uint8_t*)"INCORRECT");
+                  lcd_cursor_location(&hspi2, 0x40);
+                  lcd_print(&hspi2, (uint8_t*)"PRINT");
+                  Write_Pin(LCD_P_CS, 1);
+                  HAL_Delay(2000);
+                  lcd_clear(&hspi2);
+              }
+              break;
+          }
+              
+          case UNLOCKED: {
+        	  // TODO: add a second line here
+              Write_Pin(LCD_P_CS, 0);
+              lcd_cursor_location(&hspi2, 0x00); // first row of LCD
+              lcd_print(&hspi2, (uint8_t*)"UNLOCKED");
+              Write_Pin(LCD_P_CS, 1);
+
+              if (is_key_pressed(3, 1, 1)) { // 0 pressed
+		          state = CHGPRINT;
+		          lcd_clear_cs(&hspi2);
+		      }
+		      else if (is_key_pressed(3, 0, 1)) { // * pressed
+		          state = CHGPIN;
+		          lcd_clear_cs(&hspi2);
+		      }
+		      else if (is_key_pressed(3, 2, 1)) { // # pressed
+		          state = LOCKING;
+		          lcd_clear_cs(&hspi2);
+		      }
+              break;
+          }
+
+          case CHGPRINT: {
+              Write_Pin(LCD_P_CS, 0);
+		      lcd_cursor_location(&hspi2, 0x00); // first row of LCD
+		      lcd_print(&hspi2, (uint8_t*)"ENTER PRINT");
+		      lcd_cursor_location(&hspi2, 0x40);
+		      lcd_print(&hspi2, (uint8_t*)"OR WAIT TO CANC");
+		      Write_Pin(LCD_P_CS, 1);
+//		      HAL_Delay(2000);
+
+		      // ask user for print on fingerprint sensor
+		      uint8_t ack_type;
+		      for (int i = 1; i <= 3; i++) {
+		          add_fingerprint(i, selected_user.user_id, 1, &ack_type);
+		          if (ack_type != ACK_SUCCESS) {
+		        	  Write_Pin(LCD_P_CS, 0);
+		        	  lcd_clear(&hspi2);
+		        	  lcd_cursor_location(&hspi2, 0x00); // first row of LCD
+		        	  lcd_print(&hspi2, (uint8_t*)"BAD READING");
+		        	  lcd_cursor_location(&hspi2, 0x40);
+		        	  lcd_print(&hspi2, (uint8_t*)"ABORTING");
+		        	  Write_Pin(LCD_P_CS, 1);
+		        	  HAL_Delay(2000);
+		        	  break;
+		          }
+		      }
+		      state = UNLOCKED;
+		      lcd_clear_cs(&hspi2);
+		      break;
+          }
+
+          case CHGPIN: {
+              Write_Pin(LCD_P_CS, 0);
+		      lcd_cursor_location(&hspi2, 0x00); // first row of LCD
+		      lcd_print(&hspi2, (uint8_t*)"ENTER PASS");
+		      lcd_cursor_location(&hspi2, 0x40);
+		      lcd_print(&hspi2, (uint8_t*)"OR # TO CANCEL");
+		      Write_Pin(LCD_P_CS, 1);
+
+		      int success = 1;
+		      int count = 0;
+		      int new_password[4];
+		      while (count < 4) {
+		          char key = '\0';
+		          for (int i = 0; i < NUM_ROWS; i++) {
+		        	  for (int j = 0; j < NUM_COLS; j++) {
+		        		  if (is_key_pressed(i, j, 1)) {
+		        			  key = key_to_char(i, j);
+		        		  }
+		        	  }
+		          }
+		          // await key press
+		          if (key == '#') { // cancel
+		        	  success = 0;
+		        	  break;
+		          }
+
+		          if (key != '\0') { // password entering
+		        	  new_password[count] = key - '0';
+		        	  count++;
+		          }
+		      }
+
+		      // Change the password if it's good
+		      if (success) {
+		          for (int i = 0; i < 4; i++) {
+		        	  selected_user.password[i] = new_password[i];
+		          }
+		      }
+
+		      state = UNLOCKED;
+		      lcd_clear_cs(&hspi2);
+		      break;
+          }
+
+          case LOCKING: {
+        	  // TODO: add LCD screen text here
+              if (is_key_pressed(3, 2, 1)) { // # pressed
+		          state = USERSEL;
+		          lcd_clear_cs(&hspi2);
+		      } else if (is_key_pressed(3, 0, 1)) { // * pressed
+		          state = UNLOCKED;
+		          lcd_clear_cs(&hspi2);
+		      }
+              break;
+          }
 	  }
   }
   /* USER CODE END 3 */

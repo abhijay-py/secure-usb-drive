@@ -7,5 +7,6 @@
 ..\Core\Src\lcd.c:68:6:lcd_clear	1
 ..\Core\Src\lcd.c:73:6:lcd_on	1
 ..\Core\Src\lcd.c:78:6:lcd_off	1
-..\Core\Src\lcd.c:83:6:send_bytes	3
-..\Core\Src\lcd.c:94:6:periodic_send	1
+..\Core\Src\lcd.c:83:6:lcd_clear_cs	1
+..\Core\Src\lcd.c:89:6:send_bytes	3
+..\Core\Src\lcd.c:100:6:periodic_send	1

@@ -80,6 +80,12 @@ void lcd_off(SPI_HandleTypeDef *hspi2) {
 	send_bytes(hspi2, tx_buffer, sizeof(tx_buffer));
 }
 
+void lcd_clear_cs(SPI_HandleTypeDef *hspi2) {
+	Write_Pin(LCD_P_CS, 0);
+	lcd_clear(hspi2);
+	Write_Pin(LCD_P_CS, 1);
+}
+
 void send_bytes(SPI_HandleTypeDef *hspi2, const uint8_t *tx_buffer, size_t size) {
 	HAL_Delay(1000);
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_RESET);
@@ -98,8 +104,6 @@ void periodic_send(SPI_HandleTypeDef *hspi2) {
 	HAL_SPI_Transmit(hspi2, TX_Buffer, 1, 1000); //Sending in normal mode
 	HAL_Delay(100);
 }
-
-
 
 
 
