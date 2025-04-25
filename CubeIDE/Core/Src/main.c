@@ -164,7 +164,7 @@ int main(void)
   uint8_t value;
   Init_Pin();
   flash_init(&hspi1);
-  for (int i = 0; i < 4; i++) {
+  for (int i = 1; i <= 4; i++) {
 	  set_flash_chip_num(i);
 	  flash_read_status_register(1, &value);
 	  flash_write_status_register(1, value & 0b10000111);

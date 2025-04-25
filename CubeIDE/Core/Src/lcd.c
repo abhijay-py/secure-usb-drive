@@ -48,7 +48,7 @@ void lcd_print(SPI_HandleTypeDef *hspi2, const uint8_t *string) {
 // note that the hex location ranges from column 0x00 to 0x0F for row 1
 // note that the hex location ranges from column 0x40 to 0x4F for row 2
 void lcd_cursor_location(SPI_HandleTypeDef *hspi2, const uint8_t hex_location) {
-	HAL_Delay(1000);
+	HAL_Delay(10);
 	if (hex_location == HOME) {
 		// call home command
 	}
@@ -87,12 +87,12 @@ void lcd_clear_cs(SPI_HandleTypeDef *hspi2) {
 }
 
 void send_bytes(SPI_HandleTypeDef *hspi2, const uint8_t *tx_buffer, size_t size) {
-	HAL_Delay(1000);
+	HAL_Delay(10);
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_RESET);
 	for (int i = 0; i < size; i++) {
 		HAL_SPI_Transmit(hspi2, tx_buffer + i, 1, 1000);
 		while(hspi2 -> State != HAL_SPI_STATE_READY);
-		HAL_Delay(100);
+		HAL_Delay(10);
 	}
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_SET);
 }
@@ -102,7 +102,7 @@ void periodic_send(SPI_HandleTypeDef *hspi2) {
 	uint8_t TX_Buffer [] = "A" ;
 
 	HAL_SPI_Transmit(hspi2, TX_Buffer, 1, 1000); //Sending in normal mode
-	HAL_Delay(100);
+	HAL_Delay(10);
 }
 
 
