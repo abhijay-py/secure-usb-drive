@@ -12,8 +12,9 @@
 
 #define NUM_ROWS 4
 #define NUM_COLS 3
-// This matrix increments the button value for every 4 ms that it is pressed and resets it to 0 when the button is released.
-extern volatile uint32_t keypad_matrix[NUM_ROWS][NUM_COLS];
+
+char key_to_char(int row, int col);
+int is_key_pressed(int row, int col, int debouncing);
 
 /* EXAMPLE CODE
 if (keypad_matrix[3][0] >= 10) { // Debounce for 40ms (10*4 = 40)

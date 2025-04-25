@@ -51,7 +51,7 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
-
+extern USBD_HandleTypeDef hUsbDeviceHS;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
