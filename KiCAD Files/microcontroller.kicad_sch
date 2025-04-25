@@ -4940,6 +4940,7 @@
 	)
 	(label "BOOT0"
 		(at 34.29 36.83 0)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4971,7 +4972,7 @@
 			)
 		)
 	)
-	(global_label "PB5{slash}KeyC3 ESD"
+	(global_label "PB5{slash}KeyR4 ESD"
 		(shape input)
 		(at 76.2 87.63 0)
 		(fields_autoplaced yes)
@@ -5086,7 +5087,7 @@
 			)
 		)
 	)
-	(global_label "PB5{slash}KeyC3 ESD"
+	(global_label "PB5{slash}KeyR4 ESD"
 		(shape input)
 		(at 179.07 143.51 0)
 		(fields_autoplaced yes)
@@ -5615,7 +5616,7 @@
 			)
 		)
 	)
-	(global_label "PC12{slash}KeyR4 ESD"
+	(global_label "PC12{slash}KeyR1 ESD"
 		(shape input)
 		(at 40.64 82.55 180)
 		(fields_autoplaced yes)
@@ -5845,7 +5846,7 @@
 			)
 		)
 	)
-	(global_label "PB4{slash}KeyC2 ESD"
+	(global_label "PB4{slash}KeyR3 ESD"
 		(shape input)
 		(at 76.2 85.09 0)
 		(fields_autoplaced yes)
@@ -5868,7 +5869,7 @@
 			)
 		)
 	)
-	(global_label "PA15{slash}KeyR1 ESD"
+	(global_label "PA15{slash}KeyC1 ESD"
 		(shape input)
 		(at 77.47 71.12 0)
 		(fields_autoplaced yes)
@@ -6213,7 +6214,7 @@
 			)
 		)
 	)
-	(global_label "PC11{slash}KeyR3 ESD"
+	(global_label "PC11{slash}KeyC3 ESD"
 		(shape input)
 		(at 40.64 80.01 180)
 		(fields_autoplaced yes)
@@ -6443,7 +6444,7 @@
 			)
 		)
 	)
-	(global_label "PB3{slash}KeyC1 ESD"
+	(global_label "PB3{slash}KeyR2 ESD"
 		(shape input)
 		(at 76.2 82.55 0)
 		(fields_autoplaced yes)
@@ -6512,7 +6513,7 @@
 			)
 		)
 	)
-	(global_label "PC10{slash}KeyR2 ESD"
+	(global_label "PC10{slash}KeyC2 ESD"
 		(shape input)
 		(at 40.64 77.47 180)
 		(fields_autoplaced yes)
@@ -10433,7 +10434,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a1a0009a-21ac-415f-9290-a58746f23898")
-		(property "Reference" "#PWR70"
+		(property "Reference" "#PWR070"
 			(at 226.06 24.13 0)
 			(effects
 				(font
@@ -10483,7 +10484,7 @@
 		(instances
 			(project "477"
 				(path "/b633f67e-3a02-4f0f-b079-02d1853b4f15/e8b68c2d-7a8c-4c60-b0ed-d46a3d1cc27a"
-					(reference "#PWR70")
+					(reference "#PWR070")
 					(unit 1)
 				)
 			)

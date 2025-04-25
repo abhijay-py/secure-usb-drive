@@ -18,7 +18,6 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "fatfs.h"
 #include "usb_device.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -72,13 +71,13 @@ const IC_Pin FLASH_P_WP_FOUR = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN
 
 
 //KEYPAD GPIOs
-const IC_Pin KEY_P_C_ONE = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_3};
-const IC_Pin KEY_P_C_TWO = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_4};
-const IC_Pin KEY_P_C_THREE = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_5};
-const IC_Pin KEY_P_R_ONE = (IC_Pin){.pin_letter = GPIOA, .pin_num = GPIO_PIN_15};
-const IC_Pin KEY_P_R_TWO = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_10};
-const IC_Pin KEY_P_R_THREE = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_11};
-const IC_Pin KEY_P_R_FOUR = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_12};
+const IC_Pin KEY_P_C_ONE = (IC_Pin){.pin_letter = GPIOA, .pin_num = GPIO_PIN_15};
+const IC_Pin KEY_P_C_TWO = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_10};
+const IC_Pin KEY_P_C_THREE = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_11};
+const IC_Pin KEY_P_R_ONE = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_12};
+const IC_Pin KEY_P_R_TWO = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_3};
+const IC_Pin KEY_P_R_THREE = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_4};
+const IC_Pin KEY_P_R_FOUR = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_5};
 
 //LCD GPIOs
 const IC_Pin LCD_P_CS = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_12};
@@ -86,6 +85,11 @@ const IC_Pin LCD_P_CS = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_12};
 //DEBUG GPIOs
 const IC_Pin DEBUG_P_NINE = (IC_Pin){.pin_letter = GPIOA, .pin_num = GPIO_PIN_9};
 const IC_Pin DEBUG_P_EIGHT = (IC_Pin){.pin_letter = GPIOA, .pin_num = GPIO_PIN_8};
+
+
+uint8_t buffed[65536] = {1}; //(32 pages)
+uint8_t help[65536];
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -124,73 +128,59 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
   /* USER CODE END Init */
 
   /* Configure the system clock */
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
+  MX_GPIO_Init();
+  MX_SPI1_Init();
+  uint8_t data_out;
+  init_pin();
+  flash_init(&hspi1);
+  set_flash_chip_num(2);
+  flash_read_status_register(1, &data_out);
+  flash_write_status_register(1, data_out & 0b10000111);
+  flash_read_status_register(2, &data_out);
+  flash_write_status_register(2, data_out & 0b11110111);
 
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
-  MX_GPIO_Init();
   MX_UART4_Init();
-  MX_SPI1_Init();
   MX_SPI2_Init();
-  MX_FATFS_Init();
-  MX_USB_DEVICE_Init();
+  //MX_USB_DEVICE_Init();
   MX_TIM7_Init();
   /* USER CODE BEGIN 2 */
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  Init_Pin();
   lcd_clear(&hspi2);
   lcd_on(&hspi2);
   lcd_welcome(&hspi2);
-  reset_ic(&hspi1, 1);
+  uint8_t read_buffers[512*64] = {0};
+  uint8_t write_buffers[512*64] = {0};
+  for (int i =0; i < 512*64; i++) {
+	  write_buffers[i] = 0xAA;
+  }
+  Flash_Status error;
 
-  uint8_t data_out;
-  uint8_t rx_buffer[6000] = {0};
-  uint8_t tx_buffer[4] = {0};
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	Write_Pin(DEBUG_P_NINE, 1);
-	Write_Pin(DEBUG_P_EIGHT, 0);
-	HAL_Delay(2000);
-	flash_read_status_register(&hspi1, 1, 1, &data_out);
-	flash_write_status_register(&hspi1, 1, 1, data_out & 0b10000111);
-	HAL_Delay(10);
-	flash_read_status_register(&hspi1, 1, 2, &data_out);
-	flash_write_status_register(&hspi1, 1, 2, data_out & 0b11110111);
-	HAL_Delay(10);
-	flash_page_read(&hspi1, 1, 0);
-	HAL_Delay(10);
-	flash_data_read(&hspi1, 1, 2, rx_buffer, 1);
-	HAL_Delay(10);
-	flash_data_write(&hspi1, 1, 1, 1, tx_buffer, 0);
-	HAL_Delay(10);
-	flash_page_write(&hspi1, 1, 0);
-	HAL_Delay(10);
-	flash_page_read(&hspi1, 1, 0);
-	HAL_Delay(10);
-	flash_data_read(&hspi1, 1, 2, rx_buffer, 1);
-	HAL_Delay(10);
-	block_erase(&hspi1, 1, 0);
-	HAL_Delay(10);
-	flash_page_read(&hspi1, 1, 0);
-	HAL_Delay(10);
-	flash_data_read(&hspi1, 1, 2, rx_buffer, 1);
-	HAL_Delay(2000);
+		Write_Pin(DEBUG_P_NINE, 1);
+		Write_Pin(DEBUG_P_EIGHT, 0);
+		flash_read(read_buffers, 2, 10);
+		flash_write(write_buffers, 2, 10);
+		flash_read(read_buffers, 2, 10);
+		HAL_Delay(1000);
+
   }
- /* USER CODE END 3 */
+  /* USER CODE END 3 */
 }
 
 /**
@@ -286,7 +276,7 @@ static void MX_SPI1_Init(void)
   hspi1.Init.CRCPolynomial = 0x0;
   hspi1.Init.NSSPMode = SPI_NSS_PULSE_ENABLE;
   hspi1.Init.NSSPolarity = SPI_NSS_POLARITY_LOW;
-  hspi1.Init.FifoThreshold = SPI_FIFO_THRESHOLD_01DATA;
+  hspi1.Init.FifoThreshold = SPI_FIFO_THRESHOLD_04DATA;
   hspi1.Init.TxCRCInitializationPattern = SPI_CRC_INITIALIZATION_ALL_ZERO_PATTERN;
   hspi1.Init.RxCRCInitializationPattern = SPI_CRC_INITIALIZATION_ALL_ZERO_PATTERN;
   hspi1.Init.MasterSSIdleness = SPI_MASTER_SS_IDLENESS_00CYCLE;
@@ -516,6 +506,12 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 //Easy Write pin with the ic_pin type
+void read_try_try (uint8_t* buf, uint32_t blk_addr, uint16_t blk_len){
+	memcpy((buf), &help[blk_addr * 512], 512*blk_len);
+}
+void write_try_try (uint8_t* buf, uint32_t blk_addr, uint16_t blk_len){
+	memcpy(&help[blk_addr*512], (buf), 512*blk_len);
+}
 void Write_Pin(IC_Pin pin, int value)
 {
 	if (value == 0) {
@@ -526,9 +522,18 @@ void Write_Pin(IC_Pin pin, int value)
 	}
 
 }
+int Read_Pin(IC_Pin pin)
+{
+	GPIO_PinState value = HAL_GPIO_ReadPin(pin.pin_letter, pin.pin_num);
+
+	if (value == GPIO_PIN_SET){
+		return 1;
+	}
+	return 0;
+}
 
 //Initialize pins to "default value" (update with LCD)
-void Init_Pin() {
+void init_pin() {
 	Write_Pin(FLASH_P_WP_ONE, 1);
 	Write_Pin(FLASH_P_WP_TWO, 1);
 	Write_Pin(FLASH_P_WP_THREE, 1);

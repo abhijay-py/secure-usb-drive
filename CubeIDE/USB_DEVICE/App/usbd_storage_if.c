@@ -22,7 +22,8 @@
 #include "usbd_storage_if.h"
 
 /* USER CODE BEGIN INCLUDE */
-
+#include "flash.h"
+#include "main.h"
 /* USER CODE END INCLUDE */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -63,11 +64,11 @@
   */
 
 #define STORAGE_LUN_NBR                  1
-#define STORAGE_BLK_NBR                  0x10000
-#define STORAGE_BLK_SIZ                  0x200
+#define STORAGE_BLK_NBR                  262144
+#define STORAGE_BLK_SIZ                  512
 
 /* USER CODE BEGIN PRIVATE_DEFINES */
-
+uint8_t buffer[STORAGE_BLK_NBR * STORAGE_BLK_SIZ] = {1};
 /* USER CODE END PRIVATE_DEFINES */
 
 /**
@@ -194,10 +195,10 @@ int8_t STORAGE_Init_HS(uint8_t lun)
 int8_t STORAGE_GetCapacity_HS(uint8_t lun, uint32_t *block_num, uint16_t *block_size)
 {
   /* USER CODE BEGIN 10 */
-  UNUSED(lun);
-
-  *block_num  = STORAGE_BLK_NBR;
-  *block_size = STORAGE_BLK_SIZ;
+//	  *block_num  = 32 - 1;
+//	  *block_size = 2048;
+	*block_num  = STORAGE_BLK_NBR;
+	*block_size = STORAGE_BLK_SIZ;
   return (USBD_OK);
   /* USER CODE END 10 */
 }
@@ -210,7 +211,12 @@ int8_t STORAGE_GetCapacity_HS(uint8_t lun, uint32_t *block_num, uint16_t *block_
 int8_t STORAGE_IsReady_HS(uint8_t lun)
 {
   /* USER CODE BEGIN 11 */
-  UNUSED(lun);
+//	int freeze = get_flash_freeze();
+//	int busy = get_flash_busy();
+//
+//	if (freeze == 1 || busy == 1) {
+//		return (USBD_FAIL);
+//	}
 
   return (USBD_OK);
   /* USER CODE END 11 */
@@ -239,11 +245,16 @@ int8_t STORAGE_IsWriteProtected_HS(uint8_t lun)
 int8_t STORAGE_Read_HS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t blk_len)
 {
   /* USER CODE BEGIN 13 */
-  UNUSED(lun);
-  UNUSED(buf);
-  UNUSED(blk_addr);
-  UNUSED(blk_len);
+  int error = flash_read(buf, blk_addr, blk_len);
 
+  if (error == 1) {
+	  return (USBD_BUSY);
+  }
+  else if (error == -1) {
+	  return (USBD_FAIL);
+  }
+//	memcpy(buf, &buffer[blk_addr*STORAGE_BLK_SIZ], blk_len*STORAGE_BLK_SIZ);
+//  read_try_try(buf, blk_addr, blk_len);
   return (USBD_OK);
   /* USER CODE END 13 */
 }
@@ -259,12 +270,17 @@ int8_t STORAGE_Read_HS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t bl
 int8_t STORAGE_Write_HS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t blk_len)
 {
   /* USER CODE BEGIN 14 */
-  UNUSED(lun);
-  UNUSED(buf);
-  UNUSED(blk_addr);
-  UNUSED(blk_len);
+	  int error = flash_write(buf, blk_addr, blk_len);
 
-  return (USBD_OK);
+	  if (error == 1) {
+		  return (USBD_BUSY);
+	  }
+	  else if (error == -1) {
+		  return (USBD_FAIL);
+	  }
+	//	memcpy(buf, &buffer[blk_addr*STORAGE_BLK_SIZ], blk_len*STORAGE_BLK_SIZ);
+	//  read_try_try(buf, blk_addr, blk_len);
+	  return (USBD_OK);
   /* USER CODE END 14 */
 }
 
