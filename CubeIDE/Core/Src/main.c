@@ -165,7 +165,9 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  enum State state = USERSEL;
+
+//  enum State state = USERSEL;
+  enum State state = UNLOCKED;
 
   // TODO: remove setting password here
   // TODO: actually add separate users
@@ -174,7 +176,9 @@ int main(void)
   struct User user_3 = {.user_id = 3, .password = {0, 0, 0, 0}};
   struct User user_4 = {.user_id = 4, .password = {0, 0, 0, 0}};
 
-  struct User* selected_user = NULL;
+//  struct User* selected_user = NULL;
+  struct User* selected_user = &user_1;
+
   lcd_clear_cs(&hspi2);
 
   while (1)
@@ -287,7 +291,7 @@ int main(void)
               Write_Pin(LCD_P_CS, 1);
 
               // send fingerprint match request
-              uint8_t ack_type;
+              uint8_t ack_type = 9;
               compare_1_1(selected_user->user_id, &ack_type);
               if (ack_type == ACK_SUCCESS) {
                   state = UNLOCKED;
@@ -339,7 +343,8 @@ int main(void)
 //		      HAL_Delay(2000);
 
 		      // ask user for print on fingerprint sensor
-		      uint8_t ack_type;
+		      uint8_t ack_type = 9;
+		      delete_specified_user(selected_user->user_id, &ack_type);
 		      for (int i = 1; i <= 3; i++) {
 		          add_fingerprint(i, selected_user->user_id, 1, &ack_type);
 		          if (ack_type != ACK_SUCCESS) {
