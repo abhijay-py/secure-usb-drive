@@ -353,7 +353,6 @@ int main(void)
           }
 
           case CHGPIN: {
-        	  uint8_t cursor = 0x40;
 		      int success = 1;
 		      int count = 0;
 		      int new_password[4];
