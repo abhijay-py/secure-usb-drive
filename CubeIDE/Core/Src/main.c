@@ -211,7 +211,7 @@ int main(void)
           }
 
           case RECVPASS: {
-              if (is_key_pressed(3, 1, 100)) { // 0 held for 4 sec
+              if (is_key_pressed(3, 1, 1)) { // 0 held for 4 sec
                   switch_to_usersel();
               }
               else if (is_key_pressed(3, 0, 1)) { // star - SELECTED PASSWORD
@@ -244,6 +244,8 @@ int main(void)
                   }
               }
               if (success) {
+            	  // TODO: COPY FLASH DATA TO BUFFER HERE
+
             	  if (USBD_Start(&hUsbDeviceHS) != USBD_OK)
             	  {
             	      Error_Handler();
@@ -271,6 +273,8 @@ int main(void)
               uint8_t ack_type = 9;
               compare_1_1(selected_user->user_id, &ack_type);
               if (ack_type == ACK_SUCCESS) {
+            	  // TODO: COPY FLASH DATA TO BUFFER HERE
+
                   if (USBD_Start(&hUsbDeviceHS) != USBD_OK)
                   {
                 	  Error_Handler();
@@ -369,6 +373,8 @@ int main(void)
 
           case LOCKING: {
               if (is_key_pressed(3, 2, 1)) { // # pressed
+            	  // TODO: copy and paste buffer to flash IC
+
             	  if (USBD_Stop(&hUsbDeviceHS) != USBD_OK) {
             	      Error_Handler();
             	  }
