@@ -1,2 +1,4 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+Team[[:space:]]20[[:space:]]-[[:space:]]Final[[:space:]]Project[[:space:]]Presentation.pptx filter=lfs diff=lfs merge=lfs -text
